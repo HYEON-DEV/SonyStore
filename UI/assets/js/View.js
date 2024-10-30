@@ -81,26 +81,92 @@ const clr_name = clr => {
 
 
     /* -- -- -- 메인 좌측 - 슬라이더 -- -- -- */
-   
-    const swiperContainerViewSwiper = document.querySelector('.view_swiper');
-    //  이미지 개수 별로 슬라이드 생성 
-     
+    
+    const swiperWrapper1 = document.querySelector('.swiper-wrapper');
     for ( let i=0; i<imgArr[0].length; i++ ) {
-        const swiperSlide = document.createElement('swiper-slide');
+        const div1 = document.createElement('div');
+        div1.classList.add('swiper-slide');
+        div1.classList.add('slide-main');
 
-        const div = document.createElement('div');
-        div.classList.add('img-container');
+        const div2 = document.createElement('div');
+        div2.classList.add('img-container');
 
         const img = document.createElement('img');
         img.classList.add('main-img');
         img.setAttribute( 'src', `assets/img/${paramsArr[0]}${curId}/${imgArr[0][i]}` );
 
-        div.appendChild(img);
-        swiperSlide.appendChild(div);
-        swiperContainerViewSwiper.appendChild(swiperSlide);
-        //viewSwiper.appendSlide(swiperSlide);
-    }    
-    //viewSwiper.update(); 
+        div2.appendChild(img);
+        div1.appendChild(div2);
+        
+        swiperWrapper1.appendChild(div1);
+    }
+
+    const swiper1 = new Swiper('.swiper', {
+        direction: 'horizontal',
+        loop: true,
+      
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+          type:'custom'
+        },
+
+        on: {
+            init: function() {
+                createPagination();
+                updatePagination(this.realIndex);
+            },
+            slideChange: function () {
+                updatePagination(this.realIndex);
+            }
+        },
+      
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
+    });
+
+    function createPagination() {
+        const paginationContainer = document.querySelector('.swiper-pagination');
+        const slides = document.querySelectorAll('.slide-main');
+
+        paginationContainer.innerHTML = '';
+
+        slides.forEach( () => {
+            const bar = document.createElement('div');
+            bar.classList.add('pagination-bar');
+            paginationContainer.appendChild(bar);
+        } );
+    }
+
+    function updatePagination(activeIndex) {
+        const bars = document.querySelectorAll('.pagination-bar');
+        bars.forEach( (bar, index) => {
+            bar.classList.remove('active');
+            if (index == activeIndex) {
+                bar.classList.add('active');
+            }
+        } );
+    }
+
+/* 
+    const left = document.querySelector('.product-main-slider');
+    const right = document.querySelector('.product-view-about');
+    window.addEventListener( 'scroll', () => {
+        const rightRect = right.getBoundingClientRect();
+        const leftRect = left.getBoundingClientRect();
+
+        if ( rightRect.bottom <= window.innerHeight ) {
+            left.style.position = 'absolute';
+            left.style.top = right.scrollHeight - leftRect.height + 'px';
+        } else {
+            left.style.position = 'sticky';
+            left.style.top = '0';
+        }
+
+    } ); */
+
 
 
     /* -- -- -- 메인 우측 - 구매관련 -- -- -- */
@@ -405,14 +471,15 @@ const clr_name = clr => {
     //console.log(randomData); 
 
     //  슬라이드 생성
-
-    const swiperContainer = document.querySelector('.recommendSwiper');
+    
+    const swiperWrapperRcmd = document.querySelector('.swiper-wrapper-rcmd');
 
     randomData.forEach( (v,i) => {
-        const swiperSlide = document.createElement('swiper-slide');
+        const swiperSlide = document.createElement('div');
+        swiperSlide.classList.add('swiper-slide');
 
-        const div = document.createElement('div');
-        div.classList.add('recommend-img-container');
+        const rcmd_img_container = document.createElement('div');
+        rcmd_img_container.classList.add('recommend-img-container');
         
         const a = document.createElement('a');
         const qs = queryStringById( response.data, v );     //console.log(qs);  
@@ -423,8 +490,6 @@ const clr_name = clr => {
         img.setAttribute('src',`assets/img/${paramsArr[0]}${v.id}/${imgArr[0][0]}` );
 
         a.appendChild(img);
-        
-        //div.style.backgroundColor = clr_light_grey;
         
         const span1 = document.createElement('span');
         span1.classList.add('recommend-title');
@@ -438,15 +503,58 @@ const clr_name = clr => {
         span3.classList.add('recommend-price');
         span3.innerHTML = v.price.toLocaleString() + '원';
 
-        div.appendChild(a);
-        div.appendChild(span1);
-        div.appendChild(span2);
-        div.appendChild(span3);
-        swiperSlide.appendChild(div);
-        swiperContainer.appendChild(swiperSlide);
+        rcmd_img_container.appendChild(a);
+        rcmd_img_container.appendChild(span1);
+        rcmd_img_container.appendChild(span2);
+        rcmd_img_container.appendChild(span3);
+        swiperSlide.appendChild(rcmd_img_container);
+        swiperWrapperRcmd.appendChild(swiperSlide);
     } );    
     
 
+    const swiper2 = new Swiper('.swiper-2', {
+        
+        direction: 'horizontal',
+        loop: false,
+
+        slidesPerView: 4,
+
+        navigation: {
+            nextEl: '.swiper-button-next-2',
+            prevEl: '.swiper-button-prev-2',
+        },
+
+        on: {
+            init: function() {
+                updateNavigationButtons();
+            },
+            slideChange: function() {
+                updateNavigationButtons();
+            },
+            resize: function() {
+                updateNavigationButtons();
+            }
+        }
+    });
+      
+    function updateNavigationButtons() {
+        const swiper_rcmd = document.querySelector('.swiper-2').swiper;
+        // console.log(swiper);
+        const lastSlideIndex = swiper_rcmd.slides.length - swiper_rcmd.params.slidesPerGroup;
+
+        if (swiper_rcmd.isEnd) {
+            document.querySelector('.swiper-button-next-2').style.display = 'none';
+        } else {
+            document.querySelector('.swiper-button-next-2').style.display = '';
+        }
+        
+        if (swiper_rcmd.isBeginning) {
+            document.querySelector('.swiper-button-prev-2').style.display = 'none';
+        } else {
+            document.querySelector('.swiper-button-prev-2').style.display = '';
+        }
+    }
+        
 })();
 
 

@@ -1,29 +1,16 @@
-:root {
-    --my-color-light-grey: #fbfbfb;
-    --my-color-light-grey-2: #ddd;
-    --my-color-light-grey-3: #ccc;
-    --my-color-grey: #999;
-    --my-color-grey-2: #888;
-    --my-color-grey-3: #666;
-    --my-color-sony-purple: #5865f5;
-    --my-color-black: #222;
-    --my-color-orange: rgb(255, 78, 0);
-    --my-color-silver: rgb(181, 181, 181);
-    --my-color-light-blue: #f4f7fa;
-}
-
 * {
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     list-style: none;
     text-decoration: none;
-    font-family: "Noto Sans KR";
+    /* font-family: "Noto Sans KR"; */
+    /* font-family: "SSTPro","Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; */
 }
 a, button {
     cursor: pointer;
 }
 
 .divider-bold {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--color-black);
     width: 100%;
 }
 .divider-light {
@@ -36,92 +23,73 @@ a, button {
     font-weight: 700;
     line-height: 21px;
     letter-spacing: -.4px;
-    color: var(--my-color-black);
+    color: var(--color-black);
 }
 
 /* - - - - - 좌측 우측 flex 조절 - - - - - */
 .product-view-main{
     display: flex;
-    /* flex: 1 1 50%; */
 
     .product-main-slider {
         width: 58%;
-        /* height: 574.63px; */
-        /* overflow: hidden; */
-        background-color: var(--my-color-light-blue);
+        background-color: var(--color-light-blue);
+        
     }
     .product-view-about {
         width: 42%;
-        /* height: 574.63px; */
-        /* background-color: rgba(0,0,100,0.1); */
-        padding: 0 100px;
+        padding: 0 118px;
         padding-top: 150px;
-
+        margin-top: 20px;
+        
     }
 }
 
 /* - - - 메인 좌측 이미지 슬라이더 - - - */
 
-.product-main-slider {
-    padding-top: 100px;
-    swiper-slide{
-        padding: 0 10%;
-    }
-    .img-container {
-        /* width: 856px;
-        height: 856px; */
-        /* margin: auto; */
-        /* width: 100%; */
-        /* height: 100%; */
-        /* padding: 0 20%; */
-        img {
-            width: 100%;
-            object-fit: cover;
+.swiper-container {
+    margin-top: 120px;
+    padding-bottom: 40px;
+    position: sticky;
+    top: 0;
+}
+.swiper {
+    .swiper-wrapper {
+        .swiper-slide {
+            padding: 0 120px;
+            .img-container {
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
         }
     }
-}
 
-/* 
-.swiper {
-    width: 100%;
-    height: 100%;
-
-    .swiper-nav {
-        --swiper-navigation-size: 32px;
+    .swiper-button-next, .swiper-button-prev {
+        --swiper-navigation-size: 36px;
         --swiper-navigation-top-offset: 50%;
         --swiper-navigation-sides-offset: 60px;
-        --swiper-navigation-color: var(--my-color-black);
+        --swiper-navigation-color: var(--color-black);
     }
 }
+.swiper-pagination {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.swiper-pagination .pagination-bar {
+    margin: 0 4px;
+    width: 2px;
+    height: 8px;
+    background: var(--color-light-grey-2);
+    transition: all var(--animation-duration);
+}
+.swiper-pagination .active {
+    height: 13px;
+    background-color: #444;
+}
 
-.s1 { background-color: rgba(50,0,0,0.1);}
-.s2 { background-color: rgba(0,50,0,0.1);}
-.s3 { background-color: rgba(0,0,50,0.1);}
- */
-
-.swiper-rcmd {
-    /* width: 100%;
-    height: 100%; */
-    /* width: 1224px;
-    height: 395px; */
-    /* 
-    .swiper-nav {
-        --swiper-navigation-size: 32px;
-        --swiper-navigation-top-offset: 50%;
-        --swiper-navigation-sides-offset: 60px;
-        --swiper-navigation-color: var(--my-color-black);
-    } */
-} 
-/* 
-.view_swiper {
-    width: 100%;
-
-    swiper-slide {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-} */
 
 /* - - - - - - - - - 메인 우측 - 구매관련 - - - - - - - */
 .product-view-about {
@@ -131,7 +99,7 @@ a, button {
         display: flex;
         justify-content: space-between;
         .flag {
-            color: rgb(255,78,0);
+            color: var(--color-orange);
             font-size: 16px;
             font-weight: 700;
             line-height: 21px;
@@ -148,14 +116,12 @@ a, button {
             font-size: 18px;
             line-height: 24px;
             letter-spacing: -.45px;
-            color: var(--my-color-grey-2);
+            color: var(--color-grey-2);
         }
         .prd-desc {
             .icon {
                 display: block;
                 position: absolute;
-                /* top: 0;
-                left: 0; */
                 width: 14px;
                 height: 14px;
                 background: url(../img/icon-desc.png) no-repeat;
@@ -166,7 +132,7 @@ a, button {
                 padding-left: 18px;
                 font-size: 12px;
                 letter-spacing: -.3px;
-                color: var(--my-color-sony-purple);
+                color: var(--color-blue);
             }
         }
         .share {
@@ -174,7 +140,7 @@ a, button {
             width: 24px;
             height: 24px;
             background: url(../img/ico_share.df6b9463.svg) no-repeat;
-            margin: auto 0;
+            margin: 30px 0;
         }
         
     }
@@ -195,7 +161,7 @@ a, button {
             font-weight: 700;
             line-height: 36px;
             letter-spacing: -.35px;
-            color: var(--my-color-sony-purple);
+            color: var(--color-blue);
             margin-left: auto;
         }
     }
@@ -218,7 +184,7 @@ a, button {
             font-weight: 400;
             text-align: center;
             line-height: 18px;
-            color: #fff;
+            color: var(--color-white);
         }
     }
 
@@ -243,7 +209,7 @@ a, button {
                     font-size: 12px;
                     font-weight: bold;
                 }
-                .vip{ color: var(--my-color-sony-purple); }
+                .vip{ color: var(--color-blue); }
                 .mileage{
                     font-size: 14px;
                     font-weight: bold;
@@ -276,9 +242,6 @@ a, button {
                 width: 40px;
                 height: 38px;
                 text-align: center;
-                /*font-size: 14px;
-                line-height: 1.4;
-                letter-spacing: -.025em; */
 
                 .color-name {
                     display: none;
@@ -306,10 +269,9 @@ a, button {
         height: 22px;
         border: 1px solid lightgrey;
         border-radius: 50%;
-        /* vertical-align: top; */
 
         &.active {
-            border-color: black;
+            border-color: var(--color-black);
         }
 
         .c-bg {
@@ -330,12 +292,12 @@ a, button {
     }
     &.black {
         .c-bg{
-            background-color: black;
+            background-color: var(--color-black);
         }
     }
     &.silver {
         .c-bg{
-            background-color: var(--my-color-silver);
+            background-color: var(--color-silver);
         }
     }
 }
@@ -350,14 +312,12 @@ a, button {
 }
 .selected-btn {
     display: block;
-    /* position: relative; */
     padding: 5px 15px;
-    border: 1px solid var(--my-color-light-grey-2);
-    /* background: #fff; */
+    border: 1px solid var(--color-light-grey-2);
     font-size: 14px;
     font-weight: 300;
     line-height: 22px;
-    color: var(--my-color-grey-3);
+    color: var(--color-grey-3);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -382,7 +342,7 @@ a, button {
         border-top: none;
         font-size: 16px;
         line-height: 22px;
-        color: var(--my-color-black);
+        color: var(--color-black);
 
         &.active { display: block;}
     }    
@@ -396,7 +356,7 @@ a, button {
 .inner-list, .selected-name{
     height: 44px;
     line-height: 44px;
-    background-color: var(--my-color-light-grey);
+    background-color: var(--color-light-grey);
     cursor: pointer;
 
     .pad {
@@ -419,15 +379,11 @@ a, button {
 
 
 .selected-opt-container {
-    border: 1px solid var(--my-color-light-grey-2);
-    background: var(--my-color-light-grey);
+    border: 1px solid var(--color-light-grey-2);
+    background: var(--color-light-grey);
     padding: 20px 15px;
     margin: 15px 0;
-/* 
-    .pad {
-        padding: 5px 0;
-    }
- */
+
     .selected-prd-top {
         display: flex;
         justify-content: space-between;
@@ -440,9 +396,6 @@ a, button {
         }
         .prd-delete {
            display: inline-block;
-            /* position: absolute;
-            top: 16px;
-            right: 16px; */
             width: 24px;
             height: 24px;
             background: url(../img/delete.png) no-repeat 0 0;
@@ -465,12 +418,10 @@ a, button {
         .count-container{
             display: flex;
             margin-top: 13px;
-            border: 1px solid var(--my-color-light-grey-2);
+            border: 1px solid var(--color-light-grey-2);
 
             .cnt-box {
-                /* text-indent: -9999px; */
                 display: block;
-                /* float: left; */
                 width: 40px;
                 height: 40px;
                 border: none;
@@ -481,7 +432,7 @@ a, button {
             button {
                 font-size: 25px;
                 line-height: 25px;
-                color: var(--my-color-grey-3);
+                color: var(--color-grey-3);
             }
             input {
                 font-size: 16px;
@@ -508,7 +459,7 @@ a, button {
 
 .result-btn-inner {
     padding-top: 40px;
-    /* padding-bottom: 10px; */
+
     .result-btn-box {
         ul {
             display: flex;
@@ -517,7 +468,7 @@ a, button {
                 
                 width: 64px;
                 height: 64px;
-                border: 1px solid black;
+                border: 1px solid var(--color-black);
                 margin-right: 10px;
                 
                 &:last-child {
@@ -527,22 +478,19 @@ a, button {
                     line-height: 64px;
                     font-size: 18px;
                     letter-spacing: -.4px;
-                    background-color: black;
-                    /* color: white; */
+                    background-color: var(--color-black);
                 }
             }
-            .final { color: white;}
-/* 
-            .btn-icon-container {
-                background: url(../img/ico_heart.svg) no-repeat center;
-            } */
+            .final { 
+                color: var(--color-white);
+            }
         }
     }
 }
 .final {
     a {
         display: inline-block;
-        color: white;
+        color: var(--color-white);
     }
 }
 
@@ -555,113 +503,94 @@ a, button {
         text-align: center;
         font-size: 32px;
         font-weight: 700;
-        color: var(--my-color-black);
+        color: var(--color-black);
         margin-bottom: 35px;
     }
+}
 
-    .rcmd-prd-list { 
-        width: fit-content; 
-        margin: auto;
-    }
-    ul {
-        display: flex;
-        justify-content: center;
-        width: fit-content;
+.swiper-2 {
+    width: 1200px;
+    overflow: hidden;
+    margin: auto;
+    position: relative;
+
+    .swiper-wrapper {
+        .swiper-slide {
+            margin-right: 8px;
+            .recommend-img-container {
+                display:flex;
+                flex-direction: column;
         
+                .recommend-img{
+                    background-color: var(--color-light-blue);
+                    width: 282px;
+                    height: 282px;
+                }
         
-        /* overflow: hidden; */
-
-        li { 
-            margin-right: 24px;
-        }
-
-        .img-wrapper {
-            width: 282px;
-            height: 282px;
-            background-color: rgba(0,0,0,0.1);
-
-            img {
-                width: 100%;
+                .recommend-title {
+                    margin: 16px 0;
+                    font-size: 18px;
+                    font-weight: 700;
+                    height: auto;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    display: block;
+                    color: var(--color-black);
+                    line-height: 1.4;
+                    letter-spacing: -.025em;
+                    word-break: keep-all;
+                }
+        
+                .recommend-desc {
+                    min-height: 48px;
+                    display: -webkit-box;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    -webkit-box-orient: vertical;
+                    font-size: 14px;
+                    line-height: 24px;
+                    color: var(--color-grey-3);
+                }
+        
+                .recommend-price {
+                    font-size: 16px;
+                    font-weight: 700;
+                }
             }
         }
-
-        .prd-name {
-            padding-top: 15px;
-        }
-
-        .prd-text {
-            margin-top: 8px;
-            min-height: 48px;
-            display: -webkit-box;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            font-size: 14px;
-            line-height: 24px;
-            color: var(--my-color-grey-3);
-        }
     }
+} 
+
+.swiper-button-prev-2, .swiper-button-next-2 {
+    position: absolute; 
+    top: 35%; 
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    background: url(../img/swiper-button-2.png) no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+.swiper-button-prev-2 {
+    left: 18px; 
+}
+.swiper-button-next-2 {
+    right: 18px;
+    transform: rotate(180deg);
 }
 
-.recommendSwiper {
-    width: 1200px;
-
-    .recommend-img-container {
-        display:flex;
-        flex-direction: column;
-
-        .recommend-img{
-            background-color: var(--my-color-light-blue);
-            width: 282px;
-            height: 282px;
-        }
-
-        .recommend-title {
-            margin: 16px 0;
-            font-size: 18px;
-            font-weight: 700;
-            height: auto;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-            display: block;
-            color: var(--my-color-black);
-            line-height: 1.4;
-            letter-spacing: -.025em;
-            word-break: keep-all;
-        }
-
-        .recommend-desc {
-            min-height: 48px;
-            display: -webkit-box;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            -webkit-box-orient: vertical;
-            font-size: 14px;
-            line-height: 24px;
-            color: #666;
-        }
-
-        .recommend-price {
-            font-size: 16px;
-            font-weight: 700;
-        }
-    }
-}
 
 /* -- -- -- -- -- -- -- exhibitions -- -- -- -- -- -- --*/
 .product-content-exhibitions {
-    /* width: 100%; */
-    /* height: 513px; */
-    background-color: var(--my-color-light-grey);;
+    background-color: var(--color-light-grey);;
     padding: 100px 0;
 
     .exhb-tit {
         text-align: center;
         font-size: 32px;
         font-weight: 700;
-        color: var(--my-color-black);
+        color: var(--color-black);
         padding: 50px 0;
     }
 
@@ -674,14 +603,14 @@ a, button {
         font-size: 22px;
         font-weight: 700;
         letter-spacing: -.55px;
-        color: var(--my-color-black);
+        color: var(--color-black);
         padding-top: 10px;
     }
 
     .img-wrapper{
         width: 588px;
         height: 330px;
-        /* background-color: rgba(0,0,0,0.1); */
+
         img {
             width: 100%;
         }
@@ -689,7 +618,7 @@ a, button {
     .exhb-date {
         font-size: 14px;
         letter-spacing: -.35px;
-        color: var(--my-color-grey-2);
+        color: var(--color-grey-2);
         font-weight: 700;
     }
 
@@ -713,7 +642,6 @@ a, button {
             .img-wrapper{
                 width: 40px;
                 height: 40px;
-                /* background-color: rgba(0,0,0,0.1); */
                 
                 img {
                     width: 100%;
@@ -736,6 +664,7 @@ a, button {
 
 /* -- -- -- -- -- -- -- product-content -- -- -- -- -- -- --*/
 .product-content {
+    padding-bottom: 150px;
     .detail-tab {
         display: flex;
         justify-content: center;
@@ -751,22 +680,22 @@ a, button {
 
             .text {
                 font-weight: 500;
-                color: var(--my-color-grey-3);
+                color: var(--color-grey-3);
                 font-size: 22px;
                 letter-spacing: -.5px;
                 text-align: center;
             }
             .bottom-line {
-                border-bottom: var(--my-color-grey-3) solid 1px;
+                border-bottom: var(--color-grey-3) solid 1px;
             }
 
             &:hover {
-                .text{ color: var(--my-color-sony-purple); }
-                .bottom-line{ border-bottom: var(--my-color-sony-purple) solid 2px; }
+                .text{ color: var(--color-blue); }
+                .bottom-line{ border-bottom: var(--color-blue) solid 2px; }
             }
             &.active {
-                .text{ color: var(--my-color-sony-purple); }
-                .bottom-line{ border-bottom: var(--my-color-sony-purple) solid 2px; }
+                .text{ color: var(--color-blue); }
+                .bottom-line{ border-bottom: var(--color-blue) solid 2px; }
             }
         }
     }
@@ -780,9 +709,9 @@ a, button {
 .detail-info-zone {
     
     .pad {
-        /* margin: auto; */
         padding: 50px 0;
     }
+
     /* -- -- -- -- 제품 상세 -- -- -- -- */
     .outline {
         display: none;
@@ -801,7 +730,6 @@ a, button {
         }
 
         .outline-content {
-            /* padding-bottom: 400px; */
 
             .pad {
                 /* padding: 50px 0; */
@@ -861,7 +789,7 @@ a, button {
             font-weight: 700;
             line-height: 1.5;
             letter-spacing: -.025em;
-            color: var(--my-color-black);
+            color: var(--color-black);
             
         }
         .common__title.h3 {
@@ -870,7 +798,7 @@ a, button {
             font-weight: 700;
             line-height: 1.5;
             letter-spacing: -.025em;
-            color: var(--my-color-black);
+            color: var(--color-black);
             padding: 20px 0;
             padding-top: 50px;
         }
@@ -896,20 +824,19 @@ a, button {
         width: 1200px;
     }
     .common__table tr:first-child {
-        border-top: 2px solid var(--my-color-black);
+        border-top: 2px solid var(--color-black);
     }
     .common__table th {
         font-weight: 700;
-        background-color: var(--my-color-light-grey);
+        background-color: var(--color-light-grey);
     }
     .common__table {
         width: 100%;
-        /* table-layout: fixed; */
         text-align: left;
         font-size: 16px;
         line-height: 1.5;
         letter-spacing: -.025em;
-        color: var(--my-color-black);
+        color: var(--color-black);
         border-collapse: collapse;
         border-spacing: 0;
         background-color: #fefefe;
@@ -917,7 +844,7 @@ a, button {
     tr{
         padding: .75em 1.5em;
         vertical-align: top;
-        border-bottom: 1px solid var(--my-color-light-grey-2);
+        border-bottom: 1px solid var(--color-light-grey-2);
     }
     th, td {
         padding: 10px;
@@ -926,43 +853,3 @@ a, button {
 }
 
 
-
-/* -- -- -- -- -- -- -- footer -- -- -- -- -- -- --*/
-/* footer {
-    width: 100%;
-    height: 475px;
-    background-color: black;
-    margin-top: 300px;
-}  */
-
-.footer-section {
-    margin-top: 300px;
-}
-/* 
-.sidebar {
-    display: block;
-    position: absolute;
-    bottom: auto;
-    top: 24px;
-    z-index: 100;
-    right: 24px;
-    left: auto;
-    transition: all .2s ease-in-out .1s;
-    position: fixed;
-    bottom: -100px;
-}
-
-button{ background: none; }
-
-.sidebar-btn {
-    width: 28px;
-    height: 28px;
-    background-color: var(--my-color-sony-purple);
-    display: block;
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
-    img {
-        width: 100%;
-    }
-} */
