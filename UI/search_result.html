@@ -6,7 +6,7 @@
     <title>sonyStore</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"/>
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/common.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,8 +21,29 @@
     <script src="./assets/js/loadHTML.js"></script>
     <script>loadHTML("./header.html");</script>
 
-    <div class="container"></div>
+    <div class="container_w1200 pd-90-160">
+        <div class="search_container">
+            <form action="#" class="search_input_form">
+                <label class="search_input_label" for="search_input">검색결과</label>
+                <input type="text" id="search_input" class="input_text font_32_700">
+                <button type="button" class="search_button" title="검색">검색</button>
+            </form>
+        </div>
 
+        <div class="result_message">
+            <p class="font_24_700 flex_center"><span class="text_blue_accent">'카메라'</span>에 대한 검색결과는 총&nbsp;<span class="text_blue_accent">58</span>건 입니다.</p>
+        </div>
+    </div>
+
+    <div class="tab_menu_container_style_1">
+        <ul>
+            <li class="search_result_category_title flex_center">전체(58)</li>
+            <li class="search_result_category_title flex_center">제품(35)</li>
+            <li class="search_result_category_title flex_center">기획전(5)</li>
+            <li class="search_result_category_title flex_center">카테고리(18)</li>
+            <li class="search_result_category_title flex_center">공지사항(0)</li>
+        </ul>
+    </div>
     <script>loadHTML("./footer.html");</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.js"></script>
