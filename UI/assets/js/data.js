@@ -1,5 +1,5 @@
 let product = {}; // 전역 변수 선언
-//안녕하세요
+
 window.onload = async (e) => {
     let response = null;
 
