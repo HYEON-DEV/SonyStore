@@ -21,44 +21,221 @@
 </head>
 
 <body>
-    <h2> 장바구니 </h2>
-    
-    <ul class="order_box_list">
-        <li class="on"> 
-            <i class="step_ico cart"></i> 
-            <p>장바구니</p>
-        </li>
-        <li>
-            <i class="step_ico order"></i>
-            <p>주문·결제</p>
-        </li>
-        <li>
-            <i class="step_ico confirm"></i>
-            <p>주문 완료</p>
-        </li>
-    </ul>
+    <div class="app">
+        <div class="wrapper">
+            <div class="container_w1200 order_page">
 
-    <div class="cart_func">
-        <div class="cart_func_check">
-            <div class="check">
-                <input type="checkbox" class="inp_check check_all" id="check_cart_items"
-                    name="check_cart_item" />
-                    <label for="check_cart_items"> 전체 </label>
+                <h2 class="order_box_tit font_48_700"> 장바구니 </h2>
+            
+
+                <!--   장바구니   주문결제   주문완료   -->
+                <!-- <div class="order_box_list_container"> -->
+                    <ul class="order_box_list">
+                        <li class="on"> 
+                            <i class="step_ico cart"></i> 
+                            <p>장바구니</p>
+                        </li>
+                        <li>
+                            <i class="step_ico order"></i>
+                            <p>주문·결제</p>
+                        </li>
+                        <li>
+                            <i class="step_ico confirm"></i>
+                            <p>주문 완료</p>
+                        </li>
+                    </ul>
+                    <!-- <div class="order_list_bar"></div> -->
+                <!-- </div> -->
+
+
+
+                <!-- 장바구니 내역 -->
+                    
+                <div class="cart_func">
+                    <!-- 전체 체크박스 -->
+                    <div class="cart_func_check">
+                        <div class="check">
+                            <input type="checkbox" class="inp_check check_all" id="check_cart_items" name="check_cart_item" />
+                            <label for="check_cart_items" class="check_all_txt"> 전체 </label>
+                        </div>
+                    </div>
+
+                    <!-- 선택 삭제 / 견적서 출력하기 -->
+                    <div class="cart_func_buttons">
+                        <button type="button" class="button button_negative button-s button_del_checked_items"> 선택 삭제 </button>
+                        <button type="button" class="button button_positive button-s button_print_esimate popup_comm_btn" data-popup-name="estimate"> 견적서 출력하기 </button>
+                    </div>
+                </div> 
+               
+
+                <!-- 장바구니 내역 테이블 -->
+                <div class="col_table_wrap order_list">
+                    <div class="col_table">
+                        <div class="col_table_head">
+                            <div class="col_table_row">
+                                <div class="col_table_cell">제품</div>
+                                <div class="col_table_cell">가격</div>
+                                <div class="col_table_cell">수량</div>
+                                <div class="col_table_cell">합계</div>
+                                <div class="col_table_cell ir">삭제</div>
+                            </div>
+                        </div>
+
+                        <div class="col_table_body">
+
+                            <div class="col_table_row">
+                                <div class="col_table_cell prd_wrap tal">
+                                    <div class="prd">
+                                        <div class="check check_only"><input type="checkbox" class="inp_check" name="check_cart_item">
+                                        </div>
+                                        <div class="prd_thumb"><img class="prd_thumb_pic"
+                                                src="//shopby-images.cdn-nhncommerce.com/20241022/143735.474436000/123476849.png"
+                                                alt="링크버즈 오픈 에어 피팅 서포터"></div>
+                                        <div class="prd_info">
+                                            <div class="prd_info_name">링크버즈 오픈 에어 피팅 서포터</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col_table_cell prd_price">14,900<span class="won">원</span></div>
+                                <div class="col_table_cell prd_count">
+                                    <div class="count_ui_box"><button class="minus" disabled="">감소</button><input type="text"
+                                            readonly="" class="count" value="1"><button class="plus">증가</button></div>
+                                </div>
+                                <div class="col_table_cell prd_total">14,900 <span class="won">원</span></div>
+                                <div class="col_table_cell"><button type="button" class="btn_del_prd"><img
+                                            src="../../images/common/ic_close.svg" alt="제품 삭제"></button></div>
+                            </div>
+
+                            <!-- <div class="col_table_row">
+                                <div class="col_table_cell prd_wrap tal">
+                                    <div class="prd">
+                                        <div class="check check_only"><input type="checkbox" class="inp_check" name="check_cart_item">
+                                        </div>
+                                        <div class="prd_thumb"><img class="prd_thumb_pic"
+                                                src="//shopby-images.cdn-nhncommerce.com/20230331/090359.212725000/104580435_1.png"
+                                                alt="WH-1000XM5"></div>
+                                        <div class="prd_info">
+                                            <div class="prd_info_name">WH-1000XM5</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col_table_cell prd_price">519,000<span class="won">원</span></div>
+                                <div class="col_table_cell prd_count">
+                                    <div class="count_ui_box"><button class="minus" disabled="">감소</button><input type="text"
+                                            readonly="" class="count" value="1"><button class="plus">증가</button></div>
+                                </div>
+                                <div class="col_table_cell prd_total">519,000 <span class="won">원</span></div>
+                                <div class="col_table_cell"><button type="button" class="btn_del_prd"><img
+                                            src="../../images/common/ic_close.svg" alt="제품 삭제"></button></div>
+                            </div>
+                            <div class="col_table_row">
+                                <div class="col_table_cell prd_wrap tal">
+                                    <div class="prd">
+                                        <div class="check check_only"><input type="checkbox" class="inp_check" name="check_cart_item">
+                                        </div>
+                                        <div class="prd_thumb"><img class="prd_thumb_pic"
+                                                src="//shopby-images.cdn-nhncommerce.com/20240507/122740.95718000/119623343_01.png"
+                                                alt="SEL2450G"></div>
+                                        <div class="prd_info">
+                                            <div class="prd_info_name">SEL2450G</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col_table_cell prd_price">1,799,000<span class="won">원</span></div>
+                                <div class="col_table_cell prd_count">
+                                    <div class="count_ui_box"><button class="minus" disabled="">감소</button><input type="text"
+                                            readonly="" class="count" value="1"><button class="plus">증가</button></div>
+                                </div>
+                                <div class="col_table_cell prd_total">1,799,000 <span class="won">원</span></div>
+                                <div class="col_table_cell"><button type="button" class="btn_del_prd"><img
+                                            src="../../images/common/ic_close.svg" alt="제품 삭제"></button></div>
+                            </div>
+                            <div class="col_table_row">
+                                <div class="col_table_cell prd_wrap tal">
+                                    <div class="prd">
+                                        <div class="check check_only"><input type="checkbox" class="inp_check" name="check_cart_item">
+                                        </div>
+                                        <div class="prd_thumb"><img class="prd_thumb_pic"
+                                                src="//shopby-images.cdn-nhncommerce.com/20240131/133131.375464000/116294131_06.png"
+                                                alt="BURANO"></div>
+                                        <div class="prd_info">
+                                            <div class="prd_info_name">BURANO</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col_table_cell prd_price">36,990,000<span class="won">원</span></div>
+                                <div class="col_table_cell prd_count">
+                                    <div class="count_ui_box"><button class="minus" disabled="">감소</button><input type="text"
+                                            readonly="" class="count" value="1"><button class="plus">증가</button></div>
+                                </div>
+                                <div class="col_table_cell prd_total">36,990,000 <span class="won">원</span></div>
+                                <div class="col_table_cell"><button type="button" class="btn_del_prd"><img
+                                            src="../../images/common/ic_close.svg" alt="제품 삭제"></button></div>
+                            </div>
+                            <div class="col_table_row">
+                                <div class="col_table_cell prd_wrap tal">
+                                    <div class="prd">
+                                        <div class="check check_only"><input type="checkbox" class="inp_check" name="check_cart_item">
+                                        </div>
+                                        <div class="prd_thumb"><img class="prd_thumb_pic"
+                                                src="//shopby-images.cdn-nhncommerce.com/20240715/170306.399079000/121246682_03.png"
+                                                alt="ZV-E10M2"></div>
+                                        <div class="prd_info">
+                                            <div class="prd_info_name">ZV-E10M2</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col_table_cell prd_price">1,340,000<span class="won">원</span></div>
+                                <div class="col_table_cell prd_count">
+                                    <div class="count_ui_box"><button class="minus" disabled="">감소</button><input type="text"
+                                            readonly="" class="count" value="1"><button class="plus">증가</button></div>
+                                </div>
+                                <div class="col_table_cell prd_total">1,340,000 <span class="won">원</span></div>
+                                <div class="col_table_cell"><button type="button" class="btn_del_prd"><img
+                                            src="../../images/common/ic_close.svg" alt="제품 삭제"></button></div>
+                            </div> -->
+                        
+                        </div>
+                    </div>
+
+                    <div class="col_table_foot">
+                        <div class="prd_summary"><span class="prd_summary_length">결제 예정 금액 (총 5개)</span><span
+                                class="prd_summary_price">40,662,900<span class="won">원</span></span>
+                            <p class="prd_summary_warning">* 최종 결제금액은 고객님의 <span class="mo_block">쿠폰 / 마일리지 적용에 따라 달라질 수 있습니다.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="button_wrap">
+                        <a class="button button_negative" href="/">쇼핑 계속 하기</a>
+                        <button type="button"
+                            class="button button_positive popup_comm_btn">구매하기</button>
+                    </div>
+
+                </div>
+                
+        
+
+                <!-- 장바구니에 담긴 상품이 없습니다 -->
+                <!-- 
+                <div class="empty_cart_box">
+                    <i class="empty_ico"></i>
+                    <p class="emptyinfo_tit">장바구니에 담긴 상품이 없습니다.</p>
+                    <div class="btn_box">
+                        <a class="button button_negative" href="/"> 쇼핑 계속 하기 </a>
+                    </div>
+                </div>
+                -->
+            
             </div>
         </div>
-        <div class="cart_func_buttons">
-            <button type="button" class="button button_negative button-s button_del_checked_items"> 선택 삭제 </button>
-            <button type="button" class="button button_positive button-s button_print_esimate popup_comm_btn" data-popup-name="estimate"> 견적서 출력하기 </button>
-        </div>
     </div>
 
-    <div class="empty_cart_box">
-        <i class="empty_ico"></i>
-        <p class="emptyinfo_tit">장바구니에 담긴 상품이 없습니다.</p>
-        <div class="btn_box">
-            <a class="button button_negative" href="/"> 쇼핑 계속 하기 </a>
-        </div>
-    </div>
+    
+
+
+
+    
 
     
 
