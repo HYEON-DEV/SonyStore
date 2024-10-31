@@ -1,6 +1,3 @@
-@charset "utf-8";
-@import url("./common.css");
-
 
 * {
     -webkit-box-sizing: content-box;
@@ -483,6 +480,38 @@ h3 {
 
 /* main page end */
 
+/* login */
+
+.login {
+    padding: 160px 0;
+    margin: 0 306px;
+
+    .member {
+        color: var(--color-black-3);
+        border-bottom: 4px solid var(--color-black);
+        padding: 10px 0;
+        margin-right: 36px;
+
+        .tab_button_active {
+            display: block;
+        }
+    }
+
+    .non_member {
+        color: var(--color-grey-4);
+        padding: 10px 0;
+    }
+}
+.tab_login {
+    display: none;
+
+    &.login_visible {
+        display: block;
+    }    
+}
+
+/* login end */
+
 /* search_result page */
 .search_container {
     width: 588px;
@@ -534,6 +563,10 @@ h3 {
     list-style: none;
     padding: 0;
     z-index: 1;
+
+    .search_result_category_title {
+
+    }
 }
 
 

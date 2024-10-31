@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sonyStore</title>
+    <title>로그인</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"/>
     <link rel="stylesheet" href="assets/css/style_1.css" />
@@ -21,29 +21,26 @@
     <script src="./assets/js/loadHTML.js"></script>
     <script>loadHTML("./header.html");</script>
 
-    <div class="container_w1200 pd-90-160">
-        <div class="search_container">
-            <form action="#" class="search_input_form">
-                <label class="search_input_label" for="search_input">검색결과</label>
-                <input type="text" id="search_input" class="input_text font_32_700">
-                <button type="button" class="search_button" title="검색">검색</button>
-            </form>
-        </div>
+    <div class="container_w1200">
+        <div class="login">
+            <div class="login_tab">
+                <ul class="login_tab_ul flex_center">
+                    <li class="member font_32_700 border_bottom"><a href="#member" class="tab_button tab_button_active">회원 로그인</a></li>
+                    <li class="non_member font_32_700 border_bottom"><a href="#non_member" class="tab_button">비회원 로그인</a></li>
+                </ul>
+            </div>
 
-        <div class="result_message">
-            <p class="font_24_700 flex_center"><span class="text_blue_accent">'카메라'</span>에 대한 검색결과는 총&nbsp;<span class="text_blue_accent">58</span>건 입니다.</p>
+            <div id="member" class="tab_page tab_login login_visible">
+                <h3>회원</h3>
+                <p>NewYork is the capital city of US.</p>
+            </div>
+            <div id="non_member" class="tab_page tab_login">
+                <h3>비회원</h3>
+                <p>NewYork is the capital city of US.</p>
+            </div>
         </div>
-    </div>
+    </div>   
 
-    <div class="tab_menu_container_style_1">
-        <ul>
-            <li class="search_result_category_title flex_center">전체(58)</li>
-            <li class="search_result_category_title flex_center">제품(35)</li>
-            <li class="search_result_category_title flex_center">기획전(5)</li>
-            <li class="search_result_category_title flex_center">카테고리(18)</li>
-            <li class="search_result_category_title flex_center">공지사항(0)</li>
-        </ul>
-    </div>
     <script>loadHTML("./footer.html");</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.js"></script>
@@ -51,5 +48,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.all.min.js"></script>
     <script src="./assets/js/common.js"></script>
     <script src="./assets/js/mainData.js"></script>
+
+    <script>
+        document.querySelectorAll('.tab_button').forEach((v, i) => {
+            v.addEventListener('click', (e) => {
+                const currentIndex = i;
+                const href = e.currentTarget.getAttribute("href");
+
+                document.querySelectorAll('.tab_button').forEach((v1, i1) => {
+                    if(currentIndex == i1) {
+                        v1.classList.add('tab_button_active');
+                    } else {
+                        v1.classList.remove('tab_button_active');
+                    }
+                });
+
+            document.querySelectorAll('.tab_page').forEach((v2, i2) => {
+                v2.classList.remove('.login_visible');
+            });
+
+            document.querySelector(href).classList.add('tab_button_active');
+        });
+    });
+    </script>
 </body>
 </html>
