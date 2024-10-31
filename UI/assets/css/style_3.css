@@ -1,3 +1,4 @@
+
 * {
     /* box-sizing: border-box; */
     list-style: none;
@@ -5,6 +6,9 @@
     /* font-family: "Noto Sans KR"; */
     /* font-family: "SSTPro","Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; */
 }
+
+/* = = = = = = = = = = view.html - 제품 상세 페이지 = = = = = = = = = = */
+
 a, button {
     cursor: pointer;
 }
@@ -15,7 +19,7 @@ a, button {
 }
 .divider-light {
     border-bottom: 1px solid #d5d5d5;
-    width: 100%;
+    width: 100%; 
 }
 
 .tit {
@@ -852,4 +856,6 @@ a, button {
     }
 }
 
+
+/* = = = = = = = = = = cart.html - 장바구니 페이지 = = = = = = = = = = */
 
