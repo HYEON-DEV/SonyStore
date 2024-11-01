@@ -1018,7 +1018,7 @@ a, button {
     appearance: none;
     /* overflow: hidden; */
     clip: rect(0,0,0,0);
-    /* background: url(/assets/img/cart_html/check_box.png) 50% 50%; */
+    background: url(/assets/img/cart_html/check_box.png) 50% 50%;
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -1094,5 +1094,35 @@ a, button {
         padding: 20px 16px;
         font-weight: 700;
         background-color: var(--color-light-grey);
+    }
+}
+
+.order_list .prd_thumb {
+    color: #222;
+    /*text-align: left;*/
+    /* flex: none; */
+    width: 120px;
+    height: 120px;
+    margin-right: 40px;
+    background-color: var(--color-light-blue);
+
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.order_list .prd_info {
+    font-size: 16px;
+    color: #222;
+    text-align: left;
+    vertical-align: baseline;
+    
+    .prd_info_name {
+        /*font-size: 16px;*/
+        /*color: #222;*/
+        /* text-align: left; */
+        font-weight: 700;
+        /* letter-spacing: 0; */
     }
 }
