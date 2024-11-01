@@ -22,15 +22,26 @@
     <script>loadHTML("./header.html");</script>
 
     <div class="container_w1200">
-        <div class="login">
-            <div class="login_tab">
-                <ul class="login_tab_ul flex_center">
-                    <li class="member font_32_700 border_bottom"><a href="#member" class="tab_button tab_button_active">회원 로그인</a></li>
-                    <li class="non_member font_32_700 border_bottom"><a href="#non_member" class="tab_button">비회원 로그인</a></li>
+        <h2 class="h2_title font_32_700">아이디 · 비밀번호 찾기</h2>
+        <p class="find_id_pw_desc">
+            아이디·비밀번호가 기억나지 않으신가요?<br />
+            등록하신 정보로 아이디와 비밀번호를 찾으실 수 있습니다.
+        </p>
+
+        <p class="find_id_pw_desc">
+            * SNS 계정으로 가입하신 회원님은 가입하신 SNS의 이메일 아이디로 찾으실 수 있고<br />
+            비밀번호의 경우는 가입하신 SNS에서 직접 찾기, 혹은 변경하실 수 있습니다.
+        </p>
+
+        <div class="find">
+            <div class="find_tab">
+                <ul class="find_tab_ul flex_center">
+                    <li class="find_id font_20_500 border_bottom"><a href="#find_id" class="find_button find_button_active flex_center">아이디 찾기</a></li>
+                    <li class="find_pw font_20_500 border_bottom"><a href="#find_pw" class="find_button flex_center">비밀번호 찾기</a></li>
                 </ul>
             </div>
 
-            <div id="member" class="tab_page tab_page_active">
+            <div id="find_id" class="tab_page tab_page_active">
                 <form action="#">
                     <!-- <label for="email" class="input_label">이메일 아이디</label> -->
                     <input type="text" class="login_input" placeholder="이메일 아이디"/>
@@ -51,7 +62,7 @@
                 </div>
             </div>
 
-            <div id="non_member" class="tab_page">
+            <div id="find_pw" class="tab_page">
                 <form action="#">
                     <input type="text" class="login_input" placeholder="주문번호" />
                     <input type="password" class="login_input" placeholder="비밀번호" style="margin-top:15px;" />
@@ -84,17 +95,17 @@
     <script src="./assets/js/common.js"></script>
 
     <script>
-        document.querySelectorAll('.tab_button').forEach((v, i) => {
+        document.querySelectorAll('.find_button').forEach((v, i) => {
             v.addEventListener('click', (e) => {
                 e.preventDefault();
                 const currentIndex = i;
                 const href = e.currentTarget.getAttribute("href");
 
-                document.querySelectorAll('.tab_button').forEach((v1, i1) => {
+                document.querySelectorAll('.find_button').forEach((v1, i1) => {
                     if(currentIndex == i1) {
-                        v1.classList.add('tab_button_active');
+                        v1.classList.add('find_button_active');
                     } else {
-                        v1.classList.remove('tab_button_active');
+                        v1.classList.remove('find_button_active');
                     }
                 });
 
