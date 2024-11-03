@@ -302,6 +302,8 @@ const clr_name = clr => {
     
     document.querySelector('.selected-btn').addEventListener( 'click', e => {
         e.preventDefault();
+        const current = e.currentTarget;
+        current.classList.toggle('active');
         ulSelectInner.classList.toggle('active');       
     } );    
 
