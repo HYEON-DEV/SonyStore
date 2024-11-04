@@ -1,67 +1,445 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
+  <head>
     <meta translate="no" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recommend</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"
+    />
     <link rel="stylesheet" type="text/html" href="assets/css/common.css" />
     <link rel="stylesheet" href="assets/css/style_2.css" />
-    <link rel="stylesheet" href="assets/css/common.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.css">
-    <link rel="icon" href="assets/img/favicon_144x144.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.css"
+    />
+    <link rel="icon" href="assets/img/favicon_144x144.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css"
+    />
+  </head>
+  <body>
     <script src="./assets/js/loadHTML.js"></script>
-    <script>loadHTML("./header.html");</script>
+    <script>
+      loadHTML("./header.html");
+    </script>
 
-    <div class="container_w1200">
-        <div class="recommend">
-            <div class="reco_kv">
-                <div class="reco_kv_img">
-                    <img src="/assets/img/recommend/KV_Full_PC.jpg">
-                </div>
-                <div class="reco_kv_text">
-                    <h2>Sony Store</h2>
-                    <h2>Products</h2>
-                    <p class="reco_kv_desc">
-                        당신의 삶을 특별하게 해줄 스마트한
-                        <br>
-                        소니스토어 추천 제품을 살펴보세요.
-                    </p>
-                </div>
-                
+    <div class="container_w1920">
+      <div class="recommend">
+        <div class="reco_kv" style="height: 70vh">
+          <div class="reco_kv_inner end">
+            <div id="reco_kv_img-3" class="reco_kv_img reco_kv_img-3 end">
+              <img
+                src="//rlyfaazj0.toastcdn.net/20220623/100230.104312000/KV_Full_PC.jpg"
+                alt=" Sony Store/Products"
+              />
             </div>
-            <div class="reco_items">
-                <div class="reco_item">
-                    <div class="reco_item_inner">
-                        <a href="#" class="reco_prod">
-                            <img src="/assets/img/recommend/Origin_01.jpg" alt="">
-                            <h2 class="reco_item_title">WF-1000XM5</h2>
-                            <p class="reco_item_desc">이것은 작게 진화한 헤드폰</p>
-                        </a>
-                    </div>
-                    <div class="reco_item_inner">
-                        <a href="#" class="reco_prod">
-                            <img src="/assets/img/recommend/Origin_02.jpg" alt="">
-                            <h2 class="reco_item_title">ILCE-7CM2</h2>
-                            <p class="reco_item_desc">원핸드 컴팩트 풀프레임</p>
-                        </a>
-                    </div>
-                </div>
+            <div class="reco_kv_copy end">
+              <h1 class="reco_kv_title">Sony Store<br />Products</h1>
+              <p class="reco_kv_desc">
+                당신의 삶을 특별하게 해줄 스마트한<br />
+                소니스토어 추천 제품을 살펴보세요.
+              </p>
             </div>
+          </div>
+          <div class="trigger trigger-3" style="top: 0vh"></div>
+          <div class="trigger trigger-4" style="top: 30vh"></div>
+          <div class="trigger trigger-end" style="top: 70vh"></div>
         </div>
+        <div class="reco_items">
+          <div class="reco_item">
+            <div class="reco_item_inner">
+              <a
+                target="_self"
+                class="reco_prod false"
+                href="/product-view/102263892"
+                ><img
+                  src="//rlyfaazj0.toastcdn.net/20230906/135952.243204000/Origin_01.jpg"
+                  alt="WF-1000XM5"
+                  class="reco_prod_img"
+              /></a>
+              <h2 class="reco_title false">WF-1000XM5</h2>
+              <p class="reco_desc false">이것은 작게 진화한 헤드폰</p>
+            </div>
+          </div>
+          <div class="reco_item">
+            <div class="reco_item_inner">
+              <a
+                target="_self"
+                class="reco_prod false"
+                href="/product-view/114132083"
+                ><img
+                  src="//rlyfaazj0.toastcdn.net/20231018/112517.69042000/Origin_02.jpg"
+                  alt="ILCE-7CM2"
+                  class="reco_prod_img"
+              /></a>
+              <h2 class="reco_title false">ILCE-7CM2</h2>
+              <p class="reco_desc false">원핸드 컴팩트 풀프레임</p>
+            </div>
+          </div>
+          <div class="reco_item">
+            <div class="reco_item_inner">
+              <a
+                target="_self"
+                class="reco_prod false"
+                href="/product-view/110897961"
+                ><img
+                  src="//shopby-images.cdn-nhncommerce.com/20240617/094641.783602000/Origin_03.jpg"
+                  alt="ZV-1M2"
+                  class="reco_prod_img"
+              /></a>
+              <h2 class="reco_title false">ZV-1M2</h2>
+              <p class="reco_desc false">올인원 브이로그 카메라</p>
+            </div>
+          </div>
+          <div class="reco_item">
+            <div class="reco_item_inner">
+              <a
+                target="_self"
+                class="reco_prod false"
+                href="/product-view/109871591"
+                ><img
+                  src="//rlyfaazj0.toastcdn.net/20230906/140106.917526000/Origin_04.jpg"
+                  alt="플로트 런 Float Run"
+                  class="reco_prod_img"
+              /></a>
+              <h2 class="reco_title false">플로트 런 Float Run</h2>
+              <p class="reco_desc false">달리면서 느끼는 진정한 자유로움</p>
+            </div>
+          </div>
+          <div
+            class="reco_banner"
+            style="
+              background-image: url('//rlyfaazj0.toastcdn.net/20220613/101204.431449000/IMG_T_PC_BG.png');
+              background-size: 100%;
+            "
+          >
+            <div class="reco_banner_img">
+              <img
+                src="//rlyfaazj0.toastcdn.net/20220613/101548.938363000/IMG_T_PC_Product.png"
+                alt="제품"
+              />
+            </div>
+          </div>
+          <div class="reco_item">
+            <div class="reco_item_inner">
+              <a
+                target="_self"
+                class="reco_prod false"
+                href="/product-view/102263905"
+                ><img
+                  src="//rlyfaazj0.toastcdn.net/20220613/101040.492294000/Origin_05.jpg"
+                  alt="LSPX-S3"
+                  class="reco_prod_img"
+              /></a>
+              <h2 class="reco_title false">LSPX-S3</h2>
+              <p class="reco_desc false">
+                공간을 포근하게 채워주는 오가닉 글래스의 크리스탈 클리어 사운드
+              </p>
+            </div>
+          </div>
+          <div class="reco_item">
+            <div class="reco_item_inner">
+              <a
+                target="_self"
+                class="reco_prod false"
+                href="/product-view/105751170"
+                ><img
+                  src="//rlyfaazj0.toastcdn.net/20220711/100152.445040000/Origin_06.jpg"
+                  alt="SRS-XE300"
+                  class="reco_prod_img"
+              /></a>
+              <h2 class="reco_title false">SRS-XE300</h2>
+              <p class="reco_desc false">언제 어디서든 콘서트 사운드</p>
+            </div>
+          </div>
+          <div class="reco_item">
+            <div class="reco_item_inner">
+              <a
+                target="_self"
+                class="reco_prod false"
+                href="/product-view/113659003"
+                ><img
+                  src="//rlyfaazj0.toastcdn.net/20231018/112651.574870000/Origin_07.jpg"
+                  alt="SEL1635GM2"
+                  class="reco_prod_img"
+              /></a>
+              <h2 class="reco_title false">SEL1635GM2</h2>
+              <p class="reco_desc false">광각 렌즈의 새로운 기준</p>
+            </div>
+          </div>
+        </div>
+        <div class="exhibitions_zone">
+          <p class="title">진행중인 기획전</p>
+          <div class="exhibitions_inner swiper-container swiper_none">
+            <div
+              class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events swiper-wrapper"
+            >
+              <div
+                class="swiper-wrapper"
+                style="transform: translate3d(0px, 0px, 0px)"
+              >
+                <div
+                  class="swiper-slide swiper-slide-active"
+                  style="width: 588px; margin-right: 24px"
+                >
+                  <div class="slide_item">
+                    <a class="item" href="/event/detail/44825"
+                      ><div class="img">
+                        <img
+                          src="//shopby-images.cdn-nhncommerce.com/20241101/113309.179016000/Event-List-Banner.jpg"
+                          alt="최대 24개월 장기 무이자 프로모션 2탄"
+                        />
+                      </div>
+                      <div class="event_desc">
+                        <p class="tit">최대 24개월 장기 무이자 프로모션 2탄</p>
+                      </div></a
+                    >
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide swiper-slide-next"
+                  style="width: 588px; margin-right: 24px"
+                >
+                  <div class="slide_item">
+                    <a class="item" href="/event/detail/44155"
+                      ><div class="img">
+                        <img
+                          src="//shopby-images.cdn-nhncommerce.com/20241017/173354.664925000/Event-List-Banner.jpg"
+                          alt="공부할 땐, 스터디헤드폰 #몰입의즐거움#WH1000XM5"
+                        />
+                      </div>
+                      <div class="event_desc">
+                        <p class="tit">
+                          공부할 땐, 스터디헤드폰 #몰입의즐거움#WH1000XM5
+                        </p>
+                      </div></a
+                    >
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  style="width: 588px; margin-right: 24px"
+                >
+                  <div class="slide_item">
+                    <a class="item" href="/event/detail/44363"
+                      ><div class="img">
+                        <img
+                          src="//shopby-images.cdn-nhncommerce.com/20241023/113113.211656000/Event-List-Banner.jpg"
+                          alt="Sound Connect 앱 출시 기념 노캔 헤드폰 프로모션"
+                        />
+                      </div>
+                      <div class="event_desc">
+                        <p class="tit">
+                          Sound Connect 앱 출시 기념 노캔 헤드폰 프로모션
+                        </p>
+                      </div></a
+                    >
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  style="width: 588px; margin-right: 24px"
+                >
+                  <div class="slide_item">
+                    <a class="item" href="/event/detail/44450"
+                      ><div class="img">
+                        <img
+                          src="//shopby-images.cdn-nhncommerce.com/20241024/114251.771312000/Event-List-Banner.jpg"
+                          alt="시네마 라인 마일리지 적립 이벤트"
+                        />
+                      </div>
+                      <div class="event_desc">
+                        <p class="tit">시네마 라인 마일리지 적립 이벤트</p>
+                      </div></a
+                    >
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  style="width: 588px; margin-right: 24px"
+                >
+                  <div class="slide_item">
+                    <a class="item" href="/event/detail/44826"
+                      ><div class="img">
+                        <img
+                          src="//shopby-images.cdn-nhncommerce.com/20241101/113550.315970000/Event-List-Banner.jpg"
+                          alt="소니 프리미엄 오디오 무이자 프로모션"
+                        />
+                      </div>
+                      <div class="event_desc">
+                        <p class="tit">소니 프리미엄 오디오 무이자 프로모션</p>
+                      </div></a
+                    >
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  style="width: 588px; margin-right: 24px"
+                >
+                  <div class="slide_item">
+                    <a class="item" href="/event/detail/44151"
+                      ><div class="img">
+                        <img
+                          src="//shopby-images.cdn-nhncommerce.com/20241017/120253.912848000/Event-List-Banner.png"
+                          alt="입문자 추천! 카메라+렌즈 스타터 세트"
+                        />
+                      </div>
+                      <div class="event_desc">
+                        <p class="tit">입문자 추천! 카메라+렌즈 스타터 세트</p>
+                      </div></a
+                    >
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  style="width: 588px; margin-right: 24px"
+                >
+                  <div class="slide_item">
+                    <a class="item" href="/event/detail/44189"
+                      ><div class="img">
+                        <img
+                          src="//shopby-images.cdn-nhncommerce.com/20241021/134222.246218000/Event-List-Banner.jpg"
+                          alt="렌즈 마일리지 적립 이벤트"
+                        />
+                      </div>
+                      <div class="event_desc">
+                        <p class="tit">렌즈 마일리지 적립 이벤트</p>
+                      </div></a
+                    >
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  style="width: 588px; margin-right: 24px"
+                >
+                  <div class="slide_item">
+                    <a class="item" href="/event/detail/44452"
+                      ><div class="img">
+                        <img
+                          src="//shopby-images.cdn-nhncommerce.com/20241024/103439.67702000/Event-List-Banner.jpg"
+                          alt="링크버즈 오픈 런칭 기념 특별 적립 프로모션"
+                        />
+                      </div>
+                      <div class="event_desc">
+                        <p class="tit">
+                          링크버즈 오픈 런칭 기념 특별 적립 프로모션
+                        </p>
+                      </div></a
+                    >
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  style="width: 588px; margin-right: 24px"
+                >
+                  <div class="slide_item">
+                    <a class="item" href="/event/detail/44478"
+                      ><div class="img">
+                        <img
+                          src="//shopby-images.cdn-nhncommerce.com/20241025/112035.987301000/Event-List-Banner.jpg"
+                          alt="ZV 파우치 증정 프로모션"
+                        />
+                      </div>
+                      <div class="event_desc">
+                        <p class="tit">ZV 파우치 증정 프로모션</p>
+                      </div></a
+                    >
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  style="width: 588px; margin-right: 24px"
+                >
+                  <div class="slide_item">
+                    <a class="item" href="/event/detail/44736"
+                      ><div class="img">
+                        <img
+                          src="//shopby-images.cdn-nhncommerce.com/20241029/162755.469369000/Event-List-Banner.jpg"
+                          alt="연장 서비스 플랜 ESP"
+                        />
+                      </div>
+                      <div class="event_desc">
+                        <p class="tit">연장 서비스 플랜 ESP</p>
+                      </div></a
+                    >
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  style="width: 588px; margin-right: 24px"
+                >
+                  <div class="slide_item">
+                    <a class="item" href="/event/detail/44897"
+                      ><div class="img">
+                        <img
+                          src="//shopby-images.cdn-nhncommerce.com/20241101/091644.289245000/Event-List-Banner.jpg"
+                          alt="소니스토어 압구정 11월 혜택 몰아보기"
+                        />
+                      </div>
+                      <div class="event_desc">
+                        <p class="tit">소니스토어 압구정 11월 혜택 몰아보기</p>
+                      </div></a
+                    >
+                  </div>
+                </div>
+                <div
+                  class="swiper-slide"
+                  style="width: 588px; margin-right: 24px"
+                >
+                  <div class="slide_item">
+                    <a class="item" href="/event/detail/29027"
+                      ><div class="img">
+                        <img
+                          src="//shopby-images.cdn-nhncommerce.com/20240522/092545.926147000/Event-List-Banner.jpg"
+                          alt="들어보고! 할인받고!"
+                        />
+                      </div>
+                      <div class="event_desc">
+                        <p class="tit">들어보고! 할인받고!</p>
+                      </div></a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="arrow_btn">
+              <button
+                class="arrow swiper-button-prev swiper-button-disabled"
+                disabled=""
+              >
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAJKADAAQAAAABAAAAJAAAAAAJxsHGAAAC5ElEQVRYCcWYT2sTQRTAG20hNIdaG+uKeDD45xYED0UPhpDPkEC+QW69+y1yzgcQkg+QU05CIJciESF6MCyVYtTCNlB7qIjvt8mEzbrDzs5m9cHL7Oy8ee/HzJvZmeS2ksuOdLkr6ojyjO6JIhei16JXoj9EZ8u6FGaSMzPzrQB4KFpM0AdTwD6JnlOJExOgA3HyRDQpSDi2EVgc0DPx+iDsOWX9s/T/oPNxU9NAXhyJ3tO0p3m9L50ZdfLrd9hRFBAwL0Rvh403WN8VX3dEz0TXoKKAGJksYcS9L3n5vSX6ZVFd/IaByJkspikYM/jMSDEj39XLG+pBSuZ10wkccK99LC1j+wZBIJZ2Kul2u7XJZHJs4WQVW00Zm95jC0erLsDU6/XjYrFYyufz7weDwbdVY/wDU8fGeaWAylLhpZUoGDr3er12q9UaWTgi/ilTRlKRP1YShmk0GgMrRwuGHYCYLivZIIyK71gDZQAD1IGaMkVoVGYEQ+xdgLaNKJZGGcIQYRsgdbhahtQXnU7niKWNxXA4fJMigXVB9lj2T3Wt4feu63rNZvO57DP7juOU5vP5yWg08sJ2aeoAscr40MXKbDa77vf7b4EqFAqHtVrt1YahLgC6L2q8KWYMdQkQm6JxHontVoZQ5wCxUyfeHDOCmgLEleWRaGLJAOodQBwhuVEY51GQfINQfO1d9iHk46Kw+x2Px5eVSuW153nTXC7uIqON4TMEe78UU+uvPmHK5XKhWq0ettvtqTZsdAOjM6QpCAQMUP9DgPFvtuSQEpKbFce96V8KF0dXBQwC8Y7Tv3WCK6cJSkblJGgfBqLtqyiXOKPPCR0shX9KOOrGXhQxOBNl6qy2AukXJ4wMMPx1syZRI4QBUKeiWeQUOcM0rY2M1H0JrjL1Llyy+jiipNoSpD+jwl7jryYpI8UESHW0BTMCUUGSAKk+6mMMIDnGEVidFkjUX6I/RQFhgfyVJ/JOK38AbQ8GfZgMKwMAAAAASUVORK5CYII="
+                  alt="이전"
+                /></button
+              ><button class="arrow swiper-button-next">
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAJKADAAQAAAABAAAAJAAAAAAJxsHGAAAC5ElEQVRYCcWYT2sTQRTAG20hNIdaG+uKeDD45xYED0UPhpDPkEC+QW69+y1yzgcQkg+QU05CIJciESF6MCyVYtTCNlB7qIjvt8mEzbrDzs5m9cHL7Oy8ee/HzJvZmeS2ksuOdLkr6ojyjO6JIhei16JXoj9EZ8u6FGaSMzPzrQB4KFpM0AdTwD6JnlOJExOgA3HyRDQpSDi2EVgc0DPx+iDsOWX9s/T/oPNxU9NAXhyJ3tO0p3m9L50ZdfLrd9hRFBAwL0Rvh403WN8VX3dEz0TXoKKAGJksYcS9L3n5vSX6ZVFd/IaByJkspikYM/jMSDEj39XLG+pBSuZ10wkccK99LC1j+wZBIJZ2Kul2u7XJZHJs4WQVW00Zm95jC0erLsDU6/XjYrFYyufz7weDwbdVY/wDU8fGeaWAylLhpZUoGDr3er12q9UaWTgi/ilTRlKRP1YShmk0GgMrRwuGHYCYLivZIIyK71gDZQAD1IGaMkVoVGYEQ+xdgLaNKJZGGcIQYRsgdbhahtQXnU7niKWNxXA4fJMigXVB9lj2T3Wt4feu63rNZvO57DP7juOU5vP5yWg08sJ2aeoAscr40MXKbDa77vf7b4EqFAqHtVrt1YahLgC6L2q8KWYMdQkQm6JxHontVoZQ5wCxUyfeHDOCmgLEleWRaGLJAOodQBwhuVEY51GQfINQfO1d9iHk46Kw+x2Px5eVSuW153nTXC7uIqON4TMEe78UU+uvPmHK5XKhWq0ettvtqTZsdAOjM6QpCAQMUP9DgPFvtuSQEpKbFce96V8KF0dXBQwC8Y7Tv3WCK6cJSkblJGgfBqLtqyiXOKPPCR0shX9KOOrGXhQxOBNl6qy2AukXJ4wMMPx1syZRI4QBUKeiWeQUOcM0rY2M1H0JrjL1Llyy+jiipNoSpD+jwl7jryYpI8UESHW0BTMCUUGSAKk+6mMMIDnGEVidFkjUX6I/RQFhgfyVJ/JOK38AbQ8GfZgMKwMAAAAASUVORK5CYII="
+                  alt="다음"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
-        
-    
-
-</body>
+  </body>
 </html>

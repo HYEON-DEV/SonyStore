@@ -1,9 +1,16 @@
 a {
   text-decoration: none;
 }
-
+body {
+  background-color: black;
+}
 .main {
+  background-color: white;
   margin-top: 80px;
+}
+
+.container_w1200 {
+  background-color: white;
 }
 
 .category {
@@ -270,93 +277,312 @@ a {
   display: none !important;
 }
 
-.recommend {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  .reco_kv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.container_w1920 {
+  background-color: white;
+  width: 100%;
+  max-width: 1920px;
+  height: auto;
+  min-height: 100vh;
+  margin: 80px auto 0;
+  margin-top: 80px;
+  
+}
 
-    .reco_kv_img {
-      position: relative;
+.recommend{
+  
+  .reco_kv{
+
+    .reco_kv_inner{
+
+      /* position: fixed; */
+      left: 0;
+      top: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 100vh;
+      
+
+      .reco_kv_img{
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        /* width: 720px;
+        height: 480px; */
+        transform: translate(-50%, -50%);
+
+        img{
+          /* width: 100%;
+          height: 100%; */
+          object-fit: cover;
+        }
+      }
+      .reco_kv_img-3{
+        z-index: 11;
+
+        .end{
+          width: 100%;
+          height: 100%;
+          background-color: #000;
+        }
+      }
+
+      .reco_kv_copy{
+        position: absolute;
+        z-index: 12;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 50vh;
+        text-align: center;
+        transition: all 1s;
+        transform: translateY(0);
+        color: #fff;
+
+        .reco_kv_desc{
+            display: block;
+        }
+
+        .reco_kv_title{
+          font-weight: 900;
+          font-size: 104px;
+          line-height: 1.08;
+          letter-spacing: 0;
+          color: inherit;
+        }
+
+        .reco_kv_desc{
+          margin-top: 1em;
+          font-size: 24px;
+          line-height: 1.5;
+          letter-spacing: -.025em;
+          color: inherit;
+        }
+      }
     }
-    .reco_kv_text {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+
+    .trigger{
       position: absolute;
       z-index: 1;
-      top: 40%;
+      width: 100%;
+      height: 1px;
+    }
 
-      h2 {
-        font-weight: 900;
-        font-size: 104px;
-        line-height: 1.08;
-        letter-spacing: 0;
-        color: inherit;
+    .reco_items{
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1604px;
+      margin-top: 160px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 12px;
+
+      .reco_item{
+        
+        &:first-of-type{
+          padding-top: 35px;
+        }
+        overflow: hidden;
+        margin-bottom: 96px;
+        padding: 12px;
+        flex-grow: 0;
+        flex-shrink: 1;
       }
-      .reco_kv_desc {
-        /* display: none; */
-        margin-top: 1em;
-        font-size: 24px;
-        line-height: 1.5;
-        letter-spacing: -0.025em;
-        color: inherit;
+
+      .reco_banner{
+        overflow: hidden;
+        width: 100%;
+        height: 56.25vw;
+        max-height: 926px;
+        margin-bottom: 90px;
+        background-repeat: no-repeat;
+        background-position: 0 50%;
       }
     }
   }
+}
 
-  .reco_items {
-    display: flex;
-    max-width: 1604px;
-    /* margin-left: auto;
-    margin-right: auto; */
-    padding: 0 12px;
-    position: absolute;
-    z-index: 1;
-    top: 60%;
+/* -----------------------소비자 피해 보상 보험--------------------------- */
+
+.layer_container{
+  width: 636px;
+  height: 425px;
+
+  .layer_title{
     
-    .reco_item {
-        margin: 50px 12px;
-        /* gap: 12px; */
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+  }
+}
 
-      /* img {
-        
-      } */
-      .reco_item_inner {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        .reco_prod{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            
-            margin-top: 30px;
-            padding-right: 20px;
+
+/* -----------------------소비자 피해 보상 보험--------------------------- */
+
+.content{
+  padding: 120px 0;
+
+  .page{
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: -.025em;
+    word-break: keep-all;
+    color: #666;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .page__title{
+      font-size: 48px;
+      color: #222;
+      line-height: 48px;
+      font-weight: 700;
+    }
+
+    .page__desc {
+      margin: 40px 0 60px 0;
+      font-size: 20px;
+      color: #666;
+    }
+  }
+
+
+  /* -----------------------이용약관--------------------------- */
+  .terms{
+
+    .list_box{
+      position: relative;
+      padding: 30px 40px;
+      box-sizing: border-box;
+      background-color: #f8f8f8;
+
+      .date{
+        padding-bottom: 30px;
+        border-bottom: 1px solid #ccc;
+
+        strong{
+          font-size: 18px;
+          font-weight: 700;
+          color: black;
+          font-style: normal;
         }
-        .reco_item_title {
-            padding: 20px 0;
+
+        .btn_go_ar{
+          position: absolute;
+          top: 24px;
+          right: 40px;
+          display: inline-block;
+          padding: 8px 10px;
+          border: 1px solid #ddd;
+          background-color: #fff;
+          color: #000;
+          font-size: 14px;
+          
+        }
+      }
+      .list_cont{
+        display: table;
+        width: 100%;
+        padding-top: 30px;
+
+        ul{
+          display: table-cell;
+          width: 50%;
+
+          a{
             color: black;
-            font-weight: 700;
-            font-size: 20px;
-            letter-spacing: -0.025em;
+            
+          }
+
+          &:first-child {
+            margin-top: 0;
+          }
+          li{
+            margin-top: 15px;
+            margin: 0;
+            padding: 10px 0;
+            border: 0;
+            vertical-align: baseline;
+            font-family: inherit;
+            box-sizing: border-box;
+          }
+        }
+      }
+    }
+
+    .foot_box{
+      margin: 0;
+      padding: 0;
+      border: 0;
+      vertical-align: baseline;
+      font-family: inherit;
+      box-sizing: border-box;
+
+      .foot_cont{
+        margin-top: 80px;
+
+        .Fh4_tit{
+          margin-bottom: 30px;
+          font-weight: 700;
+          font-size: 24px;
+          color: #222;
+
+        }
+        ol,ul{
+          list-style: none;
+
+          .Fh5_tit{
+            margin: 25px 0;
+            font-size: 18px;
+            font-weight: 500;
+            color: #222;
+          }
+
+          li{
+            font-size: 16px;
+            color: #444;
+            line-height: 28px;
+            padding: 10px 0;
+
+            strong{
+              font-weight: 700;
+            }
+
+            p{
+              font-size: 16px;
+              color: #444;
+              line-height: 28px;
+            }
+          }
+        }
+        
+      }
+
+      .caution_box{
+        position: relative;
+        margin-top: 2em;
+        padding: 25px 35px;
+        border: 1px solid hsla(0, 0%, 86.7%, .8666666666666667);
+        box-sizing: border-box;
+
+        p{
+          font-size: 16px;
+          line-height: 32px;
+          color: #222;
         }
 
-        .reco_item_desc {
-            padding: 20px 0;
-            font-size: 16px;
-            letter-spacing: -0.025em;
-            color: #888;
+        strong{
+          font-weight: 500;
+        }
+
+        .btn_go_ar{
+          position: absolute;
+          top: 24px;
+          right: 40px;
+          display: inline-block;
+          padding: 8px 10px;
+          border: 1px solid #ddd;
+          background-color: #fff;
+          color: #000;
+          font-size: 14px;
         }
       }
     }
