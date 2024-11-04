@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소니스토어 회원가입</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"/>
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/css/style_1.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.css" />
+    <link rel="icon" href="assets/img/favicon_144x144.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css" />
+
+</head>    
+<body>
+    <script src="./assets/js/loadHTML.js"></script>
+    <script>loadHTML("./header.html");</script>
+
+    <div class="container_w1200">
+        <div class="sign_up_agree">
+            <h2 class="h2_title font_32_700">소니스토어</h2>
+            <p class="find_id_pw_desc">
+                소니 고객지원 사이트(SCS) 와 소니스토어는 하나의 ID 와 비밀번호로 운영됩니다.<br />
+                소니 고객지원 사이트(SCS)의 이용약관에 함께 동의하시면,<br />
+                하나의 ID로 고객지원 사이트(SCS)를 편리하게 이용하실 수 있습니다.<br />
+            </p>
+
+            <div class="all_agree">
+                <span class="all_agree_text">약관 전체 동의<span class="all_agree_text_desc">(선택 항목 포함)</span></span>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <button type="button" class="black_button">소니스토어 회원 가입</button>
+            <div class="light_grey_box">
+                <span class="caution_text flex_center">· 소니코리아 통합 웹회원 정책 상 공식적으로 <span class="caution_text_accent">만 14세 미만의 경우 회원가입이 불가합니다.</span></span>
+            </div>
+        </div>
+    </div>
+
+    <script>loadHTML("./footer.html");</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.all.min.js"></script>
+    <script src="./assets/js/common.js"></script>
+
+    <script>
+        document.querySelectorAll('.find_button').forEach((v, i) => {
+            v.addEventListener('click', (e) => {
+                e.preventDefault();
+                const currentIndex = i;
+                const href = e.currentTarget.getAttribute("href");
+
+                document.querySelectorAll('.find_button').forEach((v1, i1) => {
+                    if(currentIndex == i1) {
+                        v1.classList.add('find_button_active');
+                    } else {
+                        v1.classList.remove('find_button_active');
+                    }
+                });
+
+                document.querySelectorAll('.tab_page').forEach((v2, i2) => {
+                    v2.classList.remove('tab_page_active');
+                });
+
+                document.querySelector(href).classList.add('tab_page_active');
+        });
+    });
+    </script>
+</body>
+</html>

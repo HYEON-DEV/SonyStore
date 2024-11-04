@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인</title>
+    <title>아이디·비밀번호 찾기</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"/>
-    <link rel="stylesheet" href="assets/css/style_1.css" />
     <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/css/style_1.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet" /> 
@@ -43,45 +43,57 @@
 
             <div id="find_id" class="tab_page tab_page_active">
                 <form action="#">
-                    <!-- <label for="email" class="input_label">이메일 아이디</label> -->
-                    <input type="text" class="login_input" placeholder="이메일 아이디"/>
-                    <input type="password" class="login_input" placeholder="비밀번호" style="margin-top:15px;" />
+                    <label for="userName" class="input_label">
+                        <input type="text" class="input_box" />
+                        <div class="input_focus_line">
+                            <span class="placeholder">이름<span class="placeholder_hide">(띄어쓰기 없이 입력하세요.)</span>
+                        </div>
+                    </label>
+                    
+                    <div class="input_button_set">
+                        <label for="phoneNumber" class="input_label" style="margin-top:15px; width: 442px;">
+                            <input type="text" class="input_box" />
+                            <div class="input_focus_line">
+                                <span class="placeholder">휴대폰 번호<span class="placeholder_hide">(-없이 입력하세요.)</span>
+                            </div>
+                        </label>
+                        <div class="btn_box" style="margin-left:15px;">
+                            <div class="btn_blue flex_center">인증번호</div>
+                        </div>
+                    </div>
                 </form>
-                <button type="button" class="login_button">로그인</button>
+                <button type="button" class="black_button">확인</button>
 
-                <div class="find_box">
-                    <div class="checkbox">
-                        <input type="checkbox" />
-                        <label for="check_1">이메일 아이디 저장</label>
-                    </div>
-
-                    <div class="find_menu">
-                        <a href="#">아이디 · 비밀번호 찾기</a>
-                        <a href="#">회원가입</a>
-                    </div>
+                <div class="light_grey_box">
+                    <span class="caution_text flex_center">· 가입하신 정보와 일치하지 않을 경우 검색이 안될 수 있습니다.</span>
                 </div>
             </div>
 
             <div id="find_pw" class="tab_page">
                 <form action="#">
-                    <input type="text" class="login_input" placeholder="주문번호" />
-                    <input type="password" class="login_input" placeholder="비밀번호" style="margin-top:15px;" />
-                </form>
-                <button type="button" class="login_button">로그인</button>
-
-                <span class="non_member_comment">
-                    · 비회원께서는 주문 시 주문번호와 비밀번호(주문 시 배송 조회 비밀번호로 입력)를 입력하시면,<br />
-                    &nbsp;&nbsp;해당 주문 상품의 배송 상태를 조회하실 수 있습니다.
-                </span>
-
-                <div class="join_box">
-                    <span class="join_comment font_24_700">아직 소니 코리아 회원이 아니세요?</span>
-                    <div class="join_box_contents">
-                        <span class="join_box_desc">회원가입을 통해 소니스토어에서<br />
-                            다양한 서비스를 이용하실 수 있습니다.
-                        </span>
-                        <a href="#" class="sign_up_button">회원가입</a>
+                    <label for="userName" class="input_label">
+                        <input type="text" class="input_box" />
+                        <div class="input_focus_line">
+                            <span class="placeholder">이메일 아이디<span class="placeholder_hide">(예:sony@sony.co.kr)</span>
+                        </div>
+                    </label>
+                    
+                    <div class="input_button_set">
+                        <label for="phoneNumber" class="input_label" style="margin-top:15px; width: 442px;">
+                            <input type="text" class="input_box" />
+                            <div class="input_focus_line">
+                                <span class="placeholder">휴대폰 번호<span class="placeholder_hide">(-없이 입력하세요.)</span>
+                            </div>
+                        </label>
+                        <div class="btn_box" style="margin-left:15px;">
+                            <div class="btn_blue flex_center">인증번호</div>
+                        </div>
                     </div>
+                </form>
+                <button type="button" class="black_button">확인</button>
+
+                <div class="light_grey_box">
+                    <span class="caution_text flex_center">· 가입하신 정보와 일치하지 않을 경우 검색이 안될 수 있습니다.</span>
                 </div>
             </div>
         </div>

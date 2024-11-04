@@ -39,6 +39,44 @@ h3 {
     cursor: pointer;
 }
 
+.btn_box {
+    display: flex;
+    align-items: flex-end;
+}
+
+.btn_blue {
+    width: 170px;
+    height: 58px;
+    padding: 15px;
+    font-size: var(--font-size-18);
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+.btn_disable {
+    background-color: var(--color-light-grey-2);
+    color: #fff;
+    cursor: default;
+}
+
+.light_grey_box{
+    margin-top: 56px;
+    background-color: var(--color-light-grey);
+    padding: 11px 0;
+}
+
+.caution_text {
+    color: var(--color-grey-2);
+    font-size: var(--font-size-12);
+    line-height: 18px;
+}
+
+.caution_text_accent {
+    color: var(--color-grey-3);
+    font-weight: 700;
+}
+
 /* mainpage */ 
 
 /*body*/
@@ -515,138 +553,101 @@ h3 {
 
 .tab_page {
     display: none;
+}
 
-    .input_label {
-        font-size: 14px;
-        color: var(--color-silver);
+.find_box {
+    margin-top: 30px;
+    display:flex;
+    justify-content: space-between;
+
+    .checkbox {
+
+        input[type="checkbox"] {
+            width: 1rem;
+            height: 1rem;
+            border: 1px solid #999;
+            accent-color: black;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        input[type="checkbox"]:checked {
+            border: none;
+        }
+
+        label {
+            display: inline-block;
+            position: relative;
+            min-height: 16px;
+            cursor: pointer;
+            color: #222;
+            font-size: 14px;
+            line-height: 14px;
+            font-weight: 400;
+        }
     }
 
-    .login_input{
-        appearance: none;
-        width: 100%;
-        border: 0;
-        padding: 28px 0 20px;
-        font-size: 18px;
+    .find_menu {
+
+        a {
+            display: inline-block;
+            position: relative;
+            height: 12px;
+            cursor: pointer;
+            color: #222;
+            font-size: 14px;
+            line-height: 14px;
+            font-weight: 400;
+            text-decoration: none;
+
+            &:nth-child(1) {
+                padding-right: 16px;
+                margin-right: 16px;
+                border-right: 1px solid gainsboro;
+            }
+        }
+    }
+}
+
+.non_member_comment {
+    font-size: var(--font-size-14);
+    color: #bbb;
+}
+
+.join_box {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid gainsboro;
+
+    .join_comment {
         color: var(--color-black-3);
-        font-weight: 700;
-        transition: all .15s ease;
-        border-bottom: 1px solid #e1e1e1;
-        outline: none;
-    }
-    
-    input::placeholder {
-        color: var(--color-grey-2);
-        font-weight: 500;
     }
 
-    .login_button {
-        background-color: var(--color-black-3);
-        color: var(--color-white);
-        width: 100%;
-        height: 64px;
-        font-size: var(--font-size-18);
-        box-shadow: none;
-        border:none;
-        margin: 40px 0 32px 0;
-
-        &:hover {
-            background-color: #444;
-        }
-    }
-
-    .find_box {
-        margin-top: 30px;
-        display:flex;
+    .join_box_contents {
+        display: flex;
         justify-content: space-between;
+        margin-top: 15px;
 
-        .checkbox {
-
-            input[type="checkbox"] {
-                width: 1rem;
-                height: 1rem;
-                border: 1px solid #999;
-                accent-color: black;
-                cursor: pointer;
-                transition: background 0.2s;
-            }
-            
-            input[type="checkbox"]:checked {
-                border: none;
-            }
-
-            label {
-                display: inline-block;
-                position: relative;
-                min-height: 16px;
-                cursor: pointer;
-                color: #222;
-                font-size: 14px;
-                line-height: 14px;
-                font-weight: 400;
-            }
+        .join_box_desc {
+            color: var(--color-grey-2);
+            font-size: var(--font-size-14);
+            font-weight: 500;
         }
 
-        .find_menu {
-
-            a {
-                display: inline-block;
-                position: relative;
-                height: 12px;
-                cursor: pointer;
-                color: #222;
-                font-size: 14px;
-                line-height: 14px;
-                font-weight: 400;
-                text-decoration: none;
-
-                &:nth-child(1) {
-                    padding-right: 16px;
-                    margin-right: 16px;
-                    border-right: 1px solid gainsboro;
-                }
-            }
-        }
-    }
-
-    .non_member_comment {
-        font-size: var(--font-size-14);
-        color: #bbb;
-    }
-
-    .join_box {
-        margin-top: 80px;
-        padding-top: 40px;
-        border-top: 1px solid gainsboro;
-
-        .join_comment {
+        .sign_up_button{
+            padding: 12px 20px;
+            width: 178px;
+            height: 48px;
+            font-size: 16px;
             color: var(--color-black-3);
-        }
-
-        .join_box_contents {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-
-            .join_box_desc {
-                color: var(--color-grey-2);
-                font-size: var(--font-size-14);
-                font-weight: 500;
-            }
-
-            .sign_up_button{
-                padding: 12px 20px;
-                width: 178px;
-                height: 48px;
-                font-size: 16px;
-                color: var(--color-black-3);
-                font-weight: 500;
-                border: 1px solid var(--color-black-3);
-                text-align: center;
-                text-decoration: none;
-                transform: translateY(-15px);
-            }
+            font-weight: 500;
+            border: 1px solid var(--color-black-3);
+            text-align: center;
+            text-decoration: none;
+            transform: translateY(-15px);
         }
     }
+
 }
 
 .tab_page_active {
@@ -657,6 +658,7 @@ h3 {
 /* login end */
 
 /* find_id_pw */
+
 .h2_title {
     padding-top: 160px;
     color : var(--color-black-3);
@@ -672,49 +674,143 @@ h3 {
     line-height: 24px
 }
 
-.find {
-    padding: 72px 0;
-    margin: 0 306px;
+.find_tab {
+    margin-bottom: 65px;
 
-    .find_tab {
-        margin-bottom: 65px;
+    .find_tab_ul {
+        width: 100%;
 
-        .find_tab_ul {
-            width: 100%;
+        li {
+            width:100%;
+            height: 80px;
+        }
 
-            li {
-                width:100%;
-                height: 80px;
-            }
+        .find_id {
+            color: var(--color-black-3);
+            padding: 10px 0;
+            margin-right: 36px;
+        }
 
-            .find_id {
-                color: var(--color-black-3);
-                padding: 10px 0;
-                margin-right: 36px;
+        .find_pw {
+            color: var(--color-grey-4);
+            padding: 10px 0;
+        }
+
+        .find_button {
+            width:100%;
+            height: 80px;
+            text-decoration: none;
+            color: var(--color-grey-4);
+        }
+
+        .find_button_active {
+            border-bottom: 2px solid var(--color-blue);
+            color: var(--color-blue);
+        }
+
+    }
+}
+
+.input_button_set {
+    display: flex;
+    flex-direction: row;
+}
+
+/* find_id_pw end*/
+
+/* sign_up_agree */
+.sign_up_agree {
+    margin: 0 204px;
+    padding: 160px 0;
+
+    .all_agree{
+        margin-top: 56px;
+        display:flex;
+        justify-content: space-between;
+        
+        .all_agree_text {
+            font-size: var(--font-size-16);
+            font-weight: 700;
+            color: var(--color-black-3);
+
+            .all_agree_text_desc {
+                font-size: var(--font-size-14);
+                font-weight: 400;
+                color: var(--color-grey-2);
+                margin-left: 5px;
             }
-    
-            .find_pw {
-                color: var(--color-grey-4);
-                padding: 10px 0;
-            }
-    
-            .find_button {
-                width:100%;
-                height: 80px;
-                text-decoration: none;
-                color: var(--color-grey-4);
-            }
-    
-            .find_button_active {
-                border-bottom: 2px solid var(--color-blue);
-                color: var(--color-blue);
-            }
-    
+        }
+
+       /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 16px;
+        }
+        
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 23px;
+            width: 23px;
+            left: -2px;
+            bottom: -5px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--color-blue);
+        }
+        
+        input:focus + .slider {
+            box-shadow: 0 0 1px var(--color-blue);
+        }
+        
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+            border: 1px solid var(--color-blue);
+        }
+        
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+            background-color: var(--color-grey-2);
+            border: 1px solid #bbb
+        }
+        
+        .slider.round:before {
+            border-radius: 50%;
+            box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
         }
     }
 }
 
-/* find_id_pw end*/
+
+/* sign_up_agree end*/
 
 /* search_result page */
 .search_container {
@@ -775,4 +871,6 @@ h3 {
 
 
 /* search_result page end*/
+
+
 
