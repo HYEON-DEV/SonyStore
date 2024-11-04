@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> 주문/결제 </title>
+
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <!-- <link rel="stylesheet" href="assets/css/main.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> -->
+    <!-- <link rel="icon" href="assets/img/favicon_144x144.png"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css"> -->
+    <link rel="stylesheet" href="assets/css/style_3.css"/>
+    <link rel="stylesheet" href="assets/css/common.css" />
+
+</head>
+
+<body>
+    <div class="app">
+        <div class="wrapper">
+            <div class="container_w1200 order_page">
+
+                <h2 class="order_box_tit font_48_700"> 주문·결제 </h2>
+          
+                <!--   장바구니   주문결제   주문완료   -->
+                <!-- 
+                <ul class="order_box_list">
+                    <li class="on"> 
+                        <i class="step_ico cart"></i> 
+                        <p>장바구니</p>
+                    </li>
+                    <li>
+                        <i class="step_ico order"></i>
+                        <p>주문·결제</p>
+                    </li>
+                    <li>
+                        <i class="step_ico confirm"></i>
+                        <p>주문 완료</p>
+                    </li>
+                </ul>
+                -->
+                <ul class="order_box_list">
+                    <li class="d_type"><i class="step_ico cart"></i>
+                        <p>장바구니</p>
+                    </li>
+                    <li class="on"><i class="step_ico order"></i>
+                        <p>주문·결제</p>
+                    </li>
+                    <li><i class="step_ico confirm"></i>
+                        <p>주문 완료</p>
+                    </li>
+                </ul>
+
+                <!-- 장바구니 내역 테이블 -->
+                <div class="col_table_wrap order_list order_sheet_list">
+
+                    <div class="col_table">
+
+                        <!-- 테이블 헤더 -->
+                        <div class="col_table_head">
+                            <div class="col_table_row order_sheet_row">
+                                <div class="col_table_cell">제품</div>
+                                <div class="col_table_cell">가격</div>
+                                <div class="col_table_cell">수량</div>
+                                <div class="col_table_cell">합계</div>
+                            </div>
+                        </div>
+
+                        <!-- 테이블 바디 -->
+                        <div class="col_table_body order_sheet_body">
+
+                            <!-- 테이블 row -->
+                            <div class="col_table_row order_sheet_row">
+
+                                <!-- 제품 -->
+                                <div class="col_table_cell prd_wrap tal">
+                                    <!-- 이미지, 제품이름 -->
+                                    <div class="prd">
+                                        <!-- 썸네일 -->
+                                        <div class="prd_thumb">
+                                            <img class="prd_thumb_pic" src="/assets/img/cart/prd_img.png" alt="링크버즈 오픈 에어 피팅 서포터" />
+                                        </div>
+                                        <!-- 제품이름 -->
+                                        <div class="prd_info">
+                                            <div class="prd_info_name">링크버즈 오픈 에어 피팅 서포터</div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <!-- 가격 -->
+                                <div class="col_table_cell prd_price">
+                                    14,900
+                                    <span class="won">원</span>
+                                </div>
+                                
+                                <!-- 수량 -->
+                                <div class="col_table_cell prd_count"> 1 <span class="won">개</span> </div>
+
+                                <!-- 합계 -->
+                                <div class="col_table_cell prd_total_price">
+                                    14,900 
+                                    <span class="won">원</span>
+                                </div>
+
+                            </div>
+
+                            <!-- 테이블 row -->
+                            <div class="col_table_row order_sheet_row">
+
+                                <!-- 제품 -->
+                                <div class="col_table_cell prd_wrap tal">
+                                    <!-- 이미지, 제품이름 -->
+                                    <div class="prd">
+                                        <!-- 썸네일 -->
+                                        <div class="prd_thumb">
+                                            <img class="prd_thumb_pic" src="/assets/img/cart/prd_img.png" alt="링크버즈 오픈 에어 피팅 서포터" />
+                                        </div>
+                                        <!-- 제품이름 -->
+                                        <div class="prd_info">
+                                            <div class="prd_info_name">링크버즈 오픈 에어 피팅 서포터</div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <!-- 가격 -->
+                                <div class="col_table_cell prd_price">
+                                    14,900
+                                    <span class="won">원</span>
+                                </div>
+                                
+                                <!-- 수량 -->
+                                <div class="col_table_cell prd_count"> 1 <span class="won">개</span> </div>
+
+                                <!-- 합계 -->
+                                <div class="col_table_cell prd_total_price">
+                                    14,900 
+                                    <span class="won">원</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 주문 정보 -->
+                <div class="clearFix">
+
+                    <!-- 주문 정보  "좌측" -->
+                    <div class="order_left">
+                        <div class="acc acc_ui_zone_order_sheet">
+
+                            <!-- 주문자 정보 -->
+                            <div class="acc_item">
+
+                                <div class="acc_head">
+                                    <a class="acc_btn trigger" title="주문자 정보 열기"> 
+                                        <span class="acc_tit"> 주문자 정보 </span>
+                                        <span class="acc_arrow"> 상세 보기 </span>
+                                    </a>
+                                </div>
+
+                                <div class="acc_inner_order parentNode">
+                                    <div class="acc_box">
+                                        <p class="acc_dsc_top">표시는 필수입력 정보</p>
+                                        <!-- 이름 -->
+                                        <div class="acc_form">
+                                            
+                                            <div class="acc_cell vat">
+                                                <label for="user_name"> 이름 <i class="necessary"></i> </label>
+                                            </div>
+
+                                            <div class="acc_cell">
+                                                <div class="acc_group parent">
+                                                    <div class="acc_inp type3">
+                                                        <input type="text" class="inp" id="user_name" placeholder="이름을 입력하세요." name="ordererName" value="이승현">
+                                                        <span class="focus_bg"></span>
+                                                        <p class="error_txt"><span class="ico"></span>이름을 입력해 주세요.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <!-- 이메일 -->
+                                        <!-- <div class="acc_form">
+                                            <div class="acc_cell vat"><label for="user_email">이메일<i class="necessary"></i></label></div>
+                                            <div class="acc_cell">
+                                                <div class="acc_group parent">
+                                                    <div class="acc_inp type3"><input type="text" class="inp" id="user_email"
+                                                            placeholder="이메일 아이디 (예 : sony@sony.co.kr)" name="ordererEmail"
+                                                            value="hyeon970315@gmail.com"><span class="focus_bg"></span>
+                                                        <p class="error_txt"><span class="ico"></span>이메일 아이디를 입력해 주세요.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <!-- 휴대폰 번호 -->
+                                        <!-- <div class="acc_form">
+                                            <div class="acc_cell vat"><label for="user_number">휴대폰 번호<i class="necessary"></i></label>
+                                            </div>
+                                            <div class="acc_cell">
+                                                <div class="acc_group parent">
+                                                    <div class="acc_inp type3"><input type="text" class="inp" id="user_number"
+                                                            name="ordererContact1" value="010-7303-9801"><span class="focus_bg"></span>
+                                                        <p class="error_txt"><span class="ico"></span>휴대폰 번호를 입력해 주세요.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+                                    </div>
+                                </div>
+                               
+                            </div>
+
+                            <!-- 배송지 정보 -->
+                            <div class="acc_item on">
+                                <div class="acc_head"><a class="acc_btn trigger" title="배송지 정보 열기"><span class="acc_tit">배송지
+                                            정보</span><span class="acc_arrow">상세 보기</span></a></div>
+                                <!-- 
+                                <div class="acc_inner parentNode" style="height: 0px;">
+                                    <div class="acc_box">
+                                        <p class="acc_dsc_top">표시는 필수입력 정보</p>
+                                        <div class="acc_form">
+                                            <div class="acc_cell"><label for="delivery_choice">배송지 선택</label></div>
+                                            <div class="acc_cell">
+                                                <div class="acc_group parent">
+                                                    <div class="acc_inp type4">
+                                                        <p class="delivery_txt">배송지를 선택하세요.</p>
+                                                        <div class="delivery_btn_box"><button
+                                                                class="button button_negative button-s popup_comm_btn" type="button"
+                                                                data-popup-name="shipping_addr">최근 배송지</button></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="acc_form">
+                                            <div class="acc_cell vat"><label for="user_name2">수령인 이름<i class="necessary"></i></label>
+                                            </div>
+                                            <div class="acc_cell">
+                                                <div class="acc_group parent">
+                                                    <div class="acc_inp type3"><input type="text" class="inp" id="user_name2"
+                                                            placeholder="이름을 입력하세요." name="receiverName" value=""><span
+                                                            class="focus_bg"></span>
+                                                        <p class="error_txt"><span class="ico"></span>이름을 입력해 주세요.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="check email_check"><input type="checkbox" class="inp_check"
+                                                        id="chkSame"><label for="chkSame">주문자 정보와 동일</label></div>
+                                            </div>
+                                        </div>
+                                        <div class="acc_form">
+                                            <div class="acc_cell vat"><label for="user_number2">휴대폰 번호<i class="necessary"></i></label>
+                                            </div>
+                                            <div class="acc_cell">
+                                                <div class="acc_group parent">
+                                                    <div class="acc_inp type5"><input type="text" class="inp" id="user_number2"
+                                                            name="receiverContact1" value=""><span class="focus_bg"></span>
+                                                        <p class="error_txt"><span class="ico"></span>휴대폰 번호를 입력해주세요.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="acc_form">
+                                            <div class="acc_cell vat"><label for="user_address">주소<i class="necessary"></i></label>
+                                            </div>
+                                            <div class="acc_cell">
+                                                <div class="acc_group parent">
+                                                    <div class="acc_inp type4"><input type="text" class="inp dynamic_input"
+                                                            id="user_address" placeholder="주소를 입력하세요." name="receiverZipCd" readonly=""
+                                                            value=""><span class="focus_bg"></span>
+                                                        <div class="delivery_btn_box type1"><button
+                                                                class="button button_negative button-s" type="button">우편번호 검색</button>
+                                                        </div>
+                                                        <p class="error_txt"><span class="ico"></span>배송 받으실 주소를 입력해 주세요.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="acc_group parent">
+                                                    <div class="acc_inp type5"><input type="text" class="inp dynamic_input"
+                                                            name="receiverAddress" readonly="" value=""><span class="focus_bg"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="acc_group parent">
+                                                    <div class="acc_inp type5"><input type="text" class="inp"
+                                                            placeholder="상세 주소를 입력하세요." name="receiverDetailAddress" value=""><span
+                                                            class="focus_bg"></span>
+                                                        <p class="error_txt"><span class="ico"></span>상세 주소를 입력해 주세요.</p>
+                                                        <p class="error_txt character"><span class="ico"></span>17자 이내로 입력해주세요.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="acc_form">
+                                            <div class="acc_cell vat"><label for="delivery_request">배송 요청 사항</label></div>
+                                            <div class="acc_cell">
+                                                <div class="acc_group parent">
+                                                    <div class="acc_inp type3">
+                                                        <div>
+                                                            <div class="select_ui_zone btm_line  "><a href="#select"
+                                                                    class="selected_btn">택배 기사님께 요청하실 내용을 선택하세요.</a>
+                                                                <div class="select_inner" style="display: none;">
+                                                                    <p class="prd_tag"></p>
+                                                                    <ul class="select_opt">
+                                                                        <li><a href="#택배 기사님께 요청하실 내용을 선택하세요."
+                                                                                class="opt_list undefined">
+                                                                                <div class="item">택배 기사님께 요청하실 내용을 선택하세요.</div>
+                                                                            </a></li>
+                                                                        <li><a href="#배송 전 연락바랍니다." class="opt_list undefined">
+                                                                                <div class="item">배송 전 연락바랍니다.</div>
+                                                                            </a></li>
+                                                                        <li><a href="#부재 시 경비실에 맡겨 주세요." class="opt_list undefined">
+                                                                                <div class="item">부재 시 경비실에 맡겨 주세요.</div>
+                                                                            </a></li>
+                                                                        <li><a href="#부재 시 무인 택배함에 맡겨주세요." class="opt_list undefined">
+                                                                                <div class="item">부재 시 무인 택배함에 맡겨주세요.</div>
+                                                                            </a></li>
+                                                                        <li><a href="#부재 시 집 문앞에 놔주세요." class="opt_list undefined">
+                                                                                <div class="item">부재 시 집 문앞에 놔주세요.</div>
+                                                                            </a></li>
+                                                                        <li><a href="#부재 시 휴대폰으로 연락 주세요." class="opt_list undefined">
+                                                                                <div class="item">부재 시 휴대폰으로 연락 주세요.</div>
+                                                                            </a></li>
+                                                                        <li><a href="#파손의 위험이 있는 상품이니 조심히 다뤄주세요."
+                                                                                class="opt_list undefined">
+                                                                                <div class="item">파손의 위험이 있는 상품이니 조심히 다뤄주세요.</div>
+                                                                            </a></li>
+                                                                        <li><a href="#직접 입력" class="opt_list undefined">
+                                                                                <div class="item">직접 입력</div>
+                                                                            </a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="acc_group parent">
+                                                    <div class="acc_inp type3"><input type="text" class="inp"
+                                                            placeholder="배송 메모를 입력하세요." name="deliveryMemo" disabled="" value=""><span
+                                                            class="focus_bg"></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="acc_form" style="height: 423px;">
+                                            <div class="acc_cell vat"><label for="delivery_choice">배송일 선택</label></div>
+                                            <div class="acc_cell vat">
+                                                <div class="acc_group parent">
+                                                    <div class="acc_inp">
+                                                        <div class="acc_radio">
+                                                            <div class="radio_box"><input type="radio" class="inp_radio"
+                                                                    id="delivery_radio1" name="deliveryRadio" checked=""><label
+                                                                    for="delivery_radio1" class="contentType">정상 배송</label></div>
+                                                            <div class="radio_box"><input type="radio" class="inp_radio"
+                                                                    id="delivery_radio2" name="deliveryRadio" value="specify"><label
+                                                                    for="delivery_radio2" class="contentType">출고일 지정</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="acc_group">
+                                                    <div class="acc_inp">
+                                                        <div class="date_picker_wrapper" style="display: none;">
+                                                            <div class="tui-datepicker-input tui-datetime-input tui-has-focus"><input
+                                                                    type="text" class="view_date_input" disabled="" readonly=""><span
+                                                                    class="tui-ico-date"></span></div>
+                                                            <div>
+                                                                <div class="tui-datepicker tui-hidden">
+                                                                    <div class="tui-datepicker-body tui-datepicker-type-date">
+                                                                        <div class="tui-calendar-container">
+                                                                            <div class="tui-calendar">
+                                                                                <div class="tui-calendar-header">
+                                                                                    <div class="tui-calendar-header-inner"> <button
+                                                                                            class="tui-calendar-btn tui-calendar-btn-prev-month tui-hidden">Prev
+                                                                                            month</button> <em
+                                                                                            class="tui-calendar-title tui-calendar-title-month">2024.11</em>
+                                                                                        <button
+                                                                                            class="tui-calendar-btn tui-calendar-btn-next-month">Next
+                                                                                            month</button> </div>
+                                                                                    <div class="tui-calendar-header-info">
+                                                                                        <p class="tui-calendar-title-today">오늘:
+                                                                                            2024.11.04 (월)</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="tui-calendar-body">
+                                                                                    <table class="tui-calendar-body-inner"
+                                                                                        cellspacing="0" cellpadding="0">
+                                                                                        <caption><span>Dates</span></caption>
+                                                                                        <thead class="tui-calendar-body-header">
+                                                                                            <tr>
+                                                                                                <th class="tui-sun" scope="col">일</th>
+                                                                                                <th scope="col">월</th>
+                                                                                                <th scope="col">화</th>
+                                                                                                <th scope="col">수</th>
+                                                                                                <th scope="col">목</th>
+                                                                                                <th scope="col">금</th>
+                                                                                                <th class="tui-sat" scope="col">토</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            <tr class="tui-calendar-week">
+                                                                                                <td class="tui-calendar-date tui-calendar-prev-month tui-calendar-sun tui-is-blocked"
+                                                                                                    data-timestamp="1729954800000">27
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-prev-month tui-is-blocked"
+                                                                                                    data-timestamp="1730041200000">28
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-prev-month tui-is-blocked"
+                                                                                                    data-timestamp="1730127600000">29
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-prev-month tui-is-blocked"
+                                                                                                    data-timestamp="1730214000000">30
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-prev-month tui-is-blocked"
+                                                                                                    data-timestamp="1730300400000">31
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-blocked"
+                                                                                                    data-timestamp="1730386800000">1
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-sat tui-is-blocked"
+                                                                                                    data-timestamp="1730473200000">2
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr class="tui-calendar-week">
+                                                                                                <td class="tui-calendar-date tui-calendar-sun tui-is-blocked"
+                                                                                                    data-timestamp="1730559600000">3
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-today tui-is-blocked"
+                                                                                                    data-timestamp="1730646000000">4
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-blocked"
+                                                                                                    data-timestamp="1730732400000">5
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-blocked"
+                                                                                                    data-timestamp="1730818800000">6
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable tui-is-selected"
+                                                                                                    data-timestamp="1730905200000">7
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1730991600000">8
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-sat tui-is-selectable"
+                                                                                                    data-timestamp="1731078000000">9
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr class="tui-calendar-week">
+                                                                                                <td class="tui-calendar-date tui-calendar-sun tui-is-selectable"
+                                                                                                    data-timestamp="1731164400000">10
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1731250800000">11
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1731337200000">12
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1731423600000">13
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1731510000000">14
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1731596400000">15
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-sat tui-is-selectable"
+                                                                                                    data-timestamp="1731682800000">16
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr class="tui-calendar-week">
+                                                                                                <td class="tui-calendar-date tui-calendar-sun tui-is-selectable"
+                                                                                                    data-timestamp="1731769200000">17
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1731855600000">18
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1731942000000">19
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1732028400000">20
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1732114800000">21
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1732201200000">22
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-sat tui-is-selectable"
+                                                                                                    data-timestamp="1732287600000">23
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr class="tui-calendar-week">
+                                                                                                <td class="tui-calendar-date tui-calendar-sun tui-is-selectable"
+                                                                                                    data-timestamp="1732374000000">24
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1732460400000">25
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1732546800000">26
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1732633200000">27
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1732719600000">28
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-is-selectable"
+                                                                                                    data-timestamp="1732806000000">29
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-sat tui-is-selectable"
+                                                                                                    data-timestamp="1732892400000">30
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                            <tr class="tui-calendar-week">
+                                                                                                <td class="tui-calendar-date tui-calendar-next-month tui-calendar-sun tui-is-selectable"
+                                                                                                    data-timestamp="1732978800000">1
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-next-month tui-is-selectable"
+                                                                                                    data-timestamp="1733065200000">2
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-next-month tui-is-selectable"
+                                                                                                    data-timestamp="1733151600000">3
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-next-month tui-is-selectable"
+                                                                                                    data-timestamp="1733238000000">4
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-next-month tui-is-selectable"
+                                                                                                    data-timestamp="1733324400000">5
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-next-month tui-is-selectable"
+                                                                                                    data-timestamp="1733410800000">6
+                                                                                                </td>
+                                                                                                <td class="tui-calendar-date tui-calendar-next-month tui-calendar-sat tui-is-selectable"
+                                                                                                    data-timestamp="1733497200000">7
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul class="list_dot">
+                                                    <li>정상 배송이 제일 빠른 배송입니다.</li>
+                                                    <li>출고일 지정 배송의 경우 주문 날짜의 3일 후부터 선택이 가능하며,<br>지정된 출고일에 맞춰서 제품이 발송되고, 출고일 기준 2~3일 이내
+                                                        수령이 가능합니다.</li>
+                                                    <li>소니스토어의 모든 제품은 무료 배송 입니다.</li>
+                                                    <li>배송기간은 서울, 경기일 경우 2~3일(주문일 포함), 기타 지역은 3~5일 정도 걸립니다.<br>(정오(낮12시) 이전 결제완료 기준)
+                                                    </li>
+                                                    <li>단, 지역 및 교통 사정에 따라 배송이 지연되는 경우가 발생할 수 있습니다.</li>
+                                                    <li>일요일, 공휴일은 배송되지 않습니다. (예:토요일 주문 시 월요일에 접수되어 화요일 이후 배송)</li>
+                                                    <li>예약판매는 별도의 배송 일정을 따릅니다.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                -->
+                            </div>
+
+                            <!-- 할인 정보 -->
+                            <div class="acc_item on">
+                                <div class="acc_head"><a class="acc_btn trigger" title="할인 정보 열기"><span class="acc_tit">할인
+                                            정보</span><span class="acc_arrow">상세 보기</span></a></div>
+                                <!-- 
+                                <div class="acc_inner parentNode" style="height: 0px;">
+                                    <div class="acc_box">
+                                        <div class="acc_form">
+                                            <div class="acc_cell vat"><label for="coupon">쿠폰</label></div>
+                                            <div class="acc_cell">
+                                                <div class="acc_group">
+                                                    <div class="acc_inp disable_type"><input type="text" id="coupon" class="inp"
+                                                            disabled="" value="0"><span class="unit">원</span></div>
+                                                    <div class="acc_btn_box"><button
+                                                            class="button button_negative button-s popup_comm_btn"
+                                                            data-popup-name="coupon_inquiry" type="button">쿠폰 조회</button></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="acc_form">
+                                            <div class="acc_cell vat"><label for="mileage">멤버십 마일리지</label></div>
+                                            <div class="acc_cell parent">
+                                                <div class="acc_group">
+                                                    <div class="acc_inp disable_type"><input type="text" id="mileage" class="inp"
+                                                            placeholder="0" disabled="" value=""><span class="unit">점</span><span
+                                                            class="focus_bg"></span></div>
+                                                    <div class="acc_btn_box"><button class="button button_negative button-s"
+                                                            type="button" disabled="">모두 사용</button><span class="my_point">(<em>0 M</em>
+                                                            보유)</span></div>
+                                                </div>
+                                                <p class="membership_info" style="color: inherit;">* 멤버십 마일리지는 최소 5,000점 부터 사용 가능합니다.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 -->
+                            </div>
+
+                            <!-- 결제 방법 -->
+                            <div class="acc_item on">
+                                <div class="acc_head"><a class="acc_btn trigger" title="결제 방법 열기"><span class="acc_tit">결제
+                                            방법</span><span class="acc_arrow">상세 보기</span></a></div>
+                                <!-- 
+                                <div class="acc_inner parentNode" style="height: 0px;">
+                                    <div class="acc_box">
+                                        <div class="acc_form">
+                                            <div class="acc_cell vat"><label for="payment1">결제 수단 선택</label></div>
+                                            <div class="acc_cell vat">
+                                                <div class="acc_group parent">
+                                                    <div class="acc_radio">
+                                                        <div class="radio_box"><input type="radio" class="inp_radio" id="CREDIT_CARD"
+                                                                name="paymentType" checked=""><label for="CREDIT_CARD"
+                                                                class="contentType">신용카드</label></div>
+                                                        <div class="radio_box"><input type="radio" class="inp_radio" id="NAVER_EASY_PAY"
+                                                                name="paymentType"><label for="NAVER_EASY_PAY"
+                                                                class="contentType">네이버페이</label></div>
+                                                    </div>
+                                                    <div class="tabResult">
+                                                        <div class="result_cont radio_tab1 on"><strong class="info_tit">신용카드 무이자 할부
+                                                                유의사항</strong>
+                                                            <ul class="list_dot">
+                                                                <li style="color: rgb(231, 0, 0);">장기 무이자 혜택은 신용카드 선택 시에만 적용됩니다. 네이버페이
+                                                                    선택 시, 무이자가 적용되지 않습니다.</li>
+                                                                <li>무이자 할부 개월 수가 다른 제품을 한꺼번에 결제하면 할부 개월 수가 낮은 제품을 기준으로 할부가 됩니다.</li>
+                                                                <li>무이자 할부 개월 수가 다른 제품을 따로 결제하면 해당 제품에 적용된 무이자 할부 혜택을 받으실 수 없습니다.</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="result_cont radio_tab3">
+                                                            <div class="check"><input type="checkbox" class="inp_check"
+                                                                    id="chk03"><label for="chk03">지금 선택한 결제수단을 다음에도 사용</label></div>
+                                                            <strong class="info_tit">신용카드 무이자 할부 유의사항</strong>
+                                                            <ul class="list_dot">
+                                                                <li style="color: rgb(231, 0, 0);">장기 무이자 혜택은 신용카드 선택 시에만 적용됩니다. 네이버페이
+                                                                    선택 시, 무이자가 적용되지 않습니다.</li>
+                                                                <li>무이자 할부 개월 수가 다른 제품을 한꺼번에 결제하면 할부 개월 수가 낮은 제품을 기준으로 할부가 됩니다.</li>
+                                                                <li>무이자 할부 개월 수가 다른 제품을 따로 결제하면 해당 제품에 적용된 무이자 할부 혜택을 받으실 수 없습니다.</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 -->
+                            </div>
+                        </div>
+                    </div>  <!-- 주문 정보 좌측 -->
+
+                    <!-- 주문 정보  "우측" -->
+                    <div class="order_right">
+                        <div class="acc acc_ui_zone">
+                            <div class="payment_box">
+                                <div class="inner">
+                                    <div class="payment_list">
+                                        <dl class="total">
+                                            <dt class="tit">결제 예정 금액</dt>
+                                            <dd class="price one_line_amount">533,900<span class="unit">원</span></dd>
+                                        </dl>
+                                        <!-- 
+                                        <div class="order_detailbox">
+                                            <div class="view_headline"><span class="view_tit">주문 금액</span><em
+                                                    class="view_price"><strong>533,900</strong>원</em></div>
+                                            <div class="view_detail"><span class="view_tit">제품 금액</span><em
+                                                    class="view_price"><strong>533,900</strong>원</em></div>
+                                            <div class="view_detail"><span class="view_tit">구매 수량</span><em
+                                                    class="view_price"><strong>2</strong>개</em></div>
+                                        </div>
+                                        <div class="saleToggle">
+                                            <div class="sale_item">
+                                                <div class="sale_head"><a href="#discount-detail" class="sale_btn" title="할인 금액 열기">
+                                                        <div class="view_headline"><span class="sale_tit">할인 금액</span><em
+                                                                class="view_price minus"><strong>-0</strong>원</em></div><span
+                                                            class="acc_arrow">상세 보기</span>
+                                                    </a></div>
+                                                <div id="discount-detail" class="sale_inner">
+                                                    <div class="sale_box">
+                                                        <div class="view_detail"><span class="sale_tit">프로모션 할인</span><em
+                                                                class="view_price"><strong>- 0</strong>원</em></div>
+                                                        <div class="view_detail"><span class="sale_tit">쿠폰 사용</span><em
+                                                                class="view_price"><strong>- 0</strong>원</em></div>
+                                                        <div class="view_detail"><span class="sale_tit">마일리지 사용</span><em
+                                                                class="view_price"><strong>- 0</strong>원</em></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        -->
+                                    </div>
+
+                                    <!-- 구매 동의 -->
+                                    <!-- 
+                                    <div class="essential">
+                                        <div class="check"><input type="checkbox" class="inp_check" id="essential"><label
+                                                for="essential">[필수] 주문할 제품의 거래조건을 확인 하였으며, 구매에 동의하시겠습니까? (전자상거래법 제8조 제2항)</label></div>
+                                        <div class="pc_pay_btn"><button class="button button_positive button-full"
+                                                type="button">결제</button></div>
+                                    </div>
+                                    -->
+                                </div>
+
+                                <!-- 우측 박스 하단 텍스트 -->
+                                
+                                <ul class="list_dot">
+                                    <li>결제가 팝업창에서 이루어집니다.</li>
+                                    <li>브라우저 설정에서 팝업창 차단을 해제해 주세요.</li>
+                                </ul>
+                                
+                                <!-- 
+                                <div class="mo_pay_btn" style="z-index: 901;"><button class="button button_positive button-full"
+                                        type="button">총 <em>533,900</em> 원 (2개) <span>결제하기</span></button></div>
+                                -->
+                                        
+                            </div>
+                        </div>
+                    </div>  <!-- 주문 정보 우측 -->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+  
+    <script>
+        
+    </script>
+</body>
+
+</html>

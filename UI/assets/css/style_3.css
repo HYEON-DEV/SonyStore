@@ -1086,11 +1086,11 @@ img {
     border-bottom: 1px solid var(--color-light-grey-2);
     padding: 20px 16px;    
 }
-.col_table_row > :nth-child(1) { width: 50%; }
-.col_table_row > :nth-child(2) { width: 14.3%; }
-.col_table_row > :nth-child(3) { width: 14.3%; }
-.col_table_row > :nth-child(4) { width: 15%; }
-.col_table_row > :nth-child(5) { width: 6.4%; }
+.cart_row > :nth-child(1) { width: 50%; }
+.cart_row > :nth-child(2) { width: 14.3%; }
+.cart_row > :nth-child(3) { width: 14.3%; }
+.cart_row > :nth-child(4) { width: 15%; }
+.cart_row > :nth-child(5) { width: 6.4%; }
 
 /* 장바구니 테이블 바디 */
 
@@ -1129,7 +1129,6 @@ img {
 
 /* 수량 */
 
-.prd_count
 .count_ui_box {
     display: inline-flex;
     border: 1px solid #ddd;
@@ -1242,4 +1241,106 @@ img {
 }
 
 
+/* = = = = = = = = = = order_cheet.html - 주문·결제 페이지 = = = = = = = = = = */
 
+/* 테이블 상단 여백 */
+.order_sheet_list {
+    margin-top: 80px;
+}
+
+/* 주문결제 내역 테이블 */
+
+.order_sheet_row > :nth-child(1) { width: 50.4%; }
+.order_sheet_row > :nth-child(2) { width: 19.2%; }
+.order_sheet_row > :nth-child(3) { width: 11.2%; }
+.order_sheet_row > :nth-child(4) { width: 19.2%; }
+
+/* 수량 */
+
+.order_sheet_body .prd_count {
+    font-size: 16px;
+    font-weight: 500;
+    color: #444;
+}
+
+/* 주문 정보 */
+
+.clearFix {
+    display: flex;
+    margin-top: 100px;
+}
+.order_left {
+    width: 70%;
+    padding-right: 40px;
+}
+.order_right {
+    width: 30%;
+}
+
+/* 주문 정보 좌측 */
+
+/* 주문자 정보 */
+
+.order_left {
+    
+    .acc_item {
+        border: none;   
+    }
+
+    .acc_head {
+        padding-bottom: 24px;
+        border-bottom: 2px solid var(--color-black-3);
+    }
+
+    .acc_tit {
+        font-size: 24px;
+        font-weight: 700;
+        
+    }
+} 
+
+
+.order_box__cont .acc_inp .focus_bg {
+    position: relative;
+    display: block
+}
+
+.order_box__cont .acc_inp .focus_bg:after,.order_box__cont .acc_inp .focus_bg:before {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #5865f5;
+    content: "";
+    transition: .4s
+}
+
+.order_box__cont .acc_inp.type1 {
+    width: 610px
+}
+
+.order_box__cont .acc_inp.type2 {
+    width: 490px
+}
+
+.order_box__cont .acc_inp.type3 {
+    width: 330px
+}
+
+.order_box__cont .acc_inp.type4 {
+    float: left;
+    padding-right: 115px;
+    width: 330px
+}
+
+.order_box__cont .acc_inp.type4 .delivery_btn_box {
+    position: absolute;
+    top: 0;
+    right: 0
+}
+
+.order_box__cont .acc_inp.type4 .delivery_btn_box .button {
+    min-width: 98px;
+    padding: inherit
+}
