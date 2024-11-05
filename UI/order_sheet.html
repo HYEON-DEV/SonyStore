@@ -156,65 +156,54 @@
 
                             <!-- 주문자 정보 -->
                             <div class="acc_item">
-
                                 <div class="acc_head">
-                                    <a class="acc_btn trigger" title="주문자 정보 열기"> 
+                                    <a class="acc_btn" title="주문자 정보 열기"> 
                                         <span class="acc_tit"> 주문자 정보 </span>
                                         <span class="acc_arrow"> 상세 보기 </span>
                                     </a>
                                 </div>
-
-                                <div class="acc_inner_order parentNode">
+                                <div class="acc_inner_order">
                                     <div class="acc_box">
-                                        <p class="acc_dsc_top">표시는 필수입력 정보</p>
+                                        <div class="acc_dsc_top"> <p> <i class="necessary"></i> 표시는 필수입력 정보 </p> </div>
                                         <!-- 이름 -->
-                                        <div class="acc_form">
-                                            
+                                        <div class="acc_form">                                            
                                             <div class="acc_cell vat">
                                                 <label for="user_name"> 이름 <i class="necessary"></i> </label>
                                             </div>
-
                                             <div class="acc_cell">
-                                                <div class="acc_group parent">
-                                                    <div class="acc_inp type3">
-                                                        <input type="text" class="inp" id="user_name" placeholder="이름을 입력하세요." name="ordererName" value="이승현">
-                                                        <span class="focus_bg"></span>
-                                                        <p class="error_txt"><span class="ico"></span>이름을 입력해 주세요.</p>
-                                                    </div>
+                                                <div class="acc_inp">
+                                                    <input type="text" class="inp" id="user_name" placeholder="이름을 입력하세요." name="userName" value="">
+                                                    <span class="focus_bg"></span>
                                                 </div>
                                             </div>
-                                            
                                         </div>
                                         <!-- 이메일 -->
-                                        <!-- <div class="acc_form">
-                                            <div class="acc_cell vat"><label for="user_email">이메일<i class="necessary"></i></label></div>
+                                        <div class="acc_form">                                            
+                                            <div class="acc_cell vat">
+                                                <label for="user_email"> 이메일 <i class="necessary"></i> </label>
+                                            </div>
                                             <div class="acc_cell">
-                                                <div class="acc_group parent">
-                                                    <div class="acc_inp type3"><input type="text" class="inp" id="user_email"
-                                                            placeholder="이메일 아이디 (예 : sony@sony.co.kr)" name="ordererEmail"
-                                                            value="hyeon970315@gmail.com"><span class="focus_bg"></span>
-                                                        <p class="error_txt"><span class="ico"></span>이메일 아이디를 입력해 주세요.</p>
-                                                    </div>
+                                                <div class="acc_inp">
+                                                    <input type="text" class="inp" id="user_email" placeholder="이메일 아이디 (예 : sony@sony.co.kr)" name="userEmail" value="">
+                                                    <span class="focus_bg"></span>
                                                 </div>
                                             </div>
-                                        </div> -->
+                                        </div>
                                         <!-- 휴대폰 번호 -->
-                                        <!-- <div class="acc_form">
-                                            <div class="acc_cell vat"><label for="user_number">휴대폰 번호<i class="necessary"></i></label>
+                                        <div class="acc_form">                                            
+                                            <div class="acc_cell vat">
+                                                <label for="user_number"> 휴대폰 번호 <i class="necessary"></i> </label>
                                             </div>
                                             <div class="acc_cell">
-                                                <div class="acc_group parent">
-                                                    <div class="acc_inp type3"><input type="text" class="inp" id="user_number"
-                                                            name="ordererContact1" value="010-7303-9801"><span class="focus_bg"></span>
-                                                        <p class="error_txt"><span class="ico"></span>휴대폰 번호를 입력해 주세요.</p>
-                                                    </div>
+                                                <div class="acc_inp">
+                                                    <input type="text" class="inp" id="user_number" name="userNumber" value="">
+                                                    <span class="focus_bg"></span>
                                                 </div>
                                             </div>
-                                        </div> -->
+                                        </div>
 
                                     </div>
                                 </div>
-                               
                             </div>
 
                             <!-- 배송지 정보 -->
