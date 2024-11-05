@@ -2,7 +2,7 @@ a {
   text-decoration: none;
 }
 body {
-  background-color: black;
+  /* background-color: black; */
 }
 .main {
   background-color: white;
@@ -277,125 +277,194 @@ body {
   display: none !important;
 }
 
+/* -----------------------추천 페이지--------------------------- */
+
 .container_w1920 {
   background-color: white;
   width: 100%;
-  max-width: 1920px;
+  width: 1920px;
   height: auto;
   min-height: 100vh;
   margin: 80px auto 0;
   margin-top: 80px;
-  
 }
 
-.recommend{
-  
-  .reco_kv{
+.recommend {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
 
-    .reco_kv_inner{
+  .reco_kv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
-      /* position: fixed; */
-      left: 0;
-      top: 0;
-      overflow: hidden;
-      width: 100%;
-      height: 100vh;
-      
-
-      .reco_kv_img{
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        /* width: 720px;
-        height: 480px; */
-        transform: translate(-50%, -50%);
-
-        img{
-          /* width: 100%;
-          height: 100%; */
-          object-fit: cover;
-        }
-      }
-      .reco_kv_img-3{
-        z-index: 11;
-
-        .end{
-          width: 100%;
-          height: 100%;
-          background-color: #000;
-        }
-      }
-
-      .reco_kv_copy{
-        position: absolute;
-        z-index: 12;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        height: 50vh;
-        text-align: center;
-        transition: all 1s;
-        transform: translateY(0);
-        color: #fff;
-
-        .reco_kv_desc{
-            display: block;
-        }
-
-        .reco_kv_title{
-          font-weight: 900;
-          font-size: 104px;
-          line-height: 1.08;
-          letter-spacing: 0;
-          color: inherit;
-        }
-
-        .reco_kv_desc{
-          margin-top: 1em;
-          font-size: 24px;
-          line-height: 1.5;
-          letter-spacing: -.025em;
-          color: inherit;
-        }
-      }
+    .reco_kv_img {
+      position: relative;
+      z-index: 0;
     }
-
-    .trigger{
+    .reco_kv_text {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       position: absolute;
       z-index: 1;
-      width: 100%;
-      height: 1px;
+      top: 40%;
+
+      h2 {
+        font-weight: 900;
+        font-size: 104px;
+        line-height: 1.08;
+        letter-spacing: 0;
+        color: white;
+      }
+      .reco_kv_desc {
+        /* display: none; */
+        margin-top: 1em;
+        font-size: 24px;
+        line-height: 1.5;
+        letter-spacing: -0.025em;
+        color: white;
+      }
+    }
+  }
+
+  .reco_items {
+    width: 1604px;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 1;
+    top: 70%;
+    padding: 0;
+    margin: 0;
+
+    .reco_item {
+      
+      .reco_item_inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        
+
+        .reco_prod {
+          padding: 10px;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          
+
+          img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+          .reco_item_title {
+            padding: 20px 0;
+            color: black;
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: -0.025em;
+          }
+
+          .reco_item_desc {
+            padding: 20px 0;
+            font-size: 16px;
+            letter-spacing: -0.025em;
+            color: #888;
+          }
+          
+        }
+      }
+    }
+  }
+}
+.exhibitions_zone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 120px 0;
+
+  .title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #222;
+    margin: 20px 0;
+  }
+  .swiper {
+    width: 1200px;
+    height: 400px;
+    .swiper-wrapper {
+      display: flex;
+      justify-content: normal;
+      align-items: normal;
+      box-sizing: content-box;
+
+      .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        background: #fff;
+
+        .tit {
+          font-size: 22px;
+          font-weight: 700;
+          letter-spacing: -0.55px;
+          color: #222;
+        }
+      }
     }
 
-    .reco_items{
+    .arrow_btn {
       display: flex;
-      flex-wrap: wrap;
-      max-width: 1604px;
-      margin-top: 160px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 12px;
+      justify-content: space-between;
+      width: 100%;
+      position: absolute;
+      top: 44%;
+      transform: translateY(-50%);
+      z-index: 10;
 
-      .reco_item{
-        
-        &:first-of-type{
-          padding-top: 35px;
-        }
-        overflow: hidden;
-        margin-bottom: 96px;
-        padding: 12px;
-        flex-grow: 0;
-        flex-shrink: 1;
+      button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: absolute;
       }
 
-      .reco_banner{
-        overflow: hidden;
-        width: 100%;
-        height: 56.25vw;
-        max-height: 926px;
-        margin-bottom: 90px;
-        background-repeat: no-repeat;
-        background-position: 0 50%;
+      .custom-next {
+        right: 10px; /* 오른쪽 버튼 위치 고정 */
+      }
+
+      .custom-prev {
+        left: 10px; /* 왼쪽 버튼 위치 고정 */
+        img {
+          transform: rotate(180deg); /* 왼쪽 화살표 이미지를 반대로 회전 */
+        }
+      }
+
+      .custom-next img,
+      .custom-prev img {
+        width: 30px; /* 이미지의 너비 */
+        height: 30px; /* 이미지의 높이 */
       }
     }
   }
@@ -403,25 +472,23 @@ body {
 
 /* -----------------------소비자 피해 보상 보험--------------------------- */
 
-.layer_container{
+.layer_container {
   width: 636px;
   height: 425px;
 
-  .layer_title{
-    
+  .layer_title {
   }
 }
 
+/* -----------------------이용약관--------------------------- */
 
-/* -----------------------소비자 피해 보상 보험--------------------------- */
-
-.content{
+.content {
   padding: 120px 0;
 
-  .page{
+  .page {
     font-size: 14px;
     line-height: 1.4;
-    letter-spacing: -.025em;
+    letter-spacing: -0.025em;
     word-break: keep-all;
     color: #666;
     margin: 0 auto;
@@ -430,7 +497,7 @@ body {
     align-items: center;
     justify-content: center;
 
-    .page__title{
+    .page__title {
       font-size: 48px;
       color: #222;
       line-height: 48px;
@@ -444,28 +511,25 @@ body {
     }
   }
 
-
-  /* -----------------------이용약관--------------------------- */
-  .terms{
-
-    .list_box{
+  .terms {
+    .list_box {
       position: relative;
       padding: 30px 40px;
       box-sizing: border-box;
       background-color: #f8f8f8;
 
-      .date{
+      .date {
         padding-bottom: 30px;
         border-bottom: 1px solid #ccc;
 
-        strong{
+        strong {
           font-size: 18px;
           font-weight: 700;
           color: black;
           font-style: normal;
         }
 
-        .btn_go_ar{
+        .btn_go_ar {
           position: absolute;
           top: 24px;
           right: 40px;
@@ -475,27 +539,25 @@ body {
           background-color: #fff;
           color: #000;
           font-size: 14px;
-          
         }
       }
-      .list_cont{
+      .list_cont {
         display: table;
         width: 100%;
         padding-top: 30px;
 
-        ul{
+        ul {
           display: table-cell;
           width: 50%;
 
-          a{
+          a {
             color: black;
-            
           }
 
           &:first-child {
             margin-top: 0;
           }
-          li{
+          li {
             margin-top: 15px;
             margin: 0;
             padding: 10px 0;
@@ -508,7 +570,7 @@ body {
       }
     }
 
-    .foot_box{
+    .foot_box {
       margin: 0;
       padding: 0;
       border: 0;
@@ -516,64 +578,63 @@ body {
       font-family: inherit;
       box-sizing: border-box;
 
-      .foot_cont{
+      .foot_cont {
         margin-top: 80px;
 
-        .Fh4_tit{
+        .Fh4_tit {
           margin-bottom: 30px;
           font-weight: 700;
           font-size: 24px;
           color: #222;
-
         }
-        ol,ul{
+        ol,
+        ul {
           list-style: none;
 
-          .Fh5_tit{
+          .Fh5_tit {
             margin: 25px 0;
             font-size: 18px;
             font-weight: 500;
             color: #222;
           }
 
-          li{
+          li {
             font-size: 16px;
             color: #444;
             line-height: 28px;
             padding: 10px 0;
 
-            strong{
+            strong {
               font-weight: 700;
             }
 
-            p{
+            p {
               font-size: 16px;
               color: #444;
               line-height: 28px;
             }
           }
         }
-        
       }
 
-      .caution_box{
+      .caution_box {
         position: relative;
         margin-top: 2em;
         padding: 25px 35px;
-        border: 1px solid hsla(0, 0%, 86.7%, .8666666666666667);
+        border: 1px solid hsla(0, 0%, 86.7%, 0.8666666666666667);
         box-sizing: border-box;
 
-        p{
+        p {
           font-size: 16px;
           line-height: 32px;
           color: #222;
         }
 
-        strong{
+        strong {
           font-weight: 500;
         }
 
-        .btn_go_ar{
+        .btn_go_ar {
           position: absolute;
           top: 24px;
           right: 40px;
