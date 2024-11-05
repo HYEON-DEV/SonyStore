@@ -156,15 +156,15 @@
     .input_focus_line::after {
         width: 50%;
     }
+}
 
-    .placeholder {
-        top:0px;
-        font-size:14px;
-        color: var(--color-silver);
+.placeholder_focused{
+    top:0px !important;
+    font-size:14px !important;
+    color: var(--color-silver) !important;
 
-        .placeholder_hide {
-            display: none;
-        }
+    .placeholder_hide {
+        display: none;
     }
 }
 
@@ -174,7 +174,7 @@
     left: 50%;
     width: 0;
     height: 2px;
-    background-color: blue;
+    background-color: var(--color-blue);
     content: "";
     transition: .4s;
     -webkit-transition: all .4s ease;
@@ -186,7 +186,7 @@
     right: 50%;
     width: 0;
     height: 2px;
-    background-color: blue;
+    background-color: var(--color-blue);
     content: "";
     transition: .4s;
     -webkit-transition: all .4s ease;
@@ -219,7 +219,7 @@
     <div id="find_id" class="tab_page tab_page_active">
         <form action="#">
             <label for="userName" class="input_label">
-                <input type="text" class="login_box" placeholder="" />
+                <input type="text" class="input_box" placeholder="" />
                 <div class="input_focus_line">
                     <span class="placeholder">이름<span class="placeholder_hide">( 띄어쓰기 없이 입력하세요. )</span>
                 </div>

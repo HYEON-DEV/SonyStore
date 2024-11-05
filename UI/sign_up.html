@@ -41,29 +41,5 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.all.min.js"></script>
     <script src="./assets/js/common.js"></script>
-
-    <script>
-        document.querySelectorAll('.find_button').forEach((v, i) => {
-            v.addEventListener('click', (e) => {
-                e.preventDefault();
-                const currentIndex = i;
-                const href = e.currentTarget.getAttribute("href");
-
-                document.querySelectorAll('.find_button').forEach((v1, i1) => {
-                    if(currentIndex == i1) {
-                        v1.classList.add('find_button_active');
-                    } else {
-                        v1.classList.remove('find_button_active');
-                    }
-                });
-
-                document.querySelectorAll('.tab_page').forEach((v2, i2) => {
-                    v2.classList.remove('tab_page_active');
-                });
-
-                document.querySelector(href).classList.add('tab_page_active');
-        });
-    });
-    </script>
 </body>
 </html>
