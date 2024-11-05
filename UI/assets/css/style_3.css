@@ -44,6 +44,13 @@ img {
     &:hover { background-color: #444; }
 }
 
+/* 회색 버튼 */
+.bg_gray {
+    background-color: var(--color-grey-4);
+    color: var(--color-white);
+    &:hover { background-color: var(--color-light-grey-3); }
+}
+
 /* 화살표 */
 
 .arrow_collapsible {
@@ -1027,7 +1034,7 @@ img {
     margin: -1px;
     appearance: none;
     clip: rect(0,0,0,0);
-    background: url(/assets/img/cart/check_box.png) 50% 50%;
+    /* background: url(/assets/img/cart/check_box.png) 50% 50%; */
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -1267,7 +1274,7 @@ img {
 
 .clearFix {
     display: flex;
-    margin-top: 100px;
+    margin-top: 60px;
 }
 .order_left {
     width: 70%;
@@ -1302,7 +1309,7 @@ img {
 .acc_box { 
     position: relative; 
     font-size: 14px;
-    padding: 40px 0;
+    padding: 20px 0 40px 0;
 }
 
 .acc_dsc_top {
@@ -1331,15 +1338,11 @@ img {
     }    
 }
 
-/* padding */
-.acc_form:nth-of-type(n+2)  {
-    padding-top: 24px; 
-}
-
 /* label, input */
 
 .acc_form {
     display: flex;
+    padding-top: 24px; 
 
     >:nth-child(1) { 
         width: 165px; 
@@ -1369,24 +1372,23 @@ img {
     border-radius: 100%;
 }    
 
+/* input 태그 */
 
 .acc_inp {
-    position: relative;
     width: 330px;
     
-    input {
+    input:not(.inp_check, .inp_address, .inp_radio, #coupon, #mileage) {     /* 체크박스 제외 */
         appearance: none;
         width: 100%;
         border: 0;
         padding: 10px 0;
         color: #444;
-        /* transition: all .15s ease; */
         border-bottom: 1px solid #e1e1e1;
-        outline: none;
-        
+        outline: none; 
     }
-
 }
+
+/* focus animation */
 
 .acc_inp .inp:focus+.focus_bg:after, .acc_inp .inp:focus+.focus_bg:before {
     width: 100%;
@@ -1394,7 +1396,6 @@ img {
     left: 0
 }
 .focus_bg { 
-    /* width: 100%; */
     position: relative;
     display: block;
 }
@@ -1404,9 +1405,178 @@ img {
     left: 50%;
     width: 0;
     height: 2px;
-    background: #5865f5;
+    background: var(--color-blue);
     content: "";
     transition: .4s;
 }
 
+/* 배송지 선택 */
 
+.acc_cell.txt_btn {
+    margin-top: 3px;
+}
+
+/* 배송지 선택, 최근 배송지 */
+.acc_inp.txt_btn {
+    display: flex;
+    justify-content: space-between;
+}
+/* 배송지를 선택하세요 */
+.delivery_txt {
+    padding-top: 7px;
+}
+
+/* 최근 배송지 버튼 */
+.btn_box {
+    width: 98px;
+    height: 32px;
+}
+
+.order_page {
+    button {
+        font-weight: 500;
+        border: 1px solid var(--color-black-3);
+        appearance: none;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* 주문자 정보와 동일 */
+.email_check {
+    padding-top: 12px;
+    position: relative;
+    
+    label {
+        position: absolute;
+        padding-left: 8px;
+        top: 13px;
+        
+    }
+}
+
+/* 주소를 입력하세요 */
+.inp_address {
+    width: 215px;
+    appearance: none;
+    /* width: 100%; */
+    border: 0;
+    padding: 10px 0;
+    color: #444;
+    border-bottom: 1px solid #e1e1e1;
+    outline: none; 
+}
+
+.div_inp_address {
+    margin-bottom: 10px;
+}
+.margin_address > .inp {
+    margin-bottom: 15px;
+}
+
+/* 배송 요청 사항, 배송일 선택 pad top */
+
+.acc_cell.delivery_request, .acc_cell.delivery_choice {
+    padding-top: 10px;
+}
+
+.inp_memo {
+    margin-top: 24px;
+}
+
+/* 배송일 선택 라디오 버튼 */
+
+.acc_radio {
+    display: flex;
+}
+
+/* 정상 배송, 출고일 지정 */
+.contentType {
+    color: var(--color-black-3);
+    font-weight: 500;
+}
+
+.list_dot {
+    margin-top: 24px;
+}
+
+.list_dot li {
+    position: relative;
+    margin-top: 4px;
+    padding-left: 8px;
+    font-size: 14px;
+    color: var(--color-grey-2);
+    line-height: 22px;
+}
+
+.list_dot li:before {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "·"
+}
+
+.order_left .acc_item {
+    margin-top: 40px;
+}
+
+.acc_group {
+    display: flex;
+    align-items: center;
+}
+
+/* 쿠폰 */
+
+.div_inp {
+    width: 216px;
+    height: 40.6px;
+
+    color: var(--color-grey-3);
+    background-color: var(--color-light-grey);
+    border-bottom: 1px solid #e1e1e1;
+    position: relative;
+
+    input {
+        appearance: none;
+        border: none;
+        background-color: initial;
+        padding: 10px;
+        font-weight: 700;
+    }
+}
+
+/* 원, 점 */
+.unit {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+}
+
+/* 쿠폰, 마일리지 */
+.btn_coupon, .btn_mileage {
+    margin-left: 20px;
+}
+
+/* 보유 마일리지 */
+.btn_mileage {
+    position: relative;
+    
+    .my_point {
+        position: absolute;
+        width: 100%;
+        top: 5px;
+        left: 110px;
+        font-weight: 500;
+        color: var(--color-grey-2);
+    }
+    .blue{
+        color: var(--color-blue);
+        font-weight: 700;
+    }
+}
+
+.membership_info {
+    margin-top: 16px;
+    color: var(--color-grey-3);
+}
