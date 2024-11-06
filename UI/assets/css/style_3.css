@@ -1498,13 +1498,14 @@ img {
 
 .list_dot {
     margin-top: 24px;
+    font-size: 14px;
 }
 
 .list_dot li {
     position: relative;
     margin-top: 4px;
     padding-left: 8px;
-    font-size: 14px;
+    /* font-size: 14px; */
     color: var(--color-grey-2);
     line-height: 22px;
 }
@@ -1580,3 +1581,49 @@ img {
     margin-top: 16px;
     color: var(--color-grey-3);
 }
+
+/* 결제 방법 */
+.acc_cell.payment {
+    padding-top: 10px;
+    .list_dot {
+        :nth-child(2) {
+            /* margin-top: 4px; */
+            /* padding-left: 8px; */
+            
+            /* line-height: 22px; */
+            color: rgb(231, 0, 0);
+            font-weight: 500;
+        }
+    }
+}
+
+.info_tit {
+    padding-left: 18px;
+    color: #444;
+    background: url(/assets/img/order_sheet/ic_info_tit.svg) no-repeat 0 50%;
+    background-size: 14px 14px;
+}
+
+/* 우측  payment */
+
+.payment_list_container {
+    position: sticky;
+    top: 0;
+}
+
+/* 결제 예정 금액 */
+
+.payment_list_container {
+    padding: 50px;
+}
+
+.total {
+    font-size: 24px;
+    border-bottom: 1px solid #e1e1e1;
+    padding: 50px;
+}
+
+.payment_list_detail {
+    padding: 30px;
+}
+

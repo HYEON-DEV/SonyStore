@@ -331,11 +331,11 @@
                                                 <div class="acc_inp">
                                                     <div class="acc_radio">
                                                         <div class="radio_box"> 
-                                                            <input type="radio" class="inp_radio" id="delivery_radio1" name="deliveryRadio" checked="">
+                                                            <input type="radio" class="inp_radio" id="delivery_radio1" name="deliveryRadio" value="정상 배송" checked="">
                                                             <label for="delivery_radio1" class="contentType">정상 배송</label>
                                                         </div>
                                                         <div class="radio_box">
-                                                            <input type="radio" class="inp_radio" id="delivery_radio2" name="deliveryRadio" value="specify">
+                                                            <input type="radio" class="inp_radio" id="delivery_radio2" name="deliveryRadio" value="출고일 지정">
                                                             <label for="delivery_radio2" class="contentType">출고일 지정</label>
                                                         </div>
                                                     </div>
@@ -409,67 +409,116 @@
                             </div>
 
                             <!-- 결제 방법 -->
-                            <div class="acc_item on">
-                                <div class="acc_head"><a class="acc_btn trigger" title="결제 방법 열기"><span class="acc_tit">결제
-                                            방법</span><span class="acc_arrow">상세 보기</span></a></div>
-                                <!-- 
-                                <div class="acc_inner parentNode" style="height: 0px;">
-                                    <div class="acc_box">
-                                        <div class="acc_form">
-                                            <div class="acc_cell vat"><label for="payment1">결제 수단 선택</label></div>
-                                            <div class="acc_cell vat">
-                                                <div class="acc_group parent">
-                                                    <div class="acc_radio">
-                                                        <div class="radio_box"><input type="radio" class="inp_radio" id="CREDIT_CARD"
-                                                                name="paymentType" checked=""><label for="CREDIT_CARD"
-                                                                class="contentType">신용카드</label></div>
-                                                        <div class="radio_box"><input type="radio" class="inp_radio" id="NAVER_EASY_PAY"
-                                                                name="paymentType"><label for="NAVER_EASY_PAY"
-                                                                class="contentType">네이버페이</label></div>
-                                                    </div>
-                                                    <div class="tabResult">
-                                                        <div class="result_cont radio_tab1 on"><strong class="info_tit">신용카드 무이자 할부
-                                                                유의사항</strong>
-                                                            <ul class="list_dot">
-                                                                <li style="color: rgb(231, 0, 0);">장기 무이자 혜택은 신용카드 선택 시에만 적용됩니다. 네이버페이
-                                                                    선택 시, 무이자가 적용되지 않습니다.</li>
-                                                                <li>무이자 할부 개월 수가 다른 제품을 한꺼번에 결제하면 할부 개월 수가 낮은 제품을 기준으로 할부가 됩니다.</li>
-                                                                <li>무이자 할부 개월 수가 다른 제품을 따로 결제하면 해당 제품에 적용된 무이자 할부 혜택을 받으실 수 없습니다.</li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="result_cont radio_tab3">
-                                                            <div class="check"><input type="checkbox" class="inp_check"
-                                                                    id="chk03"><label for="chk03">지금 선택한 결제수단을 다음에도 사용</label></div>
-                                                            <strong class="info_tit">신용카드 무이자 할부 유의사항</strong>
-                                                            <ul class="list_dot">
-                                                                <li style="color: rgb(231, 0, 0);">장기 무이자 혜택은 신용카드 선택 시에만 적용됩니다. 네이버페이
-                                                                    선택 시, 무이자가 적용되지 않습니다.</li>
-                                                                <li>무이자 할부 개월 수가 다른 제품을 한꺼번에 결제하면 할부 개월 수가 낮은 제품을 기준으로 할부가 됩니다.</li>
-                                                                <li>무이자 할부 개월 수가 다른 제품을 따로 결제하면 해당 제품에 적용된 무이자 할부 혜택을 받으실 수 없습니다.</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                            <div class="acc_item">
+                                <div class="acc_head">
+                                    <a class="acc_btn" title="결제 방법 열기"> 
+                                        <span class="acc_tit"> 결제 방법 </span>
+                                        <span class="acc_arrow">상세 보기</span>
+                                    </a>
+                                </div>
+                                <div class="acc_form">                                            
+                                    <div class="acc_cell vat">
+                                        <label for="payment"> 결제 수단 선택 </label>
+                                    </div>
+                                    <div class="acc_cell payment">
+                                        <div class="acc_inp">
+                                            <div class="acc_radio">
+                                                <div class="radio_box"> 
+                                                    <input type="radio" class="inp_radio" id="payment_radio1" name="paymentRadio" value="신용카드" checked />
+                                                    <label for="payment_radio1" class="contentType"> 신용카드 </label>
+                                                </div>
+                                                <div class="radio_box">
+                                                    <input type="radio" class="inp_radio" id="payment_radio2" name="paymentRadio" value="네이버페이">
+                                                    <label for="payment_radio2" class="contentType"> 네이버페이 </label>
                                                 </div>
                                             </div>
                                         </div>
+                                        <ul class="list_dot">
+                                            <strong class="info_tit">신용카드 무이자 할부 유의사항</strong>
+                                            <li>장기 무이자 혜택은 신용카드 선택 시에만 적용됩니다. 네이버페이 선택 시, 무이자가 적용되지 않습니다.</li>
+                                            <li>무이자 할부 개월 수가 다른 제품을 한꺼번에 결제하면 할부 개월 수가 낮은 제품을 기준으로 할부가 됩니다.</li>
+                                            <li>무이자 할부 개월 수가 다른 제품을 따로 결제하면 해당 제품에 적용된 무이자 할부 혜택을 받으실 수 없습니다.</li>
+                                        </ul>
                                     </div>
                                 </div>
-                                 -->
                             </div>
                         </div>
                     </div>  <!-- 주문 정보 좌측 -->
 
                     <!-- 주문 정보  "우측" -->
                     <div class="order_right">
+
+                        <div class="payment_list_container">
+                            
+                            <div class="total">
+                                <div class="total_tit"> 결제 예정 금액 </div>
+                                <div class="total_price font_32_700 text_blue_accent"> 533,900 <span>원</span> </div>
+                            </div>
+
+                            <div class="payment_list_detail">
+                                <div class="payment_list_contents">
+                                    <div class="payment_div">
+                                        <div class="payment_tit"> 주문 금액 </div>
+                                        <div class="payment_price"> 533,900 <span>원</span> </div>
+                                    </div>
+                                    <div class="payment_div">
+                                        <div class="payment_tit"> 제품 금액 </div>
+                                        <div class="payment_price"> 533,900 <span>원</span> </div>
+                                    </div>
+                                    <div class="payment_div">
+                                        <div class="payment_tit"> 구매 수량 </div>
+                                        <div class="payment_price"> 2 <span>개</span> </div>
+                                    </div>
+                                </div>
+    
+                                <div class="payment_list_contents">
+                                    <div class="payment_div">
+                                        <div class="payment_tit"> 할인 금액 </div>
+                                        <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                                        <!-- <span class="arrow_collapsible">선택됨/상세 닫기</span> -->
+                                    </div>
+                                    <div class="payment_div">
+                                        <span class="payment_tit"> 프로모션 할인 </span>
+                                        <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                                    </div>
+                                    <div class="payment_div">
+                                        <span class="payment_tit"> 쿠폰 사용 </span>
+                                        <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                                    </div>
+                                    <div class="payment_div">
+                                        <span class="payment_tit"> 마일리지 사용 </span>
+                                        <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                                    </div>
+                                </div>
+                            </div>                          
+                            
+                            <div>
+                                <div class="essential_check"> 
+                                    <input type="checkbox" class="inp_check" id="chkEssential" />
+                                    <label for="chkEssential"> [필수] 주문할 제품의 거래조건을 확인 하였으며, 구매에 동의하시겠습니까? (전자상거래법 제8조 제2항) </label> 
+                                </div>
+
+                                <div class="pay_btn_container">
+                                    <button class="button bg_black"> 결제 </button>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                    </div>
+
+
+<!-- 
+                    <div class="order_right">
                         <div class="acc acc_ui_zone">
                             <div class="payment_box">
                                 <div class="inner">
                                     <div class="payment_list">
-                                        <dl class="total">
-                                            <dt class="tit">결제 예정 금액</dt>
-                                            <dd class="price one_line_amount">533,900<span class="unit">원</span></dd>
-                                        </dl>
-                                        <!-- 
+                                        <div class="total">
+                                            <div class="tit">결제 예정 금액</div>
+                                            <div class="price">533,900 <span class="unit">원</span> </div>
+                                        </div>
+                                        
                                         <div class="order_detailbox">
                                             <div class="view_headline"><span class="view_tit">주문 금액</span><em
                                                     class="view_price"><strong>533,900</strong>원</em></div>
@@ -497,9 +546,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        -->
+                                       
                                     </div>
-
+ -->
                                     <!-- 구매 동의 -->
                                     <!-- 
                                     <div class="essential">
@@ -512,12 +561,12 @@
                                 </div>
 
                                 <!-- 우측 박스 하단 텍스트 -->
-                                
+                                <!-- 
                                 <ul class="list_dot">
                                     <li>결제가 팝업창에서 이루어집니다.</li>
                                     <li>브라우저 설정에서 팝업창 차단을 해제해 주세요.</li>
                                 </ul>
-                                
+                                 -->
                                 <!-- 
                                 <div class="mo_pay_btn" style="z-index: 901;"><button class="button button_positive button-full"
                                         type="button">총 <em>533,900</em> 원 (2개) <span>결제하기</span></button></div>
