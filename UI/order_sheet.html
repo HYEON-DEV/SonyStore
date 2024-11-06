@@ -28,30 +28,18 @@
                 <h2 class="order_box_tit font_48_700"> 주문·결제 </h2>
           
                 <!--   장바구니   주문결제   주문완료   -->
-                <!-- 
+          
                 <ul class="order_box_list">
-                    <li class="on"> 
-                        <i class="step_ico cart"></i> 
-                        <p>장바구니</p>
-                    </li>
                     <li>
-                        <i class="step_ico order"></i>
-                        <p>주문·결제</p>
+                        <i class="step_ico cart off"></i>
+                        <p class="on">장바구니</p>
+                    </li>
+                    <li class="on">
+                        <i class="step_ico order on"></i>
+                        <p class="on">주문·결제</p>
                     </li>
                     <li>
                         <i class="step_ico confirm"></i>
-                        <p>주문 완료</p>
-                    </li>
-                </ul>
-                -->
-                <ul class="order_box_list">
-                    <li class="d_type"><i class="step_ico cart"></i>
-                        <p>장바구니</p>
-                    </li>
-                    <li class="on"><i class="step_ico order"></i>
-                        <p>주문·결제</p>
-                    </li>
-                    <li><i class="step_ico confirm"></i>
                         <p>주문 완료</p>
                     </li>
                 </ul>
@@ -448,139 +436,121 @@
                     <!-- 주문 정보  "우측" -->
                     <div class="order_right">
 
-                        <div class="payment_list_container">
-                            
-                            <div class="total">
-                                <div class="total_tit"> 결제 예정 금액 </div>
-                                <div class="total_price font_32_700 text_blue_accent"> 533,900 <span>원</span> </div>
-                            </div>
+                        <div class="payment_list_wrapper">
 
-                            <div class="payment_list_detail">
-                                <div class="payment_list_contents">
-                                    <div class="payment_div">
-                                        <div class="payment_tit"> 주문 금액 </div>
-                                        <div class="payment_price"> 533,900 <span>원</span> </div>
+                            <div class="payment_list_container">
+                            
+                                <div class="total">
+                                    <div class="total_tit"> 결제 예정 금액 </div>
+                                    <div class="total_price font_32_700 text_blue_accent"> 533,900 <span>원</span> </div>
+                                </div>
+    
+                                <div class="payment_list_detail">
+    
+                                    <div class="payment_list_contents">
+                                        <div class="payment_div">
+                                            <div class="payment_tit"> 주문 금액 </div>
+                                            <div class="payment_price"> 533,900 <span>원</span> </div>
+                                        </div>
+                                        <div class="payment_div">
+                                            <div class="payment_tit"> 제품 금액 </div>
+                                            <div class="payment_price"> 533,900 <span>원</span> </div>
+                                        </div>
+                                        <div class="payment_div">
+                                            <div class="payment_tit"> 구매 수량 </div>
+                                            <div class="payment_price"> 2 <span>개</span> </div>
+                                        </div>
                                     </div>
-                                    <div class="payment_div">
-                                        <div class="payment_tit"> 제품 금액 </div>
-                                        <div class="payment_price"> 533,900 <span>원</span> </div>
+        
+                                    <div class="payment_list_contents sale">
+                                        <div class="payment_div">
+                                            <div class="payment_tit"> 할인 금액 </div>
+                                            <div class="payment_price sale"> <span>-</span> <span>0</span> <span>원</span> </div>
+                                            <!-- <span class="arrow_collapsible">선택됨/상세 닫기</span> -->
+                                        </div>
+                                        <div class="payment_div">
+                                            <span class="payment_tit"> 프로모션 할인 </span>
+                                            <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                                        </div>
+                                        <div class="payment_div">
+                                            <span class="payment_tit"> 쿠폰 사용 </span>
+                                            <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                                        </div>
+                                        <div class="payment_div">
+                                            <span class="payment_tit"> 마일리지 사용 </span>
+                                            <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                                        </div>
                                     </div>
-                                    <div class="payment_div">
-                                        <div class="payment_tit"> 구매 수량 </div>
-                                        <div class="payment_price"> 2 <span>개</span> </div>
+                                </div>                          
+                                
+                                <div class="payment_footer">
+                                    <div class="essential_check"> 
+                                        <input type="checkbox" class="inp_check" id="chkEssential" />
+                                        <label for="chkEssential"> [필수] 주문할 제품의 <br/> 거래조건을 확인 하였으며, <br/> 구매에 동의하시겠습니까?<br/> (전자상거래법 제8조 제2항) </label> 
+                                    </div>
+    
+                                    <div class="pay_btn_container">
+                                        <button class="button bg_black"> 결제 </button>
                                     </div>
                                 </div>
     
-                                <div class="payment_list_contents">
-                                    <div class="payment_div">
-                                        <div class="payment_tit"> 할인 금액 </div>
-                                        <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
-                                        <!-- <span class="arrow_collapsible">선택됨/상세 닫기</span> -->
-                                    </div>
-                                    <div class="payment_div">
-                                        <span class="payment_tit"> 프로모션 할인 </span>
-                                        <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
-                                    </div>
-                                    <div class="payment_div">
-                                        <span class="payment_tit"> 쿠폰 사용 </span>
-                                        <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
-                                    </div>
-                                    <div class="payment_div">
-                                        <span class="payment_tit"> 마일리지 사용 </span>
-                                        <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
-                                    </div>
-                                </div>
-                            </div>                          
-                            
-                            <div>
-                                <div class="essential_check"> 
-                                    <input type="checkbox" class="inp_check" id="chkEssential" />
-                                    <label for="chkEssential"> [필수] 주문할 제품의 거래조건을 확인 하였으며, 구매에 동의하시겠습니까? (전자상거래법 제8조 제2항) </label> 
-                                </div>
-
-                                <div class="pay_btn_container">
-                                    <button class="button bg_black"> 결제 </button>
-                                </div>
                             </div>
-                            
+    
+                            <!-- 구매 동의 -->
+                            <ul class="list_dot">
+                                <li>결제가 팝업창에서 이루어집니다.</li>
+                                <li>브라우저 설정에서 팝업창 차단을 해제해 주세요.</li>
+                            </ul>
+                        </div>
 
+                </div> <!-- end <div class="clearFix"> -->
+
+            </div> <!-- end <div class="container_w1200 order_page"> -->
+        </div> 
+    </div>
+
+    <div class="modal">
+        
+        <div class="layer_mask"></div>
+
+        <div class="popup">
+            <div class="popup_inner">
+                <div class="pad font_24_700 popup_tit"> 최근 배송지 </div>
+
+                <div class="pad popup_txt"> 최근에 입력하신 배송지 5개까지 노출됩니다. </div>
+
+                <div class="delivery_list">
+                    <div class="delivery_list_item">
+                        <input type="radio" checked/>
+                        <div>
+                            <p> <span class="name"> 이이름 </span> <span class="tel"> 010-0000-0000 </span> </p>
+                            <p> 서울특별시 서대문구 연희로 </p>
                         </div>
                     </div>
-
-
-<!-- 
-                    <div class="order_right">
-                        <div class="acc acc_ui_zone">
-                            <div class="payment_box">
-                                <div class="inner">
-                                    <div class="payment_list">
-                                        <div class="total">
-                                            <div class="tit">결제 예정 금액</div>
-                                            <div class="price">533,900 <span class="unit">원</span> </div>
-                                        </div>
-                                        
-                                        <div class="order_detailbox">
-                                            <div class="view_headline"><span class="view_tit">주문 금액</span><em
-                                                    class="view_price"><strong>533,900</strong>원</em></div>
-                                            <div class="view_detail"><span class="view_tit">제품 금액</span><em
-                                                    class="view_price"><strong>533,900</strong>원</em></div>
-                                            <div class="view_detail"><span class="view_tit">구매 수량</span><em
-                                                    class="view_price"><strong>2</strong>개</em></div>
-                                        </div>
-                                        <div class="saleToggle">
-                                            <div class="sale_item">
-                                                <div class="sale_head"><a href="#discount-detail" class="sale_btn" title="할인 금액 열기">
-                                                        <div class="view_headline"><span class="sale_tit">할인 금액</span><em
-                                                                class="view_price minus"><strong>-0</strong>원</em></div><span
-                                                            class="acc_arrow">상세 보기</span>
-                                                    </a></div>
-                                                <div id="discount-detail" class="sale_inner">
-                                                    <div class="sale_box">
-                                                        <div class="view_detail"><span class="sale_tit">프로모션 할인</span><em
-                                                                class="view_price"><strong>- 0</strong>원</em></div>
-                                                        <div class="view_detail"><span class="sale_tit">쿠폰 사용</span><em
-                                                                class="view_price"><strong>- 0</strong>원</em></div>
-                                                        <div class="view_detail"><span class="sale_tit">마일리지 사용</span><em
-                                                                class="view_price"><strong>- 0</strong>원</em></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                       
-                                    </div>
- -->
-                                    <!-- 구매 동의 -->
-                                    <!-- 
-                                    <div class="essential">
-                                        <div class="check"><input type="checkbox" class="inp_check" id="essential"><label
-                                                for="essential">[필수] 주문할 제품의 거래조건을 확인 하였으며, 구매에 동의하시겠습니까? (전자상거래법 제8조 제2항)</label></div>
-                                        <div class="pc_pay_btn"><button class="button button_positive button-full"
-                                                type="button">결제</button></div>
-                                    </div>
-                                    -->
-                                </div>
-
-                                <!-- 우측 박스 하단 텍스트 -->
-                                <!-- 
-                                <ul class="list_dot">
-                                    <li>결제가 팝업창에서 이루어집니다.</li>
-                                    <li>브라우저 설정에서 팝업창 차단을 해제해 주세요.</li>
-                                </ul>
-                                 -->
-                                <!-- 
-                                <div class="mo_pay_btn" style="z-index: 901;"><button class="button button_positive button-full"
-                                        type="button">총 <em>533,900</em> 원 (2개) <span>결제하기</span></button></div>
-                                -->
-                                        
-                            </div>
+                    <div class="delivery_list_item">
+                        <input type="radio"/>
+                        <div>
+                            <p> <span class="name"> 이이름 </span> <span class="tel"> 010-0000-0000 </span> </p>
+                            <p> 서울특별시 서대문구 연희로 </p>
                         </div>
-                    </div>  <!-- 주문 정보 우측 -->
-
+                    </div>
+                    
                 </div>
 
+                <div class="btn_container">
+                    <button class="button bg_black"> 확인 </button>
+                </div>
+
+                <button type="button" class="ico_x" title="팝업창 닫기">
+                    <span class="delete">팝업창 닫기</span>
+                </button>
+
             </div>
+
         </div>
+
     </div>
+    
   
     <script>
         
