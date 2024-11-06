@@ -113,6 +113,22 @@ input[type="checkbox"]:checked {
         right:0;
     }
 }
+
+
+.input_error{
+    position: absolute;
+    bottom: -20px;
+    margin-top: 5px;
+    font-size: var(--font-size-12);
+    color: #e70000;
+    line-height: 18px;
+    font-weight: 400;
+
+    img {
+        margin-right: 5px;
+    }
+}
+
 /* mainpage */ 
 
 /*body*/
@@ -872,6 +888,64 @@ input[type="checkbox"]:checked {
         margin-top: 65px;
     }
 }
+
+.input_half {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input_title {
+    font-size: 18px;
+    color: #888;
+    font-weight: 400;
+}
+
+.gender_box {
+    display: flex;
+    margin-top: 25px;
+    position: relative;
+    display:flex;
+
+    appearance: none;
+    width: 100%;
+    border: 0;
+    padding: 28px 0 20px;
+    font-size: 18px;
+    color: var(--color-black-3);
+    font-weight: 700;
+    transition: all .15s ease;
+    border-bottom: 1px solid #e1e1e1;
+    outline: none;
+
+    .radio_box {
+        display: flex;
+        margin-left: 24px;
+
+        .radio_label {
+            font-size:var(--font-size-14);
+            margin-left: 8px;
+            font-weight: 500;
+        }
+    }
+}
+
+[type="radio"] {
+    appearance: none;
+    border: 1px solid var(--color-silver);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+  }
+  
+  [type="radio"]:checked {
+    border: 6px solid var(--color-black-3);
+  }
+  
+  [type="radio"]:focus-visible {
+    outline-offset: max(2px, 0.1em);
+    outline: max(2px, 0.1em) dotted var(--color-black-3);
+  }
 
 /* sign_up_input end*/
 

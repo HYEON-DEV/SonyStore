@@ -141,10 +141,16 @@
 }
 
 .input_label {
+    margin-top: 25px;
     position: relative;
     font-size: 14px;
     color: var(--color-silver);
     display:flex;
+    flex-direction: column;
+
+    &:nth-child(1) {
+        margin-top: 0;
+    }
 }
 
 .input_label:focus-within {
@@ -221,7 +227,7 @@
             <label for="userName" class="input_label">
                 <input type="text" class="input_box" placeholder="" />
                 <div class="input_focus_line">
-                    <span class="placeholder">이름<span class="placeholder_hide">( 띄어쓰기 없이 입력하세요. )</span>
+                    <span class="placeholder">이름<span class="placeholder_hide">( 띄어쓰기 없이 입력하세요. )</span></span>
                 </div>
             </label>
         </form>

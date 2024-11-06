@@ -46,15 +46,15 @@
                     <label for="userName" class="input_label">
                         <input type="text" class="input_box" />
                         <div class="input_focus_line">
-                            <span class="placeholder">이름<span class="placeholder_hide">(띄어쓰기 없이 입력하세요.)</span>
+                            <span class="placeholder">이름<span class="placeholder_hide">(띄어쓰기 없이 입력하세요.)</span></span>
                         </div>
                     </label>
                     
-                    <div class="input_button_set">
-                        <label for="phoneNumber" class="input_label" style="margin-top:15px; width: 442px;">
+                    <div class="input_button_set"  style="margin-top: 25px;">
+                        <label for="phoneNumber" class="input_label" style="width: 442px;">
                             <input type="text" class="input_box" />
                             <div class="input_focus_line">
-                                <span class="placeholder">휴대폰 번호<span class="placeholder_hide">(-없이 입력하세요.)</span>
+                                <span class="placeholder">휴대폰 번호<span class="placeholder_hide">(-없이 입력하세요.)</span></span>
                             </div>
                         </label>
                         <div class="btn_box" style="margin-left:15px;">
@@ -71,18 +71,19 @@
 
             <div id="find_pw" class="tab_page">
                 <form action="#">
-                    <label for="userName" class="input_label">
+                    <label for="userEmail" class="input_label">
                         <input type="text" class="input_box" />
                         <div class="input_focus_line">
-                            <span class="placeholder">이메일 아이디<span class="placeholder_hide">(예:sony@sony.co.kr)</span>
+                            <span class="placeholder">이메일 아이디<span class="placeholder_hide"> (예:sony@sony.co.kr)</span></span>
                         </div>
+                        <span class="input_error"><img src="assets/img/input_error_red.svg" alt="input_error_icon">이메일 아이디를 입력해주세요.</span>
                     </label>
                     
-                    <div class="input_button_set">
-                        <label for="phoneNumber" class="input_label" style="margin-top:15px; width: 442px;">
+                    <div class="input_button_set" style="margin-top: 25px;">
+                        <label for="phoneNumber" class="input_label" style="width: 442px;">
                             <input type="text" class="input_box" />
                             <div class="input_focus_line">
-                                <span class="placeholder">휴대폰 번호<span class="placeholder_hide">(-없이 입력하세요.)</span>
+                                <span class="placeholder">휴대폰 번호<span class="placeholder_hide">(-없이 입력하세요.)</span></span>
                             </div>
                         </label>
                         <div class="btn_box" style="margin-left:15px;">
@@ -128,6 +129,38 @@
                 document.querySelector(href).classList.add('tab_page_active');
         });
     });
+
+      /* placeholder event */
+      const input = document.querySelectorAll('.input_box');
+        const placeholders = document.querySelectorAll('.placeholder');
+
+        input.forEach((v, i) => {
+            const placeholder = placeholders[i]; // 각 v에 대응되는 placeholder 요소를 찾음
+
+            // input에 focus가 있을 때 placeholder 스타일 변경
+            v.addEventListener('focus', () => {
+                placeholder.classList.add('placeholder_focused');
+            });
+
+            // input에서 focus가 사라질 때
+            v.addEventListener('blur', () => {
+                placeholder.classList.remove('placeholder_focused');
+
+                // 값이 있다면 placeholder_focused 숨김 방지
+                if (v.value) {
+                    placeholder.classList.add('placeholder_focused');
+                } else {
+                    placeholder.classList.remove('placeholder_focused');
+                }
+            });
+
+            // 페이지 로드시, input에 값이 있으면 placeholder 숨김 방지
+            if (v.value) {
+                placeholder.classList.add('placeholder_focused');
+            }
+        });
+
+        /* placeholder event end */
     </script>
 </body>
 </html>
