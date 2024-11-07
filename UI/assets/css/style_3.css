@@ -56,8 +56,14 @@ img {
     &:hover { background-color: var(--color-light-grey-3); }
 }
 
-/* 화살표 */
+/* collapsible arrow 화살표 */
 /* 부모 포지션 relative 설정 !!! */
+/* .delivery_request {
+    position: relative;
+} */
+.arrow_collapsible_parent {
+    position: relative;
+}
 .arrow_collapsible {
     display: inline-block;
     text-indent: -9999px;
@@ -1514,6 +1520,36 @@ img {
 
 .acc_cell.delivery_request, .acc_cell.delivery_choice {
     padding-top: 10px;
+}
+
+.select_inner.delivery {
+    display: none;
+    position: relative;
+    
+
+    .select_opt {
+        position: absolute;
+        margin-top: 10px;
+        background-color: #fbfbfb;
+        border: 1px solid #ddd;
+        z-index: 100;
+        
+        li {
+            padding: 5px 10px;
+
+            &:first-child {
+                margin-top: 5px;
+            }
+            &:last-child {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+.selected_btn_wrap delivery {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
 }
 
 .inp_memo {

@@ -105,7 +105,7 @@
                                     <div class="prd">
                                         <!-- 선택 -->
                                         <div class="check">
-                                            <input type="checkbox" class="inp_check" checked />
+                                            <input type="checkbox" class="inp_check check_only" checked />
                                         </div>
                                         <!-- 썸네일 -->
                                         <div class="prd_thumb">
@@ -157,7 +157,7 @@
                                     <div class="prd">
                                         <!-- 선택 -->
                                         <div class="check">
-                                            <input type="checkbox" class="inp_check" checked />
+                                            <input type="checkbox" class="inp_check check_only" checked />
                                         </div>
                                         <!-- 썸네일 -->
                                         <div class="prd_thumb">
@@ -209,7 +209,7 @@
                                     <div class="prd">
                                         <!-- 선택 -->
                                         <div class="check">
-                                            <input type="checkbox" class="inp_check" checked />
+                                            <input type="checkbox" class="inp_check check_only" checked />
                                         </div>
                                         <!-- 썸네일 -->
                                         <div class="prd_thumb">
@@ -319,69 +319,33 @@
     </div>
   
     <script>
-        // checkbox 체크 제어
 
-        /* 
-        document.querySelectorAll('.inp_check').forEach( (v,i) => {
-            v.addEventListener( 'click', e => {
-                const checkAll = document.querySelector('.check_all');
-                const current = e.currentTarget;
+        /* = = = = = checkbox 전체 체크 제어 = = = = = */
+        
+        const checkAll = document.querySelector('.check_all');
 
-                if ( checkAll.checked === true ) {
-                    current.checked = true;
-                }
-
-                if ( current.checked === false ) {
-                    checkAll.checked = false;
-                }
-            } );
-        } );
-        */
-/* 
-        document.querySelector('#checkAll');
- 
-        checkAll.addEventListener('click', function(){
-        
-            const isChecked = checkAll.checked;
-        
-            if(isChecked){
-                const checkboxes = document.querySelectorAll('.chk');
-        
-                for(const checkbox of checkboxes){
-                    checkbox.checked = true;
-                }
-            }
-        
-            else{
-                const checkboxes = document.querySelectorAll('.chk');
-                for(const checkbox of checkboxes){
-                    checkbox.checked = false;
-                }
-            }
-        })
-        
-        
-        const checkboxes = document.querySelectorAll('.chk');
-        for(const checkbox of checkboxes){
-            checkbox.addEventListener('click',function(){
-                
-                const totalCnt = checkboxes.length;
+        checkAll.addEventListener('click', e => {
             
-                const checkedCnt = document.querySelectorAll('.chk:checked').length;
-                
-                if(totalCnt == checkedCnt){
-                    document.querySelector('#checkAll').checked = true;
-                }
-                else{
-                    document.querySelector('#checkAll').checked = false;
-                }
-                
+            document.querySelectorAll('.check_only').forEach(v => {
+                v.checked = checkAll.checked;
             });
-            
-        }
- */
 
-        // collapsible 하단
+        });
+        
+        const checkboxes = document.querySelectorAll('.check_only');
+        
+        checkboxes.forEach( (v,i) => {
+            v.addEventListener( 'click', e => {
+                const totalCnt = checkboxes.length;
+                const checkedCnt = document.querySelectorAll('.check_only:checked').length;
+                
+                checkAll.checked = (totalCnt == checkedCnt) ? true : false;
+            } );
+        } ); 
+
+
+        /* = = = = = collapsible 하단 = = = = = */
+
         document.querySelectorAll('.acc_item').forEach( (v,i) => {
             v.addEventListener( 'click', e => {
                 const current = e.currentTarget;
@@ -396,9 +360,9 @@
                 }
             });
         } );
+
     </script>
     
-
 </body>
 
 </html>
