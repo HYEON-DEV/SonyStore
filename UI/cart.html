@@ -23,7 +23,7 @@
 <body>
     <div class="app">
         <div class="wrapper">
-            <div class="container_w1200 order_page">
+            <div class="container_w1200 order_page cart">
 
                 <h2 class="order_box_tit font_48_700"> 장바구니 </h2>
           
@@ -64,7 +64,7 @@
                     <!-- 전체 체크박스 -->
                     <div class="cart_func_check">
                         <div class="check">
-                            <input type="checkbox" class="inp_check check_all" id="check_cart_items" name="check_cart_item" />
+                            <input type="checkbox" class="inp_check check_all" id="check_cart_items" checked />
                             <label for="check_cart_items" class="check_all_txt"> 전체 </label>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                                     <div class="prd">
                                         <!-- 선택 -->
                                         <div class="check">
-                                            <input type="checkbox" class="inp_check" name="check_cart_item">
+                                            <input type="checkbox" class="inp_check" checked />
                                         </div>
                                         <!-- 썸네일 -->
                                         <div class="prd_thumb">
@@ -157,7 +157,7 @@
                                     <div class="prd">
                                         <!-- 선택 -->
                                         <div class="check">
-                                            <input type="checkbox" class="inp_check" name="check_cart_item">
+                                            <input type="checkbox" class="inp_check" checked />
                                         </div>
                                         <!-- 썸네일 -->
                                         <div class="prd_thumb">
@@ -209,7 +209,7 @@
                                     <div class="prd">
                                         <!-- 선택 -->
                                         <div class="check">
-                                            <input type="checkbox" class="inp_check" name="check_cart_item">
+                                            <input type="checkbox" class="inp_check" checked />
                                         </div>
                                         <!-- 썸네일 -->
                                         <div class="prd_thumb">
@@ -319,6 +319,69 @@
     </div>
   
     <script>
+        // checkbox 체크 제어
+
+        /* 
+        document.querySelectorAll('.inp_check').forEach( (v,i) => {
+            v.addEventListener( 'click', e => {
+                const checkAll = document.querySelector('.check_all');
+                const current = e.currentTarget;
+
+                if ( checkAll.checked === true ) {
+                    current.checked = true;
+                }
+
+                if ( current.checked === false ) {
+                    checkAll.checked = false;
+                }
+            } );
+        } );
+        */
+/* 
+        document.querySelector('#checkAll');
+ 
+        checkAll.addEventListener('click', function(){
+        
+            const isChecked = checkAll.checked;
+        
+            if(isChecked){
+                const checkboxes = document.querySelectorAll('.chk');
+        
+                for(const checkbox of checkboxes){
+                    checkbox.checked = true;
+                }
+            }
+        
+            else{
+                const checkboxes = document.querySelectorAll('.chk');
+                for(const checkbox of checkboxes){
+                    checkbox.checked = false;
+                }
+            }
+        })
+        
+        
+        const checkboxes = document.querySelectorAll('.chk');
+        for(const checkbox of checkboxes){
+            checkbox.addEventListener('click',function(){
+                
+                const totalCnt = checkboxes.length;
+            
+                const checkedCnt = document.querySelectorAll('.chk:checked').length;
+                
+                if(totalCnt == checkedCnt){
+                    document.querySelector('#checkAll').checked = true;
+                }
+                else{
+                    document.querySelector('#checkAll').checked = false;
+                }
+                
+            });
+            
+        }
+ */
+
+        // collapsible 하단
         document.querySelectorAll('.acc_item').forEach( (v,i) => {
             v.addEventListener( 'click', e => {
                 const current = e.currentTarget;

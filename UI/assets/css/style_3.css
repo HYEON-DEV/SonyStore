@@ -12,6 +12,11 @@ a, button {
     cursor: pointer;
 }
 
+
+.not_allowed {
+    cursor: not-allowed;
+}
+
 .app {
     background-color: var(--color-black);
 }
@@ -52,12 +57,12 @@ img {
 }
 
 /* 화살표 */
-
+/* 부모 포지션 relative 설정 !!! */
 .arrow_collapsible {
     display: inline-block;
     text-indent: -9999px;
 }
-.arrow_collapsible:after,.arrow_collapsible:before {
+.arrow_collapsible:after, .arrow_collapsible:before {
     display: block;
     position: absolute;
     top: 50%;
@@ -954,19 +959,21 @@ img {
     display: block;
     width: 80px;
     height: 80px;
+
+    &.cart {
+        background-image: url(/assets/img/ic_cart_step1_off.svg);   
+        &.on { background-image: url(/assets/img/ic_cart_step1_on.svg); } 
+    }
+    &.order {
+        background-image: url(/assets/img/ic_cart_step2_off.svg);   
+        &.on { background-image: url(/assets/img/ic_cart_step2_on.svg); } 
+    }
+    &.confirm {
+        background-image: url(/assets/img/ic_cart_step3_off.svg);   
+        &.on { background-image: url(/assets/img/ic_cart_step3_on.svg); } 
+    }
 }
-.cart {
-    background-image: url(/assets/img/ic_cart_step1_off.svg);   
-    &.on { background-image: url(/assets/img/ic_cart_step1_on.svg); } 
-}
-.order {
-    background-image: url(/assets/img/ic_cart_step2_off.svg);   
-    &.on { background-image: url(/assets/img/ic_cart_step2_on.svg); } 
-}
-.confirm {
-    background-image: url(/assets/img/ic_cart_step3_off.svg);   
-    &.on { background-image: url(/assets/img/ic_cart_step3_on.svg); } 
-}
+
 
 /* 아이콘 뒤 라인 */
 
@@ -1041,13 +1048,18 @@ img {
     margin: -1px;
     appearance: none;
     clip: rect(0,0,0,0);
-    /* background: url(/assets/img/cart/check_box.png) 50% 50%; */
+    
     display: inline-block;
     width: 16px;
     height: 16px;
     background-size: cover;
     border: 1px solid var(--color-black-3);
     vertical-align: middle;
+
+    &:checked {
+        background: url(/assets/img/cart/check_box.png) 50% 50%;
+    }
+    
 }
 
 .check_all_txt {
@@ -1281,7 +1293,7 @@ img {
 
 .clearFix {
     display: flex;
-    margin-top: 60px;
+    margin-top: 70px;
 }
 .order_left {
     width: 70%;
@@ -1289,6 +1301,7 @@ img {
 }
 .order_right {
     width: 30%;
+    padding-top: 30px;
 }
 
 /* 주문 정보 좌측 */
@@ -1304,12 +1317,18 @@ img {
     .acc_head {
         padding-bottom: 24px;
         border-bottom: 2px solid var(--color-black-3);
+        cursor: pointer;
     }
 
     .acc_tit {
         font-size: 24px;
         font-weight: 700;
         
+    }
+
+    /* arrow collapsible 부모 position 설정 */
+    .acc_head {
+        position: relative;
     }
 } 
 
@@ -1421,6 +1440,10 @@ img {
 
 .acc_cell.txt_btn {
     margin-top: 3px;
+
+    p { 
+        color: #666;
+     }
 }
 
 /* 배송지 선택, 최근 배송지 */
@@ -1439,7 +1462,7 @@ img {
     height: 32px;
 }
 
-.order_page {
+.order_page.order_sheet {
     button {
         font-weight: 500;
         border: 1px solid var(--color-black-3);
@@ -1477,9 +1500,15 @@ img {
 .div_inp_address {
     margin-bottom: 10px;
 }
-.margin_address > .inp {
-    margin-bottom: 15px;
+.margin_address {
+    > .inp {
+        margin-bottom: 15px;
+    }
+    > .focus_bg {
+        margin-top: -13px;
+    }
 }
+
 
 /* 배송 요청 사항, 배송일 선택 pad top */
 
@@ -1495,6 +1524,10 @@ img {
 
 .acc_radio {
     display: flex;
+    
+    >:last-child {
+        margin-left: 20px;
+    }
 }
 
 /* 정상 배송, 출고일 지정 */
@@ -1503,8 +1536,21 @@ img {
     font-weight: 500;
 }
 
+/* 출고일 지정 input date */
+.acc_cell.delivery_choice {
+    >:nth-child(2), >:nth-child(3) {
+        margin-top: 24px;
+    }
+}
+.forwarding_date {
+    /* display: none; */
+    width: 170px;
+    input {
+        width: 100%;
+    }
+}
+
 .list_dot {
-    margin-top: 24px;
     font-size: 14px;
 }
 
@@ -1592,12 +1638,11 @@ img {
 /* 결제 방법 */
 .acc_cell.payment {
     padding-top: 10px;
+
     .list_dot {
+        margin-top: 24px;
+
         :nth-child(2) {
-            /* margin-top: 4px; */
-            /* padding-left: 8px; */
-            
-            /* line-height: 22px; */
             color: rgb(231, 0, 0);
             font-weight: 500;
         }

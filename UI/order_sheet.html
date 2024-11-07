@@ -23,7 +23,7 @@
 <body>
     <div class="app">
         <div class="wrapper">
-            <div class="container_w1200 order_page">
+            <div class="container_w1200 order_page order_sheet">
 
                 <h2 class="order_box_tit font_48_700"> 주문·결제 </h2>
           
@@ -143,11 +143,11 @@
                         <div class="acc acc_ui_zone_order_sheet">
 
                             <!-- 주문자 정보 -->
-                            <div class="acc_item">
+                            <div class="acc_item arrow_collapsible_parent active">
                                 <div class="acc_head">
                                     <a class="acc_btn" title="주문자 정보 열기"> 
                                         <span class="acc_tit"> 주문자 정보 </span>
-                                        <span class="acc_arrow"> 상세 보기 </span>
+                                        <span class="arrow_collapsible"> 상세 보기 </span>
                                     </a>
                                 </div>
                                 <div class="acc_inner_order">
@@ -194,11 +194,11 @@
                             </div>
 
                             <!-- 배송지 정보 -->
-                            <div class="acc_item on">
+                            <div class="acc_item arrow_collapsible_parent on active">
                                 <div class="acc_head">
                                     <a class="acc_btn trigger" title="배송지 정보 열기">
                                         <span class="acc_tit"> 배송지 정보 </span> 
-                                        <span class="acc_arrow">상세 보기</span>
+                                        <span class="arrow_collapsible">상세 보기</span>
                                     </a>
                                 </div>
                                 <div class="acc_inner_order">
@@ -253,15 +253,15 @@
                                             </div>
                                             <div class="acc_cell txt_btn">
                                                 <div class="acc_inp txt_btn div_inp_address">
-                                                    <input type="text" class="inp inp_address" id="user_address" name="receiverZipCd" placeholder="주소를 입력하세요." readonly>
-                                                    <div class="delivery_btn_box btn_box"> 
-                                                        <button class="button popup_comm_btn bg_white" type="button" data-popup-name="shipping_addr"> 우편번호 검색 </button>
+                                                    <input type="text" class="inp inp_address not_allowed" id="postcode" name="receiverZipCd" placeholder="주소를 입력하세요." readonly />
+                                                    <div class="delivery_btn_box btn_box">  
+                                                        <button class="button popup_comm_btn bg_white" type="button" id="find-postcode" data-popup-name="shipping_addr"> 우편번호 검색 </button>
                                                     </div>
                                                 </div>
 
                                                 <div class="acc_inp margin_address">
-                                                    <input type="text" class="inp" id="user_address" name="receiverAddress" readonly>
-                                                    <input type="text" class="inp" name="receiverDetailAddress" placeholder="상세 주소를 입력하세요.">
+                                                    <input type="text" class="inp not_allowed" id="addr1" name="receiverAddress" readonly>
+                                                    <input type="text" id="addr2" class="inp" name="receiverDetailAddress" placeholder="상세 주소를 입력하세요.">
                                                     <span class="focus_bg"></span>
                                                 </div>
                                             </div>
@@ -328,7 +328,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <ul class="list_dot">
+                                                <div class="forwarding_date">
+                                                    <input type="date" id="forwarding_date" value="2024-11-07" />
+                                                </div>
+                                                <ul class="list_dot on">
                                                     <li>정상 배송이 제일 빠른 배송입니다.</li>
                                                     <li>출고일 지정 배송의 경우 주문 날짜의 3일 후부터 선택이 가능하며,<br>지정된 출고일에 맞춰서 제품이 발송되고, 출고일 기준 2~3일 이내 수령이 가능합니다.</li>
                                                     <li>소니스토어의 모든 제품은 무료 배송 입니다.</li>
@@ -344,11 +347,11 @@
                             </div>
 
                             <!-- 할인 정보 -->
-                            <div class="acc_item">
+                            <div class="acc_item arrow_collapsible_parent active">
                                 <div class="acc_head">
                                     <a class="acc_btn" title="할인 정보 열기"> 
                                         <span class="acc_tit">할인 정보</span>
-                                        <span class="acc_arrow">상세 보기</span>
+                                        <span class="arrow_collapsible">상세 보기</span>
                                     </a>
                                 </div>
                                 
@@ -397,14 +400,14 @@
                             </div>
 
                             <!-- 결제 방법 -->
-                            <div class="acc_item">
+                            <div class="acc_item arrow_collapsible_parent active">  
                                 <div class="acc_head">
                                     <a class="acc_btn" title="결제 방법 열기"> 
                                         <span class="acc_tit"> 결제 방법 </span>
-                                        <span class="acc_arrow">상세 보기</span>
+                                        <span class="arrow_collapsible">상세 보기</span>
                                     </a>
                                 </div>
-                                <div class="acc_form">                                            
+                                <div class="acc_form acc_inner_order">                                            
                                     <div class="acc_cell vat">
                                         <label for="payment"> 결제 수단 선택 </label>
                                     </div>
@@ -552,8 +555,32 @@
     </div>
     
   
+    <script src="/assets/js/UtilHelper.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
     <script>
-        
+        // 우편번호
+        document.querySelector('#find-postcode').addEventListener('click', e => {
+            e.preventDefault();
+            utilHelper.findPostCode();
+        });
+
+        // collapsible 주문자 정보, 배송지 정보, 할인 정보
+        document.querySelectorAll('.acc_item').forEach( (v,i) => {
+            v.addEventListener( 'click', e => {
+                const current = e.currentTarget;
+                current.classList.toggle('active');
+
+                const content = current.querySelector('.acc_inner_order');
+                
+                if (current.classList.contains('active')) {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+        } );
     </script>
 </body>
 
