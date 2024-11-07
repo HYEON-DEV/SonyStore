@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원정보 수정</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"/>
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/css/style_1.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.css" />
+    <link rel="icon" href="assets/img/favicon_144x144.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css" />
+
+</head>    
+<body>
+    <script src="./assets/js/loadHTML.js"></script>
+    <script>loadHTML("./header.html");</script>
+
+    <div class="container_w1600">
+        <div class="member_modify_container">
+            <h2 class="h2_title font_20_500 flex_center"><i class="fas fa-angle-left"></i>마이페이지</h2>
+            <h2 class="h2_title font_48_700">회원정보</h2>
+            
+            <div class="flex_end_box">
+                <a href="#" class="white_button">회원탈퇴</a>
+            </div>
+
+            <div class="hr_black"></div>
+
+            <div class="member_text_box">
+                <div class="member_title_box"><label for="#" class="member_title">이름</label></div>
+                <input type="text" class="input_box member_input_box" value="박진수" style="width: 402px;" disabled />
+                <div class="member_button_box">
+                    <button id="changeName" class="large_white_button pointer">이름변경</button>
+                </div>
+                <span class="member_caution">※ 개명(이름 변경)한 경우 ‘이름 변경’ 버튼을 눌러주세요.</span>
+            </div>
+
+            <div class="member_text_box">
+                <div class="member_title_box"><label for="#" class="member_title">휴대폰</label></div>
+                <input type="text" class="input_box member_input_box" value="010-3306-4205" style="width: 402px;" disabled />
+                <div class="member_button_box">
+                    <button class="large_white_button pointer">인증번호 전송</button>
+                </div>
+            </div>
+
+            <div class="member_text_box">
+                <div class="member_title_box"><label for="#" class="member_title">이메일 아이디</label></div>
+                <input type="text" class="input_box member_input_box" value="jinsu4205@gmail.com" disabled />
+            </div>
+
+            <div class="member_text_box">
+                <div class="member_title_box"><label for="#" class="member_title">생년월일</label></div>
+                <input type="text" class="input_box member_input_box" value="1996-09-05" disabled />
+            </div>
+
+            <div class="member_text_box">
+                <div class="member_title_box"><label for="#" class="member_title">성별</label></div>
+                <input type="text" class="input_box member_input_box" value="남" disabled />
+            </div>
+
+            <div class="member_text_box">
+                <div class="member_title_box"><label for="#" class="member_title">회원구분</label></div>
+                <img src="assets/img/membership_family.ea303a8f.svg" alt="멤버쉽 아이콘" /><input type="text" class="input_box member_input_box" value="MEMBERSHIP" disabled />
+            </div>
+
+            <div class="member_text_box">
+                <div class="member_title_box"><label for="#" class="member_title">비밀번호</label></div>
+                <input type="password" class="input_box member_input_box" value="123412345" style="width: 402px;" disabled />
+                <div class="member_button_box">
+                    <button class="large_white_button pointer">비밀번호 변경</button>
+                </div>
+                <span class="member_caution_blue">SNS 계정으로 가입하신 회원님은 각 SNS 페이지에서 수정 및 변경하시기 바랍니다.</span>
+            </div>
+
+            <div class="member_text_box">
+                <div class="member_title_box"><label for="#" class="member_title">주소</label></div>
+                <div class="memebr_address_box">
+                    <div class="address_input_button">
+                        <input type="text" class="input_box member_input_box" value="" style="width: 402px;" disabled />
+                        <div class="member_button_box">
+                            <button class="large_white_button pointer">주소 변경</button>
+                        </div>
+                    </div>
+                    <input type="text" class="input_box member_input_box" value="" disabled />
+                    <input type="text" class="input_box member_input_box" value="" disabled />
+                </div>
+                
+                <span class="member_caution">※ 주소는 사은품 및 기타 서비스를 제공받으실 때, 꼭 필요한 부분이므로 정확히 기입해 주시기 바랍니다.</span>
+            </div>
+
+            <div class="member_text_box">
+                <div class="member_title_box"><label for="#" class="member_title">이벤트/프로모션 알림</label></div>
+                <!-- <input type="text" class="input_box member_input_box" value="" disabled /> -->
+                <div class="sns_receive_agree">
+                    <div class="all_agree" style="margin-top:0px;">
+                        <span class="all_agree_text">메일 수신</span>
+                        <label class="switch">
+                            <input type="checkbox" class="input_box member_input_box" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="all_agree" style="margin-top:0px;">
+                        <span class="all_agree_text">SNS 수신</span>
+                        <label class="switch">
+                            <input type="checkbox" class="input_box member_input_box" />
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="black_button">회원정보 수정</button>
+        </div>
+    </div>   
+</body>
+
+    <script>loadHTML("./footer.html");</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.all.min.js"></script>
+    <script src="./assets/js/common.js"></script>
+   
+    <script>
+        /* sweetalert2 */
+        document.querySelector("#changeName").addEventListener('click', e => {
+            new Swal({
+                title: '<span class="alert_title">개명 회원 본인 확인</span>',
+                html:   '<label for="" class="input_label">' +
+                        '<input type="text" class="input_box" placeholder="이름" />' +
+                        '<div class="input_focus_line"></div>' +
+                        '</label>' +
+                        '<div class="input_button_set"  style="margin-top: 25px;">' +
+                        '<label for="phoneNumber" class="input_label" style="width: 100%">' +
+                        '<input type="text" class="input_box" placeholder="휴대폰 번호"/>' +
+                        '<div class="input_focus_line"></div>' +
+                        '</label>' +
+                        '<div class="btn_box" style="margin-left:15px;">' +
+                        '<div class="btn_blue flex_center">인증번호</div>' +
+                        '</div>' +
+                        '</div>',
+                showCloseButton: true, // 오른쪽 상단 x 버튼 
+                confirmButtonColor: '#000',
+                confirmButtonText: '확인',
+                width: '486px',
+                padding: '16px 0 34px 0',
+            });
+        });
+        /* sweetalert2 end */
+    </script>
+</body>
+</html>

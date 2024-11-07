@@ -43,7 +43,6 @@ goTop.addEventListener("click", () => {
 1) class가 secondary_menu_list인 5개를 배열로 secondaryList라는 변수에 담음
 2) 1번째 depth에 마우스 올라갔을 때 2번째 depth의 ul의 배경색이 바뀌어야함
 3) 2번째 depth에 마우스 올라갔을 때 1번째 depth에 border-bottom과 color가 바뀌어야함
-4) 1번째 depth와 2번째 depth의 ul은 아빠의 사촌의 아들급인 6촌 관계임 (css hover로 상대방 제어 불가)
 5) 1번째 depth의 a태그와 2번째 depth는 ul태그 마다 for문으로 이벤트를 거는 함수를 만듦
 6) 1_depth a 와 2_depth ul은 배열의 길이가 같음
 7) 이벤트 발생지점은 i번째 요소임

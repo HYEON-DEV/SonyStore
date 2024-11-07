@@ -99,6 +99,11 @@
     margin: 80px auto 0;
 }
 
+.container_w1600 {
+    margin-top: 80px;
+    width: 1600px;
+}
+
 .pd-90-160 {
     padding: 90px 0 160px 0;
 }
@@ -151,6 +156,10 @@
     &:nth-child(1) {
         margin-top: 0;
     }
+}
+
+.input_box:focus {
+    outline: none;
 }
 
 .input_label:focus-within {
