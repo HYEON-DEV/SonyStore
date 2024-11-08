@@ -917,7 +917,7 @@ img {
 /* = = = = = = = = = = cart.html - 장바구니 페이지 = = = = = = = = = = */
 
 /* 헤더, 푸터 영역 상하 패딩 */
-.order_page {
+.page_top_btm_pad {
     padding: 120px 0;
 }
 
@@ -1273,7 +1273,7 @@ img {
 }
 
 
-/* = = = = = = = = = = order_cheet.html - 주문·결제 페이지 = = = = = = = = = = */
+/* = = = = = = = = = = order_sheet.html - 주문·결제 페이지 = = = = = = = = = = */
 
 /* 테이블 상단 여백 */
 .order_sheet_list {
@@ -1468,7 +1468,7 @@ img {
     height: 32px;
 }
 
-.order_page.order_sheet {
+.page_top_btm_pad.order_sheet {
     button {
         font-weight: 500;
         border: 1px solid var(--color-black-3);
@@ -1896,3 +1896,55 @@ img {
         }
     }
 }
+
+
+/* = = = = = = = = = = order_complete.html - 주문 완료 페이지 = = = = = = = = = = */
+
+.order_complete {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 32px;
+    padding-top: 200px;
+    
+    > * {
+        padding: 8px 0;    
+    }
+
+    >:nth-child(2) {
+        margin-top: 20px;
+    }
+}
+
+/* 주문번호 */
+.order_num_container {
+    font-size: 24px;
+    padding: 30px 70px;
+    margin: 20px;
+    background-color: var(--color-light-grey);
+
+    .order_num {
+        font-weight: 700;
+        padding-left: 20px;
+    }
+
+}
+
+.explain {
+    font-size: 13px;
+}
+
+/* 버튼 flex */
+
+.order_complete {
+
+    .btn_container {
+        display: flex;
+
+        .btn_wrap {
+            padding: 0 2px;
+        }
+    }
+
+}
+
