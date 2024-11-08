@@ -102,12 +102,16 @@
 .container_w1600 {
     margin-top: 80px;
     width: 1600px;
+    margin: 80px auto 0;
 }
 
 .pd-90-160 {
     padding: 90px 0 160px 0;
 }
 
+.none_select {
+    user-select: none;
+}
 
 .black_button {
     background-color: var(--color-black-3);
@@ -136,6 +140,11 @@
     border-bottom: 1px solid #e1e1e1;
     outline: none;
 }
+
+input::placeholder {
+    color: var(--color-silver);
+    font-weight: 400;
+}
     
 .placeholder {
     font-size: 18px;
@@ -152,6 +161,7 @@
     color: var(--color-silver);
     display:flex;
     flex-direction: column;
+    outline: none;
 
     &:nth-child(1) {
         margin-top: 0;
