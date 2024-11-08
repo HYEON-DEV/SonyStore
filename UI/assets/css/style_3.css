@@ -1948,3 +1948,66 @@ img {
 
 }
 
+
+/* = = = = = = = = = = order_list.html - 주문/배송 조회 페이지 = = = = = = = = = = */
+
+/* 진행 중인 주문 */
+
+.order_step_container {
+    background-color: var(--color-light-blue);
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+
+    li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 40px;
+
+        > * {
+            margin: 5px 0;
+        }
+    }
+}
+
+
+
+.order_step_container {
+
+    .icon_container {
+        border-radius: 50%;
+        background-color: var(--color-white);
+        width: 64px;
+        height: 64px;
+    }
+
+    .ico_order_step {
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        
+        /* background: url(/assets/img/ico_order_step_1_off.svg) no-repeat 50% 50%; */
+    }
+    li:nth-child(1) .ico_order_step{
+        background: url(/assets/img/ico_order_step_1_off.svg) no-repeat 50% 50%;    
+    }
+    li:nth-child(2) .ico_order_step{
+        background: url(/assets/img/ico_order_step_2_off.svg) no-repeat 50% 50%;    
+    }
+    li:nth-child(3) .ico_order_step{
+        background: url(/assets/img/ico_order_step_3_off.svg) no-repeat 50% 50%;    
+    }
+    li:nth-child(4) .ico_order_step{
+        background: url(/assets/img/ico_order_step_4_off.svg) no-repeat 50% 50%;    
+    }
+    li:nth-child(5) .ico_order_step{
+        background: url(/assets/img/ico_order_step_5_off.svg) no-repeat 50% 50%;    
+    }
+
+   .order_step_cnt {
+        font-weight: 700;
+   }
+    
+}
