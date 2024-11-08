@@ -2,7 +2,7 @@ a {
   text-decoration: none;
 }
 body {
-  /* background-color: black; */
+  background-color: black;
 }
 .main {
   background-color: white;
@@ -1073,4 +1073,111 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+/* -----------------------동영상 강좌--------------------------- */
+
+.video_course{
+  padding-top: 27px;
+  background: url(/assets/img/video_course/course_head_bg.763312a0.png) no-repeat center 0;
+
+  .video_course_head{
+    padding: 80px 0 0;
+    margin: 0;
+    flex-direction: column;
+
+    
+    .video_course_name{
+      color: #fff;
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -.025em;
+    }
+    .video_course_txt{
+      margin-top: 30px;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: -.4px;
+      color: #fff;
+    }
+  }
+
+  .video_course_tit{
+    margin-top: 32px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -.7px;
+    color: #222;
+  }
+
+  .video_course_list{
+    margin-top: 80px;
+    ul{
+      gap: 20px;
+      .video_thumb{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 384px;
+        height: 300px;
+        
+        .tit{
+          font-size: 16px;
+          font-weight: 900;
+          line-height: 21px;
+          letter-spacing: -.4px;
+          color: #222;
+        }
+      }
+    }
+    
+  }
+}
+
+.course_more_zone{
+  margin-top: 85px;
+  padding: 120px 0;
+  background: #f4f7fa;
+
+  .title{
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -.6px;
+    color: #222;
+    text-align: center;
+  }
+
+  .ico_box_link{
+    width: 1200px;
+    margin: 40px auto 0;
+    gap: 15px;
+
+    .box_link_inner{
+      background-color: white;
+      width: 588px;
+      height: 103px;
+      gap: 30px;
+
+      .txt_box{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        .tit{
+          font-weight: 700;
+          letter-spacing: -.6px;
+          color: #222;
+        }
+        .txt{
+          color: #444444;
+          font-size: 14px;
+        }
+      }
+      
+
+      .arrow{
+        
+      }
+    }
+  }
 }
