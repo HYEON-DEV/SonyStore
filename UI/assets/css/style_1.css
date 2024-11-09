@@ -1331,7 +1331,215 @@ input:disabled {
         }
     }
 }
+
+.search_result_list_ul {
+    display: flex;
+    flex-direction:column;
+
+    .search_result_list_li {
+        display: flex;
+        padding: 25px;
+        border-bottom: 1px solid var(--color-light-grey-2);
+        
+
+        .search_result_list_title{
+            color: #444;
+            font-size: var(--font-size-20);
+            font-weight: 500;
+            padding-right: 30px;
+
+            &.text_blue_accent{
+                color: var(--color-blue);
+            }
+        }
+
+        .notice_box {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-weight: 500;
+
+            .notice_list_num {
+                color: var( --color-grey-3);
+                width: 110px;
+            }
+            .notice_title {
+                font-size: var(--font-size-20);
+                color: #444;
+                width: 880px;
+            }
+            .notice_date {
+                width: 110px;
+                color: var( --color-grey-2);
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+    }
+}
+
+.thin_silver_arrow {
+    transform: translateY(3px);
+}
+
+
 /* search_result page end*/
 
+/* event page */
+.event_banner {
+    height: 600px;
+
+    .event_banner_title{
+        font-size: 70px;
+        font-weight: 700;
+        line-height: 88px;
+        letter-spacing: -1.75px;
+        color: var(--color-black);
+    }
+
+    .event_banner_desc {
+        font-size: var(--font-size-18);
+        color: var(--color-black);
+        margin-top: 10px;
+    }
+
+    .event_banner_date{
+        font-size: var(--font-size-18);
+        color: var(--color-black);
+        margin-top: 30px;
+    }
+
+    .banner_view {
+        color: var(--color-black);
+        margin-top: 50px;
+    }
+
+    .color_white {
+        color:var(--color-white);
+    }
+}
+
+.event_tab_button {
+    width: 200px !important;
+}
+
+.event_h2_box {
+    display: flex;
+    justify-content: space-between;
+    margin: 90px 0 40px;
+
+    .event_h2 {
+        font-size: var(--font-size-24);
+        display:block;
+        text-align: start;
+    }
+
+    .event_sort {
+        display: flex;
+        width: 270px;
+        justify-content: space-between;
+        height: 24px;
+
+        .event_sort_text {
+            font-size: var(--font-size-16);
+            margin-left:10px;
+            font-weight: 500;
+            color: var(--color-grey-2);
+        }
+
+        .event_sort_active {
+            color: var(--color-black);
+            border-bottom: 3px solid var(--color-black);
+        }
+
+        .event_finished {
+            background-color: var(--color-black);
+            color: var(--color-white);
+            font-size: var(--font-size-14);
+            font-weight: 500;
+            padding: 8px 16px;
+            height:32px;
+            transform: translateY(-5px);
+        }
+    }
+}
+
+.exhibition_container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    
+    .exhibition_item_box {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        .exhibition_item_img {
+            width: 588px;
+            height: 330px;
+        }
+
+        .exhibition_item_title{
+            font-size: var(--font-size-22);
+            font-weight: 500;
+            color: var(--color-black);
+            margin-top:20px;
+        }
+
+        .exhibition_date {
+            font-size: var(--font-size-14);
+            font-weight: 500;
+            color: var(--color-grey-3);
+            margin: 7px 0 20px;
+        }
+
+        .share_button {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .4);
+        }
+    }
+}
+.exhibition_detail_caution_box {
+    display: flex;
+    flex-direction: column;
+    
+    .exhibition_datile_caution_desc{
+        margin-top: 20px;
+
+        &.accent_orange{
+            color: var(--color-orange);
+        }
+    }
+}
+
+.button_container {
+    width: 1200px;
+    padding: 144px;
+}
+
+.black_button_w200 {
+    width:200px;
+    background-color: var(--color-black-3);
+    color: var(--color-white);
+    padding:18px;
+    font-size: var(--font-size-18);
+
+    &:hover {
+        background-color: #444;
+    }
+}
+
+.find_button_active {
+    border-bottom: 2px solid var(--color-blue);
+    color: var(--color-blue);
+}
+
+
+/* event page end */
 
 
