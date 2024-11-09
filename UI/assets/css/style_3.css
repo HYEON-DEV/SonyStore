@@ -1297,15 +1297,20 @@ img {
 
 .clearFix {
     display: flex;
+    justify-content: space-between;
     margin-top: 70px;
 }
 .order_left {
     width: 70%;
     padding-right: 40px;
 }
-.order_right {
+.order_right  {
     width: 30%;
-    padding-top: 30px;
+
+    &:not(.order_right.detail){
+        padding-top: 30px;    
+    }
+   
 }
 
 /* 주문 정보 좌측 */
@@ -1313,11 +1318,15 @@ img {
 /* 주문자 정보 */
 
 .order_left {
-    
-    .acc_item {
-        border: none;   
-    }
 
+    /* arrow collapsible 부모 position 설정 */
+    .acc_head {
+        position: relative;
+    }
+} 
+
+.acc_item {
+    border: none;   
     .acc_head {
         padding-bottom: 24px;
         border-bottom: 2px solid var(--color-black-3);
@@ -1327,14 +1336,8 @@ img {
     .acc_tit {
         font-size: 24px;
         font-weight: 700;
-        
     }
-
-    /* arrow collapsible 부모 position 설정 */
-    .acc_head {
-        position: relative;
-    }
-} 
+}
 
 .acc_box { 
     position: relative; 
@@ -1608,7 +1611,7 @@ input[type='date'] {
     content: "·"
 }
 
-.order_left .acc_item {
+.order_left .acc_item, .order_right.detail .acc_item {
     margin-top: 40px;
 }
 
@@ -1703,11 +1706,8 @@ input[type='date'] {
     top: 0;
 }
 .payment_list_container {
-    /* position: sticky; */
-    /* top: 0; */
     border: 2px solid var(--color-black-3);
     padding: 30px 50px;
-    
 }
 
 /* 결제 예정 금액 */
@@ -1722,11 +1722,8 @@ input[type='date'] {
 
 /* 결제 상세 정보 */
 
-
 .payment_list_contents {
-    margin-top: 30px;
-
-   
+    margin: 30px 0;
 }
 
 .payment_div {
@@ -2112,3 +2109,135 @@ input[type='date'] {
     justify-content: center;
     margin-top: 30px;
 }
+
+
+/* = = = = = = = = = = order_detail.html - 주문/배송 조회 페이지 = = = = = = = = = = */
+
+/* 주문/배송내역 */
+
+.back{
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    padding: 5px 0;
+
+    &::before {
+        content: "";
+        display: inline-block;
+        width: .5em;
+        height: .5em;
+        margin-right: .25em;
+        vertical-align: .05em;
+        transform: rotate(225deg);
+        border-top: 3px solid #222;
+        border-right: 3px solid #222;
+    }
+}
+
+/* summary */
+
+.summary_container {
+    display: flex;
+    background-color: var(--color-light-blue);
+    padding: 25px 0;
+
+    > div:nth-child(1) { width: 20%;}
+    > div:nth-child(2) { width: 60%;}
+    > div:nth-child(3) { width: 20%;}
+
+    .summary_cont_container {
+        padding: 0 30px;
+    }
+
+    .cont2 {
+        font-weight: 700;
+        margin-left: 5px;
+    }
+}
+
+/* 주문 정보 */
+
+.order_left.detail {
+    width: 62%;
+}
+.order_right.detail {
+    width: 35%;
+    /* padding-left: 50px; */
+}
+
+.order_info {
+    font-size: 14px;
+    padding-top: 35px;
+    display: flex;
+
+    >:first-child {
+        width: 25%;
+        font-weight: 700;
+    }
+}
+
+/* 결제 정보 */
+
+.payment_div.total_price {
+    font-size: 16px;
+    color: #222;
+    border-bottom: 1px solid #e1e1e1;
+    padding: 30px 0;
+
+    .price{
+        font-weight: 700;
+        font-size: 20px;
+    }    
+}
+
+.payment_tit.sub{
+
+    &::before {        
+        content: "";
+        display: inline-block;
+        width: .5em;
+        height: .5em;
+        transform: rotate(180deg);
+        border-top: 1px solid #888;
+        border-right: 1px solid #888;
+        margin-right: 5px;
+    }
+}
+
+.payment_price.sale .price {
+    font-weight: 500;
+}
+
+.payment_info {
+    background-color: var(--color-light-grey);
+    border-top: 1px solid #222 ;
+    text-align: right;
+    padding: 25px;
+
+    > div {
+        padding: 10px 0;
+    }
+
+    >:nth-child(1) {
+        font-weight: 700;
+    }
+    >:nth-child(2) {
+        font-weight: 500;
+    }
+    >:nth-child(3) {
+        color: var(--color-grey);
+    }
+    .price {
+        font-weight: 700;
+        font-size: 24px;
+    }
+}
+
+.order_detail .btn_container {
+    margin-top: 60px;
+
+    .btn_wrap {
+        text-align: center;
+    }
+}
+
