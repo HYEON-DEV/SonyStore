@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta translate="no" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My_Page</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"
+    />
+    <link rel="stylesheet" type="text/html" href="assets/css/common.css" />
+    <link rel="stylesheet" href="assets/css/style_2.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.css"
+    />
+    <link rel="icon" href="assets/img/favicon_144x144.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css"
+    />
+  </head>
+
+  <body>
+    <script src="./assets/js/loadHTML.js"></script>
+    <script>
+      loadHTML("./header.html");
+    </script>
+
+    <div class="container_w1920">
+      <div class="container_w1200">
+        <div class="my_page_title">
+          <h1>마이페이지</h1>
+        </div>
+        <div class="my_page_user">
+          <div class="user_profile">
+            <p class="user_name">
+              <span class="name">박재한</span>
+              님 안녕하세요:)
+            </p>
+            <a class="member_modify" href="#">회원정보 수정</a>
+          </div>
+
+          <div class="user_info">
+            <ul>
+              <li class="user_item grade">
+                <a class="user_tabs flex_center" href="#">
+                  <span class="ico_txt flex_center">
+                    <img
+                      src="/assets/img/my_page/ico_mypage_grade.18023618.svg"
+                      alt=""
+                    />
+                    <span class="txt_arrow">회원등급 ></span>
+                  </span>
+                  <span class="val_txt">
+                    <span class="val family">
+                      <img
+                        src="/assets/img/my_page/membership_family.ea303a8f.svg"
+                        alt=""
+                      />
+                      MEMBERSHIP
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li class="user_item mileage">
+                <a class="user_tabs flex_center" href="#">
+                  <span class="ico_txt flex_center">
+                    <img
+                      src="/assets/img/my_page/ico_mypage_mileage.3c0404d0.svg"
+                      alt=""
+                    />
+                    <span class="txt_arrow">마일리지 ></span>
+                  </span>
+                  <span class="val_txt">
+                    <span class="val">0</span>
+                    <span class="unit">M</span>
+                  </span>
+                </a>
+              </li>
+              <li class="user_item coupon">
+                <a class="user_tabs flex_center" href="#">
+                  <span class="ico_txt flex_center">
+                    <img
+                      src="/assets/img/my_page/ico_mypage_coupon.4dbc6b24.svg"
+                      alt=""
+                    />
+                    <span class="txt_arrow">쿠폰 ></span>
+                  </span>
+                  <span class="val_txt">
+                    <span class="val">0</span>
+                    <span class="unit">장</span>
+                  </span>
+                </a>
+              </li>
+              <li class="user_item like">
+                <a class="user_tabs flex_center" href="#">
+                  <span class="ico_txt flex_center">
+                    <img
+                      src="/assets/img/my_page/ico_mypage_like.18038068.svg"
+                      alt=""
+                    />
+                    <span class="txt_arrow">찜 ></span>
+                  </span>
+                  <span class="val_txt flex_center">
+                    <span class="val">0</span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="my_page_order">
+          <div class="order_tit">
+            <p class="font_24_700">진행 중인 주문</p>
+            <div class="order_button flex_center">
+              <a class="flex_center" href="#">구매 내역 조회</a>
+            </div>
+          </div>
+          <ul class="order_step_container">
+            <li>
+              <div class="icon_container">
+                <i class="ico_order_step"></i>
+              </div>
+              <span> 입금대기 </span>
+              <span class="order_step_cnt"> 0건 </span>
+            </li>
+            <li>
+              <div class="icon_container">
+                <i class="ico_order_step"></i>
+              </div>
+              <span> 결제완료 </span>
+              <span class="order_step_cnt"> 0건 </span>
+            </li>
+            <li>
+              <div class="icon_container">
+                <i class="ico_order_step"></i>
+              </div>
+              <span> 배송준비 </span>
+              <span class="order_step_cnt"> 0건 </span>
+            </li>
+            <li>
+              <div class="icon_container">
+                <i class="ico_order_step"></i>
+              </div>
+              <span> 배송중 </span>
+              <span class="order_step_cnt"> 0건 </span>
+            </li>
+            <li>
+              <div class="icon_container">
+                <i class="ico_order_step"></i>
+              </div>
+              <span> 배송완료 </span>
+              <span class="order_step_cnt"> 0건 </span>
+            </li>
+            <!-- <li>
+                      <i class="ico_order_step"></i>
+                      <span> 입금 대기 </span>
+                      <span> 0건 </span>
+                  </li>
+                  <li>
+                      <i class="ico_order_step"></i>
+                      <span> 입금 대기 </span>
+                      <span> 0건 </span>
+                  </li>
+                  <li>
+                      <i class="ico_order_step"></i>
+                      <span> 입금 대기 </span>
+                      <span> 0건 </span>
+                  </li>
+                  <li>
+                      <i class="ico_order_step"></i>
+                      <span> 입금 대기 </span>
+                      <span> 0건 </span>
+                  </li> -->
+          </ul>
+          <div>
+            <ul class="list_dot">
+              <li>
+                구매확정이 완료된 주문은 진행 중인 주문에 포함되지 않으며, 진행
+                상태에 따라 배송지 변경, 취소, 교환 반품 신청이 가능합니다.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="my_page_mileage">
+            <div class="mileage_head">
+                <div class="mileage_tit">
+                <p class="font_24_700">마일리지</p>
+                </div>
+                <div class="my_mileage">
+                <p class="txt flex_center">
+                사용 가능 
+                <span class="mileage_val">0</span>
+                <img src="/assets/img/my_page/ico_my_mileage.839de8ec.svg" alt="">
+                <span class="extinction">(<strong class="val_txt"><span class="val">0</span>M</strong>당월 소멸 예정)</span>
+                </p>
+                </div>
+
+                <div class="date_box">
+                    <div class="date_tab">
+                        <div class="date_btn">3개월</div>
+                        <div class="date_btn">6개월</div>
+                        <div class="date_btn">1년</div>
+                    </div>
+                    <div class="date_rang">
+                        <div class="date_input">
+                            <input class="date" type="date" />
+                            <span> ~ </span>
+                            <input class="date" type="date" />
+                        </div>
+                        <div>
+                            <button class="date_submit_btn">조회</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 스크립트 파일 -->
+    <script src="assets/js/data.js"></script>
+    <script>
+      loadHTML("./footer.html");
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.all.min.js"></script>
+    <script src="./assets/js/common.js"></script>
+  </body>
+</html>

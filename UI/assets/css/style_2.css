@@ -9,8 +9,14 @@ body {
   margin-top: 80px;
 }
 
-.container_w1200 {
+.container_w1920 {
   background-color: white;
+  width: 100%;
+  width: 1920px;
+  height: auto;
+  min-height: 100vh;
+  margin: 80px auto 0;
+  margin-top: 80px;
 }
 
 .category {
@@ -278,16 +284,6 @@ body {
 }
 
 /* -----------------------추천 페이지--------------------------- */
-
-.container_w1920 {
-  background-color: white;
-  width: 100%;
-  width: 1920px;
-  height: auto;
-  min-height: 100vh;
-  margin: 80px auto 0;
-  margin-top: 80px;
-}
 
 .recommend {
   width: 100%;
@@ -845,14 +841,14 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  
-  .bg{
+
+  .bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, .6);
+    background: rgba(0, 0, 0, 0.6);
   }
   .store_info_wrap_txtbox {
     position: absolute;
@@ -954,7 +950,7 @@ body {
       color: white;
       gap: 15px;
 
-      .swiper-slide-box{
+      .swiper-slide-box {
         width: 324px;
         height: 190px;
         display: flex;
@@ -965,7 +961,7 @@ body {
         border: 1px solid white;
       }
 
-      .swiper-slide-box-search{
+      .swiper-slide-box-search {
         width: 156px;
         height: 190px;
         display: flex;
@@ -975,12 +971,12 @@ body {
         text-align: center;
         border: 1px solid white;
 
-        img{
+        img {
           width: 40px;
           height: 40px;
         }
 
-        .box_desc{
+        .box_desc {
           margin-top: 10px;
           color: white;
         }
@@ -989,9 +985,9 @@ body {
   }
 }
 
-.way_box{
+.way_box {
   padding: 80px 0 0;
-  .way_box_inner{
+  .way_box_inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1000,184 +996,438 @@ body {
     padding-bottom: 80px;
     width: 1200px;
 
-    .way_box_addr{
+    .way_box_addr {
       width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 20px;
-      .way_box_addr_txt{
+      .way_box_addr_txt {
         display: flex;
         flex-direction: column;
         justify-content: center;
       }
-      .way_box_addr_tit{
+      .way_box_addr_tit {
         font-size: 32px;
         color: #222;
         font-weight: 700;
       }
 
-      .map_open_button{
+      .map_open_button {
         width: 84px;
         height: 32px;
       }
     }
 
-    .way_box_transport{
+    .way_box_transport {
       display: flex;
       flex-direction: column;
       justify-content: center;
       width: 100%;
 
-      .route{
+      .route {
         display: flex;
         flex-direction: column;
 
-        .route_subway{
+        .route_subway {
           display: flex;
           align-items: center;
           gap: 10px;
 
-          div{
+          div {
             display: flex;
             flex-direction: column;
           }
         }
 
-        .route_bus{
+        .route_bus {
           display: flex;
           align-items: center;
           gap: 10px;
 
-          div{
+          div {
             display: flex;
             flex-direction: column;
           }
         }
 
-        .route_car{
+        .route_car {
           display: flex;
           align-items: center;
           gap: 10px;
 
-          div{
+          div {
             display: flex;
             flex-direction: column;
-          };
+          }
         }
       }
     }
   }
 }
-.map{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 
 /* -----------------------동영상 강좌--------------------------- */
 
-.video_course{
+.video_course {
   padding-top: 27px;
-  background: url(/assets/img/video_course/course_head_bg.763312a0.png) no-repeat center 0;
+  background: url(/assets/img/video_course/course_head_bg.763312a0.png)
+    no-repeat center 0;
 
-  .video_course_head{
+  .video_course_head {
     padding: 80px 0 0;
     margin: 0;
     flex-direction: column;
 
-    
-    .video_course_name{
+    .video_course_name {
       color: #fff;
       font-size: 48px;
       font-weight: 700;
-      letter-spacing: -.025em;
+      letter-spacing: -0.025em;
     }
-    .video_course_txt{
+    .video_course_txt {
       margin-top: 30px;
       font-size: 16px;
       line-height: 24px;
-      letter-spacing: -.4px;
+      letter-spacing: -0.4px;
       color: #fff;
     }
   }
 
-  .video_course_tit{
+  .video_course_tit {
     margin-top: 32px;
     font-size: 28px;
     font-weight: 700;
-    letter-spacing: -.7px;
+    letter-spacing: -0.7px;
     color: #222;
   }
 
-  .video_course_list{
+  .video_course_list {
     margin-top: 80px;
-    ul{
+    ul {
       gap: 20px;
-      .video_thumb{
+      .video_thumb {
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 384px;
         height: 300px;
-        
-        .tit{
+
+        .tit {
           font-size: 16px;
           font-weight: 900;
           line-height: 21px;
-          letter-spacing: -.4px;
+          letter-spacing: -0.4px;
           color: #222;
         }
       }
     }
-    
   }
 }
 
-.course_more_zone{
+.course_more_zone {
   margin-top: 85px;
   padding: 120px 0;
   background: #f4f7fa;
 
-  .title{
+  .title {
     font-size: 24px;
     font-weight: 700;
-    letter-spacing: -.6px;
+    letter-spacing: -0.6px;
     color: #222;
     text-align: center;
   }
 
-  .ico_box_link{
+  .ico_box_link {
     width: 1200px;
     margin: 40px auto 0;
     gap: 15px;
 
-    .box_link_inner{
+    .box_link_inner {
       background-color: white;
       width: 588px;
       height: 103px;
       gap: 30px;
 
-      .txt_box{
+      .txt_box {
         display: flex;
         flex-direction: column;
         gap: 5px;
-        .tit{
+        .tit {
           font-weight: 700;
-          letter-spacing: -.6px;
+          letter-spacing: -0.6px;
           color: #222;
         }
-        .txt{
+        .txt {
           color: #444444;
           font-size: 14px;
         }
       }
-      
+    }
+  }
+}
 
-      .arrow{
-        
+/* -----------------------마이페이지--------------------------- */
+
+.my_page_title {
+  padding: 106px 0 40px;
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -1.2px;
+  text-align: center;
+  color: #222;
+}
+
+.my_page_user {
+  .user_profile {
+    position: relative;
+    width: 100%;
+
+    .user_name {
+      display: inline-block;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.45px;
+      color: #222;
+
+      .name {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.45px;
+      }
+    }
+
+    .member_modify {
+      margin-left: 16px;
+      font-size: 13px;
+      letter-spacing: -0.35px;
+      font-weight: 500;
+      text-decoration: underline;
+      color: #444;
+    }
+  }
+
+  .user_info {
+    margin-top: 15px;
+    background: #222;
+
+    ul {
+      width: 100%;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .user_item {
+        width: 25%;
+        height: 100%;
+        border-left: 1px solid #444;
+        padding: 20px 33px 25px;
+        .grade {
+          border-left: none;
+        }
+        .user_tabs {
+          flex-direction: column;
+          gap: 5px;
+
+          .ico_txt {
+            margin-left: auto;
+            color: #888888;
+          }
+
+          .val_txt {
+            display: flex;
+            align-items: baseline;
+            margin-left: auto;
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+
+            .family {
+              display: flex;
+              align-items: center;
+            }
+
+            .unit {
+              font-size: 20px;
+            }
+          }
+        }
       }
     }
   }
+}
+
+.my_page_order {
+  margin-top: 80px;
+
+  .order_tit {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+
+    .order_button {
+      width: 115px;
+      height: 32px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+
+      a {
+        width: 100%;
+        height: 100%;
+        color: #444;
+        font-size: 14px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .order_step_container {
+    background-color: var(--color-light-blue);
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 40px;
+
+      > * {
+        margin: 5px 0;
+      }
+    }
+
+    .icon_container {
+      border-radius: 50%;
+      background-color: var(--color-white);
+      width: 64px;
+      height: 64px;
+    }
+
+    .ico_order_step {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      /* background: url(/assets/img/ico_order_step_1_off.svg) no-repeat 50% 50%; */
+    }
+    li:nth-child(1) .ico_order_step {
+      background: url(/assets/img/ico_order_step_1_off.svg) no-repeat 50% 50%;
+    }
+    li:nth-child(2) .ico_order_step {
+      background: url(/assets/img/ico_order_step_2_off.svg) no-repeat 50% 50%;
+    }
+    li:nth-child(3) .ico_order_step {
+      background: url(/assets/img/ico_order_step_3_off.svg) no-repeat 50% 50%;
+    }
+    li:nth-child(4) .ico_order_step {
+      background: url(/assets/img/ico_order_step_4_off.svg) no-repeat 50% 50%;
+    }
+    li:nth-child(5) .ico_order_step {
+      background: url(/assets/img/ico_order_step_5_off.svg) no-repeat 50% 50%;
+    }
+
+    .order_step_cnt {
+      font-weight: 700;
+    }
+  }
+
+  .list_dot {
+    font-size: 14px;
+  }
+
+  .list_dot li {
+    position: relative;
+    margin-top: 4px;
+    padding-left: 8px;
+    /* font-size: 14px; */
+    color: var(--color-grey-2);
+    line-height: 22px;
+  }
+
+  .list_dot li:before {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "·";
+  }
+}
+.my_page_mileage{
+  margin-top: 80px;
+
+  .mileage_head{
+
+    .my_mileage{
+      margin-top: 20px;
+      padding: 15px 0 21px;
+      background-color: var(--color-light-blue);
+      font-weight: 500;
+      color: #444;
+
+
+      .txt{
+        gap: 5px;
+        font-size: 14px;
+        letter-spacing: -.35px;
+
+        .mileage_val{
+          font-size: 26px;
+          font-weight: 700;
+          color: #5865f5;
+        }
+        
+      }
+    }
+
+    .date_box{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .date_tab{
+        display: flex;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #444;
+        cursor: pointer;
+
+        .date_btn{
+
+          &:active{
+            color: #5865f5;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .date_rang{
+        display: flex;
+        gap: 10px;
+
+        .date_input{
+          .date{
+            width: 170px;
+            height: 32px;
+          }
+        }
+
+        .date_submit_btn{
+          width: 58px;
+          height: 32px;
+          background-color: black;
+          color: white;
+        }
+      }
+    }
+  }
+  
 }
