@@ -45,9 +45,11 @@
 
     <div class="container_w1920">
       <div class="container_w1200">
+        <!------------마이페이지 제목------------>
         <div class="my_page_title">
           <h1>마이페이지</h1>
         </div>
+        <!------------회원정보 수정, 등급, 마일리지, 쿠폰, 찜 탭메뉴------------>
         <div class="my_page_user">
           <div class="user_profile">
             <p class="user_name">
@@ -126,6 +128,8 @@
             </ul>
           </div>
         </div>
+
+        <!------------진행 중인 주문------------>
         <div class="my_page_order">
           <div class="order_tit">
             <p class="font_24_700">진행 중인 주문</p>
@@ -135,60 +139,40 @@
           </div>
           <ul class="order_step_container">
             <li>
-              <div class="icon_container">
-                <i class="ico_order_step"></i>
-              </div>
-              <span> 입금대기 </span>
-              <span class="order_step_cnt"> 0건 </span>
+              <div class="icon_container"><i class="ico_order_step"></i></div>
+              <span class="order_status"> 입금대기 </span>
+              <a class="order_step_cnt">
+                <span class="order_step_cnt_num">1</span>건
+              </a>
             </li>
             <li>
-              <div class="icon_container">
-                <i class="ico_order_step"></i>
-              </div>
-              <span> 결제완료 </span>
-              <span class="order_step_cnt"> 0건 </span>
+              <div class="icon_container"><i class="ico_order_step"></i></div>
+              <span class="order_status"> 결제완료 </span>
+              <a class="order_step_cnt">
+                <span class="order_step_cnt_num">0</span>건
+              </a>
             </li>
             <li>
-              <div class="icon_container">
-                <i class="ico_order_step"></i>
-              </div>
-              <span> 배송준비 </span>
-              <span class="order_step_cnt"> 0건 </span>
+              <div class="icon_container"><i class="ico_order_step"></i></div>
+              <span class="order_status"> 배송준비 </span>
+              <a class="order_step_cnt">
+                <span class="order_step_cnt_num">0</span>건
+              </a>
             </li>
             <li>
-              <div class="icon_container">
-                <i class="ico_order_step"></i>
-              </div>
-              <span> 배송중 </span>
-              <span class="order_step_cnt"> 0건 </span>
+              <div class="icon_container"><i class="ico_order_step"></i></div>
+              <span class="order_status"> 배송중 </span>
+              <a class="order_step_cnt">
+                <span class="order_step_cnt_num">0</span>건
+              </a>
             </li>
             <li>
-              <div class="icon_container">
-                <i class="ico_order_step"></i>
-              </div>
-              <span> 배송완료 </span>
-              <span class="order_step_cnt"> 0건 </span>
+              <div class="icon_container"><i class="ico_order_step"></i></div>
+              <span class="order_status"> 배송완료 </span>
+              <a class="order_step_cnt">
+                <span class="order_step_cnt_num">0</span>건
+              </a>
             </li>
-            <!-- <li>
-                      <i class="ico_order_step"></i>
-                      <span> 입금 대기 </span>
-                      <span> 0건 </span>
-                  </li>
-                  <li>
-                      <i class="ico_order_step"></i>
-                      <span> 입금 대기 </span>
-                      <span> 0건 </span>
-                  </li>
-                  <li>
-                      <i class="ico_order_step"></i>
-                      <span> 입금 대기 </span>
-                      <span> 0건 </span>
-                  </li>
-                  <li>
-                      <i class="ico_order_step"></i>
-                      <span> 입금 대기 </span>
-                      <span> 0건 </span>
-                  </li> -->
           </ul>
           <div>
             <ul class="list_dot">
@@ -199,39 +183,262 @@
             </ul>
           </div>
         </div>
-        <div class="my_page_mileage">
-            <div class="mileage_head">
-                <div class="mileage_tit">
-                <p class="font_24_700">마일리지</p>
-                </div>
-                <div class="my_mileage">
-                <p class="txt flex_center">
-                사용 가능 
-                <span class="mileage_val">0</span>
-                <img src="/assets/img/my_page/ico_my_mileage.839de8ec.svg" alt="">
-                <span class="extinction">(<strong class="val_txt"><span class="val">0</span>M</strong>당월 소멸 예정)</span>
-                </p>
-                </div>
 
-                <div class="date_box">
-                    <div class="date_tab">
-                        <div class="date_btn">3개월</div>
-                        <div class="date_btn">6개월</div>
-                        <div class="date_btn">1년</div>
-                    </div>
-                    <div class="date_rang">
-                        <div class="date_input">
-                            <input class="date" type="date" />
-                            <span> ~ </span>
-                            <input class="date" type="date" />
-                        </div>
-                        <div>
-                            <button class="date_submit_btn">조회</button>
-                        </div>
-                    </div>
-                    
-                </div>
+        <!------------마일리지------------>
+        <div class="my_page_mileage">
+          <div class="mileage_head">
+            <div class="mileage_tit">
+              <p class="font_24_700">마일리지</p>
             </div>
+            <div class="my_mileage">
+              <p class="txt flex_center">
+                사용 가능
+                <span class="mileage_val">0</span>
+                <img
+                  src="/assets/img/my_page/ico_my_mileage.839de8ec.svg"
+                  alt=""
+                />
+                <span class="extinction"
+                  >(<strong class="val_txt"><span class="val">0</span>M</strong
+                  >당월 소멸 예정)</span
+                >
+              </p>
+            </div>
+
+            <div class="date_search">
+              <div class="date_container flex_center">
+                <div class="divide_parent term"><span>3개월</span></div>
+                <div class="divide_parent term">
+                  <span class="divide">6개월</span>
+                </div>
+                <div class="divide_parent term active">
+                  <span class="divide">1년</span>
+                </div>
+              </div>
+              <div>
+                <input type="date" class="date1" />
+                <span> ~ </span>
+                <input type="date" class="date2" />
+
+                <button class="bg_black search">조회</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mileage_history">
+            <span>내역이 없습니다.</span>
+          </div>
+          <div class="guide_list">
+            <p>[멤버십 마일리지 안내]</p>
+            <ul class="list_dot">
+              <li>
+                구매 시 결제금액의 2%가 적립됩니다. (일부 품목 마일리지 적립대상
+                제외)
+              </li>
+              <li>
+                <strong>VIP회원</strong>(누적 구매 금액
+                <strong>200만원</strong> 이상부터 적용)은 구매 시 결제금액의
+                4%가 적립됩니다. (2년 간 혜택 유지)
+              </li>
+              <li>
+                마일리지 적립은 <strong>제품 구매일 당일</strong>에만 적립
+                가능합니다. (온라인 소니스토어 배송 완료 후 7일 이내에 적립)
+              </li>
+              <li>
+                <strong>5,000 마일리지 이상</strong>이면 현금처럼 사용하실 수
+                있습니다.
+              </li>
+              <li>
+                적립하신 마일리지는 소니스토어 온라인 및 직영점에서 제품 구매
+                시, 소니 공식 서비스 센터에서의 제품 수리 및 콘텐츠 이용 시 사용
+                가능합니다.
+              </li>
+              <li>
+                최근 1년 간의 멤버십 마일리지 내역만 조회 가능합니다. (날짜 직접
+                검색을 통해서 확인 가능)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!------------쿠폰------------>
+        <div class="my_page_coupon">
+          <div class="coupon_head">
+            <div class="mileage_tit">
+              <p class="font_24_700">쿠폰</p>
+            </div>
+          </div>
+          <div class="coupon_history">
+            <span>내역이 없습니다.</span>
+          </div>
+          <div class="guide_list">
+            <p>[쿠폰 사용 안내]</p>
+            <ul class="list_dot">
+              <li>
+                쿠폰은
+                <strong>주문당 1매씩 사용 가능하며, 제품 1개에만 적용</strong
+                >됩니다.
+              </li>
+              <li>
+                쿠폰 할인은 결제 시점에서 자동으로 할인 금액만큼 차감되며 결제
+                예정금액이 표시됩니다.
+              </li>
+              <li>
+                쿠폰은 주문 후 취소할 경우 재발급되지 않으니 사용에 유의하여
+                주시기 바랍니다.
+              </li>
+              <li>
+                소니스토어에서 발행하는 쿠폰은 행사 내용에 따라 기간 및 해당
+                제품 등 적용 방법이 다를 수 있습니다.
+              </li>
+            </ul>
+          </div>
+
+          <div class="ico_box_link flex_center">
+            <a class="box_link_inner flex_center" href="#">
+              <img
+                src="/assets/img/my_page/ico_mypage_link_1.73a2134b.svg"
+                alt=""
+              />
+              <div class="txt_box">
+                <p class="tit">소니스토어의 쿠폰 보기</p>
+                <p class="txt">
+                  첫 구매 등 소니스토어의 다양한 쿠폰 혜택을 받으세요!
+                </p>
+              </div>
+              <span>></span>
+            </a>
+            <a
+              class="box_link_inner flex_center"
+              href="https://www.sony.co.kr/scs/handler/SCSWarranty-Start"
+            >
+              <img
+                src="/assets/img/my_page/ico_mypage_link_2.30890d44.svg"
+                alt=""
+              />
+              <div class="txt_box">
+                <p class="tit">정품등록 관리</p>
+                <p class="txt" style="padding-right: 20px">
+                  소니 제품 구매 후 정품등록하고 쿠폰을 받으세요!
+                </p>
+              </div>
+              <span>></span>
+            </a>
+          </div>
+        </div>
+
+        <!------------찜------------>
+        <div class="my_page_wish">
+          <div class="wish_head">
+            <div class="mileage_tit flex_center">
+              <p class="font_24_700">찜</p>
+              <div class="like_select_btn flex_center">
+                <button class="bg_white" type="button">선택 삭제</button
+                ><button
+                  class="bg_black"
+                  type="button"
+                  data-popup-name="cart_pop"
+                >
+                  <span>선택 제품</span> 장바구니 담기
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="wish_list">
+            <div class="all_checked flex_center">
+              <input
+                type="checkbox"
+                class="inp_check check_all"
+                id="allChk"
+                name="likeChk"
+              /><label for="allChk">전체</label>
+            </div>
+            <!-- <span>내역이 없습니다.</span> -->
+
+            <div class="like_prod_container">
+              <div class="like_prod_list">
+                <a class="like_prod" href="#">
+                  <div class="prod_img">
+                    <div class="check check_only">
+                      <input type="checkbox" class="inp_check" name="likeChk" />
+                    </div>
+                    <img src="/assets/img/my_page/104580439_1.png" alt="제품 이미지" />
+                  </div>
+                  <div class="prod_info">
+                    <p class="tit">WH-1000XM5(블랙)</p>
+                    <p class="txt">#몰입의 즐거움 #스터디헤드폰</p>
+                    <p class="prod_price">
+                      <span class="price">519,000</span>원
+                    </p>
+                  </div>
+                </a>
+
+                <a class="like_prod" href="#">
+                  <div class="prod_img">
+                    <div class="check check_only">
+                      <input type="checkbox" class="inp_check" name="likeChk" />
+                    </div>
+                    <img src="/assets/img/my_page/104580439_1.png" alt="제품 이미지" />
+                  </div>
+                  <div class="prod_info">
+                    <p class="tit">WH-1000XM5(블랙)</p>
+                    <p class="txt">#몰입의 즐거움 #스터디헤드폰</p>
+                    <p class="prod_price">
+                      <span class="price">519,000</span>원
+                    </p>
+                  </div>
+                </a>
+
+                <a class="like_prod" href="#">
+                  <div class="prod_img">
+                    <div class="check check_only">
+                      <input type="checkbox" class="inp_check" name="likeChk" />
+                    </div>
+                    <img src="/assets/img/my_page/104580439_1.png" alt="제품 이미지" />
+                  </div>
+                  <div class="prod_info">
+                    <p class="tit">WH-1000XM5(블랙)</p>
+                    <p class="txt">#몰입의 즐거움 #스터디헤드폰</p>
+                    <p class="prod_price">
+                      <span class="price">519,000</span>원
+                    </p>
+                  </div>
+                </a>
+
+                <a class="like_prod" href="#">
+                  <div class="prod_img">
+                    <div class="check check_only">
+                      <input type="checkbox" class="inp_check" name="likeChk" />
+                    </div>
+                    <img src="/assets/img/my_page/104580439_1.png" alt="제품 이미지" />
+                  </div>
+                  <div class="prod_info">
+                    <p class="tit">WH-1000XM5(블랙)</p>
+                    <p class="txt">#몰입의 즐거움 #스터디헤드폰</p>
+                    <p class="prod_price">
+                      <span class="price">519,000</span>원
+                    </p>
+                  </div>
+                </a>
+
+                <a class="like_prod" href="#">
+                  <div class="prod_img">
+                    <div class="check check_only">
+                      <input type="checkbox" class="inp_check" name="likeChk" />
+                    </div>
+                    <img src="/assets/img/my_page/104580439_1.png" alt="제품 이미지" />
+                  </div>
+                  <div class="prod_info">
+                    <p class="tit">WH-1000XM5(블랙)</p>
+                    <p class="txt">#몰입의 즐거움 #스터디헤드폰</p>
+                    <p class="prod_price">
+                      <span class="price">519,000</span>원
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -250,5 +457,6 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.all.min.js"></script>
     <script src="./assets/js/common.js"></script>
+    <script src="./assets/js/my_page.js"></script>
   </body>
 </html>
