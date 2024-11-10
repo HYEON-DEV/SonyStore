@@ -725,20 +725,26 @@ img {
 }
 
 /* -- -- -- -- -- -- -- product-content -- -- -- -- -- -- --*/
-.product-content {
+.tab_menu_container {
     padding-bottom: 150px;
-    .detail-tab {
+
+    .tab_menu_wrap {
         display: flex;
-        justify-content: center;
-        padding: 100px 0;
+        justify-content: center;        
         padding-bottom: 50px;
         cursor: pointer;
+
+        &:not(.membership) {        /* 멤버십:등급/혜택안내 탭메뉴 제외 */
+            padding: 100px 0;
+        }
 
         .tab-menu {
             width: 300px;
             height: 70px;
             
-            div{ padding: 10px 0; }
+            div{ 
+                padding: 10px 0; 
+            }
 
             .text {
                 font-weight: 500;
@@ -747,6 +753,7 @@ img {
                 letter-spacing: -.5px;
                 text-align: center;
             }
+
             .bottom-line {
                 border-bottom: var(--color-grey-3) solid 1px;
             }
@@ -755,6 +762,7 @@ img {
                 .text{ color: var(--color-blue); }
                 .bottom-line{ border-bottom: var(--color-blue) solid 2px; }
             }
+
             &.active {
                 .text{ color: var(--color-blue); }
                 .bottom-line{ border-bottom: var(--color-blue) solid 2px; }
@@ -2241,3 +2249,249 @@ input[type='date'] {
     }
 }
 
+
+/* = = = = = = = = = = benefit.html - 등급 & 혜택 안내 페이지 = = = = = = = = = = */
+
+/* bg_area */
+
+.header_area_bg {
+    background: url(/assets/img/benefit/membership_kv_vippcimg.jpg) no-repeat 50% 0;
+    height: 600px;
+    width: 100%;
+    position: relative;
+
+    .header_area_container {
+        position: absolute;
+        color: var(--color-white);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -25% );
+        text-align: center;
+
+        div {
+            padding-bottom: 20px;
+
+            &:nth-child(3) {
+                color: var(--color-grey);   
+            }
+
+            &:nth-child(4) {
+                margin-top: 60px;
+                border-bottom: 1px solid #444;
+                width: 1200px;
+            }
+
+            .txt {
+                background: url(/assets/img/benefit/download.png) no-repeat 100% 40px;
+                font-size: 20px;
+                margin: auto;
+                padding: 46px 350px 40px 0;
+                max-width: 850px;
+            }
+        }
+    }
+
+}
+
+/* tab menu */
+
+.tab-menu-info {
+    margin-top: 50px;
+}
+
+.tab_info {
+    text-align: center;
+    padding-top: 55px;
+
+    &.mileage {
+        background: url(/assets/img/benefit/membership_mileage_vippcimg.png) no-repeat 50% 0;
+        height: 600px;
+    }
+
+    &.premium {
+        background-color: var(--color-light-blue);
+    }
+    
+    >div {
+        padding: 20px 0;
+
+        &:last-child {
+            color: var(--color-grey);
+        }
+    }
+
+    .text_blue_accent {
+        font-weight: 700;
+    }
+}
+
+.tab_page.benefit {
+    display: none;
+    
+    &.active {
+        display: block;
+    }
+}
+
+/* 마일리지 */
+
+.col_table_row.mileage > :nth-child(1) { width: 20%; }
+.col_table_row.mileage > :nth-child(2) { width: 40%; }
+.col_table_row.mileage > :nth-child(3) { width: 40%; }
+
+.mileage .col_table_cell.cont {
+    font-weight: normal;
+    padding: 0 85px;
+
+    .acc {
+        font-weight: bold;
+    }
+
+    img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* 프리미엄 서비스 */
+
+.tab_info_container.premium {
+    ul {
+        display: flex;
+        justify-content: center;
+        z-index: 50;
+        padding-bottom: 70px;
+
+        li {
+            background-color: var(--color-white);
+            color: #222;
+            height: 194px;
+            text-align: center;
+            padding: 30px 40px;
+            font-weight: 700;
+            border-radius: 20px;
+            background-repeat: no-repeat;
+            background-position: 50% 99px;
+            background-size: 56px;
+            margin: 0 30px;
+
+            >:first-child {
+                font-size: 10px;
+            }
+            
+            p {
+                padding: 2px 0;
+            }
+        }
+
+        >:nth-child(1) {
+            background-image: url(/assets/img/benefit/ic_premium1.svg);
+        }
+        >:nth-child(2) {
+            background-image: url(/assets/img/benefit/ic_premium2.svg);
+        }
+        >:nth-child(3) {
+            background-image: url(/assets/img/benefit/ic_premium3.svg);
+        }
+        >:nth-child(4) {
+            background-image: url(/assets/img/benefit/ic_premium4.svg);
+        }
+    }
+}
+
+/* 쿠폰 안내 */
+
+.tab_info_container.coupon {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.coupon_box {
+    color: #666;
+    position: relative;
+    width: 519px;
+    padding: 28px 55px 30px 32px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 45px;
+    
+    &:first-child {
+        /* margin-right: 70px; */
+    }
+
+    .coupon_head {
+        position: relative;
+
+        >div {
+            margin-bottom: 15px;
+        }
+
+        >:nth-child(2) {
+            color: var(--color-black-3);
+        }
+
+        .coupon_expiration {
+            position: absolute;
+            color: var(--color-grey);
+            font-size: 12px;
+            top: 10px;
+            right: 0;
+            z-index: 50;
+        }
+    }
+
+    .coupon_body {
+        .coupon_desc {
+            display: flex;
+            font-size: 14px;
+            padding-top: 15px;
+
+            >:first-child {
+                margin-right: 15px;
+                font-weight: 500;
+            }
+        }
+        .acc {
+            margin-top: 49px;
+        }
+    }
+
+    .coupon_right {
+        position: absolute;
+        z-index: 5;
+        top: -1.5px;
+        right: -45px;
+        width: 90px;
+        height: 101%;
+        border-radius: 4px;
+        background-color: var(--color-blue);
+
+        .all_coupon {
+            position: relative;
+
+            .txt_wrap {
+                position: absolute;
+                z-index: 50;
+                top: 150px;
+                font-size: 50px;
+                font-weight: 700;
+                opacity: .15;
+                transform: translateY(-50%) rotate(90deg);
+                color: var(--color-white);
+                right: -58px;
+                text-align: center;
+                
+                p {
+                    line-height: 45px;
+                }
+
+            }
+        }
+    }
+}
+
+.benefit .notice {
+    margin-top: 50px;
+    margin-left: 20px;
+}
