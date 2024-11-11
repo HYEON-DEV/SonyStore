@@ -46,6 +46,45 @@ body {
   }
 }
 
+/* collapsible arrow 화살표 */
+/* 부모 포지션 relative 설정 !!! */
+
+.arrow_collapsible_parent {
+  position: relative;
+}
+
+.arrow_collapsible {
+  display: inline-block;
+  text-indent: -9999px;
+  
+}
+.arrow_collapsible:after, .arrow_collapsible:before {
+  display: block;
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 2px;
+  background: #707070;
+  transition: all .2s ease-in-out;
+  content: "";
+  
+}
+.arrow_collapsible:before {
+  right: 28px;
+  transform: translateY(-50%) rotate(-135deg);
+}
+.arrow_collapsible:after {
+  right: 19px;
+  transform: translateY(-50%) rotate(135deg);
+}
+.arrow_collapsible_parent.active .arrow_collapsible:before {
+  transform: translateY(-50%) rotate(-45deg);
+}
+.arrow_collapsible_parent.active .arrow_collapsible:after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+
 /* -----------------------상품 목록 페이지--------------------------- */
 .category {
   background-size: cover;
@@ -489,16 +528,6 @@ body {
         height: 30px;
       }
     }
-  }
-}
-
-/* -----------------------소비자 피해 보상 보험--------------------------- */
-
-.layer_container {
-  width: 636px;
-  height: 425px;
-
-  .layer_title {
   }
 }
 
@@ -1640,3 +1669,208 @@ body {
     }
   }
 }
+
+/* -----------------------공지사항--------------------------- */
+
+.faq_notice_head {
+  padding: 27px 0 70px;
+  background: #f4f7fa;
+
+  .head_tit {
+    padding: 80px 0 0;
+    margin: 0;
+    text-align: center;
+
+    .head_name {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: #222;
+    }
+    .head_txt {
+      margin-top: 12px;
+      font-size: 16px;
+      letter-spacing: -0.4px;
+      color: #222;
+    }
+  }
+
+  .tab_link_zone {
+    margin-top: 60px;
+
+    .tab_link_inner {
+      list-style: none;
+      gap: 20px;
+
+      .tab_btn {
+        width: 250px;
+        height: 150px;
+        background: #fff;
+        transition: all 0.2s;
+
+        .tit {
+          /* color: #fff; */
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 32px;
+          color: #909090;
+          width: 100%;
+          height: 100%;
+        }
+
+        &.active{
+          background: #5865f5;
+          .tit {
+            color: white;
+          }
+        }
+
+        &:hover{
+          background: #5865f5;
+          .tit {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.container_w1000 {
+  width: 1000px;
+  margin-top: 78px;
+  margin: 0 auto;
+
+  .faq_category {
+    margin-top: 60px;
+    min-height: 500px;
+    ul {
+      gap: 10px;
+    }
+    li {
+      .btn {
+        display: inline-block;
+        padding: 8px 24px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        background: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: -0.4px;
+        color: #888;
+
+        &.active {
+          background: #5865f5;
+          color: white;
+        }
+
+        
+      }
+    }
+
+    .faq_category_list {
+      
+      margin-top: 59px;
+      border-top: 2px solid #222;
+
+      .acc_item{
+        border-bottom: 1px solid #ddd;
+
+        .acc_head{
+
+          .acc_btn{
+            display: flex;
+            padding: 24px 56px 24px 0;
+
+            .category_tit{
+              width: 180px;
+              font-weight: 700;
+              line-height: 24px;
+              color: #888;
+            }
+
+            .acc_tit{
+              padding-left: 32px;
+              font-size: 16px;
+              font-weight: 700;
+              line-height: 24px;
+              letter-spacing: -.4px;
+              color: #444;
+            }
+
+            
+          }
+        }
+
+        .acc_inner{
+
+          .acc_box{
+            padding: 26px 32px 25px 212px;
+            background: #fbfbfb;
+          }
+        }
+      }
+    }
+  }
+}
+
+.notice_list{
+  margin-top: 50px;
+  border-top: 2px solid #222;
+  min-height: 500px;
+  .notice_head{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 65px;
+    background-color: #fbfbfb;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    color: #222;
+    font-weight: 700;
+    .num{
+      width: 120px;
+    }
+    .tit{
+      width: 756px;
+    }
+    .reg_date{
+      width: 124px;
+    }
+    .watch{
+      width: 124px;
+    }
+  }
+
+  .notice_body{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 65px;
+    background-color: #fbfbfb;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    color: #222;
+    
+    .body_num{
+      width: 120px;
+    }
+    .body_tit{
+      justify-content: left;
+      font-weight: 700;
+      width: 756px;
+      a{
+        color: #222;
+      }
+    }
+    .body_reg_date{
+      width: 124px;
+    }
+    .body_watch{
+      width: 124px;
+    }
+  }
+}
+
+
