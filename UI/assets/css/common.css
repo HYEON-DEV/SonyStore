@@ -93,10 +93,17 @@
     cursor: pointer;
 }
 
+.container_w1920 {
+    width: 1920px;
+    margin: auto;
+    background-color: var(--color-white);
+}
+
 .container_w1200 {
     margin-top: 80px;
     width: 1200px;
     margin: 80px auto 0;
+    background-color: var(--color-white);
 }
 
 .container_w1600 {
@@ -262,7 +269,9 @@ input::placeholder {
     position: fixed;
     top:0;
     left:0; 
-    width:100%;
+    right:0;
+    width:1920px;
+    margin:0 auto;
     height:4em;
     font-size:20px;
     font-family: 'Noto Sans KR', serif;
@@ -401,10 +410,12 @@ input::placeholder {
 /* footer */
 .footer {
     z-index: 900;
+    max-width: 1920px;
     padding-bottom: 64px;
     position:relative;
     color: #bbb;
     background-color: #000;
+    margin: 0 auto;
 
     .footer_inner {
         padding: 100px 90px;
