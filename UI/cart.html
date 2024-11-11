@@ -120,7 +120,7 @@
                                
                                 <!-- 가격 -->
                                 <div class="col_table_cell prd_price">
-                                    14,900
+                                    <span class="price">1490000</span>
                                     <span class="won">원</span>
                                 </div>
                                 
@@ -135,7 +135,7 @@
 
                                 <!-- 합계 -->
                                 <div class="col_table_cell prd_total_price">
-                                    14,900 
+                                    <span class="total_price">1490000</span>
                                     <span class="won">원</span>
                                 </div>
 
@@ -172,7 +172,7 @@
                                
                                 <!-- 가격 -->
                                 <div class="col_table_cell prd_price">
-                                    14,900
+                                    <span class="price">1490000</span>
                                     <span class="won">원</span>
                                 </div>
                                 
@@ -187,7 +187,7 @@
 
                                 <!-- 합계 -->
                                 <div class="col_table_cell prd_total_price">
-                                    14,900 
+                                    <span class="total_price">1490000</span>
                                     <span class="won">원</span>
                                 </div>
 
@@ -224,7 +224,7 @@
                                 
                                 <!-- 가격 -->
                                 <div class="col_table_cell prd_price">
-                                    14,900
+                                    <span class="price">1490000</span>
                                     <span class="won">원</span>
                                 </div>
                                 
@@ -239,7 +239,7 @@
 
                                 <!-- 합계 -->
                                 <div class="col_table_cell prd_total_price">
-                                    14,900 
+                                    <span class="total_price">1490000</span>
                                     <span class="won">원</span>
                                 </div>
 
@@ -344,28 +344,63 @@
         } ); 
 
 
-        /* = = = = = 수량 변경 = = = = = */
+        /* = = = = = 가격 toLocaleString = = = = = */
+
+        document.querySelectorAll('.price').forEach( (v,i) => {
+            v.innerText = parseInt(v.innerText).toLocaleString();
+        } );
+
+        // const formattedNumber = "14,900";
+        // const numberWithoutCommas = formattedNumber.replace(/,/g, '');
+
+        // console.log(numberWithoutCommas);  // "1490000"
+        
+        // const number = Number(numberWithoutCommas);  // 숫자 타입으로 변환
+        // console.log(number);  // 1490000
+
+        // const number = parseInt(numberWithoutCommas, 10);  // 숫자 타입으로 변환
+        // console.log(number);  // 1490000
+
+
+        /* = = = = = 수량&가격 변경 = = = = = */
         
         // plus
         document.querySelectorAll('.plus').forEach( (v,i) => {
             v.addEventListener( 'click', e => {
-                const cntBox = e.currentTarget.closest('.count_ui_box');
+                const current = e.currentTarget;
+                const cntBox = current.closest('.count_ui_box');
                 const cnt = cntBox.querySelector('.count');
                 cnt.value = parseInt(cnt.value)+1;
+
+                const parent = current.closest('.col_table_row');
+                const price = parseInt(parent.querySelector('.price').innerText.replaceAll(',', ''));
+                parent.querySelector('.total_price').innerText = (price * cnt.value).toLocaleString();
             } );
         } );
 
         // minus
         document.querySelectorAll('.minus').forEach( (v,i) => {
             v.addEventListener('click', e => {
-                const cntBox = e.currentTarget.closest('.count_ui_box');
+                const current = e.currentTarget;
+                const cntBox = current.closest('.count_ui_box');
                 const cnt = cntBox.querySelector('.count');
                 
                 if( cnt.value > 1 ) {
                     cnt.value = parseInt(cnt.value)-1;
                 }
+
+                const parent = current.closest('.col_table_row');
+                const price = parseInt(parent.querySelector('.price').innerText.replaceAll(',', ''));
+                parent.querySelector('.total_price').innerText = (price * cnt.value).toLocaleString();
             });
         } );
+
+
+        /* = = = = = 가격 변경 = = = = = */
+/* 
+        document.querySelectorAll('.prd_total_price').forEach((v,i) => {
+
+        }); */
 
 
         /* = = = = = collapsible 하단 = = = = = */
