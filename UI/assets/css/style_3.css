@@ -1333,7 +1333,7 @@ img {
     }
 } 
 
-.acc_item {
+.acc_item.type2 {
     border: none;   
     .acc_head {
         padding-bottom: 24px;

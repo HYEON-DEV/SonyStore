@@ -128,7 +128,7 @@
                                 <div class="col_table_cell prd_count">
                                     <div class="count_ui_box">
                                         <button class="minus">-</button>
-                                        <input type="text" readonly="" class="count" value="1">
+                                        <input type="text" readonly="" class="count" value=1>
                                         <button class="plus">+</button>
                                     </div>
                                 </div>
@@ -180,7 +180,7 @@
                                 <div class="col_table_cell prd_count">
                                     <div class="count_ui_box">
                                         <button class="minus">-</button>
-                                        <input type="text" readonly="" class="count" value="1">
+                                        <input type="text" readonly="" class="count" value=1>
                                         <button class="plus">+</button>
                                     </div>
                                 </div>
@@ -232,7 +232,7 @@
                                 <div class="col_table_cell prd_count">
                                     <div class="count_ui_box">
                                         <button class="minus">-</button>
-                                        <input type="text" readonly="" class="count" value="1">
+                                        <input type="text" readonly="" class="count" value=1>
                                         <button class="plus">+</button>
                                     </div>
                                 </div>
@@ -342,6 +342,30 @@
                 checkAll.checked = (totalCnt == checkedCnt) ? true : false;
             } );
         } ); 
+
+
+        /* = = = = = 수량 변경 = = = = = */
+        
+        // plus
+        document.querySelectorAll('.plus').forEach( (v,i) => {
+            v.addEventListener( 'click', e => {
+                const cntBox = e.currentTarget.closest('.count_ui_box');
+                const cnt = cntBox.querySelector('.count');
+                cnt.value = parseInt(cnt.value)+1;
+            } );
+        } );
+
+        // minus
+        document.querySelectorAll('.minus').forEach( (v,i) => {
+            v.addEventListener('click', e => {
+                const cntBox = e.currentTarget.closest('.count_ui_box');
+                const cnt = cntBox.querySelector('.count');
+                
+                if( cnt.value > 1 ) {
+                    cnt.value = parseInt(cnt.value)-1;
+                }
+            });
+        } );
 
 
         /* = = = = = collapsible 하단 = = = = = */
