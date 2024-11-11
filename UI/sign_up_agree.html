@@ -21,58 +21,60 @@
     <script src="./assets/js/loadHTML.js"></script>
     <script>loadHTML("./header.html");</script>
 
-    <div class="container_w1200">
-        <div class="sign_up_agree">
-            <h2 class="h2_title font_32_700">소니스토어</h2>
-            <p class="find_id_pw_desc">
-                소니 고객지원 사이트(SCS) 와 소니스토어는 하나의 ID 와 비밀번호로 운영됩니다.<br />
-                소니 고객지원 사이트(SCS)의 이용약관에 함께 동의하시면,<br />
-                하나의 ID로 고객지원 사이트(SCS)를 편리하게 이용하실 수 있습니다.<br />
-            </p>
+    <div class="container_w1920">
+        <div class="container_w1200">
+            <div class="sign_up_agree">
+                <h2 class="h2_title font_32_700">소니스토어</h2>
+                <p class="find_id_pw_desc">
+                    소니 고객지원 사이트(SCS) 와 소니스토어는 하나의 ID 와 비밀번호로 운영됩니다.<br />
+                    소니 고객지원 사이트(SCS)의 이용약관에 함께 동의하시면,<br />
+                    하나의 ID로 고객지원 사이트(SCS)를 편리하게 이용하실 수 있습니다.<br />
+                </p>
 
-            <div class="all_agree">
-                <span class="all_agree_text">약관 전체 동의<span class="all_agree_text_desc">(선택 항목 포함)</span></span>
-                <label class="switch">
-                    <input type="checkbox" onclick="selectAll(this)">
-                    <span class="slider round"></span>
-                </label>
+                <div class="all_agree">
+                    <span class="all_agree_text">약관 전체 동의<span class="all_agree_text_desc">(선택 항목 포함)</span></span>
+                    <label class="switch">
+                        <input class="check_all" type="checkbox" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="bg_agree_box">
+                    <div class="agree_box_container">
+                        <div class="checkbox_container">
+                            <input type="checkbox" class="input_checkbox check_only" id="check01" />
+                            <label for="check01" class="checkbox_desc pointer">[필수] 소니스토어 쇼핑몰 이용약관 동의</label>
+                        </div>
+                        <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
+                    </div>
+
+                    <div class="agree_box_container">
+                        <div class="checkbox_container">
+                            <input type="checkbox" class="input_checkbox check_only" id="check02" />
+                            <label for="check02" class="checkbox_desc pointer">[필수] 소니 고객지원 사이트(SCS) 이용약관 동의</label>
+                        </div>
+                        <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
+                    </div>
+
+                    <div class="agree_box_container">
+                        <div class="checkbox_container">
+                            <input type="checkbox" class="input_checkbox check_only" id="check03" />
+                            <label for="check03" class="checkbox_desc pointer">[필수] 회원가입 개인정보 수집에 관한 동의</label>
+                        </div>
+                        <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
+                    </div>
+
+                    <div class="agree_box_container">
+                        <div class="checkbox_container">
+                            <input type="checkbox" class="input_checkbox check_only" id="check04" />
+                            <label for="check04" class="checkbox_desc pointer">[선택] 마케팅 목적의 개인정보 처리 및 광고성 정보 수신에 관한 동의</label>
+                        </div>
+                        <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
+                    </div>
+                </div>
+
+                <button type="button" class="black_button">동의</button>
             </div>
-
-            <div class="bg_agree_box">
-                <div class="agree_box_container">
-                    <div class="checkbox_container">
-                        <input type="checkbox" class="input_checkbox" id="check01" />
-                        <label for="check01" class="checkbox_desc pointer">[필수] 소니스토어 쇼핑몰 이용약관 동의</label>
-                    </div>
-                    <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
-                </div>
-
-                <div class="agree_box_container">
-                    <div class="checkbox_container">
-                        <input type="checkbox" class="input_checkbox" id="check02" />
-                        <label for="check02" class="checkbox_desc pointer">[필수] 소니 고객지원 사이트(SCS) 이용약관 동의</label>
-                    </div>
-                    <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
-                </div>
-
-                <div class="agree_box_container">
-                    <div class="checkbox_container">
-                        <input type="checkbox" class="input_checkbox" id="check03" />
-                        <label for="check03" class="checkbox_desc pointer">[필수] 회원가입 개인정보 수집에 관한 동의</label>
-                    </div>
-                    <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
-                </div>
-
-                <div class="agree_box_container">
-                    <div class="checkbox_container">
-                        <input type="checkbox" class="input_checkbox" id="check04" />
-                        <label for="check04" class="checkbox_desc pointer">[선택] 마케팅 목적의 개인정보 처리 및 광고성 정보 수신에 관한 동의</label>
-                    </div>
-                    <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
-                </div>
-            </div>
-
-            <button type="button" class="black_button">동의</button>
         </div>
     </div>
 
@@ -84,13 +86,28 @@
     <script src="./assets/js/common.js"></script>
 
     <script>
-        function selectAll(selectAll)  {
-            const checkboxes = document.querySelectorAll(".input_checkbox");
+        /* = = = = = checkbox 전체 체크 제어 = = = = = */
+        
+        const checkAll = document.querySelector('.check_all');
+
+        checkAll.addEventListener('click', e => {
             
-            checkboxes.forEach( (i) => {
-                i.checked = selectAll.checked;
-            })
-        }
+            document.querySelectorAll('.check_only').forEach(v => {
+                v.checked = checkAll.checked;
+            });
+
+        });
+
+        const checkboxes = document.querySelectorAll('.check_only');
+
+        checkboxes.forEach( (v,i) => {
+            v.addEventListener( 'click', e => {
+                const totalCnt = checkboxes.length;
+                const checkedCnt = document.querySelectorAll('.check_only:checked').length;
+                
+                checkAll.checked = (totalCnt == checkedCnt) ? true : false;
+            } );
+        } ); 
     </script>
 
 </body>

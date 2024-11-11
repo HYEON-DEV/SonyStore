@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ 공지사항</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style_2.css" />
+    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.css"
+    />
+    <link rel="icon" href="assets/img/favicon_144x144.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css"
+    />
+  </head>
+  <body>
+    <script src="./assets/js/loadHTML.js"></script>
+    <script>
+      loadHTML("./header.html");
+    </script>
+
+    <div class="container_w1920">
+      <div class="faq_notice_head">
+        <div class="head_tit">
+          <h1 class="head_name">FAQ &amp; 공지사항</h1>
+          <p class="head_txt">
+            소니스토어에 많이 물어보시는 질문과 새로운 소식을 만나보세요.
+          </p>
+        </div>
+        <div class="tab_link_zone flex_center">
+          <ul class="tab_link_inner flex_center">
+            <li class="tab_faq active">
+                <a class="tab_btn flex_center" title="FAQ 보기" href="#">
+                    <span class="tit flex_center">FAQ</span>
+                </a>
+            </li>
+            <li class="tab_notice">
+                <a class="tab_btn flex_center" title="공지사항 보기" href="#">
+                    <span class="tit flex_center">공지사항</span>
+                </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!---------------- FAQ ----------------->
+      <div class="container_w1000">
+        <div class="faq_category">
+            <ul class="faq_btn flex_center">
+                <li><a href="#전체" class="btn active"><span>전체</span></a></li>
+                <li><a href="#주문/결제" class="btn"><span>주문/결제</span></a></li>
+                <li><a href="#세금계산서/영수증" class="btn"><span>세금계산서/영수증</span></a></li>
+                <li><a href="#배송" class="btn"><span>배송</span></a></li>
+                <li><a href="#취소/환불/AS" class="btn"><span>취소/환불/AS</span></a></li>
+                <li><a href="#회원관련" class="btn"><span>회원관련</span></a></li>
+                <li><a href="#쿠폰/마일리지" class="btn"><span>쿠폰/마일리지</span></a></li>
+            </ul>
+
+            <div class="faq_category_list">
+              <div class="acc_item arrow_collapsible_parent active" data-article-no="20391">
+                <div class="acc_head">
+                  <a href="#" class="acc_btn" title="상세 내용 토글">
+                    <span class="category_tit flex_center">주문/결제</span>
+                    <span class="acc_tit">ESP상품의 결제 방법에는 무엇이 있나요?</span>
+                    <span class="arrow_collapsible">선택됨/상세닫기</span>
+                  </a>
+                </div>
+                <div class="acc_inner" style="display: none;">
+                  <div class="acc_box">
+                    <p class="txt">
+                      <p>
+                        <span style="font-size: 14px;">ESP와 같은 무형상품은 신용카드 및 네이버페이로 결제 가능 합니다.</span>
+                        <br>
+                      </p>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <!---------------- 공지사항 ----------------->
+      <div class="container_w1200">
+        <div class="notice_list">
+            <div class="notice_head">
+              <div class="num flex_center">번호</div>
+              <div class="tit flex_center">제목</div>
+              <div class="reg_date flex_center">등록일</div>
+              <div class="watch flex_center">조회수</div>
+          </div>
+          <div class="notice_body">
+              <div class="body_num flex_center"><span>1</span></div>
+              <div class="body_tit flex_center">
+                <a href="#">[당첨자 안내] ZV-E10M2 출시 기념, ZV 프로모션!</a>
+              </div>
+              <div class="body_reg_date flex_center"><span>2024-09-20</span></div>
+              <div class="body_watch flex_center"><span>104</span></div>
+          </div>
+          <div class="notice_body">
+            <div class="body_num flex_center"><span>1</span></div>
+            <div class="body_tit flex_center">
+              <a href="#">[당첨자 안내] ZV-E10M2 출시 기념, ZV 프로모션!</a>
+            </div>
+            <div class="body_reg_date flex_center"><span>2024-09-20</span></div>
+            <div class="body_watch flex_center"><span>104</span></div>
+          </div>
+        </div>
+      </div>
+
+    <script>
+      loadHTML("./footer.html");
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.all.min.js"></script>
+    <script src="./assets/js/common.js"></script>
+
+    <script>
+      /* 탭 버튼 active, FAQ/공지사항 display 조절*/
+      document.addEventListener('DOMContentLoaded', function() {
+        const tabFaq = document.querySelector('.tab_faq .tab_btn');
+        const tabNotice = document.querySelector('.tab_notice .tab_btn');
+        const containerW1000 = document.querySelector('.container_w1000');
+        const containerW1200 = document.querySelector('.container_w1200');
+
+        function activateTab(tab) {
+        // 모든 탭에서 active 클래스 제거
+        document.querySelectorAll('.tab_btn').forEach(li => {
+          li.classList.remove('active');
+        });
+
+        // 클릭된 탭에 active 클래스 추가
+        tab.classList.add('active');
+      }
+
+        tabFaq.addEventListener('click', function(e) {
+          e.preventDefault();
+          activateTab(tabFaq);
+          containerW1000.style.display = 'block';
+          containerW1200.style.display = 'none';
+        });
+
+        tabNotice.addEventListener('click', function(e) {
+          e.preventDefault();
+          activateTab(tabNotice);
+          containerW1000.style.display = 'none';
+          containerW1200.style.display = 'block';
+        });
+
+        // 처음 실행 시 tab_faq 버튼 활성화
+      activateTab(tabFaq);
+      containerW1000.style.display = 'block';
+      containerW1200.style.display = 'none';
+
+      // FAQ 카테고리 버튼 활성화
+      const faqButtons = document.querySelectorAll('.faq_btn .btn');
+      faqButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          faqButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+        });
+      });
+
+      // 처음 실행 시 "전체" 버튼 활성화
+      document.querySelector('.faq_btn .btn').classList.add('active');
+  });
+
+
+      /* = = = = = collapsible  = = = = = */
+        
+      document.querySelectorAll('.acc_head').forEach( (v,i) => {
+            v.addEventListener( 'click', e => {
+                
+                const target = e.currentTarget.closest('.acc_item');
+                target.classList.toggle('active');
+
+                const content = target.querySelector('.acc_inner');
+                
+                content.style.display = target.classList.contains('active') ? 'block' : 'none';
+            });
+        } );
+    </script>
+  </body>
+</html>

@@ -124,6 +124,46 @@ dropUpBtn.addEventListener("click", e => {
 
 /*** footer drop up end ***/
 
+/*** search dropdown  ***/
+
+const dropDownBtn1 = document.querySelector('.drop_down_btn_1');
+const dropDownContent1 = document.querySelector('.search_drop_down');
+const searchExit = document.querySelector('.search_exit');
+
+dropDownBtn1.addEventListener("click", e => {
+    dropDownContent1.classList.toggle("show_search");
+   
+    if(dropDownContent1.classList.contains('show_search')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'auto';
+    }
+});
+
+searchExit.addEventListener("click", e => {
+    dropDownContent1.classList.toggle("show_search");
+
+    if(dropDownContent1.classList.contains('show_search')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'auto';
+    }
+});
+
+/*** search dropdown end ***/
+
+/*** mypage dropdown */
+const dropDownBtn2 = document.querySelector('.drop_down_btn_2');
+const mypageDropDown = document.querySelector('.mypage_drop_down');
+
+dropDownBtn2.addEventListener("click", () => {
+    mypageDropDown.classList.toggle("show_mypage");
+});
+
+
+
+/*** mypage dropdown end*/
+
 /*** sweetalert (modal)  ***/
 document.querySelector(".go_service").addEventListener('click', e => {
     new Swal({

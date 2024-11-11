@@ -20,113 +20,114 @@
 <body>
     <script src="./assets/js/loadHTML.js"></script>
     <script>loadHTML("./header.html");</script>
-
-    <div class="container_w1600">
-        <div class="member_modify_container">
-            <h2 class="h2_title font_20_500 flex_center"><i class="fas fa-angle-left"></i>마이페이지</h2>
-            <h2 class="h2_title font_48_700">회원정보</h2>
-            
-            <div class="flex_end_box">
-                <a href="#" class="white_button">회원탈퇴</a>
-            </div>
-
-            <div class="hr_black"></div>
-
-            <div class="member_text_box">
-                <div class="member_title_box"><label for="#" class="member_title">이름</label></div>
-                <input type="text" class="input_box member_input_box" value="박진수" style="width: 402px;" disabled />
-                <div class="member_button_box">
-                    <button id="changeName" class="large_white_button pointer">이름변경</button>
+    <div class="container_w1920">
+        <div class="container_w1600">
+            <div class="member_modify_container">
+                <h2 class="h2_title font_20_500 flex_center"><i class="fas fa-angle-left"></i>마이페이지</h2>
+                <h2 class="h2_title font_48_700">회원정보</h2>
+                
+                <div class="flex_end_box">
+                    <a href="#" class="white_button">회원탈퇴</a>
                 </div>
-                <span class="member_caution">※ 개명(이름 변경)한 경우 ‘이름 변경’ 버튼을 눌러주세요.</span>
-            </div>
 
-            <div class="member_text_box">
-                <div class="member_title_box"><label for="#" class="member_title">휴대폰</label></div>
-                <input type="text" class="input_box member_input_box" value="010-3306-4205" style="width: 402px;" />
-                <div class="member_button_box">
-                    <button class="large_white_button pointer">인증번호 전송</button>
+                <div class="hr_black"></div>
+
+                <div class="member_text_box">
+                    <div class="member_title_box"><label for="#" class="member_title">이름</label></div>
+                    <input type="text" class="input_box member_input_box" value="박진수" style="width: 402px;" disabled />
+                    <div class="member_button_box">
+                        <button id="changeName" class="large_white_button pointer">이름변경</button>
+                    </div>
+                    <span class="member_caution">※ 개명(이름 변경)한 경우 ‘이름 변경’ 버튼을 눌러주세요.</span>
                 </div>
-            </div>
 
-            <div class="member_text_box">
-                <div class="member_title_box none_select" style="border:none;"></div>
-                <input type="text" class="input_box member_input_box" style="width: 402px;" placeholder="인증번호" />
-                <div class="member_button_box">
-                    <button class="large_white_button pointer">인증</button>
+                <div class="member_text_box">
+                    <div class="member_title_box"><label for="#" class="member_title">휴대폰</label></div>
+                    <input type="text" class="input_box member_input_box" value="010-3306-4205" style="width: 402px;" />
+                    <div class="member_button_box">
+                        <button class="large_white_button pointer">인증번호 전송</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="member_text_box">
-                <div class="member_title_box"><label for="#" class="member_title">이메일 아이디</label></div>
-                <input type="text" class="input_box member_input_box" value="jinsu4205@gmail.com" disabled />
-            </div>
-
-            <div class="member_text_box">
-                <div class="member_title_box"><label for="#" class="member_title">생년월일</label></div>
-                <input type="text" class="input_box member_input_box" value="1996-09-05" disabled />
-            </div>
-
-            <div class="member_text_box">
-                <div class="member_title_box"><label for="#" class="member_title">성별</label></div>
-                <input type="text" class="input_box member_input_box" value="남" disabled />
-            </div>
-
-            <div class="member_text_box">
-                <div class="member_title_box"><label for="#" class="member_title">회원구분</label></div>
-                <img src="assets/img/membership_family.ea303a8f.svg" alt="멤버쉽 아이콘" /><input type="text" class="input_box member_input_box" value="MEMBERSHIP" disabled />
-            </div>
-
-            <div class="member_text_box">
-                <div class="member_title_box"><label for="#" class="member_title">비밀번호</label></div>
-                <input type="password" class="input_box member_input_box" value="123412345" style="width: 402px;" disabled />
-                <div class="member_button_box">
-                    <button id="changePw" class="large_white_button pointer">비밀번호 변경</button>
+                <div class="member_text_box">
+                    <div class="member_title_box none_select" style="border:none;"></div>
+                    <input type="text" class="input_box member_input_box" style="width: 402px;" placeholder="인증번호" />
+                    <div class="member_button_box">
+                        <button class="large_white_button pointer">인증</button>
+                    </div>
                 </div>
-                <span class="member_caution_blue">SNS 계정으로 가입하신 회원님은 각 SNS 페이지에서 수정 및 변경하시기 바랍니다.</span>
-            </div>
 
-            <div class="member_text_box">
-                <div class="member_title_box" style="border:none;"><label for="#" class="member_title">주소</label></div>
-                <div class="memebr_address_box">
-                    <div class="address_input_button">
-                        <input id="postcode" type="text" class="input_box member_input_box" value="" style="width: 402px;" disabled />
-                        <div class="member_button_box">
-                            <button id="findPostcode" class="large_white_button pointer">주소 변경</button>
+                <div class="member_text_box">
+                    <div class="member_title_box"><label for="#" class="member_title">이메일 아이디</label></div>
+                    <input type="text" class="input_box member_input_box" value="jinsu4205@gmail.com" disabled />
+                </div>
+
+                <div class="member_text_box">
+                    <div class="member_title_box"><label for="#" class="member_title">생년월일</label></div>
+                    <input type="text" class="input_box member_input_box" value="1996-09-05" disabled />
+                </div>
+
+                <div class="member_text_box">
+                    <div class="member_title_box"><label for="#" class="member_title">성별</label></div>
+                    <input type="text" class="input_box member_input_box" value="남" disabled />
+                </div>
+
+                <div class="member_text_box">
+                    <div class="member_title_box"><label for="#" class="member_title">회원구분</label></div>
+                    <img src="assets/img/membership_family.ea303a8f.svg" alt="멤버쉽 아이콘" /><input type="text" class="input_box member_input_box" value="MEMBERSHIP" disabled />
+                </div>
+
+                <div class="member_text_box">
+                    <div class="member_title_box"><label for="#" class="member_title">비밀번호</label></div>
+                    <input type="password" class="input_box member_input_box" value="123412345" style="width: 402px;" disabled />
+                    <div class="member_button_box">
+                        <button id="changePw" class="large_white_button pointer">비밀번호 변경</button>
+                    </div>
+                    <span class="member_caution_blue">SNS 계정으로 가입하신 회원님은 각 SNS 페이지에서 수정 및 변경하시기 바랍니다.</span>
+                </div>
+
+                <div class="member_text_box">
+                    <div class="member_title_box" style="border:none;"><label for="#" class="member_title">주소</label></div>
+                    <div class="memebr_address_box">
+                        <div class="address_input_button">
+                            <input id="postcode" type="text" class="input_box member_input_box" value="" style="width: 402px;" disabled />
+                            <div class="member_button_box">
+                                <button id="findPostcode" class="large_white_button pointer">주소 변경</button>
+                            </div>
+                        </div>
+                        <input id="address" type="text" class="input_box member_input_box" value="" disabled />
+                        <input id="addressDetail" type="text" class="input_box member_input_box" value="" />
+                    </div>
+                    
+                    <span class="member_caution">※ 주소는 사은품 및 기타 서비스를 제공받으실 때, 꼭 필요한 부분이므로 정확히 기입해 주시기 바랍니다.</span>
+                </div>
+
+                <div class="member_text_box">
+                    <div class="member_title_box"><label for="#" class="member_title">이벤트/프로모션 알림</label></div>
+                    <!-- <input type="text" class="input_box member_input_box" value="" disabled /> -->
+                    <div class="sns_receive_agree">
+                        <div class="all_agree" style="margin-top:0px;">
+                            <span class="all_agree_text">메일 수신</span>
+                            <label class="switch">
+                                <input type="checkbox" class="input_box member_input_box" />
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+
+                        <div class="all_agree" style="margin-top:0px;">
+                            <span class="all_agree_text">SNS 수신</span>
+                            <label class="switch">
+                                <input type="checkbox" class="input_box member_input_box" />
+                                <span class="slider round"></span>
+                            </label>
                         </div>
                     </div>
-                    <input id="address" type="text" class="input_box member_input_box" value="" disabled />
-                    <input id="addressDetail" type="text" class="input_box member_input_box" value="" />
                 </div>
-                
-                <span class="member_caution">※ 주소는 사은품 및 기타 서비스를 제공받으실 때, 꼭 필요한 부분이므로 정확히 기입해 주시기 바랍니다.</span>
+
+                <button type="button" class="black_button">회원정보 수정</button>
             </div>
-
-            <div class="member_text_box">
-                <div class="member_title_box"><label for="#" class="member_title">이벤트/프로모션 알림</label></div>
-                <!-- <input type="text" class="input_box member_input_box" value="" disabled /> -->
-                <div class="sns_receive_agree">
-                    <div class="all_agree" style="margin-top:0px;">
-                        <span class="all_agree_text">메일 수신</span>
-                        <label class="switch">
-                            <input type="checkbox" class="input_box member_input_box" />
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-
-                    <div class="all_agree" style="margin-top:0px;">
-                        <span class="all_agree_text">SNS 수신</span>
-                        <label class="switch">
-                            <input type="checkbox" class="input_box member_input_box" />
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <button type="button" class="black_button">회원정보 수정</button>
-        </div>
-    </div>   
+        </div>   
+    </div>
 </body>
 
     <script>loadHTML("./footer.html");</script>

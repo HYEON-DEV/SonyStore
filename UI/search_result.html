@@ -18,124 +18,124 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css" />
 
 </head>    
-<body style="background-color: unset;">
+<body>
     <script src="./assets/js/loadHTML.js"></script>
     <script>loadHTML("./header.html");</script>
-
-    <div class="container_w1200 pd-90-160">
-        <div class="search_container">
-            <form action="#" class="search_input_form">
-                <label class="search_input_label" for="search_input">검색결과</label>
-                <input type="text" id="search_input" class="input_text font_32_700" value="카메라" />
-                <button type="button" class="search_button" title="검색">검색</button>
-            </form>
-        </div>
-
-        <div class="result_message">
-            <p class="font_24_700 flex_center"><span class="text_blue_accent">'카메라'</span>에 대한 검색결과는 총&nbsp;<span class="text_blue_accent">58</span>건 입니다.</p>
-        </div>
-
-        <div class="tab_menu_style_1">
-            <ul class="tab_button_container flex_center">
-                <li class="tab_01 font_32_700 tab_button_box border_bottom"><a href="#tab_01" class="flex_center tab_button tab_button_active">전체(16)</a></li>
-                <li class="tab_02 font_32_700 tab_button_box border_bottom"><a href="#tab_02" class="flex_center tab_button">제품(4)</a></li>
-                <li class="tab_03 font_32_700 tab_button_box border_bottom"><a href="#tab_03" class="flex_center tab_button">기획전(4)</a></li>
-                <li class="tab_04 font_32_700 tab_button_box border_bottom"><a href="#tab_04" class="flex_center tab_button">카테고리(1)</a></li>
-                <li class="tab_05 font_32_700 tab_button_box border_bottom"><a href="#tab_05" class="flex_center tab_button">공지사항(1)</a></li>                
-            </ul>
-        </div>
-
-        <div id="tab_01" class="tab_page tab_page_active">
-            <!-- 제품 -->
-            <div class="list_info_wrapper">
-                <div class="list_info">
-                  <div class="list_info_name">제품</div>
-                  <div class="list_info_num"></div>
-                </div>
-                  <ul class="item_sort">
-                    <li><a href="#" class="sort sort_recent sort_active">최신순</a></li>
-                    <li><a href="#" class="sort sort_high_price">높은가격순</a></li>
-                    <li><a href="#" class="sort sort_low_price">낮은가격순</a></li>
-                  </ul>
-            </div>
-            
-            <div class="list_container"></div>
-            <div class="hr_silver"></div>
-            <div class="more_view font_16_500 flex_center">더보기<i class="fas fa-plus"></i></div>
-
-            <!-- 기획전 -->
-            <h2 class="search_result_content_title">기획전<span class="search_result_title_count">(3)</span></h2>
-
-            <div class="product_grid_3ea">
-                <div class="product_grid_item">
-                    <img src="assets/img/search_result/product_grid_img_01.png" alt="이벤트 이미지" />
-                    <span class="product_grid_title">입문자 추천! 카메라+렌즈 스타터 세트</span>
-                    <span class="product_grid_period">2024.10.17 ~ 재고 소진 시</span>
-                </div>
-
-                <div class="product_grid_item">
-                    <img src="assets/img/search_result/product_grid_img_02.png" alt="이벤트 이미지" />
-                    <span class="product_grid_title">풀프레임으로 시작하자 시작부터 FULL</span>
-                    <span class="product_grid_period">2024. 08. 12 ~ 2024. 12. 01</span>
-                </div>
-
-                <div class="product_grid_item">
-                    <img src="assets/img/search_result/product_grid_img_03.png" alt="이벤트 이미지" />
-                    <span class="product_grid_title">풀프레임 카메라 무상 수리 서비스 1+1년 연장</span>
-                    <span class="product_grid_period">2024. 07. 01 ~ 2024. 12. 31</span>
-                </div>
+    <div class="container_w1920">
+        <div class="container_w1200 pd-90-160">
+            <div class="search_container">
+                <form action="#" class="search_input_form">
+                    <label class="search_input_label" for="search_input">검색결과</label>
+                    <input type="text" id="search_input" class="input_text font_32_700" value="카메라" />
+                    <button type="button" class="search_button" title="검색">검색</button>
+                </form>
             </div>
 
-            <!-- 카테고리 -->
-            <h2 class="search_result_content_title">카테고리<span class="search_result_title_count">(2)</span></h2>
-            <div class="hr_black" style="padding:0;"></div>
-            <div class="search_result_list_box">
-                <ul class="search_result_list_ul">
-                    <li class="search_result_list_li">
-                        <!-- <a href="#"> -->
-                            <span class="search_result_list_title">연장서비스플랜 ESP<img src="assets/img/search_result/thin_silver_arrow.png" class="thin_silver_arrow" alt="arrow" /></span>
-                            <span class="search_result_list_title text_blue_accent">카메라 ESP<img src="assets/img/search_result/thin_silver_arrow.png" class="thin_silver_arrow" alt="arrow" /></span>
-                        <!-- </a> -->
-                    </li>
-                    <li class="search_result_list_li">
-                        <a href="#">
-                            <span class="search_result_list_title text_blue_accent">카메라<img src="assets/img/search_result/thin_silver_arrow.png" class="thin_silver_arrow" alt="arrow" /></span>
-                            <span class="search_result_list_title text_blue_accent">렌즈교환식카메라<img src="assets/img/search_result/thin_silver_arrow.png" class="thin_silver_arrow" alt="arrow" /></span>
-                            <span class="search_result_list_title">풀프레임<img src="assets/img/search_result/thin_silver_arrow.png" class="thin_silver_arrow" alt="arrow" /></span>
-                        </a>
-                    </li>
+            <div class="result_message">
+                <p class="font_24_700 flex_center"><span class="text_blue_accent">'카메라'</span>에 대한 검색결과는 총&nbsp;<span class="text_blue_accent">58</span>건 입니다.</p>
+            </div>
+
+            <div class="tab_menu_style_1">
+                <ul class="tab_button_container flex_center">
+                    <li class="tab_01 font_32_700 tab_button_box border_bottom"><a href="#tab_01" class="flex_center tab_button tab_button_active">전체(16)</a></li>
+                    <li class="tab_02 font_32_700 tab_button_box border_bottom"><a href="#tab_02" class="flex_center tab_button">제품(4)</a></li>
+                    <li class="tab_03 font_32_700 tab_button_box border_bottom"><a href="#tab_03" class="flex_center tab_button">기획전(4)</a></li>
+                    <li class="tab_04 font_32_700 tab_button_box border_bottom"><a href="#tab_04" class="flex_center tab_button">카테고리(1)</a></li>
+                    <li class="tab_05 font_32_700 tab_button_box border_bottom"><a href="#tab_05" class="flex_center tab_button">공지사항(1)</a></li>                
                 </ul>
             </div>
-            <div class="more_view font_16_500 flex_center" style="margin-top:25px;">더보기<i class="fas fa-plus"></i></div>
 
-            <!-- 공지사항 -->
-            <h2 class="search_result_content_title">카테고리<span class="search_result_title_count">(2)</span></h2>
-            <div class="hr_black" style="padding:0;"></div>
-            <div class="search_result_list_box">
-                <ul class="search_result_list_ul">
-                    <li class="search_result_list_li">
-                        <a href="#" class="notice_box">
-                            <span class="notice_list_num">881069</span>
-                            <span class="notice_title">[당첨자 안내] ZV-E10M2 출시 기념, ZV 프로모션!</span>
-                            <span class="notice_date">2024.11.10</span>
-                        </a>
-                    </li>
-                    <li class="search_result_list_li">
-                        <a href="#" class="notice_box">
-                            <span class="notice_list_num">438389</span>
-                            <span class="notice_title">설 연휴 소니스토어 온라인 배송 일정 안내</span>
-                            <span class="notice_date">2024.11.10</span>
-                        </a>
-                    </li>
-                </ul>
+            <div id="tab_01" class="tab_page tab_page_active">
+                <!-- 제품 -->
+                <div class="list_info_wrapper">
+                    <div class="list_info">
+                    <div class="list_info_name">제품</div>
+                    <div class="list_info_num"></div>
+                    </div>
+                    <ul class="item_sort">
+                        <li><a href="#" class="sort sort_recent sort_active">최신순</a></li>
+                        <li><a href="#" class="sort sort_high_price">높은가격순</a></li>
+                        <li><a href="#" class="sort sort_low_price">낮은가격순</a></li>
+                    </ul>
+                </div>
+                
+                <div class="list_container"></div>
+                <div class="hr_silver"></div>
+                <div class="more_view font_16_500 flex_center">더보기<i class="fas fa-plus"></i></div>
+
+                <!-- 기획전 -->
+                <h2 class="search_result_content_title">기획전<span class="search_result_title_count">(3)</span></h2>
+
+                <div class="product_grid_3ea">
+                    <div class="product_grid_item">
+                        <img src="assets/img/search_result/product_grid_img_01.png" alt="이벤트 이미지" />
+                        <span class="product_grid_title">입문자 추천! 카메라+렌즈 스타터 세트</span>
+                        <span class="product_grid_period">2024.10.17 ~ 재고 소진 시</span>
+                    </div>
+
+                    <div class="product_grid_item">
+                        <img src="assets/img/search_result/product_grid_img_02.png" alt="이벤트 이미지" />
+                        <span class="product_grid_title">풀프레임으로 시작하자 시작부터 FULL</span>
+                        <span class="product_grid_period">2024. 08. 12 ~ 2024. 12. 01</span>
+                    </div>
+
+                    <div class="product_grid_item">
+                        <img src="assets/img/search_result/product_grid_img_03.png" alt="이벤트 이미지" />
+                        <span class="product_grid_title">풀프레임 카메라 무상 수리 서비스 1+1년 연장</span>
+                        <span class="product_grid_period">2024. 07. 01 ~ 2024. 12. 31</span>
+                    </div>
+                </div>
+
+                <!-- 카테고리 -->
+                <h2 class="search_result_content_title">카테고리<span class="search_result_title_count">(2)</span></h2>
+                <div class="hr_black" style="padding:0;"></div>
+                <div class="search_result_list_box">
+                    <ul class="search_result_list_ul">
+                        <li class="search_result_list_li">
+                            <!-- <a href="#"> -->
+                                <span class="search_result_list_title">연장서비스플랜 ESP<img src="assets/img/search_result/thin_silver_arrow.png" class="thin_silver_arrow" alt="arrow" /></span>
+                                <span class="search_result_list_title text_blue_accent">카메라 ESP<img src="assets/img/search_result/thin_silver_arrow.png" class="thin_silver_arrow" alt="arrow" /></span>
+                            <!-- </a> -->
+                        </li>
+                        <li class="search_result_list_li">
+                            <a href="#">
+                                <span class="search_result_list_title text_blue_accent">카메라<img src="assets/img/search_result/thin_silver_arrow.png" class="thin_silver_arrow" alt="arrow" /></span>
+                                <span class="search_result_list_title text_blue_accent">렌즈교환식카메라<img src="assets/img/search_result/thin_silver_arrow.png" class="thin_silver_arrow" alt="arrow" /></span>
+                                <span class="search_result_list_title">풀프레임<img src="assets/img/search_result/thin_silver_arrow.png" class="thin_silver_arrow" alt="arrow" /></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="more_view font_16_500 flex_center" style="margin-top:25px;">더보기<i class="fas fa-plus"></i></div>
+
+                <!-- 공지사항 -->
+                <h2 class="search_result_content_title">카테고리<span class="search_result_title_count">(2)</span></h2>
+                <div class="hr_black" style="padding:0;"></div>
+                <div class="search_result_list_box">
+                    <ul class="search_result_list_ul">
+                        <li class="search_result_list_li">
+                            <a href="#" class="notice_box">
+                                <span class="notice_list_num">881069</span>
+                                <span class="notice_title">[당첨자 안내] ZV-E10M2 출시 기념, ZV 프로모션!</span>
+                                <span class="notice_date">2024.11.10</span>
+                            </a>
+                        </li>
+                        <li class="search_result_list_li">
+                            <a href="#" class="notice_box">
+                                <span class="notice_list_num">438389</span>
+                                <span class="notice_title">설 연휴 소니스토어 온라인 배송 일정 안내</span>
+                                <span class="notice_date">2024.11.10</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="more_view font_16_500 flex_center" style="margin-top:25px;">더보기<i class="fas fa-plus"></i></div>
             </div>
-            <div class="more_view font_16_500 flex_center" style="margin-top:25px;">더보기<i class="fas fa-plus"></i></div>
-        </div>
 
-        <div id="tab_02" class="tab_page">
+            <div id="tab_02" class="tab_page">
+            </div>
         </div>
     </div>
-
     <script>loadHTML("./footer.html");</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.js"></script>
