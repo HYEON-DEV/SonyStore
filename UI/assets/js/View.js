@@ -363,8 +363,10 @@ const clr_name = clr => {
 
                 const input = document.createElement('input');
                 input.classList.add('cnt-box');
+                input.classList.add('count');
                 input.setAttribute( 'type', 'text' );
                 input.setAttribute( 'value', 1 );
+                input.setAttribute('readonly', true);
 
                 const btn2 = document.createElement('button');
                 btn2.classList.add('plus');
@@ -572,15 +574,15 @@ function calculateTotal() {
         const priceText = opt.querySelector('.selected-price').textContent;
         const countInput = opt.querySelector('.cnt-box[type="text"]');
 
-        if (priceText && countInput) {
-            const price = parseInt(priceText.replace(/[^\d]/g, ''), 10);
-            const count = parseInt(countInput.value, 10);
-            total += price * count;
-        }
+        // if (priceText && countInput) {
+            const price = parseInt(priceText.replaceAll(',', ''));
+            const count = parseInt(countInput.value);
+            total += price;
+        // }
 
     });
-    
-    totalPrice.textContent = total.toLocaleString();
+    // total = total>0? total.toLocaleString() : '-';
+    totalPrice.textContent = total>0? total.toLocaleString() : '-';
 }
 
 // MutationObserver 설정
@@ -605,9 +607,11 @@ if (prdSelectBox) {
 // 버튼 클릭 이벤트 설정
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('plus') || e.target.classList.contains('minus')) {
-        const inputField = e.target.parentElement.querySelector('.cnt-box[type="text"]');
-        if (inputField) {
-            let count = parseInt(inputField.value, 10);
+        const inp_cnt = e.target.parentElement.querySelector('.count');
+        const selectOpt = e.target.closest('.selected-opt');
+        const selectedPrice = selectOpt.querySelector('.selected-price');
+        // if (inp_cnt) {
+            let count = parseInt(inp_cnt.value);
 
             if (e.target.classList.contains('plus')) {
                 count++;
@@ -615,14 +619,18 @@ document.addEventListener('click', (e) => {
                 count = count > 1 ? count - 1 : 1; // 최소값 1로 설정
             }
 
-            inputField.value = count;
+            inp_cnt.value = count;
+
+            const price = parseInt(document.querySelector('.cam-price').textContent.replaceAll(',',''));
+            selectedPrice.textContent = (count * price).toLocaleString() + '원';
+
             calculateTotal(); // 총 금액 재계산
-        }
+        // }
     }
 });
 
 // 초기 총 금액 계산
-calculateTotal();
+// calculateTotal();
 
 
  
