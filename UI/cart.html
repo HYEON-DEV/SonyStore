@@ -128,7 +128,7 @@
                                 <div class="col_table_cell prd_count">
                                     <div class="count_ui_box">
                                         <button class="minus">-</button>
-                                        <input type="text" readonly="" class="count" value=1>
+                                        <input type="text" readonly class="count" value=1>
                                         <button class="plus">+</button>
                                     </div>
                                 </div>
@@ -258,8 +258,8 @@
                     <!-- 테이블 푸터 -->
                     <div class="col_table_foot">
                         <div class="prd_summary">
-                            <span class="prd_summary_length">결제 예정 금액 (총 5개)</span>
-                            <span class="prd_summary_price font_24_700">40,662,900 <span class="won">원</span> </span>
+                            <span class="prd_summary_length">결제 예정 금액 (총 <span class="total_cnt">5</span>개)</span>
+                            <span class="prd_summary_price font_24_700"> <span class="sum">40662900</span> <span class="won">원</span> </span>
                             <p class="prd_summary_warning">* 최종 결제금액은 고객님의 쿠폰 / 마일리지 적용에 따라 달라질 수 있습니다. </p>
                         </div>
                     </div>
@@ -344,63 +344,78 @@
         } ); 
 
 
-        /* = = = = = 가격 toLocaleString = = = = = */
+        /* = = = = = 가격 toLocaleString, 갯수, 결제 예정 금액 세팅 = = = = = */
 
+        let sum = 0;
+        let totalCnt = 0;
+
+        // 제품 당 가격
         document.querySelectorAll('.price').forEach( (v,i) => {
             v.innerText = parseInt(v.innerText).toLocaleString();
+        } );    
+
+        // 제품 당 합계
+        document.querySelectorAll('.total_price').forEach( (v,i) => {
+            const totalPrice = parseInt(v.innerText);
+            sum += totalPrice;
+            v.innerText = totalPrice.toLocaleString();
         } );
 
-        // const formattedNumber = "14,900";
-        // const numberWithoutCommas = formattedNumber.replace(/,/g, '');
-
-        // console.log(numberWithoutCommas);  // "1490000"
+        // 결제 예정 금액 
+        document.querySelector('.sum').innerText = sum.toLocaleString();
         
-        // const number = Number(numberWithoutCommas);  // 숫자 타입으로 변환
-        // console.log(number);  // 1490000
+        // 총 갯수
+        document.querySelectorAll('.count').forEach((v,i) => {
+            totalCnt += parseInt(v.value);
+        });
+        document.querySelector('.total_cnt').innerText = totalCnt;
 
-        // const number = parseInt(numberWithoutCommas, 10);  // 숫자 타입으로 변환
-        // console.log(number);  // 1490000
 
-
-        /* = = = = = 수량&가격 변경 = = = = = */
+        /* = = = = = 수량&가격&갯수 변경 = = = = = */
         
         // plus
         document.querySelectorAll('.plus').forEach( (v,i) => {
             v.addEventListener( 'click', e => {
+                // 수량
                 const current = e.currentTarget;
                 const cntBox = current.closest('.count_ui_box');
                 const cnt = cntBox.querySelector('.count');
                 cnt.value = parseInt(cnt.value)+1;
-
+                // 합계
                 const parent = current.closest('.col_table_row');
                 const price = parseInt(parent.querySelector('.price').innerText.replaceAll(',', ''));
                 parent.querySelector('.total_price').innerText = (price * cnt.value).toLocaleString();
+                // 갯수
+                document.querySelector('.total_cnt').innerText = ++totalCnt;
+                // 결제 예정 금액
+                sum += price;
+                document.querySelector('.sum').innerText = sum.toLocaleString();
             } );
         } );
 
         // minus
         document.querySelectorAll('.minus').forEach( (v,i) => {
             v.addEventListener('click', e => {
+                // 수량
                 const current = e.currentTarget;
                 const cntBox = current.closest('.count_ui_box');
                 const cnt = cntBox.querySelector('.count');
                 
                 if( cnt.value > 1 ) {
                     cnt.value = parseInt(cnt.value)-1;
-                }
 
-                const parent = current.closest('.col_table_row');
-                const price = parseInt(parent.querySelector('.price').innerText.replaceAll(',', ''));
-                parent.querySelector('.total_price').innerText = (price * cnt.value).toLocaleString();
+                    // 합계
+                    const parent = current.closest('.col_table_row');
+                    const price = parseInt(parent.querySelector('.price').innerText.replaceAll(',', ''));
+                    parent.querySelector('.total_price').innerText = (price * cnt.value).toLocaleString();
+                    // 갯수
+                    document.querySelector('.total_cnt').innerText = --totalCnt;
+                    // 결제 예정 금액
+                    sum -= price;
+                    document.querySelector('.sum').innerText = sum.toLocaleString();
+                }
             });
         } );
-
-
-        /* = = = = = 가격 변경 = = = = = */
-/* 
-        document.querySelectorAll('.prd_total_price').forEach((v,i) => {
-
-        }); */
 
 
         /* = = = = = collapsible 하단 = = = = = */
