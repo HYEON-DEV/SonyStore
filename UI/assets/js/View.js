@@ -561,6 +561,7 @@ const clr_name = clr => {
 
 
 /* -- -- -- -- 총 상품금액 계산 -- -- -- -- */
+
 const totalPrice = document.querySelector('.result-price .num');
 
 function calculateTotal() {

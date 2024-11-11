@@ -213,7 +213,7 @@
                                                 <div class="acc_inp txt_btn">
                                                     <p class="delivery_txt">배송지를 선택하세요.</p>
                                                     <div class="delivery_btn_box btn_box"> 
-                                                        <button class="button popup_comm_btn bg_white" type="button" data-popup-name="shipping_addr"> 최근 배송지 </button>
+                                                        <button class="button bg_white recent_delivery" type="button" > 최근 배송지 </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -293,7 +293,7 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <input type="text" class="inp inp_memo" name="deliveryMemo" placeholder="배송 메모를 입력하세요.">
+                                                    <input type="text" class="inp inp_memo" name="deliveryMemo" placeholder="배송 메모를 입력하세요." disabled>
                                                     <span class="focus_bg"></span>
                                                 </div>
                                             </div>
@@ -430,54 +430,54 @@
                         <div class="payment_list_wrapper">
 
                             <div class="payment_list_container">
-                            
-                                <div class="total">
-                                    <div class="total_tit"> 결제 예정 금액 </div>
-                                    <div class="total_price font_32_700 text_blue_accent"> 533,900 <span>원</span> </div>
-                                </div>
-    
-                                <div class="payment_list_detail">
-    
-                                    <div class="payment_list_contents">
-                                        <div class="payment_div">
-                                            <div class="payment_tit"> 주문 금액 </div>
-                                            <div class="payment_price"> 533,900 <span>원</span> </div>
-                                        </div>
-                                        <div class="payment_div">
-                                            <div class="payment_tit"> 제품 금액 </div>
-                                            <div class="payment_price"> 533,900 <span>원</span> </div>
-                                        </div>
-                                        <div class="payment_div">
-                                            <div class="payment_tit"> 구매 수량 </div>
-                                            <div class="payment_price"> 2 <span>개</span> </div>
-                                        </div>
+                                <div class="payment_body">
+                                    <div class="total">
+                                        <div class="total_tit"> 결제 예정 금액 </div>
+                                        <div class="total_price font_32_700 text_blue_accent"> 533,900 <span>원</span> </div>
                                     </div>
         
-                                    <div class="payment_list_contents sale">
-                                        <div class="payment_div">
-                                            <div class="payment_tit"> 할인 금액 </div>
-                                            <div class="payment_price sale"> <span>-</span> <span>0</span> <span>원</span> </div>
-                                            <!-- <span class="arrow_collapsible">선택됨/상세 닫기</span> -->
+                                    <div class="payment_list_detail">
+        
+                                        <div class="payment_list_contents">
+                                            <div class="payment_div">
+                                                <div class="payment_tit"> 주문 금액 </div>
+                                                <div class="payment_price"> 533,900 <span>원</span> </div>
+                                            </div>
+                                            <div class="payment_div">
+                                                <div class="payment_tit"> 제품 금액 </div>
+                                                <div class="payment_price"> 533,900 <span>원</span> </div>
+                                            </div>
+                                            <div class="payment_div">
+                                                <div class="payment_tit"> 구매 수량 </div>
+                                                <div class="payment_price"> 2 <span>개</span> </div>
+                                            </div>
                                         </div>
-                                        <div class="payment_div">
-                                            <span class="payment_tit"> 프로모션 할인 </span>
-                                            <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+            
+                                        <div class="payment_list_contents sale">
+                                            <div class="payment_div">
+                                                <div class="payment_tit"> 할인 금액 </div>
+                                                <div class="payment_price sale"> <span>-</span> <span>0</span> <span>원</span> </div>
+                                                <!-- <span class="arrow_collapsible">선택됨/상세 닫기</span> -->
+                                            </div>
+                                            <div class="payment_div">
+                                                <span class="payment_tit"> 프로모션 할인 </span>
+                                                <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                                            </div>
+                                            <div class="payment_div">
+                                                <span class="payment_tit"> 쿠폰 사용 </span>
+                                                <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                                            </div>
+                                            <div class="payment_div">
+                                                <span class="payment_tit"> 마일리지 사용 </span>
+                                                <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                                            </div>
                                         </div>
-                                        <div class="payment_div">
-                                            <span class="payment_tit"> 쿠폰 사용 </span>
-                                            <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
-                                        </div>
-                                        <div class="payment_div">
-                                            <span class="payment_tit"> 마일리지 사용 </span>
-                                            <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
-                                        </div>
-                                    </div>
-                                </div>                          
-                                
+                                    </div>                          
+                                </div>
                                 <div class="payment_footer">
                                     <div class="essential_check"> 
-                                        <input type="checkbox" class="inp_check" id="chkEssential" />
-                                        <label for="chkEssential"> [필수] 주문할 제품의 <br/> 거래조건을 확인 하였으며, <br/> 구매에 동의하시겠습니까?<br/> (전자상거래법 제8조 제2항) </label> 
+                                        <div> <input type="checkbox" class="inp_check" id="chkEssential" /> </div>
+                                        <label for="chkEssential"> [필수] 주문할 제품의 거래조건을 확인 하였으며, 구매에 동의하시겠습니까?<br/> (전자상거래법 제8조 제2항) </label> 
                                     </div>
     
                                     <div class="pay_btn_container">
@@ -529,7 +529,7 @@
                 </div>
 
                 <div class="btn_container">
-                    <button class="button bg_black"> 확인 </button>
+                    <button class="button bg_black ok"> 확인 </button>
                 </div>
 
                 <button type="button" class="ico_x" title="팝업창 닫기">
@@ -571,13 +571,39 @@
             });
         } );
 
+
+        /* = = = = = 최근 배송지 모달창 = = = = = */
+
+        document.querySelector('.recent_delivery').addEventListener('click', e => {
+            document.querySelector('.modal').style.display = 'block';
+            document.querySelector('body').style.overflow = 'hidden';
+        });
+
+        document.querySelector('.ico_x').addEventListener('click', e=>{
+            document.querySelector('.modal').style.display = 'none';
+            document.querySelector('body').style.overflow = 'visible';
+        });
+
+        document.querySelector('.button.ok').addEventListener('click', e=>{
+            document.querySelector('.modal').style.display = 'none';
+            document.querySelector('body').style.overflow = 'visible';
+        });
+
+        const inp_radio = document.querySelector('.modal').querySelectorAll('input[type="radio"]');
+        inp_radio.forEach((v,i)=>{
+            v.addEventListener('click',e=>{
+                inp_radio.forEach((v2,i2)=>{
+                    v2.checked = i==i2? true : false;
+                })
+            });
+        });
+
         
         /* = = = = = collapsible 배송 요청 사항 = = = = = */
 
         const content = document.querySelector('.select_inner.delivery');
 
         document.querySelector('.selected_btn_wrap.delivery').addEventListener( 'click', e => {
-
             const current = e.currentTarget;
             current.classList.toggle('active');
                             
@@ -589,6 +615,18 @@
                 document.querySelector('.selected_btn.delivery').innerHTML = e.currentTarget.innerText;
                 content.style.display = 'none';
             } );
+        } );
+
+        document.querySelector('.select_opt.delivery').querySelectorAll('.item').forEach( (v,i) => {
+            v.addEventListener('click', e => {
+                const memo = document.querySelector('.inp.inp_memo');
+                if (i==7) {
+                    memo.disabled = false;
+                    memo.style.borderBottom = '1px solid #ddd';
+                } else {
+                    memo.disabled = true;
+                }
+            })
         } );
         
 

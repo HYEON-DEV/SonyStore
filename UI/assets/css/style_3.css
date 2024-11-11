@@ -1424,8 +1424,10 @@ img {
         border: 0;
         padding: 10px 0;
         color: #444;
-        border-bottom: 1px solid #e1e1e1;
         outline: none; 
+        &:not(.inp_memo) {
+            border-bottom: 1px solid #e1e1e1;
+        }
     }
 }
 
@@ -1538,10 +1540,11 @@ img {
 
     .select_opt {
         position: absolute;
-        margin-top: 10px;
+        margin-top: -1px;
         background-color: #fbfbfb;
         border: 1px solid #ddd;
         z-index: 100;
+        width: 100%;
         
         li {
             padding: 5px 10px;
@@ -1556,13 +1559,15 @@ img {
     }
 }
 
-.selected_btn_wrap delivery {
+.selected_btn_wrap.delivery {
     border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 }
 
 .inp_memo {
     margin-top: 24px;
+    background: none;
+    border: none;
 }
 
 /* 배송일 선택 라디오 버튼 */
@@ -1715,7 +1720,10 @@ input[type='date'] {
 }
 .payment_list_container {
     border: 2px solid var(--color-black-3);
-    padding: 30px 50px;
+    
+    .payment_body {
+        padding: 30px 50px;
+    }
 }
 
 /* 결제 예정 금액 */
@@ -1757,16 +1765,18 @@ input[type='date'] {
 
 .payment_footer {
     background-color: var(--color-light-grey);
-    /* padding: 0; */
-    /* width: 100%; */
-    
+    padding: 45px;
 
     .essential_check {
-        margin-top: 40px;
+        display: flex;
+        margin-bottom: 35px;
+    
+        > :first-child {
+            margin-right: 10px;
+        }
     }
 
     .pay_btn_container {
-        margin-top: 30px;
 
         button {
             padding: 18px 0;
