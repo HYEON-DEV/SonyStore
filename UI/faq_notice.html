@@ -77,7 +77,7 @@
             </ul>
 
             <div class="faq_category_list">
-              <div class="acc_item arrow_collapsible_parent active" data-article-no="20391">
+              <div class="acc_item arrow_collapsible_parent" data-article-no="20391">
                 <div class="acc_head">
                   <a href="#" class="acc_btn" title="상세 내용 토글">
                     <span class="category_tit flex_center">주문/결제</span>
@@ -152,11 +152,11 @@
         function activateTab(tab) {
         // 모든 탭에서 active 클래스 제거
         document.querySelectorAll('.tab_btn').forEach(li => {
-          li.classList.remove('active');
+          li.parentElement.classList.remove('active');
         });
 
         // 클릭된 탭에 active 클래스 추가
-        tab.classList.add('active');
+        tab.parentElement.classList.add('active');
       }
 
         tabFaq.addEventListener('click', function(e) {
