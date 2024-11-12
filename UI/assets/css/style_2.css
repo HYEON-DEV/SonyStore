@@ -1769,6 +1769,8 @@ body {
   width: 1000px;
   margin-top: 78px;
   margin: 0 auto;
+  background-color: white;
+}
 
   .faq_category {
     margin-top: 60px;
@@ -1841,7 +1843,7 @@ body {
       }
     }
   }
-}
+
 
 .notice_list{
   margin-top: 50px;
@@ -1903,4 +1905,93 @@ body {
   }
 }
 
+.notice_detail{
+  margin: 0 auto;
+  padding-bottom: 120px;
 
+  .notice_detail_head{
+    padding: 80px 0 40px;
+    text-align: center;
+    .tit{
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 36px;
+      letter-spacing: -.7px;
+      color: #222;
+    }
+  }
+
+  .notice_detail_inner{
+
+    .notice_cont_tit{
+      padding: 16px 16px 15px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      justify-content: space-between;
+      
+      p{
+        font-size: 16px;
+        color: #888;
+        gap: 10px;
+
+        .val{
+          color: #444;
+        }
+      }
+    }
+
+    .notice_cont{
+      padding: 32px 16px 0;
+
+      .cont_wrap{
+        color: rgb(77, 77, 77);
+
+        .notice_info{
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          background: #efefef;
+          margin: 30px 0;
+          padding: 30px 40px;
+          letter-spacing: 0;
+          
+          ul{
+            li{
+              padding-top: 10px;
+            }
+          }
+
+          .txt_etc{
+            
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: -.4px;
+            color: #222;
+
+            .point{
+              color: #5865f5;
+            }
+          }
+        }
+      }
+    }
+
+    .btn_article{
+      margin-top: 80px;
+      
+
+      
+      
+      .button{
+        width: 200px;
+        width: 200px;
+        height: 64px;
+        font-size: 18px;
+        color: #fff;
+        font-weight: 700;
+        background-color: #222;
+      }
+      
+    }
+  }
+}
