@@ -1,0 +1,47 @@
+###  장바구니 테이블 생성 ###
+CREATE TABLE `sonystore`.`carts` (
+  `cartid` INT NOT NULL AUTO_INCREMENT COMMENT '일련번호',
+  `memberid` INT NOT NULL COMMENT '회원의 일련번호',
+  `prodid` INT NOT NULL COMMENT '상품의 일련번호',
+  `count` INT NOT NULL COMMENT '수량',
+  PRIMARY KEY (`cartid`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COMMENT = '장바구니 테이블';
+
+
+
+### 결제내역 테이블 생성 ###
+CREATE TABLE `sonystore`.`payments` (
+  `payid` INT NOT NULL AUTO_INCREMENT COMMENT '일련번호',
+  `memberid` INT NOT NULL COMMENT '회원의 일련번호',
+  `prodid` INT NOT NULL COMMENT '상품의 일련번호',
+  `dlvid` INT NOT NULL COMMENT '배송정보의 일련번호',
+  `cartid` INT NOT NULL COMMENT '장바구니의 일련번호',
+  `orderno` INT NOT NULL COMMENT '주문번호',
+  `total` INT NOT NULL COMMENT '결제금액',
+  `date` DATE NOT NULL COMMENT '결제날짜',
+  `option` VARCHAR(20) NOT NULL COMMENT '결제방법',
+  PRIMARY KEY (`payid`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COMMENT = '결제내역 테이블';
+
+
+
+### 배송 정보 테이블 ###
+CREATE TABLE `sonystore`.`deliveries` (
+  `dlvid` INT NOT NULL COMMENT '일련번호',
+  `memberid` INT NOT NULL COMMENT '회원의 일련번호',
+  `payid` INT NOT NULL COMMENT '결제내역의 일련번호',
+  `name` VARCHAR(45) NOT NULL COMMENT '수령인 이름',
+  `phone` VARCHAR(45) NOT NULL COMMENT '수령인 휴대폰번호',
+  `postcode` CHAR(5) NOT NULL COMMENT '우편번호',
+  `addr1` VARCHAR(255) NOT NULL COMMENT '검색된 주소',
+  `addr2` VARCHAR(255) NOT NULL COMMENT '상세 주소',
+  `request` VARCHAR(255) NULL COMMENT '배송 요청 사항',
+  `date` DATE NULL COMMENT '배송일',
+  PRIMARY KEY (`dlvid`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COMMENT = '배송 정보 테이블';
