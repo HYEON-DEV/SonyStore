@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> 장바구니 </title>
+
+    <link rel="stylesheet" th:href="@{assets/css/reset.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" th:href="@{assets/img/favicon_144x144.png}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css">
+    <link rel="stylesheet" th:href="@{assets/css/common.css}" />
+
+    <link rel="stylesheet" th:href="@{/assets/css/style_3.css}"/>
+</head>
+
+<body>
+    <div class="app">
+        <div class="wrapper">
+            <div class="container_w1200 page_top_btm_pad cart">
+
+                <h2 class="order_box_tit font_48_700"> 장바구니 </h2>
+          
+                <!--   장바구니   주문결제   주문완료   -->
+      
+                <ul class="order_box_list">
+                    <li class="on"> 
+                        <i class="step_ico cart on"></i> 
+                        <p>장바구니</p>
+                    </li>
+                    <li>
+                        <i class="step_ico order"></i>
+                        <p>주문·결제</p>
+                    </li>
+                    <li>
+                        <i class="step_ico confirm"></i>
+                        <p>주문 완료</p>
+                    </li>
+                </ul>
+
+
+                <!-- 장바구니에 담긴 상품이 없습니다 -->
+                                
+                <div class="empty_cart_box" style="display: none;">
+                    <i class="empty_ico"></i>
+                    <p class="emptyinfo_tit">장바구니에 담긴 상품이 없습니다.</p>
+                    <div class="btn_wrap">
+                        <a class="continue btn_200_64 bg_white" href="#"> 쇼핑 계속 하기 </a>
+                    </div>
+                </div>
+
+                
+
+                <!-- 장바구니 내역 -->
+                    
+                <div class="cart_func">
+
+                    <!-- 전체 체크박스 -->
+                    <div class="cart_func_check">
+                        <div class="check">
+                            <input type="checkbox" class="inp_check check_all" id="check_cart_items" checked />
+                            <label for="check_cart_items" class="check_all_txt"> 전체 </label>
+                        </div>
+                    </div>
+
+                    <!-- 선택 삭제 / 견적서 출력하기 -->
+                    <div class="cart_func_buttons">
+                        <button type="button" class="button_del_checked_items bg_white"> 선택 삭제 </button>
+                        <button type="button" class="button_print_esimate bg_black"> 견적서 출력하기 </button>
+                    </div>
+                </div> 
+               
+
+                <!-- 장바구니 내역 테이블 -->
+                <div class="col_table_wrap order_list">
+
+                    <div class="col_table">
+
+                        <!-- 테이블 헤더 -->
+                        <div class="col_table_head">
+                            <div class="col_table_row cart_row">
+                                <div class="col_table_cell">제품</div>
+                                <div class="col_table_cell">가격</div>
+                                <div class="col_table_cell">수량</div>
+                                <div class="col_table_cell">합계</div>
+                                <div class="col_table_cell"></div>
+                            </div>
+                        </div>
+
+                        <!-- 테이블 바디 -->
+                        <div class="col_table_body">
+
+                            <!-- 테이블 row -->
+                            <div class="col_table_row cart_row">
+
+                                <!-- 제품 -->
+                                <div class="col_table_cell">
+                                    <!-- 체크, 이미지, 제품이름 -->
+                                    <div class="prd">
+                                        <!-- 선택 -->
+                                        <div class="check">
+                                            <input type="checkbox" class="inp_check check_only" checked />
+                                        </div>
+                                        <!-- 썸네일 -->
+                                        <div class="prd_thumb">
+                                            <img class="prd_thumb_pic" src="/assets/img/cart/prd_img.png" alt="링크버즈 오픈 에어 피팅 서포터" />
+                                        </div>
+                                        <!-- 제품이름 -->
+                                        <div class="prd_info">
+                                            <div class="prd_info_name">링크버즈 오픈 에어 피팅 서포터</div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <!-- 가격 -->
+                                <div class="col_table_cell prd_price">
+                                    <span class="price">1490000</span>
+                                    <span class="won">원</span>
+                                </div>
+                                
+                                <!-- 수량 -->
+                                <div class="col_table_cell prd_count">
+                                    <div class="count_ui_box">
+                                        <button class="minus">-</button>
+                                        <input type="text" readonly class="count" value=1>
+                                        <button class="plus">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 합계 -->
+                                <div class="col_table_cell prd_total_price">
+                                    <span class="total_price">1490000</span>
+                                    <span class="won">원</span>
+                                </div>
+
+                                <!-- 삭제 -->
+                                <div class="col_table_cell">
+                                    <button type="button" class="btn_del_prd">
+                                        <img src="/assets/img/ic_close.svg" alt="제품 삭제">
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <!-- 테이블 row -->
+                            <div class="col_table_row cart_row">
+
+                                <!-- 제품 -->
+                                <div class="col_table_cell">
+                                    <!-- 체크, 이미지, 제품이름 -->
+                                    <div class="prd">
+                                        <!-- 선택 -->
+                                        <div class="check">
+                                            <input type="checkbox" class="inp_check check_only" checked />
+                                        </div>
+                                        <!-- 썸네일 -->
+                                        <div class="prd_thumb">
+                                            <img class="prd_thumb_pic" src="/assets/img/cart/prd_img.png" alt="링크버즈 오픈 에어 피팅 서포터" />
+                                        </div>
+                                        <!-- 제품이름 -->
+                                        <div class="prd_info">
+                                            <div class="prd_info_name">링크버즈 오픈 에어 피팅 서포터</div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <!-- 가격 -->
+                                <div class="col_table_cell prd_price">
+                                    <span class="price">1490000</span>
+                                    <span class="won">원</span>
+                                </div>
+                                
+                                <!-- 수량 -->
+                                <div class="col_table_cell prd_count">
+                                    <div class="count_ui_box">
+                                        <button class="minus">-</button>
+                                        <input type="text" readonly="" class="count" value=1>
+                                        <button class="plus">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 합계 -->
+                                <div class="col_table_cell prd_total_price">
+                                    <span class="total_price">1490000</span>
+                                    <span class="won">원</span>
+                                </div>
+
+                                <!-- 삭제 -->
+                                <div class="col_table_cell">
+                                    <button type="button" class="btn_del_prd">
+                                        <img src="/assets/img/ic_close.svg" alt="제품 삭제">
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <!-- 테이블 row -->
+                            <div class="col_table_row cart_row">
+
+                                <!-- 제품 -->
+                                <div class="col_table_cell">
+                                    <!-- 체크, 이미지, 제품이름 -->
+                                    <div class="prd">
+                                        <!-- 선택 -->
+                                        <div class="check">
+                                            <input type="checkbox" class="inp_check check_only" checked />
+                                        </div>
+                                        <!-- 썸네일 -->
+                                        <div class="prd_thumb">
+                                            <img class="prd_thumb_pic" src="/assets/img/cart/prd_img.png" alt="링크버즈 오픈 에어 피팅 서포터" />
+                                        </div>
+                                        <!-- 제품이름 -->
+                                        <div class="prd_info">
+                                            <div class="prd_info_name">링크버즈 오픈 에어 피팅 서포터</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 가격 -->
+                                <div class="col_table_cell prd_price">
+                                    <span class="price">1490000</span>
+                                    <span class="won">원</span>
+                                </div>
+                                
+                                <!-- 수량 -->
+                                <div class="col_table_cell prd_count">
+                                    <div class="count_ui_box">
+                                        <button class="minus">-</button>
+                                        <input type="text" readonly="" class="count" value=1>
+                                        <button class="plus">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- 합계 -->
+                                <div class="col_table_cell prd_total_price">
+                                    <span class="total_price">1490000</span>
+                                    <span class="won">원</span>
+                                </div>
+
+                                <!-- 삭제 -->
+                                <div class="col_table_cell">
+                                    <button type="button" class="btn_del_prd">
+                                        <img src="/assets/img/ic_close.svg" alt="제품 삭제">
+                                    </button>
+                                </div>
+
+                        </div>
+                        
+                        </div>
+                    </div>
+
+                    <!-- 테이블 푸터 -->
+                    <div class="col_table_foot">
+                        <div class="prd_summary">
+                            <span class="prd_summary_length">결제 예정 금액 (총 <span class="total_cnt">5</span>개)</span>
+                            <span class="prd_summary_price font_24_700"> <span class="sum">40662900</span> <span class="won">원</span> </span>
+                            <p class="prd_summary_warning">* 최종 결제금액은 고객님의 쿠폰 / 마일리지 적용에 따라 달라질 수 있습니다. </p>
+                        </div>
+                    </div>
+
+                    <!-- 푸터 버튼 -->
+                    <div class="btn_wrap btn_footer">
+                        <a class="continue btn_200_64  bg_white" href="/">쇼핑 계속 하기</a>
+                        <button type="button" class="btn_200_64 buy bg_black">구매하기</button>
+                    </div>
+
+                </div>  <!-- 장바구니 내역 테이블 -->
+                
+                <!-- Footer Collapsible -->
+                <div class="acc_ui_zone">
+                    <!-- 장바구니 이용 안내 -->
+                    <div class="acc_item arrow_collapsible_parent">
+                        <div class="acc_head">
+                            <a class="acc_btn" title="상세 내용 토글">
+                                <span class="acc_tit">장바구니 이용 안내</span>
+                                <span class="arrow_collapsible">선택됨/상세 닫기</span>
+                            </a>
+                        </div>
+                        <div id="content-1" class="acc_inner">
+                            <div class="acc_box">
+                                <p>모든 이벤트는 결제완료시간 기준으로 적용됩니다.</p>
+                                <p>마일리지의 경우 소니스토어 멤버십 회원에 한하여 플레이스테이션 및 주변기기, ESP를 제외한 제품의 총 구매액 기준으로 회원 등급별 차등 적립됩니다.</p>
+                                <p>동일한 제품군별로만 장바구니에 담으실 수 있습니다. (마일리지 상품과 일반 상품은 함께 장바구니에 담으실 수 없습니다.)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- AS 관련 제품 주의사항 -->
+                    <div class="acc_item arrow_collapsible_parent">
+                        <div class="acc_head"><a class="acc_btn" title="상세 내용 토글"><span class="acc_tit">AS관련 제품
+                                    주의사항</span><span class="arrow_collapsible">상세 보기</span></a></div>
+                        <div id="content-2" class="acc_inner">
+                            <div class="acc_box">
+                                <p>ESP(Extended Service Plan)를 주문하시는 것은 ESP 이용약관에 기재된 내용을 모두 이해하고 준수하는 데 동의하신 것으로 간주됩니다.</p>
+                                <p>ESP(Extended Service Plan) 구입 후 7일 이내에 고객지원사이트의 My SCS에서 연장된 서비스 기간 조회가 가능합니다. (구입 확인은 내부 사정에 따라 조정될
+                                    수 있습니다.)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 인터넷 주문이 어려우세요? -->
+                    <div class="acc_item arrow_collapsible_parent">
+                        <div class="acc_head"><a class="acc_btn" title="상세 내용 토글"><span class="acc_tit">인터넷 주문이
+                                    어려우세요?</span><span class="arrow_collapsible">상세 보기</span></a></div>
+                        <div id="content-3" class="acc_inner">
+                            <div class="acc_box">
+                                <p>제품 주문 시 어려움이 있으시다면 고객지원센터(1588-0911)로 전화주세요. 소니 전문 상담원이 제품 설명과 함께 고객님의 주문을 도와 드립니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            
+            </div>
+        </div>
+    </div>
+  
+    <script>
+
+        /* = = = = = checkbox 전체 체크 제어 = = = = = */
+        
+        const checkAll = document.querySelector('.check_all');
+
+        checkAll.addEventListener('click', e => {
+            
+            document.querySelectorAll('.check_only').forEach(v => {
+                v.checked = checkAll.checked;
+            });
+
+        });
+        
+        const checkboxes = document.querySelectorAll('.check_only');
+        
+        checkboxes.forEach( (v,i) => {
+            v.addEventListener( 'click', e => {
+                const totalCnt = checkboxes.length;
+                const checkedCnt = document.querySelectorAll('.check_only:checked').length;
+                
+                checkAll.checked = (totalCnt == checkedCnt) ? true : false;
+            } );
+        } ); 
+
+
+        /* = = = = = 가격 toLocaleString, 갯수, 결제 예정 금액 세팅 = = = = = */
+
+        let sum = 0;
+        let totalCnt = 0;
+
+        // 제품 당 가격
+        document.querySelectorAll('.price').forEach( (v,i) => {
+            v.innerText = parseInt(v.innerText).toLocaleString();
+        } );    
+
+        // 제품 당 합계
+        document.querySelectorAll('.total_price').forEach( (v,i) => {
+            const totalPrice = parseInt(v.innerText);
+            sum += totalPrice;
+            v.innerText = totalPrice.toLocaleString();
+        } );
+
+        // 결제 예정 금액 
+        document.querySelector('.sum').innerText = sum.toLocaleString();
+        
+        // 총 갯수
+        document.querySelectorAll('.count').forEach((v,i) => {
+            totalCnt += parseInt(v.value);
+        });
+        document.querySelector('.total_cnt').innerText = totalCnt;
+
+
+        /* = = = = = 수량&가격&갯수 변경 = = = = = */
+        
+        // plus
+        document.querySelectorAll('.plus').forEach( (v,i) => {
+            v.addEventListener( 'click', e => {
+                // 수량
+                const current = e.currentTarget;
+                const cntBox = current.closest('.count_ui_box');
+                const cnt = cntBox.querySelector('.count');
+                cnt.value = parseInt(cnt.value)+1;
+                // 합계
+                const parent = current.closest('.col_table_row');
+                const price = parseInt(parent.querySelector('.price').innerText.replaceAll(',', ''));
+                parent.querySelector('.total_price').innerText = (price * cnt.value).toLocaleString();
+                // 갯수
+                document.querySelector('.total_cnt').innerText = ++totalCnt;
+                // 결제 예정 금액
+                sum += price;
+                document.querySelector('.sum').innerText = sum.toLocaleString();
+            } );
+        } );
+
+        // minus
+        document.querySelectorAll('.minus').forEach( (v,i) => {
+            v.addEventListener('click', e => {
+                // 수량
+                const current = e.currentTarget;
+                const cntBox = current.closest('.count_ui_box');
+                const cnt = cntBox.querySelector('.count');
+                
+                if( cnt.value > 1 ) {
+                    cnt.value = parseInt(cnt.value)-1;
+
+                    // 합계
+                    const parent = current.closest('.col_table_row');
+                    const price = parseInt(parent.querySelector('.price').innerText.replaceAll(',', ''));
+                    parent.querySelector('.total_price').innerText = (price * cnt.value).toLocaleString();
+                    // 갯수
+                    document.querySelector('.total_cnt').innerText = --totalCnt;
+                    // 결제 예정 금액
+                    sum -= price;
+                    document.querySelector('.sum').innerText = sum.toLocaleString();
+                }
+            });
+        } );
+
+
+        /* = = = = = collapsible 하단 = = = = = */
+
+        document.querySelectorAll('.acc_item').forEach( (v,i) => {
+            v.addEventListener( 'click', e => {
+                const current = e.currentTarget;
+                current.classList.toggle('active');
+
+                const content = current.querySelector('.acc_inner');
+                
+                if (current.classList.contains('active')) {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+        } );
+
+    </script>
+    
+</body>
+
+</html>
