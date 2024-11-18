@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import kr.parkjaehan.sonystore.models.Member;
+import kr.co.sonystore.mappers.MemberMapper;
+import kr.co.sonystore.models.Member;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

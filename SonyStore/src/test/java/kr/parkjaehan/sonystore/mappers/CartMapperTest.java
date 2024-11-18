@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import kr.parkjaehan.sonystore.models.Cart;
+import kr.co.sonystore.mappers.CartMapper;
+import kr.co.sonystore.models.Cart;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

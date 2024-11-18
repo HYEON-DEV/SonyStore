@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import kr.parkjaehan.sonystore.models.Color;
+import kr.co.sonystore.mappers.ColorMapper;
+import kr.co.sonystore.models.Color;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
