@@ -6,7 +6,7 @@ import lombok.Data;
 public class Product {
     private int prodid;
     private String title;
-    private String desc;
+    private String proddesc;
     private int price;
     private String type1;
     private String type2;
@@ -20,5 +20,4 @@ public class Product {
     private String soldout;
     private String sale;
     private String event;
-    private int colorid;
 }

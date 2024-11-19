@@ -63,14 +63,14 @@ window.onload = async (e) => {
     
         if (subCategoryKey && backgroundImages[categoryKey][subCategoryKey]) {
             // 서브 카테고리의 배경 이미지 설정
-            imageUrl = `url(assets/img/background/${backgroundImages[categoryKey][subCategoryKey]})`;
+            imageUrl = `url(assets/img/products/background/${backgroundImages[categoryKey][subCategoryKey]})`;
             category.style.padding = "110px 0 0"
             categoryList.classList.add("display_none");
             categoryLink.classList.remove("display_none");
             goBack.classList.remove("display_none");
         } else if (backgroundImages[categoryKey].default) {
             // 카테고리 메인 페이지의 배경 이미지 설정
-            imageUrl = `url(assets/img/background/${backgroundImages[categoryKey].default})`;
+            imageUrl = `url(assets/img/products/background/${backgroundImages[categoryKey].default})`;
             category.style.padding = "110px 0 124px"
             categoryList.classList.remove("display_none");
             categoryLink.classList.add("display_none");
@@ -103,7 +103,7 @@ window.onload = async (e) => {
 
     //서브 카테고리 키와 이미지 파일명을 매핑하여 이미지 경로를 생성
     function getSubCategoryImage(subCategoryKey) {
-        return `assets/img/subcategory/icon_${subCategoryKey}.png`;
+        return `assets/img/products/subcategory/icon_${subCategoryKey}.png`;
     }
     
 
@@ -114,7 +114,7 @@ window.onload = async (e) => {
 
         // '전체보기' 버튼 추가
         const allItem = document.createElement('li');
-        allItem.innerHTML = `<a href="?category=${categoryKey}" class="All"><img src="assets/img/crossHair.svg">전체보기</a>`;
+        allItem.innerHTML = `<a href="?category=${categoryKey}" class="All"><img src="assets/img/products/crossHair.svg">전체보기</a>`;
         categoryList.appendChild(allItem);
 
         const categoryData = product[categoryKey]; // 현재 카테고리의 데이터
@@ -271,10 +271,10 @@ window.onload = async (e) => {
 
             if (v.color && v.color.length > 0) {
                 // 초기 이미지는 첫 번째 색상(clr0)
-                imgSrc = `assets/img/${folderName}/clr0_0.png`;
+                imgSrc = `assets/img/products/${folderName}/clr0_0.png`;
             } else {
                 // 색상이 없는 경우 기본 썸네일 사용
-                imgSrc = `assets/img/${folderName}/${v.thumbnail}`;
+                imgSrc = `assets/img/products/${folderName}/${v.thumbnail}`;
             }
 
             img.setAttribute("src", imgSrc);
@@ -304,7 +304,7 @@ window.onload = async (e) => {
 
             // 마우스 오버 이벤트 리스너
             button.addEventListener('mouseover', () => {
-                img.setAttribute("src", `assets/img/${folderName}/clr${index}_0.png`);
+                img.setAttribute("src", `assets/img/products/${folderName}/clr${index}_0.png`);
             });
 
             colorButtons.appendChild(button);
