@@ -6,15 +6,15 @@
     
     <title> 장바구니 </title>
 
-    <link rel="stylesheet" th:href="@{assets/css/reset.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/reset.css}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="icon" th:href="@{assets/img/favicon_144x144.png}">
+    <link rel="icon" th:href="@{/assets/img/favicon_144x144.png}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css">
-    <link rel="stylesheet" th:href="@{assets/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
 
     <link rel="stylesheet" th:href="@{/assets/css/style_3.css}"/>
 </head>
@@ -31,7 +31,7 @@
                 <ul class="order_box_list">
                     <li class="on"> 
                         <i class="step_ico cart on"></i> 
-                        <p>장바구니</p>
+                        <p class="on">장바구니</p>
                     </li>
                     <li>
                         <i class="step_ico order"></i>
@@ -108,7 +108,7 @@
                                         </div>
                                         <!-- 썸네일 -->
                                         <div class="prd_thumb">
-                                            <img class="prd_thumb_pic" src="/assets/img/cart/prd_img.png" alt="링크버즈 오픈 에어 피팅 서포터" />
+                                            <img class="prd_thumb_pic" th:src="@{/assets/img/cart/prd_img.png}" alt="링크버즈 오픈 에어 피팅 서포터" />
                                         </div>
                                         <!-- 제품이름 -->
                                         <div class="prd_info">
@@ -141,7 +141,7 @@
                                 <!-- 삭제 -->
                                 <div class="col_table_cell">
                                     <button type="button" class="btn_del_prd">
-                                        <img src="/assets/img/ic_close.svg" alt="제품 삭제">
+                                        <img th:src="@{/assets/img/cart/ic_close.svg}" alt="제품 삭제">
                                     </button>
                                 </div>
 
@@ -160,7 +160,7 @@
                                         </div>
                                         <!-- 썸네일 -->
                                         <div class="prd_thumb">
-                                            <img class="prd_thumb_pic" src="/assets/img/cart/prd_img.png" alt="링크버즈 오픈 에어 피팅 서포터" />
+                                            <img class="prd_thumb_pic" th:src="@{/assets/img/cart/prd_img.png}" alt="링크버즈 오픈 에어 피팅 서포터" />
                                         </div>
                                         <!-- 제품이름 -->
                                         <div class="prd_info">
@@ -193,7 +193,7 @@
                                 <!-- 삭제 -->
                                 <div class="col_table_cell">
                                     <button type="button" class="btn_del_prd">
-                                        <img src="/assets/img/ic_close.svg" alt="제품 삭제">
+                                        <img th:src="@{/assets/img/cart/ic_close.svg}" alt="제품 삭제">
                                     </button>
                                 </div>
 
@@ -212,7 +212,7 @@
                                         </div>
                                         <!-- 썸네일 -->
                                         <div class="prd_thumb">
-                                            <img class="prd_thumb_pic" src="/assets/img/cart/prd_img.png" alt="링크버즈 오픈 에어 피팅 서포터" />
+                                            <img class="prd_thumb_pic" th:src="@{/assets/img/cart/prd_img.png}" alt="링크버즈 오픈 에어 피팅 서포터" />
                                         </div>
                                         <!-- 제품이름 -->
                                         <div class="prd_info">
@@ -245,7 +245,7 @@
                                 <!-- 삭제 -->
                                 <div class="col_table_cell">
                                     <button type="button" class="btn_del_prd">
-                                        <img src="/assets/img/ic_close.svg" alt="제품 삭제">
+                                        <img th:src="@{/assets/img/cart/ic_close.svg}" alt="제품 삭제">
                                     </button>
                                 </div>
 

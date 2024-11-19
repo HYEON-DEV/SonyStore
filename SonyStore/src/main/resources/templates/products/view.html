@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Product View</title>
+    <title> 상품 상세 화면 </title>
 
-    <link rel="stylesheet" href="assets/css/reset.css" />
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" th:href="@{/assets/css/reset.css}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="icon" href="assets/img/favicon_144x144.png">
+    <link rel="icon" th:href="@{/assets/img/favicon_144x144.png}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css">
-    <link rel="stylesheet" href="assets/css/style_3.css"/>
-    <link rel="stylesheet" href="assets/css/common.css" />
+    <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
+
+    <link rel="stylesheet" th:href="@{/assets/css/style_3.css}"/>
 
 </head>
 <body>
     <!-- header -->
-    <script src="./assets/js/loadHTML.js"></script>
-    <script>loadHTML("./header.html");</script>
+    <!-- <script src="./assets/js/loadHTML.js"></script> -->
+    <!-- <script>loadHTML("./header.html");</script> -->
 
     <!-- body -->
     <div class="main">
@@ -86,14 +86,14 @@
                         <div class="tit"> 회원별 마일리지 적립혜택 <span class="icon-question">!</span> </div>
                         <ul class="membership-rating">
                             <li class="vip">
-                                <img class="mark vip" src="assets/img/membership_vip.f6121d1d.svg"/>
+                                <img class="mark vip" th:src="@{/assets/img/benefit/membership_vip.f6121d1d.svg}"/>
                                 <div class="save-info">
                                     <span class="percentage vip"> VIP 4% </span>
                                     <p class="mileage vip-mlg"> 53600 </p>
                                 </div>
                             </li>
                             <li class="family">
-                                <img class="mark" src="assets/img/membership_family.ea303a8f.svg"/>
+                                <img class="mark" th:src="@{/assets/img/benefit/membership_family.ea303a8f.svg}"/>
                                 <div class="save-info">
                                     <span class="percentage"> MEMBERSHIP 2% </span>
                                     <p class="mileage family-mlg"> 53600 </p>
@@ -295,7 +295,7 @@
             <div class="product-content-exhibitions">
                 <div class="exhb-tit"> 진행중인 기획전 </div>
                 <div class="exhb-cont-container">
-                    <div class="img-wrapper"> <img src="assets/img/Event-List-Banner.jpg"/> </div>
+                    <div class="img-wrapper"> <img th:src="@{/assets/img/view/Event-List-Banner.jpg}"/> </div>
                     <p class="exhb-text"> 사진도, 영상도 ZV로 완벽하게 </p>
                     <p class="exhb-date"> 2024-08-12 ~ 2024-12-01 </p>
                 </div>
@@ -308,22 +308,22 @@
                     <ul class="sony-link-container">
                         <li>
                             <a class="sony-link-inner">
-                                <div class="img-wrapper"> <img src="assets/img/ico__relation_alpha.png" /> </div>
+                                <div class="img-wrapper"> <img th:src="@{/assets/img/view/ico__relation_alpha.png}" /> </div>
                                 <div class="tit"> 소니 알파 유니버스 </div>
                                 <span class="icon"></span>
                             </a>
                         </li>
                         <li>
                             <a class="sony-link-inner">
-                                <div class="img-wrapper"> <img src="assets/img/ico__relation_alpha.png" /> </div>
-                                <div class="tit"> 소니 알파 유니버스 </div>
+                                <div class="img-wrapper"> <img th:src="@{/assets/img/view/ic_blog.png}" /> </div>
+                                <div class="tit"> 소니 블로그 </div>
                                 <span class="icon"></span>
                             </a>
                         </li>
                         <li>
                             <a class="sony-link-inner">
-                                <div class="img-wrapper"> <img src="assets/img/ico__relation_alpha.png" /> </div>
-                                <div class="tit"> 소니 알파 유니버스 </div>
+                                <div class="img-wrapper"> <img th:src="@{/assets/img/view/ico__relation_download.png}" /> </div>
+                                <div class="tit"> 소니 블로그 </div>
                                 <span class="icon"></span>
                             </a>
                         </li>
@@ -357,21 +357,21 @@
                     <div class="tab-zone outline active">
 
                         <div class="pad benefit-zone-container"> 
-                            <div class="benefit-zone"> <img src="assets/img/pc_benefit.jpg"/> </div> 
+                            <div class="benefit-zone"> <img th:src="@{/assets/img/view/pc_benefit.jpg}"/> </div> 
                         </div>
 
                         <div class="outline-content"> 
                             <div class="sony-content pad"> 
-                                <img src="assets/img/zv-e10m2_960_1.jpg"/> 
+                                <img th:src="@{/assets/img/view/zv-e10m2_960_1.jpg}"/> 
                             </div>
                             <div class="video-wrap pad"> 
                                 <iframe width="960" height="540" src="https://www.youtube.com/embed/JXDZVOCB4Ts" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe> 
                             </div>
                             <div class="sony-content-moving pad"> 
-                                <img src="assets/img/zv-e10m2_360_960.webp" alt="제품 개요"/> 
+                                <img th:src="@{/assets/img/view/zv-e10m2_360_960.webp}" alt="제품 개요"/> 
                             </div>
                             <div class="sony-content-detail pad"> 
-                                <img src="assets/img/zv-e10m2_960_2.jpg" alt="제품 개요"/>
+                                <img th:src="@{/assets/img/view/zv-e10m2_960_2.jpg}" alt="제품 개요"/>
                             </div>
                         </div>
                     </div>
@@ -381,7 +381,7 @@
                     <div class="tab-zone detail">
 
                         <div class="pad detail-box-container"> 
-                            <div class="detail-box"> <img src="assets/img/zv-e10m2_960_spec.gif"/> </div> 
+                            <div class="detail-box"> <img th:src="@{/assets/img/view/zv-e10m2_960_spec.gif}"/> </div> 
                         </div>
 
                     </div> 
@@ -499,25 +499,15 @@
     </div>
 
     <script>loadHTML("./footer.html");</script>
-    <script src="assets/js/UtilHelper.js"></script>
+    <script th:src="@{/assets/js/UtilHelper.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<!--     
-    <script type="module">
-        import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
-      
-        // const swiper = new Swiper(...)
-     </script>
-     -->
-    <script src="assets/js/ArrayHyeon.js"></script>
+    <script th:src="@{/assets/js/ArrayHyeon.js}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.all.min.js"></script>
-    <script src="assets/js/common.js"></script>
-    <script src="assets/js/View.js"></script>
+    <script th:src="@{/assets/js/common.js}"></script>
+    <script th:src="@{/assets/js/View.js}"></script>
     
 </body>
 </html>

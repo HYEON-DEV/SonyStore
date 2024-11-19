@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> 주문 상세 조회 </title>
+
+    <link rel="stylesheet" th:href="@{/assets/css/reset.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" th:href="@{/assets/img/favicon_144x144.png}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css">
+    <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
+
+    <link rel="stylesheet" th:href="@{/assets/css/style_3.css}"/>
+
+</head>
+
+<body>
+    <div class="app">
+        <div class="wrapper">
+            <div class="container_w1200 page_top_btm_pad order_detail">
+
+                <div>
+                    <p class="back"> 주문/배송내역 </p>
+                </div>
+                <h2 class="order_box_tit font_48_700"> 주문 상세 조회 </h2>
+
+                <!-- 주문날짜 주문번호 처리상태 -->
+                <div class="summary_container">
+                    <div class="summary_cont_container">
+                        <span> 주문날짜 : </span>
+                        <span class="cont2"> 2024-11-08 </span>
+                    </div>
+                    <div class="summary_cont_container">
+                        <span> 주문번호 : </span>
+                        <span class="cont2"> 202411081512586580 </span>
+                    </div>
+                    <div class="summary_cont_container">
+                        <span> 처리상태 : </span>
+                        <span class="cont2 text_blue_accent"> 취소완료 </span>
+                    </div>
+                </div>
+
+                <!-- 주문 내역 테이블 -->
+                <div class="col_table_wrap order_list order_sheet_list">
+                    <div class="col_table">
+                        <!-- 테이블 헤더 -->
+                        <div class="col_table_head">
+                            <div class="col_table_row order_sheet_row">
+                                <div class="col_table_cell">제품</div>
+                                <div class="col_table_cell">가격</div>
+                                <div class="col_table_cell">수량</div>
+                                <div class="col_table_cell">합계</div>
+                            </div>
+                        </div>
+                        <!-- 테이블 바디 -->
+                        <div class="col_table_body order_sheet_body">
+                            <!-- 테이블 row -->
+                            <div class="col_table_row order_sheet_row">
+                                <!-- 제품 -->
+                                <div class="col_table_cell">
+                                    <!-- 이미지, 제품이름 -->
+                                    <div class="prd">
+                                        <!-- 썸네일 -->
+                                        <div class="prd_thumb">
+                                            <img class="prd_thumb_pic" th:src="@{/assets/img/cart/prd_img.png}" alt="링크버즈 오픈 에어 피팅 서포터" />
+                                        </div>
+                                        <!-- 제품이름 -->
+                                        <div class="prd_info">
+                                            <div class="prd_info_name">링크버즈 오픈 에어 피팅 서포터</div>
+                                        </div>
+                                    </div>
+                                </div>   
+                                <!-- 가격 -->
+                                <div class="col_table_cell prd_price">
+                                    14,900
+                                    <span class="won">원</span>
+                                </div>                                
+                                <!-- 수량 -->
+                                <div class="col_table_cell prd_count"> 1 <span class="won">개</span> </div>
+                                <!-- 합계 -->
+                                <div class="col_table_cell prd_total_price">
+                                    14,900 
+                                    <span class="won">원</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>      <!-- end 주문 내역 테이블 -->
+
+                
+                <!-- 주문 정보 / 결제 정보 -->
+                <div class="clearFix">  <!-- flex -->
+
+                    <!-- 주문 정보  "좌측" -->
+                    <div class="order_left detail">
+
+                        <!-- 주문 정보 -->
+                        <div class="acc_item type2">
+                            <div class="acc_head">
+                                <span class="acc_tit"> 주문 정보 </span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="order_info">
+                                <span> 주문자 정보 </span>
+                                <span> 이이름(010-0000-0000) </span>
+                            </div>
+                            <div class="order_info">
+                                <span> 수령인 </span>
+                                <span> 이이름(010-0000-0000) </span>
+                            </div>
+                            <div class="order_info">
+                                <span> 배송지 </span>
+                                <span> 서울특별시 강남구 강남대로 </span>
+                            </div>
+                            <div class="order_info">
+                                <span> 배송 요청사항 </span>
+                                <span> 없음 </span>
+                            </div>
+                            <div class="order_info">
+                                <span> 배송일 선택 </span>
+                                <span> 정상 배송 </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 결제 정보  "우측" -->
+                    <div class="order_right detail">
+
+                        <!-- 결제 정보 -->
+                        <div class="acc_item type2">
+                            <div class="acc_head">
+                                <span class="acc_tit"> 결제 정보 </span>
+                            </div>
+                        </div>
+
+            
+                        <div class="payment_div total_price">
+                            <div> 총 주문금액 </div>
+                            <div> <span class="price">0</span> <span>원</span> </div>
+                        </div>
+
+                        <div class="payment_list_contents sale">
+                            <div class="payment_div">
+                                <div class="payment_tit"> 할인 금액 </div>
+                                <div class="payment_price sale"> <span>-</span> <span class="price">0</span> <span>원</span> </div>
+                            </div>
+                            <div class="payment_div">
+                                <span class="payment_tit sub"> 프로모션 할인 </span>
+                                <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                            </div>
+                            <div class="payment_div">
+                                <span class="payment_tit sub"> 쿠폰 사용 </span>
+                                <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                            </div>
+                            <div class="payment_div">
+                                <span class="payment_tit sub"> 마일리지 사용 </span>
+                                <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                            </div>
+                        </div>
+
+                        <div class="payment_info">
+                            <div> 결제 내역 </div>
+                            <div class="text_blue_accent">
+                                <span class="price"> 0 </span>
+                                <span> 원 </span>
+                            </div>
+                            <div> 현대카드 / 일시불 </div>
+                        </div>
+                       
+                    </div>  <!-- end <div class="order_right detail"> -->
+
+                </div> <!-- end <div class="clearFix"> -->
+
+                <div class="btn_container">
+                    <div class="btn_wrap">
+                        <a class="btn_200_64 bg_black" > 목록 </a>
+                    </div>
+                </div>                    
+                
+
+            </div>      <!-- end <div class="container_w1200 page_top_btm_pad order_list"> -->
+        </div>
+    </div>
+   
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

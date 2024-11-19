@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> 주문 완료 </title>
+
+    <link rel="stylesheet" th:href="@{/assets/css/reset.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" th:href="@{/assets/img/favicon_144x144.png}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css">
+    <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
+
+    <link rel="stylesheet" th:href="@{/assets/css/style_3.css}"/>
+
+</head>
+
+<body>
+    <div class="app">
+        <div class="wrapper">
+            <div class="container_w1200 page_top_btm_pad order_complete">
+
+                <i class="step_ico confirm on"></i> 
+
+                <div class="font_32_700"> 주문 완료 </div>
+
+                <div> 소니스토어를 이용해 주셔서 감사합니다! </div>
+
+                <div class="font_32_700"> 주문이 완료 되었습니다. </div>
+
+                <div class="order_num_container">
+                    <span class="order_num_txt"> 주문번호 &nbsp; : </span> 
+                    <span class="order_num text_blue_accent"> 202411080936000593 </span> 
+                </div>
+
+                <div class="explain"> * 주문하신 상품에 대한 배송 상태 등의 조회는 마이페이지에서 확인하실 수 있습니다. </div>
+
+                <div class="btn_container">
+                    <div class="btn_wrap">
+                        <a class="continue btn_200_64 bg_white" > 계속 쇼핑 하기 </a>
+                    </div>
+                    <div class="btn_wrap">
+                        <a class="continue btn_200_64 bg_white" > 설문조사 참여하기 </a>
+                    </div>
+                    <div class="btn_wrap">
+                        <a class="continue btn_200_64 bg_black" > 주문/배송 조회 </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

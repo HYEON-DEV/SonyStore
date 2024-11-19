@@ -44,6 +44,7 @@ const clr_name = clr => {
     //console.log(paramsArr);
 
     const curId = params.id; 
+    // const curId = 3;
 
     if ( !curId ) {
         alert("제품이 없습니다");
@@ -62,12 +63,12 @@ const clr_name = clr => {
         products = paramsArr.reduce((acc, key) => {
             return acc[key]; // 각 단계에서 접근
         }, response.data);
-        //console.log(products);
+        console.log(products);
    
         //  접근한 배열에서 현재 제품의 id가 포함된 객체 가져오기
         //response.data = products.find(item => item.id == curId);
         item = products.find(item => item.id == curId);
-        //console.log(item);
+        console.log(item);
 
     } catch (e) {
         console.error(e);

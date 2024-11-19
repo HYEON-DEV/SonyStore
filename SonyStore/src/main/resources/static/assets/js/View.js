@@ -35,15 +35,12 @@ const clr_name = clr => {
 
 ( async () => {
 
-    const params = utilHelper.getQuery();       
-    //console.log(`params : ${params}`);
-    //const params = {"id":1,"path1":"camera","path2":"lens_change","path3":"APS-C"};
-    //const paramsArr = Object.values(params);
+    // const params = utilHelper.getQuery();       
     
-    const paramsArr = Object.values(params).slice(1); // id 값 제외
-    //console.log(paramsArr);
-
-    const curId = params.id; 
+    // const paramsArr = Object.values(params).slice(1); // id 값 제외
+    
+    // const curId = params.id; 
+    const curId = 1;    // spring 옮겨오면서 일단 id 1로 지정
 
     if ( !curId ) {
         alert("제품이 없습니다");
@@ -56,18 +53,47 @@ const clr_name = clr => {
 
     try {
         //  전체 json 조회
-        response = await axios.get('http://localhost:3001/products');   //console.log(response.data);
+        response = await axios.get('http://localhost:3001/products');
         
         //  paramsArr 요소로 백엔드 json 접근
         products = paramsArr.reduce((acc, key) => {
             return acc[key]; // 각 단계에서 접근
         }, response.data);
-        //console.log(products);
    
         //  접근한 배열에서 현재 제품의 id가 포함된 객체 가져오기
-        //response.data = products.find(item => item.id == curId);
-        item = products.find(item => item.id == curId);
-        //console.log(item);
+        //item = products.find(item => item.id == curId);       =>   spring 옮겨오면서 아래 item으로 대체
+        
+        // 아래는 기존 백엔드에서 불러온 "item 값"
+        const item = {
+            "id": 1,
+            "thumbnail": "clr0_0.png",
+            "title": "ZV-E10M2",
+            "info": "기록의완성",
+            "price": 1340000,
+            "date": 202407,
+            "color": [
+                "black",
+                "white"
+            ],
+            "img": [
+                [
+                    "clr0_0.png",
+                    "clr0_1.png",
+                    "clr0_2.png",
+                    "clr0_3.png",
+                    "clr0_4.png",
+                    "clr0_5.png"
+                ],
+                [
+                    "clr1_0.png",
+                    "clr1_1.png",
+                    "clr1_2.png",
+                    "clr1_3.png",
+                    "clr1_4.png",
+                    "clr1_5.png"
+                ]
+            ]
+        };
 
     } catch (e) {
         console.error(e);
@@ -93,7 +119,7 @@ const clr_name = clr => {
 
         const img = document.createElement('img');
         img.classList.add('main-img');
-        img.setAttribute( 'src', `assets/img/${paramsArr[0]}${curId}/${imgArr[0][i]}` );
+        // img.setAttribute( 'src', `assets/img/${paramsArr[0]}${curId}/${imgArr[0][i]}` );
 
         div2.appendChild(img);
         div1.appendChild(div2);
@@ -149,24 +175,6 @@ const clr_name = clr => {
             }
         } );
     }
-
-/* 
-    const left = document.querySelector('.product-main-slider');
-    const right = document.querySelector('.product-view-about');
-    window.addEventListener( 'scroll', () => {
-        const rightRect = right.getBoundingClientRect();
-        const leftRect = left.getBoundingClientRect();
-
-        if ( rightRect.bottom <= window.innerHeight ) {
-            left.style.position = 'absolute';
-            left.style.top = right.scrollHeight - leftRect.height + 'px';
-        } else {
-            left.style.position = 'sticky';
-            left.style.top = '0';
-        }
-
-    } ); */
-
 
 
     /* -- -- -- 메인 우측 - 구매관련 -- -- -- */
@@ -631,20 +639,6 @@ document.addEventListener('click', (e) => {
 
 // 초기 총 금액 계산
 // calculateTotal();
-
-
- 
-
-/* -- -- -- 찜, 장바구니, 선물하기, 구매하기 -- -- -- */
-
-document.querySelectorAll('.btn-icon-container').forEach( (v,i) => {
-    const a = document.createElement('a');
-    a.classList.add('btn-icon');
-    v.appendChild(a);
-
-    const iconUrl = `./assets/img/ico_${v.classList[0]}.svg`;
-    v.style.background = `url(${iconUrl}) no-repeat center`;
-} );
 
 
 
