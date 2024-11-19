@@ -1,9 +1,16 @@
 package kr.co.sonystore.mappers;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Results;
 
 import kr.co.sonystore.models.Product;
 
@@ -47,7 +54,70 @@ public interface ProductMapper {
     "sale = #{sale}, " +
     "event = #{event} " +
     "WHERE prodid = #{prodid}")
-    public int updateProduct(Product input);
+    public int update(Product input);
 
-    
+    /**
+     * 상품 정보를 삭제한다
+     * @param input - 삭제할 상품 정보에 대한 모델 객체
+     * @return 삭제된 데이터 수
+     */
+    @Delete("DELETE FROM products WHERE prodid = #{prodid}")
+    public int delete(Product input);
+
+    /**
+     * 단일행 조회를 위한 기능 정의
+     * @param input - 조회할 상품 정보에 대한 모델 객체
+     * @return 조회된 데이터 정보
+     */
+    @Select("SELECT * FROM products WHERE prodid = #{prodid}")
+    @Results(id = "productMap", value = {
+        @Result(property = "prodid", column = "prodid"),
+        @Result(property = "title", column = "title"),
+        @Result(property = "proddesc", column = "proddesc"),
+        @Result(property = "price", column = "price"),
+        @Result(property = "type1", column = "type1"),
+        @Result(property = "type2", column = "type2"),
+        @Result(property = "type3", column = "type3"),
+        @Result(property = "date", column = "date"),
+        @Result(property = "detailimage1", column = "detailimage1"),
+        @Result(property = "youtube", column = "youtube"),
+        @Result(property = "detailgif", column = "detailgif"),
+        @Result(property = "detailimage2", column = "detailimage2"),
+        @Result(property = "detailspec", column = "detailspec"),
+        @Result(property = "soldout", column = "soldout"),
+        @Result(property = "sale", column = "sale"),
+        @Result(property = "event", column = "event")
+    })
+    public Product selectItem(Product input);
+
+
+    /**
+     * 다중행 조회를 위한 메서드 정의
+     * @param input - 조회할 상품 정보에 대한 모델 객체
+     * @return 조회된 데이터 리스트
+     */
+     @Select("<script>" +
+             "SELECT * FROM products " +
+             "<where>" +
+             "<if test='title != null'>title LIKE concat('%', #{title}, '%')</if>" +
+             "<if test='price != null'>OR price LIKE concat('%', #{price}, '%')</if>" +
+             "<if test='type1 != null'>OR type1 LIKE concat('%', #{type1}, '%')</if>" +
+             "<if test='type2 != null'>OR type2 LIKE concat('%', #{type2}, '%')</if>" +
+             "<if test='type3 != null'>OR type3 LIKE concat('%', #{type3}, '%')</if>" +
+             "<if test='date != null'>OR date LIKE concat('%', #{date}, '%')</if>" +
+             "<if test='proddesc != null'>OR proddesc LIKE concat('%', #{proddesc}, '%')</if>" +
+             "<if test='detailimage1 != null'>OR detailimage1 LIKE concat('%', #{detailimage1}, '%')</if>" +
+             "<if test='youtube != null'>OR youtube LIKE concat('%', #{youtube}, '%')</if>" +
+             "<if test='detailgif != null'>OR detailgif LIKE concat('%', #{detailgif}, '%')</if>" +
+             "<if test='detailimage2 != null'>OR detailimage2 LIKE concat('%', #{detailimage2}, '%')</if>" +
+             "<if test='detailspec != null'>OR detailspec LIKE concat('%', #{detailspec}, '%')</if>" +
+             "<if test='soldout != null'>OR soldout LIKE concat('%', #{soldout}, '%')</if>" +
+             "<if test='sale != null'>OR sale LIKE concat('%', #{sale}, '%')</if>" +
+             "<if test='event != null'>OR event LIKE concat('%', #{event}, '%')</if>" +
+             "</where>" +
+             "ORDER BY prodid DESC" +
+             "<if test='listCount > 0'>LIMIT #{offset}, #{listCount}</if>" +
+             "</script>")
+    @ResultMap("productMap")
+    public List<Product> selectList(Product input);
 }

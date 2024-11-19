@@ -6,4 +6,5 @@ import lombok.Data;
 public class Color {
     private int colorid;
     private String color;
+    private int prodid;
 }
