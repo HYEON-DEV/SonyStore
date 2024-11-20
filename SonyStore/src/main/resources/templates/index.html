@@ -2,12 +2,12 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:replace="~{/_fragments/_head :: my-head('소니스토어')}">
-        <link rel="stylesheet" type="text/html" href="@{/assets/css/style_1.css}" />
+        <link rel="stylesheet" type="text/html" th:href="@{/assets/css/style_1.css}" />
     </th:block>
 </head>    
 <body>
-    <script src="@{/assets/js/loadHTML.js}"></script>
-    <script>loadHTML("./header.html");</script>
+    <script th:src="@{/assets/js/loadHTML.js}"></script>
+    <script>loadHTML("header.html");</script>
     <div class="container_w1920">
 
         <!-- banner -->
@@ -15,7 +15,7 @@
             <div class="banner_swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="assets/img/banner/01_PC_main_IMG.jpg" alt="banner1" /> 
+                        <img th:src="@{/assets/img/banner/01_PC_main_IMG.jpg}" alt="banner1" /> 
                         <div class="banner_contents">
                             <div class="banner_title_box">
                                 <span class="banner_title">기록의</span>
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="assets/img/banner/02_PC_main_IMG.jpg" alt="banner2" />
+                        <img th:src="@{/assets/img/banner/02_PC_main_IMG.jpg}" alt="banner2" />
                         <div class="banner_contents">
                             <div class="banner_title_box">
                                 <span class="banner_title">공부할</span>
@@ -40,13 +40,13 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <video src="assets/img/banner/03_PC_main_vedio.mp3" loop autoplay="true" muted></video>
+                        <video th:src="@{/assets/img/banner/03_PC_main_vedio.mp3}" loop autoplay="true" muted></video>
                         <div class="banner_contents" style="top:70%">
                             <span class="banner_view">자세히 보기 <i class="fas fa-angle-right"></i></span>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="assets/img/banner/04_PC_main_IMG.jpg" alt="banner4" />
+                        <img th:src="@{/assets/img/banner/04_PC_main_IMG.jpg}" alt="banner4" />
                         <div class="banner_contents" style="color:black">
                             <div class="banner_title_box">
                                 <span class="banner_title">WF-C510</span>
@@ -71,17 +71,17 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="swiper-slide-container main_img">
-                                <img src="assets/img/main/main_swiper_headphone.jpg" alt="headphone_img" />
+                                <img th:src="@{/assets/img/main/main_swiper_headphone.jpg}" alt="headphone_img" />
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="swiper-slide-container main_img">
-                                <img src="assets/img/main/main_swiper_earphone.jpg" alt="earphone_img" />
+                                <img th:src="@{/assets/img/main/main_swiper_earphone.jpg}" alt="earphone_img" />
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="swiper-slide-container main_img">
-                                <img src="assets/img/main/main_swiper_camera.jpg" alt="camera_img" />
+                                <img th:src="@{/assets/img/main/main_swiper_camera.jpg}" alt="camera_img" />
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                                     <div class="swiper-slide column">
                                         <span class="sub_swiper_title opacity_1">기록의 완성</span>
                                         <a href="view.html?id=1&path1=camera&path2=lens_change&path3=APS-C" class="swiper-slide-container sub_img">
-                                            <img src="assets/main/img/swiper_camera.png" alt="camera" />
+                                            <img th:src="@{/assets/img/main/swiper_camera.png}" alt="camera" />
                                         </a>
                                         <span class="sub_swiper_name opacity_1">ZV-E10M2</span>
                                         <span class="sub_swiper_desc opacity_1">기록의 완성</span>
@@ -104,7 +104,7 @@
                                     <div class="swiper-slide column">
                                         <span class="sub_swiper_title">Best 노이즈 캔슬링</span>
                                         <div class="swiper-slide-container sub_img">
-                                            <img src="assets/main/img/swiper_headphone.png" alt="headphone" />
+                                            <img th:src="@{/assets/img/main/swiper_headphone.png}" alt="headphone" />
                                         </div>
                                         <span class="sub_swiper_name">WH-1000XM5</span>
                                         <span class="sub_swiper_desc">#몰입의 즐거움 #스터디헤드폰</span>
@@ -112,7 +112,7 @@
                                     <div class="swiper-slide column">
                                         <span class="sub_swiper_title">1000X 이어폰</span>
                                         <div class="swiper-slide-container sub_img">
-                                            <img src="assets/main/img/swiper_earphone.png" alt="earphone" />
+                                            <img th:src="@{/assets/img/main/swiper_earphone.png}" alt="earphone" />
                                         </div>
                                         <span class="sub_swiper_name">WF-1000XM5</span>
                                         <span class="sub_swiper_desc">이것은 작게 진화한 핸드폰</span>
@@ -196,7 +196,7 @@
         <!-- helf section end -->
     </div>
     <th:block th:replace="~{/_fragments/_scripts :: my-scripts}"></th:block>
-    <script src="./assets/js/mainData.js"></script>
+    <script th:src="@{/assets/js/mainData.js}"></script>
 
 </body>
 </html>
