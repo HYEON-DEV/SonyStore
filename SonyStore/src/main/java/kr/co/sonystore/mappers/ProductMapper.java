@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
@@ -12,6 +13,8 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 
+import kr.co.sonystore.models.Color;
+import kr.co.sonystore.models.Image;
 import kr.co.sonystore.models.Product;
 
 @Mapper
@@ -69,7 +72,15 @@ public interface ProductMapper {
      * @param input - 조회할 상품 정보에 대한 모델 객체
      * @return 조회된 데이터 정보
      */
-    @Select("SELECT * FROM products WHERE prodid = #{prodid}")
+    @Select("SELECT p.prodid, p.title, p.proddesc, p.price, p.type1, p.type2, p.type3, " +
+            "p.date, p.detailimage1, p.detailimage2, p.youtube, p.detailgif, " +
+            "p.detailspec, p.soldout, p.sale, p.event, " +
+            "i.imgid, i.filepath, i.thumbnail, i.prodid AS img_prodid, i.colorid AS img_colorid, " +
+            "c.colorid AS color_colorid, c.color, c.prodid AS color_prodid " +
+            "FROM products p " +
+            "LEFT JOIN images i ON p.prodid = i.prodid " +
+            "LEFT JOIN colors c ON p.prodid = c.prodid " +
+            "WHERE p.prodid = #{prodid} LIMIT 1")
     @Results(id = "productMap", value = {
         @Result(property = "prodid", column = "prodid"),
         @Result(property = "title", column = "title"),
@@ -86,38 +97,42 @@ public interface ProductMapper {
         @Result(property = "detailspec", column = "detailspec"),
         @Result(property = "soldout", column = "soldout"),
         @Result(property = "sale", column = "sale"),
-        @Result(property = "event", column = "event")
+        @Result(property = "event", column = "event"),
+        @Result(property = "images", column = "prodid", many = @Many(select = "selectImagesByProductId")),
+        @Result(property = "colors", column = "prodid", many = @Many(select = "selectColorsByProductId"))
     })
-    public Product selectItem(Product input);
-
+    Product selectItem(Product input);
 
     /**
      * 다중행 조회를 위한 메서드 정의
      * @param input - 조회할 상품 정보에 대한 모델 객체
      * @return 조회된 데이터 리스트
      */
-     @Select("<script>" +
-             "SELECT * FROM products " +
-             "<where>" +
-             "<if test='title != null'>title LIKE concat('%', #{title}, '%')</if>" +
-             "<if test='price != null'>OR price LIKE concat('%', #{price}, '%')</if>" +
-             "<if test='type1 != null'>OR type1 LIKE concat('%', #{type1}, '%')</if>" +
-             "<if test='type2 != null'>OR type2 LIKE concat('%', #{type2}, '%')</if>" +
-             "<if test='type3 != null'>OR type3 LIKE concat('%', #{type3}, '%')</if>" +
-             "<if test='date != null'>OR date LIKE concat('%', #{date}, '%')</if>" +
-             "<if test='proddesc != null'>OR proddesc LIKE concat('%', #{proddesc}, '%')</if>" +
-             "<if test='detailimage1 != null'>OR detailimage1 LIKE concat('%', #{detailimage1}, '%')</if>" +
-             "<if test='youtube != null'>OR youtube LIKE concat('%', #{youtube}, '%')</if>" +
-             "<if test='detailgif != null'>OR detailgif LIKE concat('%', #{detailgif}, '%')</if>" +
-             "<if test='detailimage2 != null'>OR detailimage2 LIKE concat('%', #{detailimage2}, '%')</if>" +
-             "<if test='detailspec != null'>OR detailspec LIKE concat('%', #{detailspec}, '%')</if>" +
-             "<if test='soldout != null'>OR soldout LIKE concat('%', #{soldout}, '%')</if>" +
-             "<if test='sale != null'>OR sale LIKE concat('%', #{sale}, '%')</if>" +
-             "<if test='event != null'>OR event LIKE concat('%', #{event}, '%')</if>" +
-             "</where>" +
-             "ORDER BY prodid DESC" +
-             "<if test='listCount > 0'>LIMIT #{offset}, #{listCount}</if>" +
-             "</script>")
-    @ResultMap("productMap")
-    public List<Product> selectList(Product input);
+    @Select("<script>" +
+    "SELECT p.prodid, p.title, p.proddesc, p.price, p.type1, p.type2, p.type3, " +
+    "p.date, p.detailimage1, p.detailimage2, p.youtube, p.detailgif, " +
+    "p.detailspec, p.soldout, p.sale, p.event " +
+    "FROM products p " +
+    "<where>" +
+    "<if test='title != null'>title LIKE concat('%', #{title}, '%')</if>" +
+    "<if test='price != null'>OR price LIKE concat('%', #{price}, '%')</if>" +
+    "<if test='type1 != null'>OR type1 LIKE concat('%', #{type1}, '%')</if>" +
+    "<if test='type2 != null'>OR type2 LIKE concat('%', #{type2}, '%')</if>" +
+    "<if test='type3 != null'>OR type3 LIKE concat('%', #{type3}, '%')</if>" +
+    "<if test='date != null'>OR date LIKE concat('%', #{date}, '%')</if>" +
+    "<if test='proddesc != null'>OR proddesc LIKE concat('%', #{proddesc}, '%')</if>" +
+    "<if test='detailimage1 != null'>OR detailimage1 LIKE concat('%', #{detailimage1}, '%')</if>" +
+    "<if test='youtube != null'>OR youtube LIKE concat('%', #{youtube}, '%')</if>" +
+    "<if test='detailgif != null'>OR detailgif LIKE concat('%', #{detailgif}, '%')</if>" +
+    "<if test='detailimage2 != null'>OR detailimage2 LIKE concat('%', #{detailimage2}, '%')</if>" +
+    "<if test='detailspec != null'>OR detailspec LIKE concat('%', #{detailspec}, '%')</if>" +
+    "<if test='soldout != null'>OR soldout LIKE concat('%', #{soldout}, '%')</if>" +
+    "<if test='sale != null'>OR sale LIKE concat('%', #{sale}, '%')</if>" +
+    "<if test='event != null'>OR event LIKE concat('%', #{event}, '%')</if>" +
+    "</where>" +
+    "ORDER BY prodid DESC" +
+    "<if test='listCount > 0'>LIMIT #{offset}, #{listCount}</if>" +
+    "</script>")
+@ResultMap("productMap")
+List<Product> selectList(Product input);
 }

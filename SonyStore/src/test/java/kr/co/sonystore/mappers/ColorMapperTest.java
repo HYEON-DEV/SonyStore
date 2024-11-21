@@ -20,10 +20,19 @@ public class ColorMapperTest {
     void insertColor() {
         Color input = new Color();
         input.setColor("black");
+        input.setProdid(1);
         
-        int output = colorMapper.insert(input);
-        
-        log.debug("output: " + output);
-        log.debug("new id: " + input.getColorid());
+       colorMapper.insert(input);
+    }
+
+    @Test
+    @DisplayName("색상 업데이트 테스트")
+    void updateColor() {
+        Color input = new Color();
+        input.setColorid(1);
+        input.setColor("white");
+        input.setProdid(1);
+
+        colorMapper.update(input);
     }
 }

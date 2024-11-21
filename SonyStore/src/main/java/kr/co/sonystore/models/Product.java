@@ -1,6 +1,10 @@
 package kr.co.sonystore.models;
 
+import java.util.List;
+
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 public class Product {
@@ -20,4 +24,15 @@ public class Product {
     private String soldout;
     private String sale;
     private String event;
+
+    private List<Image> images;
+    private List<Color> colors;
+
+    @Getter
+    @Setter
+    private static int listCount = 0;
+
+    @Getter
+    @Setter
+    private static int offset = 0;
 }

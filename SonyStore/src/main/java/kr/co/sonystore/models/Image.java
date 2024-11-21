@@ -1,6 +1,8 @@
 package kr.co.sonystore.models;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 public class Image {
@@ -9,4 +11,12 @@ public class Image {
     private String thumbnail;
     private int prodid;
     private int colorid;
+
+    @Getter
+    @Setter
+    private static int listCount = 0;
+
+    @Getter
+    @Setter
+    private static int offset = 0;
 }
