@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{/_fragments/_head :: sony-head('아이디 · 비밀번호 찾기')}"></th:block>
+    <link rel="stylesheet" th:href="@{/assets/css/style_1.css}" />
+</head>
+<body>
+    <th:block th:replace="~{/_fragments/_header :: sony-header}"></th:block>
+    <div class="container_w1920">
+        <div class="container_w1200" style="padding-top: 80px;">
+            <h2 class="h2_title font_32_700">아이디 · 비밀번호 찾기</h2>
+            <p class="find_id_pw_desc">
+                아이디·비밀번호가 기억나지 않으신가요?<br />
+                등록하신 정보로 아이디와 비밀번호를 찾으실 수 있습니다.
+            </p>
+
+            <p class="find_id_pw_desc">
+                * SNS 계정으로 가입하신 회원님은 가입하신 SNS의 이메일 아이디로 찾으실 수 있고<br />
+                비밀번호의 경우는 가입하신 SNS에서 직접 찾기, 혹은 변경하실 수 있습니다.
+            </p>
+
+            <div class="find">
+                <div class="find_tab">
+                    <ul class="find_tab_ul flex_center">
+                        <li class="find_id font_20_500 border_bottom"><a href="#find_id" class="find_button find_button_active flex_center">아이디 찾기</a></li>
+                        <li class="find_pw font_20_500 border_bottom"><a href="#find_pw" class="find_button flex_center">비밀번호 찾기</a></li>
+                    </ul>
+                </div>
+
+                <div id="find_id" class="tab_page tab_page_active">
+                    <form action="#">
+                        <label for="userName" class="input_label">
+                            <input type="text" class="input_box" />
+                            <div class="input_focus_line">
+                                <span class="placeholder">이름<span class="placeholder_hide">(띄어쓰기 없이 입력하세요.)</span></span>
+                            </div>
+                        </label>
+                        
+                        <div class="input_button_set"  style="margin-top: 25px;">
+                            <label for="phoneNumber" class="input_label" style="width: 442px;">
+                                <input type="text" class="input_box" />
+                                <div class="input_focus_line">
+                                    <span class="placeholder">휴대폰 번호<span class="placeholder_hide">(-없이 입력하세요.)</span></span>
+                                </div>
+                            </label>
+                            <div class="btn_box" style="margin-left:15px;">
+                                <div class="btn_blue flex_center">인증번호</div>
+                            </div>
+                        </div>
+                    </form>
+                    <button type="button" class="black_button">확인</button>
+
+                    <div class="light_grey_box">
+                        <span class="caution_text flex_center">· 가입하신 정보와 일치하지 않을 경우 검색이 안될 수 있습니다.</span>
+                    </div>
+                </div>
+
+                <div id="find_pw" class="tab_page">
+                    <form action="#">
+                        <label for="userEmail" class="input_label">
+                            <input type="text" class="input_box" />
+                            <div class="input_focus_line">
+                                <span class="placeholder">이메일 아이디<span class="placeholder_hide"> (예:sony@sony.co.kr)</span></span>
+                            </div>
+                            <span class="input_error"><img th:src="@{/assets/img/sign/input_error_red.svg}" alt="input_error_icon">이메일 아이디를 입력해주세요.</span>
+                        </label>
+                        
+                        <div class="input_button_set" style="margin-top: 25px;">
+                            <label for="phoneNumber" class="input_label" style="width: 442px;">
+                                <input type="text" class="input_box" />
+                                <div class="input_focus_line">
+                                    <span class="placeholder">휴대폰 번호<span class="placeholder_hide">(-없이 입력하세요.)</span></span>
+                                </div>
+                            </label>
+                            <div class="btn_box" style="margin-left:15px;">
+                                <div class="btn_blue flex_center">인증번호</div>
+                            </div>
+                        </div>
+                    </form>
+                    <button type="button" class="black_button">확인</button>
+
+                    <div class="light_grey_box">
+                        <span class="caution_text flex_center">· 가입하신 정보와 일치하지 않을 경우 검색이 안될 수 있습니다.</span>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+
+    <th:block th:replace="~{/_fragments/_footer :: sony-footer}"></th:block>
+    <th:block th:replace="~{/_fragments/_scripts :: sony-scripts}"></th:block>
+
+    <script>
+        document.querySelectorAll('.find_button').forEach((v, i) => {
+            v.addEventListener('click', (e) => {
+                e.preventDefault();
+                const currentIndex = i;
+                const href = e.currentTarget.getAttribute("href");
+
+                document.querySelectorAll('.find_button').forEach((v1, i1) => {
+                    if(currentIndex == i1) {
+                        v1.classList.add('find_button_active');
+                    } else {
+                        v1.classList.remove('find_button_active');
+                    }
+                });
+
+                document.querySelectorAll('.tab_page').forEach((v2, i2) => {
+                    v2.classList.remove('tab_page_active');
+                });
+
+                document.querySelector(href).classList.add('tab_page_active');
+        });
+    });
+
+      /* placeholder event */
+      const input = document.querySelectorAll('.input_box');
+        const placeholders = document.querySelectorAll('.placeholder');
+
+        input.forEach((v, i) => {
+            const placeholder = placeholders[i]; // 각 v에 대응되는 placeholder 요소를 찾음
+
+            // input에 focus가 있을 때 placeholder 스타일 변경
+            v.addEventListener('focus', () => {
+                placeholder.classList.add('placeholder_focused');
+            });
+
+            // input에서 focus가 사라질 때
+            v.addEventListener('blur', () => {
+                placeholder.classList.remove('placeholder_focused');
+
+                // 값이 있다면 placeholder_focused 숨김 방지
+                if (v.value) {
+                    placeholder.classList.add('placeholder_focused');
+                } else {
+                    placeholder.classList.remove('placeholder_focused');
+                }
+            });
+
+            // 페이지 로드시, input에 값이 있으면 placeholder 숨김 방지
+            if (v.value) {
+                placeholder.classList.add('placeholder_focused');
+            }
+        });
+
+        /* placeholder event end */
+    </script>
+</body>
+</html>
