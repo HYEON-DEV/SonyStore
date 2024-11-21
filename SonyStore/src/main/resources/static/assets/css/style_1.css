@@ -201,7 +201,7 @@ input[type="checkbox"]:checked {
             position:absolute;
             top:0;
             left:0;
-            cursor: url('../img/arrow_left.png'), auto;
+            cursor: url('/assets/img/banner/arrow_left.png'), auto;
 
             &:after {
                 content: "";
@@ -247,7 +247,7 @@ input[type="checkbox"]:checked {
             position:absolute;
             top:0;
             right:0;
-            cursor: url('../img/arrow_right.png'), auto;
+            cursor: url('/assets/img/banner/arrow_right.png'), auto;
 
             &:after {
                 content: "";
@@ -318,7 +318,7 @@ input[type="checkbox"]:checked {
         position:absolute;
         top:0;
         right:0;
-        cursor: url('../img/arrow_right.png'), auto;
+        cursor: url('/assets/img/banner/arrow_right.png'), auto;
 
         &:after {
             content: "";
@@ -413,7 +413,7 @@ input[type="checkbox"]:checked {
 /* event section */
 
 .event_box_w100 {
-    background-image: url("../img/event_bg_1.jpg");
+    background-image: url("/assets/img/main/event_bg_1.jpg");
     width: 100%;
     height: 576px;
     padding:230px 230px 134px 326px;
@@ -463,15 +463,15 @@ input[type="checkbox"]:checked {
         background-repeat: no-repeat;
 
         &:nth-child(1) {
-            background-image: url("../img/main_event_img_1.jpg");
+            background-image: url("/assets/img/main/main_event_img_1.jpg");
         }
 
         &:nth-child(2) {
-            background-image: url("../img/main_event_img_2.jpg");
+            background-image: url("/assets/img/main/main_event_img_2.jpg");
         }
 
         &:nth-child(3) {
-            background-image: url("../img/main_event_img_3.jpg");
+            background-image: url("/assets/img/main/main_event_img_3.jpg");
             margin-right:0;
         }
 
@@ -536,7 +536,7 @@ input[type="checkbox"]:checked {
 
 /* main hr_banner_section */
     .hr_banner{
-        background-image: url("../img/pc_hr_banner.png");
+        background-image: url("/assets/img/main/pc_hr_banner.png");
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
@@ -591,19 +591,19 @@ input[type="checkbox"]:checked {
             justify-content: center;
 
             &.notice {
-                background-image: url("../img/main_help_notice.svg");
+                background-image: url("/assets/img/main/main_help_notice.svg");
             }
 
             &.location {
-                background-image: url("../img/main_help_location.svg");
+                background-image: url("/assets/img/main/main_help_location.svg");
             }
 
             &.service {
-                background-image: url("../img/main_help_service.svg");
+                background-image: url("/assets/img/main/main_help_service.svg");
             }
 
             &.advice {
-                background-image: url("../img/main_help_advice.svg");
+                background-image: url("/assets/img/main/main_help_advice.svg");
             }
 
             a {

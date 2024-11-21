@@ -1,4 +1,5 @@
-<!-- footer -->
+<th:block th:fragment="sony-footer">
+    <!-- footer -->
 <div class="footer">
     <div class="footer_inner">
         <div class="footer_left">
@@ -31,16 +32,16 @@
                 <span class="footer_social_title">FOLLOW US</span>
                 <div class="footer_social_icon_box">
                     <a href="#" class="footer_social_icon">
-                        <img src="./assets/img/footer/footer_social_facebook.svg" alt="facebookLink">
+                        <img th:src="@{/assets/img/footer/footer_social_facebook.svg}" alt="facebookLink">
                     </a>
                     <a href="#" class="footer_social_icon">
-                        <img src="./assets/img/footer/footer_social_insta.svg" alt="instagramLink">
+                        <img th:src="@{/assets/img/footer/footer_social_insta.svg}" alt="instagramLink">
                     </a>
                     <a href="#" class="footer_social_icon">
-                        <img src="./assets/img/footer/footer_social_youtube.svg" alt="youtubeLink">
+                        <img th:src="@{/assets/img/footer/footer_social_youtube.svg}" alt="youtubeLink">
                     </a>
                     <a href="#" class="footer_social_icon">
-                        <img src="./assets/img/footer/footer_social_blog.svg" alt="blogIcon">
+                        <img th:src="@{/assets/img/footer/footer_social_blog.svg}" alt="blogIcon">
                     </a>
                 </div>
             </div>
@@ -94,15 +95,12 @@
 <!-- go top -->
 <div class="side_toggle_box">
     <div class="side_toggle_contents">
-        <div class="side_toggle_content go_kakao"><img src="./assets/img/footer/side_toggle_kakao.svg" alt="kakaoBtn"><span class="side_toggle_text">카톡 상담</span></div>
-        <div class="side_toggle_content go_service"><img src="./assets/img/footer/side_toggle_service.svg" alt="serviveBtn"><span class="side_toggle_text">고객 센터</span></div>
-        <div class="side_toggle_content go_top"><img src="./assets/img/footer/side_toggle_up.svg" alt="goTopBtn"></div>
+        <div class="side_toggle_content go_kakao"><img th:src="@{/assets/img/footer/side_toggle_kakao.svg}" alt="kakaoBtn"><span class="side_toggle_text">카톡 상담</span></div>
+        <div class="side_toggle_content go_service"><img th:src="@{/assets/img/footer/side_toggle_service.svg}" alt="serviveBtn"><span class="side_toggle_text">고객 센터</span></div>
+        <div class="side_toggle_content go_top"><img th:src="@{/assets/img/footer/side_toggle_up.svg}" alt="goTopBtn"></div>
     </div>
-    <div class="side_toggle_btn"><img src="./assets/img/footer/plus.svg" alt="plusBtn"></div>
+    <div class="side_toggle_btn"><img th:src="@{/assets/img/footer/plus.svg}" alt="plusBtn"></div>
 </div>    
 
 <!-- footer end -->
-
-<!-- SweetAlert2 라이브러리 추가 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.all.min.js"></script>
-<script src="./assets/js/consumer_insurance.js"></script>
+</th:block>

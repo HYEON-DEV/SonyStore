@@ -94,8 +94,9 @@
 }
 
 .container_w1920 {
+    margin-top: 80px;
     width: 1920px;
-    margin: auto;
+    margin: 80px auto 0;
     background-color: var(--color-white);
 }
 

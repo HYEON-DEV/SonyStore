@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <th:block th:replace="~{/_fragments/_head :: my-head('소니스토어')}">
-        <link rel="stylesheet" type="text/html" th:href="@{/assets/css/style_1.css}" />
-    </th:block>
-</head>    
+    <th:block th:replace="~{/_fragments/_head :: sony-head('소니스토어')}"></th:block>
+    <link rel="stylesheet" th:href="@{/assets/css/style_1.css}" />
+</head>
 <body>
-    <script th:src="@{/assets/js/loadHTML.js}"></script>
-    <script>loadHTML("header.html");</script>
+    <th:block th:replace="~{/_fragments/_header :: sony-header}"></th:block>
     <div class="container_w1920">
 
         <!-- banner -->
@@ -195,8 +193,8 @@
         </div>
         <!-- helf section end -->
     </div>
-    <th:block th:replace="~{/_fragments/_scripts :: my-scripts}"></th:block>
+    <th:block th:replace="~{/_fragments/_footer :: sony-footer}"></th:block>
+    <th:block th:replace="~{/_fragments/_scripts :: sony-scripts}"></th:block>
     <script th:src="@{/assets/js/mainData.js}"></script>
-
 </body>
 </html>

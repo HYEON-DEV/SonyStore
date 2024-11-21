@@ -188,8 +188,8 @@ SubSlide.forEach((slide) => {
 
         prodContainer.appendChild(prodItem);
         prodItem.appendChild(prodName);
-        // prodItem.style.backgroundImage = `url(assets/img/${v.prodImg})`;
-        prodItem.setAttribute('th:style', `background-image: url(/img/main/${v.prodImg})`);
+        prodItem.style.backgroundImage = `url(/assets/img/main/${v.prodImg})`;
+        // prodItem.setAttribute('style', `background-image: url(/assets/img/main/${v.prodImg})`);
 
     });
 })();
