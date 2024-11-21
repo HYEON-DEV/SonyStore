@@ -11,7 +11,7 @@ class UtilHelper {
         danger: "#DC3545",
         warning: "#FFC107",
         info: "#0DCAF0",
-        light: "#F8F9FA",
+        light: "#ffc9af",
         dark: "#212529"
     }
 
@@ -62,12 +62,7 @@ class UtilHelper {
 
 
 
-    /**
-     * 우편번호 검색
-     * @param {String} postCodeField (선택자 이름) 우편번호
-     * @param {String} addr1Field (선택자 이름) 주소
-     * @param {String} addr2Field (선택자 이름) 상세주소
-     */
+    /** 우편번호 검색 */
     findPostCode ( postCodeField="#postcode", addr1Field="#addr1", addr2Field="#addr2" ) {
         new daum.Postcode({
             oncomplete: function(data) {
