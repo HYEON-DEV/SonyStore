@@ -35,4 +35,15 @@ public class ColorMapperTest {
 
         colorMapper.update(input);
     }
+
+    @Test
+    @DisplayName("색상 삭제 테스트")
+    void deleteColor() {
+        Color input = new Color();
+        input.setColorid(3);
+
+        int output = colorMapper.delete(input);
+
+        log.debug("output = " + output);
+    }
 }

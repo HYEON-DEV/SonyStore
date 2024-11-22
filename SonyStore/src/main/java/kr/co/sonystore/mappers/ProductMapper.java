@@ -67,6 +67,20 @@ public interface ProductMapper {
     @Delete("DELETE FROM products WHERE prodid = #{prodid}")
     public int delete(Product input);
 
+    // 상품을 삭제하기 전에 상품에 소속된 색상 데이터를 삭제
+    @Delete("DELETE FROM colors WHERE prodid = #{prodid}")
+    void deleteColorsByProductId(Product input);
+
+    // 상품을 삭제하기 전에 상품에 소속된 이미지 데이터를 삭제
+    @Delete("DELETE FROM images WHERE prodid = #{prodid}")
+    void deleteImagesByProductId(Product input);
+
+    @Select("SELECT * FROM images WHERE prodid = #{prodid}")
+    List<Image> selectImagesByProductId(int prodid);
+
+    @Select("SELECT * FROM colors WHERE prodid = #{prodid}")
+    List<Color> selectColorsByProductId(int prodid);
+
     /**
      * 단일행 조회를 위한 기능 정의
      * @param input - 조회할 상품 정보에 대한 모델 객체
@@ -75,8 +89,8 @@ public interface ProductMapper {
     @Select("SELECT p.prodid, p.title, p.proddesc, p.price, p.type1, p.type2, p.type3, " +
             "p.date, p.detailimage1, p.detailimage2, p.youtube, p.detailgif, " +
             "p.detailspec, p.soldout, p.sale, p.event, " +
-            "i.imgid, i.filepath, i.thumbnail, i.prodid AS img_prodid, i.colorid AS img_colorid, " +
-            "c.colorid AS color_colorid, c.color, c.prodid AS color_prodid " +
+            "i.imgid, i.filepath, i.thumbnail, " +
+            "c.colorid, c.color " +
             "FROM products p " +
             "LEFT JOIN images i ON p.prodid = i.prodid " +
             "LEFT JOIN colors c ON p.prodid = c.prodid " +
@@ -111,26 +125,30 @@ public interface ProductMapper {
     @Select("<script>" +
     "SELECT p.prodid, p.title, p.proddesc, p.price, p.type1, p.type2, p.type3, " +
     "p.date, p.detailimage1, p.detailimage2, p.youtube, p.detailgif, " +
-    "p.detailspec, p.soldout, p.sale, p.event " +
+    "p.detailspec, p.soldout, p.sale, p.event, " +
+    "i.imgid, i.filepath, i.thumbnail, " +
+    "c.colorid, c.color " +
     "FROM products p " +
+    "LEFT JOIN images i ON p.prodid = i.prodid " +
+    "LEFT JOIN colors c ON p.prodid = c.prodid " +
     "<where>" +
-    "<if test='title != null'>title LIKE concat('%', #{title}, '%')</if>" +
-    "<if test='price != null'>OR price LIKE concat('%', #{price}, '%')</if>" +
-    "<if test='type1 != null'>OR type1 LIKE concat('%', #{type1}, '%')</if>" +
-    "<if test='type2 != null'>OR type2 LIKE concat('%', #{type2}, '%')</if>" +
-    "<if test='type3 != null'>OR type3 LIKE concat('%', #{type3}, '%')</if>" +
-    "<if test='date != null'>OR date LIKE concat('%', #{date}, '%')</if>" +
-    "<if test='proddesc != null'>OR proddesc LIKE concat('%', #{proddesc}, '%')</if>" +
-    "<if test='detailimage1 != null'>OR detailimage1 LIKE concat('%', #{detailimage1}, '%')</if>" +
-    "<if test='youtube != null'>OR youtube LIKE concat('%', #{youtube}, '%')</if>" +
-    "<if test='detailgif != null'>OR detailgif LIKE concat('%', #{detailgif}, '%')</if>" +
-    "<if test='detailimage2 != null'>OR detailimage2 LIKE concat('%', #{detailimage2}, '%')</if>" +
-    "<if test='detailspec != null'>OR detailspec LIKE concat('%', #{detailspec}, '%')</if>" +
-    "<if test='soldout != null'>OR soldout LIKE concat('%', #{soldout}, '%')</if>" +
-    "<if test='sale != null'>OR sale LIKE concat('%', #{sale}, '%')</if>" +
-    "<if test='event != null'>OR event LIKE concat('%', #{event}, '%')</if>" +
+    "<if test='title != null'>AND p.title LIKE concat('%', #{title}, '%')</if>" +
+    "<if test='price != null'>AND p.price LIKE concat('%', #{price}, '%')</if>" +
+    "<if test='type1 != null'>AND p.type1 LIKE concat('%', #{type1}, '%')</if>" +
+    "<if test='type2 != null'>AND p.type2 LIKE concat('%', #{type2}, '%')</if>" +
+    "<if test='type3 != null'>AND p.type3 LIKE concat('%', #{type3}, '%')</if>" +
+    "<if test='date != null'>AND p.date LIKE concat('%', #{date}, '%')</if>" +
+    "<if test='proddesc != null'>AND p.proddesc LIKE concat('%', #{proddesc}, '%')</if>" +
+    "<if test='detailimage1 != null'>AND p.detailimage1 LIKE concat('%', #{detailimage1}, '%')</if>" +
+    "<if test='youtube != null'>AND p.youtube LIKE concat('%', #{youtube}, '%')</if>" +
+    "<if test='detailgif != null'>AND p.detailgif LIKE concat('%', #{detailgif}, '%')</if>" +
+    "<if test='detailimage2 != null'>AND p.detailimage2 LIKE concat('%', #{detailimage2}, '%')</if>" +
+    "<if test='detailspec != null'>AND p.detailspec LIKE concat('%', #{detailspec}, '%')</if>" +
+    "<if test='soldout != null'>AND p.soldout LIKE concat('%', #{soldout}, '%')</if>" +
+    "<if test='sale != null'>AND p.sale LIKE concat('%', #{sale}, '%')</if>" +
+    "<if test='event != null'>AND p.event LIKE concat('%', #{event}, '%')</if>" +
     "</where>" +
-    "ORDER BY prodid DESC" +
+    "ORDER BY p.prodid DESC " +
     "<if test='listCount > 0'>LIMIT #{offset}, #{listCount}</if>" +
     "</script>")
 @ResultMap("productMap")

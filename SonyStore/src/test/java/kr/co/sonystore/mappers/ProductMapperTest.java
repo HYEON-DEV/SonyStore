@@ -74,7 +74,11 @@ public class ProductMapperTest {
     @DisplayName("상품 삭제 테스트")
     void deleteProduct() {
         Product input = new Product();
-        input.setProdid(3); // 삭제할 상품의 ID를 설정
+        input.setProdid(1); // 삭제할 상품의 ID를 설정
+        
+        productMapper.deleteImagesByProductId(input);
+        productMapper.deleteColorsByProductId(input);
+        
 
         int output = productMapper.delete(input);
 

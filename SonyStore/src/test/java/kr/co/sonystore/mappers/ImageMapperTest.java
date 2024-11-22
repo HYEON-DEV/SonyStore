@@ -40,4 +40,16 @@ public class ImageMapperTest {
 
         imageMapper.update(input);
     }
+
+    @Test
+    @DisplayName("이미지 삭제 테스트")
+    void deleteImage(){
+        Image input = new Image();
+        input.setImgid(1);
+
+        int output = imageMapper.delete(input);
+
+        log.debug("output = " + output);
+
+    }
 }

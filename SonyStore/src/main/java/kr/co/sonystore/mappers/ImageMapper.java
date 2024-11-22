@@ -20,7 +20,7 @@ public interface ImageMapper {
     void update(Image input);
 
     @Delete("DELETE FROM images WHERE imgid = #{imgid}")
-    void delete(Image input);
+    public int delete(Image input);
 
     // 이미지를 삭제하기 전에 상품에 소속된 이미지 데이터를 삭제
     @Delete("DELETE FROM images WHERE prodid = #{prodid}")
