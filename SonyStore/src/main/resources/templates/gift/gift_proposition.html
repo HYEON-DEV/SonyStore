@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{/_fragments/_head :: sony-head('회원정보 수정')}"></th:block>
+    <link rel="stylesheet" th:href="@{/assets/css/style_1.css}" />
+</head>    
+<body>
+    <th:block th:replace="~{/_fragments/_header :: sony-header}"></th:block>
+
+    <div class="container_w1920">
+        <img th:src="@{/assets/img/gift_proposition/gift_proposition_bg.jpg}" alt="선물 제안 배경이미지" />
+
+        <div class="container_w1200">
+        <div class="exhibition_detail_caution_box">
+                <span class="exhibition_datile_caution_title font_24_700">이벤트 유의사항</span>
+                <span class="exhibition_datile_caution_desc font_20_500">· 이벤트 중인 제품은 관련 기획전을 통해 구매하시면 더 많은 혜택을 받으실 수 있습니다.</span>
+                <span class="exhibition_datile_caution_desc font_20_500">· ILCE-7CM2 관련 기획전 : '풀프레임으로 시작하자 시작부터 FULL'</span>
+        </div>
+
+            <div class="button_container flex_center">
+                <button class="black_button_w200">목록</button>
+            </div>
+        </div>   
+    </div>
+
+    <th:block th:replace="~{/_fragments/_footer :: sony-footer}"></th:block>
+    <th:block th:replace="~{/_fragments/_scripts :: sony-scripts}"></th:block>
+</body>
+</html>
