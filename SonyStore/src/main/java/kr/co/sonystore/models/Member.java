@@ -25,5 +25,5 @@ public class Member implements Serializable {
     private String isadmin;
 
     // 재로그인 필요
-    //private String newuserpw;   // 회원정보 수정에서 사용할 신규 비밀번호
+    private String newuserpw;   // 회원정보 수정에서 사용할 신규 비밀번호
 }

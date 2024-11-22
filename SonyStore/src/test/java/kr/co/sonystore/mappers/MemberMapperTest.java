@@ -33,4 +33,37 @@ public class MemberMapperTest {
         log.debug("output: " + output);
         log.debug("new id: " + input.getMemberid());
     }
+
+    @Test
+    @DisplayName("회원 수정 테스트")
+    void updateMemberTest(){
+        Member input = new Member();
+        input.setMemberid(1);
+        input.setUserpw("1234");
+        input.setUsername("박진수");
+        input.setGender("F");
+        input.setBirthdate("1996-09-05");
+        input.setPhone("01033064205");
+        input.setPostcode("21016");
+        input.setAddr1("경기도 수원시");
+        input.setAddr2("우만동");
+
+        
+
+        int output = memberMapper.update(input);
+
+        log.debug("output: " + output);
+    }
+
+    @Test
+    @DisplayName("회원 삭제 테스트")
+    void deleteMemberTest(){
+        Member input = new Member();
+        input.setMemberid(3);
+
+        int output = memberMapper.delete(input);
+
+        log.debug("output: " + output);
+    }
+
 }
