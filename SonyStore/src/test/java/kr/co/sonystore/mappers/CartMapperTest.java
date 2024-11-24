@@ -17,14 +17,15 @@ public class CartMapperTest {
     @Autowired
     private CartMapper cartMapper;
 
+
     @Test
     @DisplayName("장바구니 추가 테스트")
     void insertCart() {
         Cart input = new Cart();
         input.setCount(1);
         input.setMemberid(2);
-        input.setProdid(4);
-        input.setColor("블랙");
+        input.setProdid(5);
+        // input.setColor("블랙");
         
         int output = cartMapper.insert(input);
         
@@ -32,7 +33,19 @@ public class CartMapperTest {
         log.debug("new id: " + input.getCartid());
     }
 
-    
+
+    @Test
+    @DisplayName("장바구니 수량 증가 테스트")
+    void updateCount() {
+        Cart input = new Cart();
+        input.setCount(1);
+        input.setMemberid(2);
+        input.setProdid(5);
+        // input.setColor("블랙");
+        
+        int output = cartMapper.updateCount(input);
+        log.debug("output: " + output);
+    }
 
 
     @Test
@@ -42,6 +55,21 @@ public class CartMapperTest {
         input.setMemberid(2);
         
         List<Cart> output = cartMapper.selectList(input);
+        for ( Cart item : output ) {
+            log.debug("output: " + item.toString());
+        }
+    }
+
+
+    @Test
+    @DisplayName("장바구니 중복 조회 테스트")
+    void selectCount() {
+        Cart input = new Cart();
+        input.setMemberid(2);
+        input.setProdid(5);
+        // input.setColor("화이트");
+        
+        int output = cartMapper.selectCount(input);
         log.debug("output: " + output);
     }
 

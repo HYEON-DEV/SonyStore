@@ -83,4 +83,5 @@ public interface MemberMapper {
 
     })
     Member selectMember(Member input);
+    
 }

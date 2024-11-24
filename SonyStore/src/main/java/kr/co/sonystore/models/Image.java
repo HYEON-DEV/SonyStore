@@ -10,7 +10,7 @@ public class Image {
     private String filepath;
     private String thumbnail;
     private int prodid;
-    private int colorid;
+    private Integer colorid;
 
     @Getter
     @Setter

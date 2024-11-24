@@ -62,20 +62,20 @@ public class MapperTestSH {
     @DisplayName("상품 추가 테스트 (JH)")
     void insertProduct() {
         Product input = new Product();
-        input.setTitle("ZV-E10M2K");
-        input.setProddesc("기록의 완성");
-        input.setPrice(1490000);
+        input.setTitle("ILCE-9M3");
+        input.setProddesc("The Power of One Frame");
+        input.setPrice(7980000);
         input.setType1("카메라");
-        input.setType2("컴팩트");
-        // input.setType3("APS-C");
-        input.setDate("20240701");
+        input.setType2("렌즈교환식");
+        input.setType3("풀프레임");
+        input.setDate("20240101");
         input.setDetailimage1("..");
         input.setDetailimage2("..");
         input.setYoutube("..");
         input.setDetailgif("..");
         input.setDetailspec("..");
         input.setSoldout("N");
-        input.setSale("N");
+        input.setSale("Y");
         input.setEvent("Y");
         
         int output = productMapper.insert(input);
@@ -125,13 +125,12 @@ public class MapperTestSH {
     @DisplayName("이미지 추가 테스트 (JH)")
     void insertImage(){
         Image input = new Image();
-        input.setFilepath("/products/camera3/clr0_0.png");
+        input.setFilepath("/products/camera1/clr0_0.png");
         input.setThumbnail("Y");
-        input.setProdid(3);
-        input.setColorid(4);
+        input.setProdid(4);
+        input.setColorid(3);
 
         imageMapper.insert(input);
-
     }
 
 
@@ -139,12 +138,12 @@ public class MapperTestSH {
     @DisplayName("회원 추가 테스트 (SH)")
     void insertMember() {
         Member input = new Member();
-        input.setEmail("chang@gmail.com");
+        input.setEmail("chann@gmail.com");
         input.setUserpw("qwe123");
-        input.setUsername("홍창기");
+        input.setUsername("임찬규");
         input.setGender("M");
-        input.setBirthdate("19930501");
-        input.setPhone("01011112222");
+        input.setBirthdate("19921120");
+        input.setPhone("01022223333");
         // input.setPostcode("12345");
         // input.setAddr1("서울특별시 잠실동");
         // input.setAddr2("123");
