@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -64,24 +65,76 @@ public interface MemberMapper {
     "memberid, email, userpw, username, gender, "+
     "birthdate, phone, editdate, postcode, addr1, " + 
     "addr2, isout, logindate, regdate, isadmin " +
-    "FROM Member " + 
+    "FROM Members " + 
     "WHERE memberid = #{memberid}")
-    @Results(id = "MemberMap", value = {
+    @Results(id = "memberMap", value = {
         @Result(property = "memberid", column = "memberid"),
         @Result(property = "email", column = "email"),
         @Result(property = "userpw", column = "userpw"),
         @Result(property = "username", column = "username"),
         @Result(property = "gender", column = "gender"),
         @Result(property = "birthdate", column = "birthdate"),
-        @Result(property = "", column = ""),
-        @Result(property = "", column = ""),
-        @Result(property = "", column = ""),
-        @Result(property = "", column = ""),
-        @Result(property = "", column = ""),
-        @Result(property = "", column = ""),
-        @Result(property = "", column = "")
-
+        @Result(property = "phone", column = "phone"),
+        @Result(property = "editdate", column = "editdate"),
+        @Result(property = "postcode", column = "postcode"),
+        @Result(property = "addr1", column = "addr1"),
+        @Result(property = "addr2", column = "addr2"),
+        @Result(property = "isout", column = "isout"),
+        @Result(property = "logindate", column = "logindate"),
+        @Result(property = "regdate", column = "regdate"),
+        @Result(property = "isadmin", column = "isadmin")
     })
     Member selectMember(Member input);
-    
+
+    // 이메일 중복검사
+    @Select("<script>" + //
+    "select count(*) from members\n" + //
+    "<where>\n" + //
+    "<if test='email != null'>email = #{email}</if>\n" + //
+    "<if test='memberid != 0'>and memberid != #{memberid}</if>\n" + //
+    "</where>\n" + //
+    "</script>")
+    public int selectCount(Member input);
+
+    // 이메일(아이디) 찾기
+    @Select("select email from members " +
+            "where username = #{username} and phone = #{phone}")
+    @ResultMap("memberMap")
+    Member findEmail(Member input);
+
+    // 비밀번호 찾기 (이메일과 휴대폰 본인인증)
+    @Select("select userpw from members " +
+            "where email = #{email} and phone = #{phone}")
+    @ResultMap("memberMap")
+    Member findUserPw(Member input);
+
+    // 비밀번호 변경
+    @Update("update members set userpw = #{userpw}" +
+            "where memberid = #{memberid} and email = #{email}")
+    public int resetPw(Member input);
+
+    // 로그인
+    @Select("select \n" +
+    "memberid, email, userpw, username, gender, "+
+    "birthdate, phone, editdate, postcode, addr1, " + 
+    "addr2, isout, logindate, regdate, isadmin " +
+    "from members \n" +
+    "where email = #{email} and userpw = #{userpw}")
+    @ResultMap("memberMap")
+    public Member login(Member input);
+
+    @Update("update members set logindate = now() where memberid = #{memberid}")
+    public int updateLoginDate(Member input);
+
+    // 회원탈퇴
+    @Update("update members \n" +
+    "set isout = 'Y', editdate = now() \n" +
+    "where memberid = #{memberid} and userpw = #{userpw} and isout = 'N'" )
+    public int out(Member input);
+
+   // 탈퇴한 회원 중 탈퇴 후 1분이 지난 회원 삭제
+   @Delete("delete from members \n" +
+   "where isout='Y' and \n" +
+   "editdate < date_add(now(), interval -1 minute)")
+   public int deleteOutMembers();
 }
