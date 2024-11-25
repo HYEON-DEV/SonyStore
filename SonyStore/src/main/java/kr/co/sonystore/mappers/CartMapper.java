@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.Results;
@@ -60,6 +61,7 @@ public interface CartMapper {
      * @return 조회된 장바구니 목록
      */
     @Select (
+        "<script> " +
         "SELECT cartid, memberid, c.prodid, title, i.colorid, \n" + 
         "c.color, filepath, price, count, price*count AS sum \n" +
         "FROM carts c \n" +
@@ -69,7 +71,8 @@ public interface CartMapper {
             "c.prodid = i.prodid AND (clr.colorid = i.colorid OR clr.colorid IS NULL) \n" + 
             "AND i.thumbnail = 'Y' \n" +
         "WHERE memberid = #{memberid} \n" +
-        "ORDER BY cartid"
+        "ORDER BY cartid" + 
+        "</script>"
     )        
     @Results ( id="cartMap", value = {
         @Result ( property="cartid", column="cartid" ),
@@ -108,14 +111,20 @@ public interface CartMapper {
     @Delete ( "DELETE FROM carts WHERE cartid = #{cartid}" )
     public int delete(Cart input);
 
-/* 
-    @Delete ( 
-        "<SCRIPT> \n" +
-        "DELETE FROM carts WHERE cartid IN \n" + 
-        "<FOREACH ITEM='cartid' COLLECTION='cartids' OPEN='(' SEPARATOR=',' CLOSE=')' > \n" +
-        "#{cartid} \n" +
-        "</FOREACH> \n" + 
-        "</SCRIPT>" )
-    public int deleteList(@Param("cartids") List<Integer> cartids);
+ 
+    /**
+     * 장바구니에서 다중 상품을 삭제한다
+     * @param cartidList - 삭제할 장바구니 번호를 담고 있는 리스트
+     * @return 삭제된 데이터 수
      */
+    @Delete ( 
+        "<script> \n" +
+        "DELETE FROM carts WHERE cartid IN \n" + 
+        "<foreach item='cartid' collection='cartidList' open='(' separator=',' close=')' > \n" +
+        "#{cartid} \n" +
+        "</foreach> \n" + 
+        "</script>" )
+    public int deleteList(@Param("cartidList") List<Integer> cartidList);
 }
+
+

@@ -14,4 +14,5 @@ public class Cart {
     private String filepath;    // 상품 이미지 경로 (조인을 통해 조회된 값)
     private String title;       // 상품 이름 (조인을 통해 조회된 값)
     private int price;          // 상품 가격 (조인을 통해 조회된 값)
+    private int sum;            // 상품 가격 * 수량 
 }
