@@ -90,7 +90,7 @@ public class ProductMapperTest {
     @DisplayName("상품 단일 조회 테스트")
     void selectProduct() {
         Product input = new Product();
-        input.setProdid(1); // 조회할 상품의 ID를 설정
+        input.setProdid(5); // 조회할 상품의 ID를 설정
 
         Product output = productMapper.selectItem(input);
 

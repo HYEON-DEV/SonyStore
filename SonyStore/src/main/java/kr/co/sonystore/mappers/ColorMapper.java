@@ -17,7 +17,7 @@ public interface ColorMapper {
      * @param input - 입력할 색상 정보에 대한 모델 객체
      * @return 입력된 데이터 수
      */
-    @Insert("INSERT INTO colors (color, prodid) VALUES (#{color}, #{prodid})")
+    @Insert("INSERT INTO colors (color, prodid, pcolor) VALUES (#{color}, #{prodid}, #{pcolor})")
     @Options(useGeneratedKeys = true, keyProperty = "colorid", keyColumn = "colorid")
     public int insert(Color input);
 
@@ -26,7 +26,7 @@ public interface ColorMapper {
      * @param input - 수정할 색상 정보에 대한 모델 객체
      * @return 수정된 데이터 수
      */
-    @Update("UPDATE colors SET color = #{color}, prodid = #{prodid} WHERE colorid = #{colorid}")
+    @Update("UPDATE colors SET color = #{color}, prodid = #{prodid}, pcolor = #{pcolor} WHERE colorid = #{colorid}")
     public int update(Color input);
 
     /**

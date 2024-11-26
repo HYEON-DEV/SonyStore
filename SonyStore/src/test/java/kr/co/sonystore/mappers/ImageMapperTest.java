@@ -21,8 +21,8 @@ public class ImageMapperTest {
         Image input = new Image();
         input.setFilepath("/products/camera1/clr0_0.png");
         input.setThumbnail("Y");
-        input.setProdid(1);
-        input.setColorid(1);
+        input.setProdid(5);
+        input.setColorid(4);
 
         imageMapper.insert(input);
 

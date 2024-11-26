@@ -79,6 +79,11 @@ public interface ProductMapper {
     List<Image> selectImagesByProductId(int prodid);
 
     @Select("SELECT * FROM colors WHERE prodid = #{prodid}")
+    @Results({
+        @Result(property = "colorid", column = "colorid"),
+        @Result(property = "color", column = "color"),
+        @Result(property = "pcolor", column = "pcolor")
+    })
     List<Color> selectColorsByProductId(int prodid);
 
     /**
@@ -90,7 +95,7 @@ public interface ProductMapper {
             "p.date, p.detailimage1, p.detailimage2, p.youtube, p.detailgif, " +
             "p.detailspec, p.soldout, p.sale, p.event, " +
             "i.imgid, i.filepath, i.thumbnail, " +
-            "c.colorid, c.color " +
+            "c.colorid, c.color, c.pcolor " +
             "FROM products p " +
             "LEFT JOIN images i ON p.prodid = i.prodid " +
             "LEFT JOIN colors c ON p.prodid = c.prodid " +
@@ -127,7 +132,7 @@ public interface ProductMapper {
     "p.date, p.detailimage1, p.detailimage2, p.youtube, p.detailgif, " +
     "p.detailspec, p.soldout, p.sale, p.event, " +
     "i.imgid, i.filepath, i.thumbnail, " +
-    "c.colorid, c.color " +
+    "c.colorid, c.color, c.pcolor " +
     "FROM products p " +
     "LEFT JOIN images i ON p.prodid = i.prodid " +
     "LEFT JOIN colors c ON p.prodid = c.prodid " +
