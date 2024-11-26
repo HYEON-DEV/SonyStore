@@ -76,7 +76,7 @@ public class CartServiceTest {
         log.debug("output: " + output);
     }
 
-/* 
+ 
     @Test
     @DisplayName("장바구니 조회 테스트")
     void getList() {
@@ -97,5 +97,22 @@ public class CartServiceTest {
             }
         }
     }
- */
+
+
+    @Test
+    @DisplayName("장바구니 다중 삭제 테스트")
+    void deleteList() {
+        List<Integer> input = List.of(5,8);
+
+        int output = 0;
+
+        try {
+            output = cartService.deleteList(input);
+        } catch (Exception e) {
+            log.error("Mapper 구현 에러", e);
+        }
+
+        log.debug("output: " + output);
+    }
+
 }

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class signController {
+public class SignController {
     
     @GetMapping("/sign/login")
     public String login() {

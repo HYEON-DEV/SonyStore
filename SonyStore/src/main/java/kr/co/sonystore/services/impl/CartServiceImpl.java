@@ -121,18 +121,24 @@ public class CartServiceImpl implements CartService {
         return output;
     }
 
-    /* 
+
     @Override
-    public int getCount(Cart input) throws Exception {
-        int output = 0;
+    public int deleteList(List<Integer> input) throws Exception {
+        int rows = 0;
 
         try {
-            output = cartMapper.selectCount(input);
+            rows = cartMapper.deleteList(input);
+
+            if (rows == 0) {
+                throw new Exception("삭제된 데이터가 없습니다.");
+            }
         } catch (Exception e) {
-            log.error("데이터 집계에 실패했습니다.", e);
+            log.error("데이터 삭제에 실패했습니다.", e);
             throw e;
         }
 
-        return output;
-    } */
+        return rows;
+    }
+
+    
 }

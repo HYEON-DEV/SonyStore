@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class giftController {
+public class GiftController {
     
     @GetMapping("/gift/gift_proposition")
     public String education() {

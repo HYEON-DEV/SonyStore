@@ -2,6 +2,7 @@ package kr.co.sonystore.mappers;
 
 import java.util.List;
 
+import java.util.Arrays;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class CartMapperTest {
         Cart input = new Cart();
         input.setCount(1);
         input.setMemberid(2);
-        input.setProdid(5);
-        // input.setColor("블랙");
+        input.setProdid(3);
+        input.setColor("블랙");
         
         int output = cartMapper.insert(input);
         
@@ -95,4 +96,24 @@ public class CartMapperTest {
         int output = cartMapper.delete(input);
         log.debug("output : " + output);
     }
+
+
+    @Test
+    @DisplayName("장바구니 다중 삭제 테스트")
+    void deleteCartList() {
+        // Cart input1 = new Cart();
+        // input1.setCartid(2);
+
+        // Cart input2 = new Cart();
+        // input2.setCartid(4);
+
+        // List<Cart> inputList = List.of(input1, input2);
+        List<Integer> inputList = Arrays.asList(11,12);
+
+        int output = cartMapper.deleteList(inputList);
+        log.debug("output: " + output); 
+
+    }
 }
+
+

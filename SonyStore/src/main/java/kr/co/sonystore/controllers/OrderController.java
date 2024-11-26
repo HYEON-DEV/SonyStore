@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class OrderController {
     
     /** 장바구니 페이지 */
-    @GetMapping("/cart")
-    public String cart() {
-        return "/orders/cart";
-    }
+    // @GetMapping("/cart")
+    // public String cart() {
+    //     return "/orders/cart";
+    // }
 
     /** 주문/결제 페이지 */
     @GetMapping("/order/sheet")

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class searchController {
+public class SearchController {
     
     @GetMapping("/search/search_result")
     public String searchResult() {

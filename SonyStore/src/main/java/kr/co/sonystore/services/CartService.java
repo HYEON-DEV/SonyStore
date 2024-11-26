@@ -40,7 +40,7 @@ public interface CartService {
      * @return 삭제된 데이터 수
      * @throws Exception - 데이터베이스 연결 문제, SQL 쿼리 오류, 입력 데이터 문제
      */
-    // public int deleteList(List<Cart> input) throws Exception;
+    public int deleteList(List<Integer> input) throws Exception;
 
 
     /**
@@ -51,5 +51,4 @@ public interface CartService {
      */
     public List<Cart> getList(Cart input) throws Exception;
 
-    // public int getCount(Cart input) throws Exception;
 }

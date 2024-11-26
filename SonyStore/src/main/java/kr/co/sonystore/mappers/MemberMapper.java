@@ -60,7 +60,7 @@ public interface MemberMapper {
 
     @Delete("delete from members where memberid=#{memberid}")
     public int delete(Member input);
-
+ 
     @Select("select " + 
     "memberid, email, userpw, username, gender, "+
     "birthdate, phone, editdate, postcode, addr1, " + 
