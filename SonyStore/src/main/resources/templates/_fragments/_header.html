@@ -173,10 +173,17 @@
             </div>
         </div>
 
-        <div class="mypage_drop_down flex_center">
-            <span class="mypage_drop_down_login pointer">로그인</span>
-            <span class="mypage_drop_down_menu pointer">회원가입</span>
-            <span class="mypage_drop_down_menu pointer">주문/배송 조회</span>
+        <div class="mypage_drop_down flex_center" th:if="${session.memberInfo == null}">
+            <a class="mypage_drop_down_login pointer" th:href="@{/sign/login}">로그인</a>
+            <a class="mypage_drop_down_menu pointer">회원가입</a>
+            <a class="mypage_drop_down_menu pointer">주문/배송 조회</a>
+        </div>
+
+        <div class="mypage_drop_down flex_center" style="height: 200px; text-align: center;;" th:unless="${session.memberInfo == null}">
+            <a class="mypage_drop_down_login pointer"><span th:text="${session.memberInfo.username}" />님<br /> 안녕하세요!</a>
+            <a class="mypage_drop_down_menu pointer">마이페이지</a>
+            <a class="mypage_drop_down_menu pointer">주문/배송 조회</a>
+            <a id="btn_logout" class="mypage_drop_down_menu pointer" style="text-decoration: none;" th:href="@{/api/sign/logout}">로그아웃</a>
         </div>
     </div>
     <!-- PC header end -->

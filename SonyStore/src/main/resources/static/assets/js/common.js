@@ -242,4 +242,19 @@ function queryStringById ( data, targetObject ) {
     }
 
     return createQueryString( findParentKeys( data, targetObject) );
+
 } 
+
+
+// 로그아웃
+if(document.querySelector("#btn_logout")) {
+    document.querySelector("#btn_logout").addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        const data = await axiosHelper.get(e.currentTarget.getAttribute('href'));
+
+        if(data) {
+            window.location.reload();
+        }
+    });
+}
