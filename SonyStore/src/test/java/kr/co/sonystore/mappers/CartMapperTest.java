@@ -25,8 +25,8 @@ public class CartMapperTest {
         Cart input = new Cart();
         input.setCount(1);
         input.setMemberid(2);
-        input.setProdid(3);
-        input.setColor("블랙");
+        input.setProdid(5);
+        // input.setColor("블랙");
         
         int output = cartMapper.insert(input);
         
@@ -50,7 +50,7 @@ public class CartMapperTest {
 
 
     @Test
-    @DisplayName("장바구니 조회 테스트")
+    @DisplayName("장바구니 목록 조회 테스트")
     void selectList() {
         Cart input = new Cart();
         input.setMemberid(2);
@@ -59,6 +59,17 @@ public class CartMapperTest {
         for ( Cart item : output ) {
             log.debug("output: " + item.toString());
         }
+    }
+
+
+    @Test
+    @DisplayName("장바구니 단일행 조회 테스트")
+    void selectItem() {
+        Cart input = new Cart();
+        input.setCartid(15);
+        
+        Cart output = cartMapper.selectItem(input);
+        log.debug("output: " + output);
     }
 
 

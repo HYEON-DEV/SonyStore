@@ -22,7 +22,7 @@ public interface CartService {
      * @return 변경된 데이터
      * @throws Exception - 데이터베이스 연결 문제, SQL 쿼리 오류, 입력 데이터 문제
      */
-    public int editItem(Cart input) throws Exception;
+    public Cart editItem(Cart input) throws Exception;
 
 
     /**
@@ -44,11 +44,20 @@ public interface CartService {
 
 
     /**
-     * 장바구니를 조회한다
+     * 장바구니 목록을 조회한다
      * @param input - 조회할 장바구니 정보를 담고있는 객체
      * @return 조회된 데이터
      * @throws Exception - 데이터베이스 연결 문제, SQL 쿼리 오류, 입력 데이터 문제
      */
     public List<Cart> getList(Cart input) throws Exception;
+
+
+    /**
+     * 장바구니의 단일행을 조회한다
+     * @param input - 조회할 장바구니 정보를 담고있는 객체
+     * @return 조회된 데이터
+     * @throws Exception - 데이터베이스 연결 문제, SQL 쿼리 오류, 입력 데이터 문제
+     */
+    public Cart getItem(Cart input) throws Exception;
 
 }
