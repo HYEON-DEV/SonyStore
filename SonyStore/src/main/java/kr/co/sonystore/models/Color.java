@@ -9,6 +9,7 @@ public class Color {
     private int colorid;
     private String color;
     private int prodid;
+    private String pcolor;
 
     @Getter
     @Setter

@@ -20,7 +20,8 @@ public class ColorMapperTest {
     void insertColor() {
         Color input = new Color();
         input.setColor("black");
-        input.setProdid(1);
+        input.setProdid(5);
+        input.setPcolor("Y");
         
        colorMapper.insert(input);
     }
