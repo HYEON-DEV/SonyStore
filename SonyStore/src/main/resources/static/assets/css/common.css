@@ -94,7 +94,8 @@
 }
 
 .container_w1920 {
-    width: 1920px;
+    width:100%;
+    max-width: 1920px;
     margin: 80px auto 0;
     background-color: var(--color-white);
 }
@@ -276,7 +277,8 @@ input::placeholder {
     top:0;
     left:0; 
     right:0;
-    width:1920px;
+    max-width:1920px;
+    width: 100%;
     margin:0 auto;
     height:4em;
     font-size:20px;
@@ -326,6 +328,7 @@ input::placeholder {
 
         img {
             margin-left:20px;
+            width:24px;
         }
     }
 
