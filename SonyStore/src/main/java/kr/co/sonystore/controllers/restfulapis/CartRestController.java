@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -70,5 +72,35 @@ public class CartRestController {
         data.put("item", output);
 
         return restHelper.sendJson(data);
+    }
+
+
+    @DeleteMapping("/api/cart/deleteItem/{cartid}")
+    public Map<String,Object> deleteItem ( @PathVariable("cartid") int cartid ) {
+
+        Cart input = new Cart();
+        input.setCartid(cartid);
+
+        try {
+            cartService.deleteItem(input);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+
+        return restHelper.sendJson();
+    }
+
+
+    @DeleteMapping("/api/cart/deleteList")
+    public Map<String,Object> deleteList (
+        @RequestParam("cartidList") List<Integer> cartidList
+    ) {
+        try {
+            cartService.deleteList(cartidList);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+
+        return restHelper.sendJson();
     }
 }

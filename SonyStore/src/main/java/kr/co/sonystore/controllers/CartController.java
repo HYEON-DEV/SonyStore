@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+// import org.springframework.web.bind.annotation.PutMapping;
+// import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.sonystore.helpers.FileHelper;
 import kr.co.sonystore.helpers.WebHelper;
@@ -36,7 +36,7 @@ public class CartController {
     @GetMapping("/cart")
     public String cart( Model model ) {
         
-        // 파라미터 추가 @RequestParam("memberid") int memberid
+        // 파라미터 추가  세션의 memberid 받아오기 @RequestParam("memberid") int memberid
         
         Cart input = new Cart();
         input.setMemberid(2);
@@ -45,7 +45,7 @@ public class CartController {
 
         try {
             output = cartService.getList(input);
-
+            
             for ( Cart cart : output) {
                 cart.setFilepath(fileHelper.getUrl(cart.getFilepath()));
             }
@@ -56,7 +56,7 @@ public class CartController {
 
         model.addAttribute("carts", output);
 
-        return "orders/cart";
+        return "/orders/cart";
     }
 
 

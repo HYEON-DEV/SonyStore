@@ -30,7 +30,7 @@ a, button {
     color: var(--color-black-3);
 }
 
-img {
+img:not(.side_toggle_box img) {
     width: 100%;
     object-fit: cover;
 }
@@ -1253,6 +1253,9 @@ img {
     flex-direction: column;
     border-top: 2px solid var(--color-black-3);
     margin-top: 96px;
+    width: 1200px;
+    margin: auto;
+    margin-bottom: 100px;
 
     .acc_btn {
         display: block;
