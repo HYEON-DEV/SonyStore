@@ -328,7 +328,7 @@ input::placeholder {
 
         img {
             margin-left:20px;
-            width:24px;
+            width:24px !important;
         }
     }
 
