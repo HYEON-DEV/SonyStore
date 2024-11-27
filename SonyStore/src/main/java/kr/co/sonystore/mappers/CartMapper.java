@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.ResultMap;
 
 import kr.co.sonystore.models.Cart;
 
@@ -61,7 +62,7 @@ public interface CartMapper {
      * @return 조회된 장바구니 목록
      */
     @Select (
-        "<script> " +
+        // "<script> " +
         "SELECT cartid, memberid, c.prodid, title, i.colorid, \n" + 
         "c.color, filepath, price, count, price*count AS sum \n" +
         "FROM carts c \n" +
@@ -71,8 +72,8 @@ public interface CartMapper {
             "c.prodid = i.prodid AND (clr.colorid = i.colorid OR clr.colorid IS NULL) \n" + 
             "AND i.thumbnail = 'Y' \n" +
         "WHERE memberid = #{memberid} \n" +
-        "ORDER BY cartid" + 
-        "</script>"
+        "ORDER BY cartid"
+        // + "</script>"
     )        
     @Results ( id="cartMap", value = {
         @Result ( property="cartid", column="cartid" ),
@@ -86,6 +87,25 @@ public interface CartMapper {
         @Result ( property="thumbnail", column="thumbnail" )
     } )
     public List<Cart> selectList(Cart input);
+
+
+    /**
+     * 장바구니의 단일행을 조회한다
+     * @param input - 조회할 장바구니 정보에 대한 모델 객체
+     * @return 조회된 장바구니 정보
+     */
+    @Select (
+        "SELECT cartid, memberid, c.prodid, title, i.colorid, \n" + 
+        "c.color, filepath, price, count, price*count AS sum \n" +
+        "FROM carts c \n" +
+        "INNER JOIN products p ON c.prodid = p.prodid \n" +
+        "LEFT JOIN colors clr ON c.prodid = clr.prodid AND c.color = clr.color \n" +
+        "LEFT JOIN images i ON \n" + 
+            "c.prodid = i.prodid AND (clr.colorid = i.colorid OR clr.colorid IS NULL) \n" + 
+            "AND i.thumbnail = 'Y' \n" +
+        "WHERE cartid = #{cartid} \n"
+    ) @ResultMap("cartMap")
+    public Cart selectItem(Cart input);
 
 
     /**

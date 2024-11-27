@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title> 장바구니 </title>
+    <th:block th:replace="~{/_fragments/_head :: sony-head('장바구니')}"></th:block>
 
-    <link rel="stylesheet" th:href="@{/assets/css/reset.css}" />
+    <!-- <meta charset="UTF-8"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    
+    <!-- <title> 장바구니 </title> -->
+
+    <!-- <link rel="stylesheet" th:href="@{/assets/css/reset.css}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
@@ -14,12 +16,14 @@
     <link rel="icon" th:href="@{/assets/img/favicon_144x144.png}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css">
-    <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/common.css}" /> -->
 
     <link rel="stylesheet" th:href="@{/assets/css/style_3.css}"/>
 </head>
 
 <body>
+    <th:block th:replace="~{/_fragments/_header :: sony-header}"></th:block>
+
     <div class="app">
         <div class="wrapper">
             <div class="container_w1200 page_top_btm_pad cart">
@@ -130,7 +134,7 @@
                                     <div class="col_table_cell prd_count">
                                         <div class="count_ui_box">
                                             <button class="minus">-</button>
-                                            <input type="text" readonly class="count" th:value="${cart.count}">
+                                            <input type="text" readonly class="count" th:value="${cart.count}" >
                                             <button class="plus">+</button>
                                         </div>
                                     </div>
@@ -219,8 +223,11 @@
         </div>
     </div>
   
+    <th:block th:replace="~{/_fragments/_footer :: sony-footer}"></th:block>
+    <th:block th:replace="~{/_fragments/_scripts :: sony-scripts}"></th:block>
     <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
-    <!-- <script th:src="@{/assets/js/AxiosHelper.js}"></script> -->
+    <script th:src="@{/assets/js/AxiosHelper.js}"></script>
+    <script th:src="@{/assets/js/UtilHelper.js}"></script>
     <script>
         // ( async () => {
         //     let data = await axiosHelper.get("[[@{/api/cart}]]");
@@ -268,13 +275,17 @@
         // document.querySelectorAll('.price').forEach( (v,i) => {
         //     v.innerText = parseInt(v.innerText).toLocaleString();
         // } );    
-
+        
         // 제품 당 합계
-        document.querySelectorAll('.total_price').forEach( (v,i) => {
-            const totalPrice = parseInt(v.innerText.replaceAll(',', ''));
-            sum += totalPrice;
-            // v.innerText = totalPrice.toLocaleString();
+        document.addEventListener('DOMContentLoaded', e => {
+            console.log('DOMContentLoaded');
+            document.querySelectorAll('.total_price').forEach( (v,i) => {
+                const totalPrice = parseInt(v.innerText.replaceAll(',', ''));
+                sum += totalPrice;  console.log(sum);
+                // v.innerText = totalPrice.toLocaleString();
+            } );
         } );
+        
 
         // 결제 예정 금액 
         document.querySelector('.sum').innerText = sum.toLocaleString();
@@ -290,7 +301,8 @@
         
         // plus
         document.querySelectorAll('.plus').forEach( (v,i) => {
-            v.addEventListener( 'click', e => {
+            v.addEventListener( 'click', async e => {
+                e.preventDefault();
                 // 수량
                 const current = e.currentTarget;
                 const cntBox = current.closest('.count_ui_box');
@@ -305,6 +317,21 @@
                 // 결제 예정 금액
                 sum += price;
                 document.querySelector('.sum').innerText = sum.toLocaleString();
+
+                // AJAX - 수량 변경
+                // let data = null;
+                // const cartid = [[cnt.getAttribute('data-cartid')]];
+                // data = await axios.put('[[@{/api/cart/edit}]]', null, {
+                //     params: {
+                //         cartid: 13,
+                //         count: cnt.value
+                //     }
+                // } );
+               
+                // if(data) {
+                //     console.log(data);
+                // }
+                
             } );
         } );
 

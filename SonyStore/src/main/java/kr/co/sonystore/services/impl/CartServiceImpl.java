@@ -50,7 +50,7 @@ public class CartServiceImpl implements CartService {
 
 
     @Override
-    public int editItem(Cart input) throws Exception {
+    public Cart editItem(Cart input) throws Exception {
         int rows = 0;
 
         try {
@@ -64,7 +64,7 @@ public class CartServiceImpl implements CartService {
             throw e;
         }
 
-        return rows;
+        return cartMapper.selectItem(input);
     }
 
 
@@ -86,7 +86,7 @@ public class CartServiceImpl implements CartService {
         return rows;
     }
 
-/* 
+
     @Override
     public Cart getItem(Cart input) throws Exception {
         Cart output = null;
@@ -98,13 +98,13 @@ public class CartServiceImpl implements CartService {
                 throw new Exception("조회된 데이터가 없습니다.");
             }
         } catch (Exception e) {
-            log.error("교수 조회에 실패했습니다.", e);
+            log.error("데이터 조회에 실패했습니다.", e);
             throw e;
         }
 
         return output;
     }
- */
+
 
     @Override
     public List<Cart> getList(Cart input) throws Exception {
@@ -139,6 +139,5 @@ public class CartServiceImpl implements CartService {
 
         return rows;
     }
-
     
 }

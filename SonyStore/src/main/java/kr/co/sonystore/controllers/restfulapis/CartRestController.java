@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.sonystore.helpers.RestHelper;
@@ -23,24 +25,48 @@ public class CartRestController {
     private RestHelper restHelper;
 
 
-    @GetMapping("/api/cart")
-    public Map<String, Object> getList () {
+    // @GetMapping("/api/cart")
+    // public Map<String, Object> getList () {
 
-        // 파라미터 추가 @RequestParam("memberid") int memberid
+    //     // 파라미터 추가 @RequestParam("memberid") int memberid
 
+    //     Cart input = new Cart();
+    //     // input.setMemberid(memberid);
+    //     input.setMemberid(2);
+
+    //     List<Cart> output = null;
+
+    //     try {
+    //         output = cartService.getList(input);
+    //     } catch (Exception e) {
+    //         return restHelper.serverError(e);
+    //     }
+
+    //     Map<String, Object> data = new LinkedHashMap<String,Object>();
+    //     data.put("item", output);
+
+    //     return restHelper.sendJson(data);
+    // }
+
+
+    @PutMapping("/api/cart/edit")
+    public Map<String,Object> editCart ( 
+        @RequestParam("cartid") int cartid,
+        @RequestParam("count") int count
+     ) {
         Cart input = new Cart();
-        // input.setMemberid(memberid);
-        input.setMemberid(2);
+        input.setCartid(cartid);
+        input.setCount(count);
 
-        List<Cart> output = null;
+        Cart output = null;
 
         try {
-            output = cartService.getList(input);
+            output = cartService.editItem(input);
         } catch (Exception e) {
             return restHelper.serverError(e);
         }
 
-        Map<String, Object> data = new LinkedHashMap<String,Object>();
+        Map<String, Object> data = new LinkedHashMap<String, Object>();
         data.put("item", output);
 
         return restHelper.sendJson(data);
