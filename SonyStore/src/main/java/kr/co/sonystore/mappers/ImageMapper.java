@@ -1,12 +1,16 @@
 package kr.co.sonystore.mappers;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import kr.co.sonystore.models.Image;
+import kr.co.sonystore.models.Product;
 
 
 @Mapper
@@ -29,4 +33,7 @@ public interface ImageMapper {
     // 이미지를 삭제하기 전에 색상에 소속된 이미지 데이터를 삭제
     @Delete("DELETE FROM images WHERE colorid = #{colorid}")
     void deleteByColorid(Image input);
+
+    @Select("SELECT * FROM images WHERE prodid = #{prodid}")
+    List<Image> selectImagesByProductId(Product temp);
 }

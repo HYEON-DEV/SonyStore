@@ -387,4 +387,16 @@ public class FileHelper {
         return builder.toString();
     }
 
+    public String getDir(String path) {
+        if (path == null) {
+            return null;
+        }
+    
+        StringBuilder builder = new StringBuilder();
+    
+        builder.append(this.uploadDir); // "/"
+        builder.append(path.trim()); // "/2021/07/01/xxxx.jpg"
+        return builder.toString();
+    }
+
 }

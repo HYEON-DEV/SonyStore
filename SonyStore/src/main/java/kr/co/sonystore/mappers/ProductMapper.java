@@ -158,4 +158,19 @@ public interface ProductMapper {
     "</script>")
 @ResultMap("productMap")
 List<Product> selectList(Product input);
+
+// type1에 따른 상품 목록 조회
+@Select("SELECT p.prodid, p.title, p.proddesc, p.price, p.type1, p.type2, p.type3, " +
+        "p.date, p.detailimage1, p.detailimage2, p.youtube, p.detailgif, " +
+        "p.detailspec, p.soldout, p.sale, p.event, " +
+        "i.imgid, i.filepath, i.thumbnail, " +
+        "c.colorid, c.color, c.pcolor " +
+        "FROM products p " +
+        "LEFT JOIN images i ON p.prodid = i.prodid " +
+        "LEFT JOIN colors c ON p.prodid = c.prodid " +
+        "WHERE p.type1 = #{type1} " +
+        "ORDER BY p.prodid DESC " +
+        "LIMIT #{offset}, #{listCount}")
+@ResultMap("productMap")
+List<Product> selectListByType1(Product input);
 }

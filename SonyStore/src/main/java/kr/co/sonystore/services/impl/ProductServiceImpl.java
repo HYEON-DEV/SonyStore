@@ -3,14 +3,21 @@ package kr.co.sonystore.services.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import kr.co.sonystore.models.Image;
 import kr.co.sonystore.models.Product;
 import kr.co.sonystore.services.ProductService;
+import kr.co.sonystore.mappers.ColorMapper;
+import kr.co.sonystore.mappers.ImageMapper;
 import kr.co.sonystore.mappers.ProductMapper;
 
+@Service
 public class ProductServiceImpl implements ProductService {
 
     @Autowired ProductMapper productMapper;
+    @Autowired ImageMapper imageMapper;
+    @Autowired ColorMapper colorMapper;
     
     @Override
     public int addItem(Product input) throws Exception {
@@ -56,7 +63,43 @@ public class ProductServiceImpl implements ProductService {
         if(result == null) {
             throw new Exception("상품 정보 조회에 실패했습니다.");
         }
+
+        for (int i=0; i<result.size(); i++) {
+            Product temp = result.get(i);
+
+            Image image = new Image();
+            image.setProdid(temp.getProdid());
+            
+            // imageMapper에서 prodId로 where절을 걸어서 이미지 목록을 가져온다.
+            temp.setImages(imageMapper.selectImagesByProductId(temp));
+            // colorMapper에서 prodId로 where절을 걸어서 색상 목록을 가져온다.
+            temp.setColors(colorMapper.selectColorsByProductId(temp));
+        }
+
         return result;
+    }
+
+    @Override
+    public List<Product> getItemListByType1(String type) throws Exception {
+        Product input = new Product();
+        input.setType1(type);
+        List<Product> result = productMapper.selectListByType1(input);
+
+    if(result == null) {
+        throw new Exception("상품 정보 조회에 실패했습니다.");
+    }
+
+    for (int i=0; i<result.size(); i++) {
+        Product temp = result.get(i);
+
+        Image image = new Image();
+        image.setProdid(temp.getProdid());
+        
+        temp.setImages(imageMapper.selectImagesByProductId(temp));
+        temp.setColors(colorMapper.selectColorsByProductId(temp));
+    }
+
+    return result;
     }
     
     

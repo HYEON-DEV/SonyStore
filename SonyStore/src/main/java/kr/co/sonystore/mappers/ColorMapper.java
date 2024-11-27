@@ -1,12 +1,18 @@
 package kr.co.sonystore.mappers;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Result;
 
 import kr.co.sonystore.models.Color;
+import kr.co.sonystore.models.Product;
 
 
 @Mapper
@@ -36,5 +42,14 @@ public interface ColorMapper {
      */
     @Delete("DELETE FROM colors WHERE colorid = #{colorid}")
     public int delete(Color input);
+
+
+    @Select("SELECT * FROM colors WHERE prodid = #{prodid}")
+    @Results({
+        @Result(property = "colorid", column = "colorid"),
+        @Result(property = "color", column = "color"),
+        @Result(property = "pcolor", column = "pcolor")
+    })
+    List<Color> selectColorsByProductId(Product temp);
     
 }
