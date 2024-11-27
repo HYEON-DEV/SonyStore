@@ -28,17 +28,17 @@
                 </div>
 
                 <div id="find_id" class="tab_page tab_page_active">
-                    <form action="#">
-                        <label for="userName" class="input_label">
-                            <input type="text" class="input_box" />
+                    <form id="findemail_form">
+                        <label for="username" class="input_label">
+                            <input type="text" class="input_box" name="username" id="username" />
                             <div class="input_focus_line">
                                 <span class="placeholder">이름<span class="placeholder_hide">(띄어쓰기 없이 입력하세요.)</span></span>
                             </div>
                         </label>
                         
                         <div class="input_button_set"  style="margin-top: 25px;">
-                            <label for="phoneNumber" class="input_label" style="width: 442px;">
-                                <input type="text" class="input_box" />
+                            <label for="phone" class="input_label" style="width: 442px;">
+                                <input type="text" class="input_box" name="phone" id="phone" />
                                 <div class="input_focus_line">
                                     <span class="placeholder">휴대폰 번호<span class="placeholder_hide">(-없이 입력하세요.)</span></span>
                                 </div>
@@ -47,8 +47,15 @@
                                 <div class="btn_blue flex_center">인증번호</div>
                             </div>
                         </div>
+                        <button type="submit" class="black_button pointer">확인</button>
                     </form>
-                    <button type="button" class="black_button">확인</button>
+
+                    <div class="find_result flex_center">
+                        <img th:src="@{/assets/img/sign/find_result.svg}" alt="찾기 결과 아이콘">
+                        <span class="result_email_label"><span class="username">회원이름</span>님의 이메일 아이디 검색 결과입니다.</span>
+                        <span class="result_email">회원이메일</span>
+                        <a th:href="@{/sign/login}" class="black_button pointer flex_center" style="margin-top:112px;">로그인</a>
+                    </div>
 
                     <div class="light_grey_box">
                         <span class="caution_text flex_center">· 가입하신 정보와 일치하지 않을 경우 검색이 안될 수 있습니다.</span>
@@ -56,18 +63,18 @@
                 </div>
 
                 <div id="find_pw" class="tab_page">
-                    <form action="#">
-                        <label for="userEmail" class="input_label">
-                            <input type="text" class="input_box" />
+                    <form id="findpw_form">
+                        <label for="email" class="input_label">
+                            <input type="text" class="input_box" name="find_pw_email" id="find_pw_email" />
                             <div class="input_focus_line">
                                 <span class="placeholder">이메일 아이디<span class="placeholder_hide"> (예:sony@sony.co.kr)</span></span>
                             </div>
-                            <span class="input_error"><img th:src="@{/assets/img/sign/input_error_red.svg}" alt="input_error_icon">이메일 아이디를 입력해주세요.</span>
+                            <!-- <span class="input_error"><img th:src="@{/assets/img/sign/input_error_red.svg}" alt="input_error_icon">이메일 아이디를 입력해주세요.</span> -->
                         </label>
                         
                         <div class="input_button_set" style="margin-top: 25px;">
-                            <label for="phoneNumber" class="input_label" style="width: 442px;">
-                                <input type="text" class="input_box" />
+                            <label for="phone" class="input_label" style="width: 442px;">
+                                <input type="text" class="input_box" name="find_pw_phone" id="find_pw_phone" />
                                 <div class="input_focus_line">
                                     <span class="placeholder">휴대폰 번호<span class="placeholder_hide">(-없이 입력하세요.)</span></span>
                                 </div>
@@ -76,8 +83,8 @@
                                 <div class="btn_blue flex_center">인증번호</div>
                             </div>
                         </div>
+                        <button type="submit" class="black_button pointer">확인</button>
                     </form>
-                    <button type="button" class="black_button">확인</button>
 
                     <div class="light_grey_box">
                         <span class="caution_text flex_center">· 가입하신 정보와 일치하지 않을 경우 검색이 안될 수 있습니다.</span>
@@ -144,6 +151,67 @@
         });
 
         /* placeholder event end */
+
+        /* 이메일(아이디) 찾기 */
+        document.getElementById('findemail_form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            /** 입력값 유효성 검사*/
+            try {
+                regexHelper.value("#username", "이름을 입력하세요.");
+                regexHelper.value("#phone", "휴대폰 번호를 입력하세요.");
+            } catch (err) {
+                await utilHelper.alertDanger(err.message);
+
+                // setTimeout(() => err.element.focus(), 1);
+                return;
+            }
+
+            const data = await axiosHelper.post('[[@{/api/sign/find_id_pw}]]', new FormData(e.currentTarget));
+
+            if(data) {
+                const username = document.querySelector("#username").value;
+                const email = data.member;
+
+                document.querySelector(".username").innerHTML = username;
+                document.querySelector(".result_email").innerHTML = email;
+
+                document.querySelector("#findemail_form").style.display = 'none';
+                document.querySelector(".find_result").style.display = 'flex';
+                
+            }
+        });
+
+
+        /* 비밀번호 찾기 */
+        document.getElementById('findpw_form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            /** 입력값 유효성 검사*/
+            try {
+                regexHelper.value("#find_pw_email", "이메일 아이디를 입력하세요.");
+                regexHelper.value("#find_pw_phone", "휴대폰 번호를 입력하세요.");
+            } catch (err) {
+                await utilHelper.alertDanger(err.message);
+
+                // setTimeout(() => err.element.focus(), 1);
+                return;
+            }
+
+            const data = await axiosHelper.post('[[@{/api/sign/find_pw}]]', new FormData(e.currentTarget));
+
+            if(data) {
+                const email = data.member;
+
+                new Swal({
+                    html: `<span class="alert_content">${email}로<br />메일이 전송되었습니다.</span>`,
+                    confirmButtonColor: '#000',
+                    confirmButtonText: '확인',
+                    width: '312px',
+                    padding: '16px 0 34px 0',
+                });                
+            }
+        });
     </script>
 </body>
 </html>

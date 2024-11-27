@@ -52,14 +52,14 @@
 
                     <div class="agree_box_container">
                         <div class="checkbox_container">
-                            <input type="checkbox" class="input_checkbox check_only" id="check04" />
+                            <input type="checkbox" class="input_checkbox check_only" data-receiveagree="N" id="receivead" />
                             <label for="check04" class="checkbox_desc pointer">[선택] 마케팅 목적의 개인정보 처리 및 광고성 정보 수신에 관한 동의</label>
                         </div>
                         <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
                     </div>
                 </div>
 
-                <button type="button" class="black_button">동의</button>
+                <a th:href="@{/sign/sign_up_input}" id="agreeConfirm" class="black_button flex_center">동의</a>
             </div>
         </div>
     </div>
@@ -90,6 +90,29 @@
                 checkAll.checked = (totalCnt == checkedCnt) ? true : false;
             } );
         } ); 
+
+        /* 선택항목 체크 여부에 따라 다음 페이지로 넘어갈 파라미터 */
+        // sns, email 따로 분리해서 mysql에 넣어야 마이페이지에서 수정할 때
+        // 하나씩 체크 풀 수 있음 여기서는 체크하면 sms=Y&email=Y 로 넘어가지만
+        // 데이터베이스에서는 따로 분리해서 하나씩 insert 해야할 듯 ㅋㅋ
+        const receivead = document.getElementById('receivead');
+        const agreeConfirm = document.getElementById('agreeConfirm');
+        const agreeConfirmHref = agreeConfirm.href;
+        let resultUrl = null;
+        let path = null;
+
+        receivead.addEventListener('click', (e) => {
+            agreeConfirm.href = agreeConfirmHref;
+
+            if(receivead.checked > 0) {
+                path = receivead.dataset.receiveagree = "Y"; 
+                resultUrl = agreeConfirmHref + "?receiveagree=" + path; 
+            } else {
+                path = receivead.dataset.receiveagree = "N";
+                resultUrl = agreeConfirmHref + "?receiveagree=" + path; 
+            }
+            agreeConfirm.href = resultUrl;
+        });
     </script>
 
 </body>

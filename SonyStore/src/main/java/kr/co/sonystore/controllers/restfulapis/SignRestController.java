@@ -1,5 +1,6 @@
 package kr.co.sonystore.controllers.restfulapis;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,5 +69,49 @@ public class SignRestController {
         HttpSession session = request.getSession();
         session.invalidate();
         return restHelper.sendJson();
+    }
+
+    @PostMapping("/api/sign/find_id_pw")
+    public Map<String, Object> findEmail(
+            @RequestParam("username") String username,
+            @RequestParam("phone") String phone) {
+        Member input = new Member();
+        input.setUsername(username);
+        input.setPhone(phone);
+
+        Member output = null;
+
+        try {
+            output = memberService.findEmail(input);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+
+        Map<String, Object> data = new LinkedHashMap<String, Object>();
+        data.put("member", output.getEmail());
+        return restHelper.sendJson(data);
+
+    }
+
+    @PostMapping("/api/sign/find_pw")
+    public Map<String, Object> findPw(
+            @RequestParam("find_pw_email") String email,
+            @RequestParam("find_pw_phone") String phone) {
+        Member input = new Member();
+        input.setEmail(email);
+        input.setPhone(phone);
+
+        Member output = null;
+
+        try {
+            output = memberService.findUserPw(input);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+
+        Map<String, Object> data = new LinkedHashMap<String, Object>();
+        data.put("member", output.getEmail());
+        return restHelper.sendJson(data);
+
     }
 }

@@ -103,7 +103,7 @@ public interface MemberMapper {
     Member findEmail(Member input);
 
     // 비밀번호 찾기 (이메일과 휴대폰 본인인증)
-    @Select("select userpw from members " +
+    @Select("select email from members " +
             "where email = #{email} and phone = #{phone}")
     @ResultMap("memberMap")
     Member findUserPw(Member input);
@@ -132,9 +132,14 @@ public interface MemberMapper {
     "where memberid = #{memberid} and userpw = #{userpw} and isout = 'N'" )
     public int out(Member input);
 
-   // 탈퇴한 회원 중 탈퇴 후 1분이 지난 회원 삭제
-   @Delete("delete from members \n" +
-   "where isout='Y' and \n" +
-   "editdate < date_add(now(), interval -1 minute)")
-   public int deleteOutMembers();
+    // 탈퇴한 회원 중 탈퇴 후 1분이 지난 회원 삭제
+    @Delete("delete from members \n" +
+    "where isout='Y' and \n" +
+    "editdate < date_add(now(), interval -1 minute)")
+    public int deleteOutMembers();
+
+    // //광고성 정보 수신 동의 여부
+    // @Update("update members "+
+    // "set receivead = 'Y', editdate = now() " +
+    // "where member")
 }
