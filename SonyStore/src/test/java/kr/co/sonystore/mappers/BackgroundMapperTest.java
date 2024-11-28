@@ -18,8 +18,8 @@ public class BackgroundMapperTest {
     @DisplayName("배경 추가 테스트")
     void insertBackground(){
         Background input = new Background();
-        input.setType("카메라");
-        input.setFilepath("/products/background/bg_cat_camera.jpg");
+        input.setType("compact");
+        input.setFilepath("/products/background/bg_compact_camera.jpg");
 
         backgroundMapper.insert(input);
 
@@ -30,7 +30,7 @@ public class BackgroundMapperTest {
     void updateBackground(){
         Background input = new Background();
         input.setBgid(1);
-        input.setType("카메라");
+        input.setType("camera");
         input.setFilepath("/products/background/bg_cat_camera.jpg");
 
         backgroundMapper.update(input);

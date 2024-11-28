@@ -24,10 +24,36 @@ public class ProductMapperTest {
         input.setTitle("ILCE-7CM2L");
         input.setProddesc("원핸드 컴팩트 풀프레임");
         input.setPrice(3090000);
-        input.setType1("카메라");
-        input.setType2("렌즈교환식");
+        input.setType1("camera");
+        input.setType2("lens_change");
         input.setType3("풀프레임");
         input.setDate("20230301");
+        input.setDetailimage1("../../detailimage1.png");
+        input.setDetailimage2("../../detailimage2.png");
+        input.setYoutube("sflsfjowjfyoutube.com");
+        input.setDetailgif("../../gif.gif");
+        input.setDetailspec("../../spec.png");
+        input.setSoldout("N");
+        input.setSale("N");
+        input.setEvent("N");
+        
+        int output = productMapper.insert(input);
+        
+        log.debug("output: " + output);
+        log.debug("new id: " + input.getProdid());
+    }
+
+    @Test
+    @DisplayName("비디오 상품 추가 테스트")
+    void insertProductv() {
+        Product input = new Product();
+        input.setTitle("BURANO");
+        input.setProddesc("풀프레임 8.6K 시네마 카메라");
+        input.setPrice(36990000);
+        input.setType1("video");
+        input.setType2("camcorder");
+        input.setType3("4k_handy");
+        input.setDate("20240201");
         input.setDetailimage1("../../detailimage1.png");
         input.setDetailimage2("../../detailimage2.png");
         input.setYoutube("sflsfjowjfyoutube.com");
@@ -47,12 +73,12 @@ public class ProductMapperTest {
     @DisplayName("상품 업데이트 테스트")
     void updateProduct() {
         Product input = new Product();
-        input.setProdid(1); // 업데이트할 상품의 ID를 설정
-        input.setTitle("ILCE-7CM2L Updated");
-        input.setProddesc("업데이트된 원핸드 컴팩트 풀프레임");
+        input.setProdid(8); // 업데이트할 상품의 ID를 설정
+        input.setTitle("ILCE-7CM2L");
+        input.setProddesc("원핸드 컴팩트 풀프레임");
         input.setPrice(3190000);
-        input.setType1("카메라");
-        input.setType2("컴팩트");
+        input.setType1("camera");
+        input.setType2("lens_change");
         input.setType3("APS-C");
         input.setDate("20230302");
         input.setDetailimage1("../../detailimage1_updated.png");
@@ -101,6 +127,19 @@ public class ProductMapperTest {
     @DisplayName("상품 목록 조회 테스트")
     void selectListProduct() {
         List<Product> output = productMapper.selectList(null);
+
+        for(Product item : output) {
+            log.debug("item = " + item.toString());
+        }
+    }
+
+    @Test
+    @DisplayName("상품 타입별 목록 조회 테스트")
+    void selectListByType1Product() {
+        Product input = new Product();
+        input.setType1("카메라"); // 조회할 상품의 타입1을 설정
+
+        List<Product> output = productMapper.selectListByType1(input);
 
         for(Product item : output) {
             log.debug("item = " + item.toString());

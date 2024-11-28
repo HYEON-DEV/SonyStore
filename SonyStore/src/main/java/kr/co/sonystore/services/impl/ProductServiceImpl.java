@@ -80,27 +80,65 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getItemListByType1(String type) throws Exception {
-        Product input = new Product();
-        input.setType1(type);
+    public List<Product> getItemListByType1(Product input) throws Exception {
         List<Product> result = productMapper.selectListByType1(input);
 
-    if(result == null) {
-        throw new Exception("상품 정보 조회에 실패했습니다.");
+        if (result == null) {
+            throw new Exception("상품 정보 조회에 실패했습니다.");
+        }
+
+        for (int i = 0; i < result.size(); i++) {
+            Product temp = result.get(i);
+
+            Image image = new Image();
+            image.setProdid(temp.getProdid());
+
+            temp.setImages(imageMapper.selectImagesByProductId(temp));
+            temp.setColors(colorMapper.selectColorsByProductId(temp));
+        }
+
+        return result;
     }
 
-    for (int i=0; i<result.size(); i++) {
-        Product temp = result.get(i);
+    @Override
+    public List<Product> getItemListByType2(Product input) throws Exception {
+        List<Product> result = productMapper.selectListByType2(input);
 
-        Image image = new Image();
-        image.setProdid(temp.getProdid());
-        
-        temp.setImages(imageMapper.selectImagesByProductId(temp));
-        temp.setColors(colorMapper.selectColorsByProductId(temp));
+        if (result == null) {
+            throw new Exception("상품 정보 조회에 실패했습니다.");
+        }
+
+        for (int i = 0; i < result.size(); i++) {
+            Product temp = result.get(i);
+
+            Image image = new Image();
+            image.setProdid(temp.getProdid());
+
+            temp.setImages(imageMapper.selectImagesByProductId(temp));
+            temp.setColors(colorMapper.selectColorsByProductId(temp));
+        }
+
+        return result;
     }
 
-    return result;
+    @Override
+    public List<Product> getItemListByType3(Product input) throws Exception {
+        List<Product> result = productMapper.selectListByType3(input);
+
+        if (result == null) {
+            throw new Exception("상품 정보 조회에 실패했습니다.");
+        }
+
+        for (int i = 0; i < result.size(); i++) {
+            Product temp = result.get(i);
+
+            Image image = new Image();
+            image.setProdid(temp.getProdid());
+
+            temp.setImages(imageMapper.selectImagesByProductId(temp));
+            temp.setColors(colorMapper.selectColorsByProductId(temp));
+        }
+
+        return result;
     }
-    
-    
 }

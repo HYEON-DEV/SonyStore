@@ -7,9 +7,9 @@
     <title>Category</title>
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@4.0.1/reset.min.css"/>
-    <link rel="stylesheet" type="text/html" th:href="@{assets/css/common.css}" />
-    <link rel="stylesheet" th:href="@{assets/css/style_2.css}" />
-    <link rel="stylesheet" th:href="@{assets/css/common.css}">
+    <link rel="stylesheet" type="text/html" th:href="@{/assets/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/style_2.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/common.css}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
@@ -21,15 +21,15 @@
 </head>
 
 <body>
-  <script th:src="@{./assets/js/loadHTML.js}"></script>
-  <script>loadHTML("./header.html");</script>
+  <!-- <script th:src="@{/assets/js/loadHTML.js}"></script>
+  <script>loadHTML("./header.html");</script> -->
 
     <!-- 메인 영역 -->
     <div class="main">
       <!-- nav바 하단 사진영역 -->
       <div class="category" id="categoryBackground">
         <!-- 동적으로 변경될 부분 -->
-        <a th:href="@{#}" class="go_back"></a>
+        <a class="go_back"></a>
         <!-- 사진영역 제목 -->
         <h1 class="category_name"></h1>
         <!-- 사진 영역 박스 -->
@@ -68,16 +68,21 @@
       
 
     
-    
+     
   
 
   <!-- 스크립트 파일 -->
-  <script th:src="@{assets/js/ProductList.js}"></script>
-  <script>loadHTML("./footer.html");</script>
+  
+  <script>const type = `[[${type}]]`;</script> <!-- controller에서 보내는 type값을 자바스크립트에서 쓸 수 있게 함 -->
+  <script>const type2 = `[[${type2}]]`;</script>
+  <!-- <script>const category = `[[${category}]]`;</script>  -->
+  <!-- controller에서 보내는 category값을 자바스크립트에서 쓸 수 있게 함 -->
+  <script th:src="@{/assets/js/ProductList.js}"></script>
+  <!-- <script>loadHTML("./footer.html");</script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.all.min.js"></script>
-  <script th:src="@{./assets/js/common.js}"></script>
+  <script th:src="@{/assets/js/common.js}"></script>
 </body>
 </html>

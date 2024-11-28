@@ -128,36 +128,36 @@ public interface ProductMapper {
      * @return 조회된 데이터 리스트
      */
     @Select("<script>" +
-    "SELECT p.prodid, p.title, p.proddesc, p.price, p.type1, p.type2, p.type3, " +
-    "p.date, p.detailimage1, p.detailimage2, p.youtube, p.detailgif, " +
-    "p.detailspec, p.soldout, p.sale, p.event, " +
-    "i.imgid, i.filepath, i.thumbnail, " +
-    "c.colorid, c.color, c.pcolor " +
-    "FROM products p " +
-    "LEFT JOIN images i ON p.prodid = i.prodid " +
-    "LEFT JOIN colors c ON p.prodid = c.prodid " +
-    "<where>" +
-    "<if test='title != null'>AND p.title LIKE concat('%', #{title}, '%')</if>" +
-    "<if test='price != null'>AND p.price LIKE concat('%', #{price}, '%')</if>" +
-    "<if test='type1 != null'>AND p.type1 LIKE concat('%', #{type1}, '%')</if>" +
-    "<if test='type2 != null'>AND p.type2 LIKE concat('%', #{type2}, '%')</if>" +
-    "<if test='type3 != null'>AND p.type3 LIKE concat('%', #{type3}, '%')</if>" +
-    "<if test='date != null'>AND p.date LIKE concat('%', #{date}, '%')</if>" +
-    "<if test='proddesc != null'>AND p.proddesc LIKE concat('%', #{proddesc}, '%')</if>" +
-    "<if test='detailimage1 != null'>AND p.detailimage1 LIKE concat('%', #{detailimage1}, '%')</if>" +
-    "<if test='youtube != null'>AND p.youtube LIKE concat('%', #{youtube}, '%')</if>" +
-    "<if test='detailgif != null'>AND p.detailgif LIKE concat('%', #{detailgif}, '%')</if>" +
-    "<if test='detailimage2 != null'>AND p.detailimage2 LIKE concat('%', #{detailimage2}, '%')</if>" +
-    "<if test='detailspec != null'>AND p.detailspec LIKE concat('%', #{detailspec}, '%')</if>" +
-    "<if test='soldout != null'>AND p.soldout LIKE concat('%', #{soldout}, '%')</if>" +
-    "<if test='sale != null'>AND p.sale LIKE concat('%', #{sale}, '%')</if>" +
-    "<if test='event != null'>AND p.event LIKE concat('%', #{event}, '%')</if>" +
-    "</where>" +
-    "ORDER BY p.prodid DESC " +
-    "<if test='listCount > 0'>LIMIT #{offset}, #{listCount}</if>" +
-    "</script>")
-@ResultMap("productMap")
-List<Product> selectList(Product input);
+        "SELECT p.prodid, p.title, p.proddesc, p.price, p.type1, p.type2, p.type3, " +
+        "p.date, p.detailimage1, p.detailimage2, p.youtube, p.detailgif, " +
+        "p.detailspec, p.soldout, p.sale, p.event, " +
+        "i.imgid, i.filepath, i.thumbnail, " +
+        "c.colorid, c.color, c.pcolor " +
+        "FROM products p " +
+        "LEFT JOIN images i ON p.prodid = i.prodid " +
+        "LEFT JOIN colors c ON p.prodid = c.prodid " +
+        "<where>" +
+        "<if test='title != null'>AND p.title LIKE concat('%', #{title}, '%')</if>" +
+        "<if test='price != null'>AND p.price LIKE concat('%', #{price}, '%')</if>" +
+        "<if test='type1 != null'>AND p.type1 LIKE concat('%', #{type1}, '%')</if>" +
+        "<if test='type2 != null'>AND p.type2 LIKE concat('%', #{type2}, '%')</if>" +
+        "<if test='type3 != null'>AND p.type3 LIKE concat('%', #{type3}, '%')</if>" +
+        "<if test='date != null'>AND p.date LIKE concat('%', #{date}, '%')</if>" +
+        "<if test='proddesc != null'>AND p.proddesc LIKE concat('%', #{proddesc}, '%')</if>" +
+        "<if test='detailimage1 != null'>AND p.detailimage1 LIKE concat('%', #{detailimage1}, '%')</if>" +
+        "<if test='youtube != null'>AND p.youtube LIKE concat('%', #{youtube}, '%')</if>" +
+        "<if test='detailgif != null'>AND p.detailgif LIKE concat('%', #{detailgif}, '%')</if>" +
+        "<if test='detailimage2 != null'>AND p.detailimage2 LIKE concat('%', #{detailimage2}, '%')</if>" +
+        "<if test='detailspec != null'>AND p.detailspec LIKE concat('%', #{detailspec}, '%')</if>" +
+        "<if test='soldout != null'>AND p.soldout LIKE concat('%', #{soldout}, '%')</if>" +
+        "<if test='sale != null'>AND p.sale LIKE concat('%', #{sale}, '%')</if>" +
+        "<if test='event != null'>AND p.event LIKE concat('%', #{event}, '%')</if>" +
+        "</where>" +
+        "ORDER BY p.prodid DESC " +
+        "<if test='listCount > 0'>LIMIT #{offset}, #{listCount}</if>" +
+        "</script>")
+        @ResultMap("productMap")
+        List<Product> selectList(Product input);
 
 // type1에 따른 상품 목록 조회
 @Select("SELECT p.prodid, p.title, p.proddesc, p.price, p.type1, p.type2, p.type3, " +
@@ -169,8 +169,35 @@ List<Product> selectList(Product input);
         "LEFT JOIN images i ON p.prodid = i.prodid " +
         "LEFT JOIN colors c ON p.prodid = c.prodid " +
         "WHERE p.type1 = #{type1} " +
-        "ORDER BY p.prodid DESC " +
-        "LIMIT #{offset}, #{listCount}")
-@ResultMap("productMap")
-List<Product> selectListByType1(Product input);
+        "ORDER BY p.prodid DESC ")
+        @ResultMap("productMap")
+        List<Product> selectListByType1(Product input);
+
+// type2에 따른 상품 목록 조회
+@Select("SELECT p.prodid, p.title, p.proddesc, p.price, p.type1, p.type2, p.type3, " +
+        "p.date, p.detailimage1, p.detailimage2, p.youtube, p.detailgif, " +
+        "p.detailspec, p.soldout, p.sale, p.event, " +
+        "i.imgid, i.filepath, i.thumbnail, " +
+        "c.colorid, c.color, c.pcolor " +
+        "FROM products p " +
+        "LEFT JOIN images i ON p.prodid = i.prodid " +
+        "LEFT JOIN colors c ON p.prodid = c.prodid " +
+        "WHERE p.type2 = #{type2} " +
+        "ORDER BY p.prodid DESC ")
+        @ResultMap("productMap")
+        List<Product> selectListByType2(Product input);
+
+// type3에 따른 상품 목록 조회
+@Select("SELECT p.prodid, p.title, p.proddesc, p.price, p.type1, p.type2, p.type3, " +
+        "p.date, p.detailimage1, p.detailimage2, p.youtube, p.detailgif, " +
+        "p.detailspec, p.soldout, p.sale, p.event, " +
+        "i.imgid, i.filepath, i.thumbnail, " +
+        "c.colorid, c.color, c.pcolor " +
+        "FROM products p " +
+        "LEFT JOIN images i ON p.prodid = i.prodid " +
+        "LEFT JOIN colors c ON p.prodid = c.prodid " +
+        "WHERE p.type3 = #{type3} " +
+        "ORDER BY p.prodid DESC ")
+        @ResultMap("productMap")
+        List<Product> selectListByType3(Product input);
 }

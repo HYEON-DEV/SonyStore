@@ -92,28 +92,58 @@ public class ProductRestController {
 
 
     // 타입별 제품 목록 조회
-@GetMapping("/api/products/{type}")
-public Map<String, Object> getProductListByType(@PathVariable String type) throws Exception {
-    List<Product> output;
-    try {
-        output = productService.getItemListByType1(type);
-        if (output != null) {
-            output.forEach(product -> {
-                if (product.getImages() != null) {
-                    product.getImages().forEach(image -> {
-                        image.setFilepath(fileHelper.getUrl(image.getFilepath()));
-                    });
-                }
-            });
+    @GetMapping("/api/products/{type}")
+    public Map<String, Object> getProductListByType(@PathVariable("type") String type) throws Exception {
+        List<Product> output;
+        try {
+            Product input = new Product();
+            input.setType1(type);
+            output = productService.getItemListByType1(input);
+            if (output != null) {
+                output.forEach(product -> {
+                    if (product.getImages() != null) {
+                        product.getImages().forEach(image -> {
+                            image.setFilepath(fileHelper.getUrl(image.getFilepath()));
+                        });
+                    }
+                });
+            }
+        } catch (Exception e) {
+            return restHelper.serverError(e);
         }
-    } catch (Exception e) {
-        return restHelper.serverError(e);
-    }
-    Map<String, Object> data = new LinkedHashMap<>();
-    data.put("list", output);
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("list", output);
 
-    return restHelper.sendJson(data);
+        return restHelper.sendJson(data);
+    }
+
+    @GetMapping("/api/products/{type}/{type2}")
+    public Map<String, Object> getProductListByType2(@PathVariable("type") String type, @PathVariable("type2") String type2) throws Exception {
+        List<Product> output;
+        try {
+            Product input = new Product();
+            input.setType1(type);
+            input.setType2(type2);
+            output = productService.getItemListByType2(input);
+            if (output != null) {
+                output.forEach(product -> {
+                    if (product.getImages() != null) {
+                        product.getImages().forEach(image -> {
+                            image.setFilepath(fileHelper.getUrl(image.getFilepath()));
+                        });
+                    }
+                });
+            }
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("list", output);
+
+        return restHelper.sendJson(data);
 }
+
+
 
     // // 제품 상세 조회
     // @GetMapping("/{id}")
