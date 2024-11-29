@@ -143,6 +143,33 @@ public class ProductRestController {
         return restHelper.sendJson(data);
 }
 
+    @GetMapping("/api/products/{type}/{type2}/{type3}")
+    public Map<String, Object> getProductListByType3(@PathVariable("type") String type, @PathVariable("type2") String type2, @PathVariable("type3") String type3) throws Exception {
+        List<Product> output;
+        try {
+            Product input = new Product();
+            input.setType1(type);
+            input.setType2(type2);
+            input.setType3(type3);
+            output = productService.getItemListByType3(input);
+            if (output != null) {
+                output.forEach(product -> {
+                    if (product.getImages() != null) {
+                        product.getImages().forEach(image -> {
+                            image.setFilepath(fileHelper.getUrl(image.getFilepath()));
+                        });
+                    }
+                });
+            }
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("list", output);
+
+        return restHelper.sendJson(data);
+    }
+
 
 
     // // 제품 상세 조회
