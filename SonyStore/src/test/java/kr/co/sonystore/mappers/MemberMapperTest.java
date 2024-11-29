@@ -18,15 +18,17 @@ public class MemberMapperTest {
     @DisplayName("회원 추가 테스트")
     void insertMember() {
         Member input = new Member();
-        input.setEmail("chang@gmail.com");
-        input.setUserpw("qwe123");
-        input.setUsername("홍창기");
+        input.setEmail("jinsu@gmail.com");
+        input.setUserpw("Qwer1234@");
+        input.setUsername("박진수");
         input.setGender("M");
         input.setBirthdate("19930501");
         input.setPhone("01011112222");
         input.setPostcode("12345");
         input.setAddr1("서울특별시 잠실동");
         input.setAddr2("123");
+        input.setReceiveemail("Y");
+        input.setReceivesms("Y");
         
         int output = memberMapper.insert(input);
         
@@ -109,18 +111,6 @@ public class MemberMapperTest {
     }
 
     @Test
-    @DisplayName("비밀번호 변경 테스트")
-    void resetPwTest(){
-        Member input = new Member();
-        input.setMemberid(2);
-        input.setEmail("chang@gmail.com");
-        input.setUserpw("123123");
-
-        int output = memberMapper.resetPw(input);
-        log.debug("변경완료된 행의 수: " + output);
-    }
-
-    @Test
     @DisplayName("로그인 정보 테스트")
     void loginTest(){
         Member input = new Member();
@@ -157,6 +147,21 @@ public class MemberMapperTest {
     void deleteOutMembersTest(){
     
         int output = memberMapper.deleteOutMembers();
+        log.debug("삭제된 데이터 수: " + output);
+    }
+
+    @Test
+    @DisplayName("주소 알림 테스트")
+    void AddReceiveTest(){
+        Member input = new Member();
+        input.setMemberid(16);
+        input.setPostcode("11111");
+        input.setAddr1("거기");
+        input.setAddr2("여기");
+        input.setReceiveemail("N");
+        input.setReceivesms("N");
+    
+        int output = memberMapper.ModifyAddReceive(input);
         log.debug("삭제된 데이터 수: " + output);
     }
 }

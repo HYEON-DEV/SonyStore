@@ -23,10 +23,12 @@ public interface MemberMapper {
     @Insert("INSERT INTO members \n" + 
             "(email, userpw, username, gender, birthdate, \n" + 
             "phone, editdate, postcode, addr1, addr2, \n" + 
-            "isout, logindate, regdate, isadmin) \n" + 
-            "VALUES (#{email}, MD5(#{userpw}), #{username}, #{gender}, #{birthdate}, \n" + 
+            "isout, logindate, regdate, isadmin, \n" + 
+            "receiveemail, receivesms) \n" +
+            "VALUES (#{email}, #{userpw}, #{username}, #{gender}, #{birthdate}, \n" + 
             "#{phone}, NOW(), #{postcode}, #{addr1}, #{addr2}, \n" + 
-            "'N', null, NOW(), 'N')")
+            "'N', null, NOW(), 'N', \n" +
+            "#{receiveemail}, #{receivesms})")
     @Options(useGeneratedKeys = true, keyProperty = "memberid", keyColumn = "memberid")
     public int insert(Member input);
 
@@ -50,7 +52,9 @@ public interface MemberMapper {
             "editdate=now(), " + 
             "postcode=#{postcode}, " + 
             "addr1=#{addr1}, " + 
-            "addr2=#{addr2} " + 
+            "addr2=#{addr2}, " + 
+            "receiveemail=#{receiveemail}, " +
+            "receivesms=#{receivesms} " +
             "<where>" +
             // 세션의 일련번호와 입력한 비밀번호가 일치할 경우만 수정
             "memberid=#{memberid} " + // and userpw = #{userpw}" +
@@ -64,7 +68,8 @@ public interface MemberMapper {
     @Select("select " + 
     "memberid, email, userpw, username, gender, "+
     "birthdate, phone, editdate, postcode, addr1, " + 
-    "addr2, isout, logindate, regdate, isadmin " +
+    "addr2, isout, logindate, regdate, isadmin, " +
+    "receiveemail, receivesms " +
     "FROM Members " + 
     "WHERE memberid = #{memberid}")
     @Results(id = "memberMap", value = {
@@ -82,15 +87,18 @@ public interface MemberMapper {
         @Result(property = "isout", column = "isout"),
         @Result(property = "logindate", column = "logindate"),
         @Result(property = "regdate", column = "regdate"),
-        @Result(property = "isadmin", column = "isadmin")
+        @Result(property = "isadmin", column = "isadmin"),
+        @Result(property = "receiveemail", column = "receiveemail"),
+        @Result(property = "receivesms", column = "receivesms")
     })
     Member selectMember(Member input);
 
-    // 이메일 중복검사
+    // 이메일 및 휴대폰 중복검사
     @Select("<script>" + //
     "select count(*) from members\n" + //
     "<where>\n" + //
     "<if test='email != null'>email = #{email}</if>\n" + //
+    "<if test='phone != null'>phone = #{phone}</if>\n" + //
     "<if test='memberid != 0'>and memberid != #{memberid}</if>\n" + //
     "</where>\n" + //
     "</script>")
@@ -108,16 +116,12 @@ public interface MemberMapper {
     @ResultMap("memberMap")
     Member findUserPw(Member input);
 
-    // 비밀번호 변경
-    @Update("update members set userpw = #{userpw}" +
-            "where memberid = #{memberid} and email = #{email}")
-    public int resetPw(Member input);
-
     // 로그인
     @Select("select \n" +
     "memberid, email, userpw, username, gender, "+
     "birthdate, phone, editdate, postcode, addr1, " + 
-    "addr2, isout, logindate, regdate, isadmin " +
+    "addr2, isout, logindate, regdate, isadmin, " +
+    "receiveemail, receivesms " +
     "from members \n" +
     "where email = #{email} and userpw = #{userpw}")
     @ResultMap("memberMap")
@@ -138,8 +142,21 @@ public interface MemberMapper {
     "editdate < date_add(now(), interval -1 minute)")
     public int deleteOutMembers();
 
-    // //광고성 정보 수신 동의 여부
-    // @Update("update members "+
-    // "set receivead = 'Y', editdate = now() " +
-    // "where member")
+    // 이름 변경
+    @Update("update members \n" +
+    "set username = #{username}, editdate = now() \n" +
+    "where memberid = #{memberid} and phone = #{phone}")
+    public int modifyName(Member input);
+
+    // 비밀번호 변경
+    @Update("update members \n" +
+    "set userpw = #{newuserpw}, editdate = now() \n" +
+    "where memberid = #{memberid} and userpw = #{userpw}")
+    public int modifyUserpw(Member input);
+
+    // 주소, 알림설정 변경
+    @Update("update members \n" +
+    "set postcode = #{postcode}, addr1 = #{addr1}, addr2 = #{addr2}, receiveemail = #{receiveemail}, receivesms = #{receivesms}, editdate = now() \n" +
+    "where memberid = #{memberid}")
+    public int ModifyAddReceive(Member input);
 }

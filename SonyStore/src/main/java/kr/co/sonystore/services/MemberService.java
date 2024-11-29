@@ -15,16 +15,22 @@ public interface MemberService {
 
     public void isUniqueEmail(Member input) throws Exception;
 
+    public void isUniquePhone(String phone) throws Exception;
+
     public Member findEmail(Member input) throws Exception;
 
     public Member findUserPw(Member input) throws Exception;
-
-    public void resetPw(Member input) throws Exception;
 
     public Member login(Member input) throws Exception;
 
     public int out (Member input) throws Exception;
 
     public List<Member> deleteOutMembers() throws Exception;
+
+    public void modifyName(Member input) throws Exception;
+
+    public void modifyUserpw(Member input) throws Exception;
+
+    public void ModifyAddReceive(Member input) throws Exception;
 }
         

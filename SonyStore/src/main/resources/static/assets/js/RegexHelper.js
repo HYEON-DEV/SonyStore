@@ -195,6 +195,16 @@ class RegexHelper {
     }
 
     /**
+     * 한글과 영문으로만 이루어 져있는지 검사하기 위해 selector()를 간접적으로 호출한다.
+     * @param {string} selector 
+     * @param {string} msg 
+     * @returns     selector()
+     */
+    korEng( selector, msg ) {
+        return this.selector( selector, msg, /^[a-zA-Zㄱ-ㅎ가-힣]*$/ );
+    }
+
+    /**
      * 영문과 숫자로만 이루어졌는지 검사하기 위해 selector()를 간접적으로 호출한다
      * @param {string} selector - 검사할 대상에 대한 <input>요소의 selector
      * @param {string} msg      - 표시할 메시지
@@ -212,6 +222,10 @@ class RegexHelper {
      */
     korNum( selector, msg ) {
         return this.selector( selector, msg, /^[ㄱ-ㅎ가-힣0-9]*$/ );
+    }
+
+    engUpdownSpecial( selector, msg ) {
+        return this.selector( selector, msg, /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]/ );
     }
 
     /**

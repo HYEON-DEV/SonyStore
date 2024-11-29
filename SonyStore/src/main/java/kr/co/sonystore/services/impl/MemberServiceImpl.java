@@ -77,6 +77,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void isUniqueEmail(Member input) throws Exception {
+
         int output = 0;
 
         try{
@@ -87,6 +88,25 @@ public class MemberServiceImpl implements MemberService {
             }
         } catch (Exception e) {
             log.error("이메일 중복 검사에 실패했습니다.", e);
+            throw e;
+        }
+    }
+
+    @Override
+    public void isUniquePhone(String phone) throws Exception {
+        Member input = new Member();
+        input.setPhone(phone);
+
+        int output = 0;
+
+        try{
+            output = memberMapper.selectCount(input);
+
+            if (output > 0) {
+                throw new Exception("이미 가입된 휴대폰 번호 입니다.");
+            }
+        } catch (Exception e) {
+            log.error("휴대폰 중복 검사에 실패했습니다.", e);
             throw e;
         }
     }
@@ -125,23 +145,6 @@ public class MemberServiceImpl implements MemberService {
             throw e;
         }
         return output;
-    }
-
-    @Override
-    public void resetPw(Member input) throws Exception {
-        int rows = 0;
-
-        try {
-            rows = memberMapper.resetPw(input);
-
-            if(rows == 0) {
-                throw new Exception("아이디와 비밀번호를 확인하세요.");
-            }
-        } catch (Exception e) {
-            log.error("비밀번호 수정에 실패했습니다.", e);
-            throw e;
-        }
-    
     }
 
     @Override
@@ -185,6 +188,7 @@ public class MemberServiceImpl implements MemberService {
             }
         } catch (Exception e) {
             log.error("회원탈퇴에 실패했습니다.", e);
+            throw e;
         }
         
 
@@ -203,5 +207,51 @@ public class MemberServiceImpl implements MemberService {
         
         return output;
 
+    }
+
+    @Override
+    public void modifyName(Member input) throws Exception {
+        int output = 0;
+
+        try {
+            output = memberMapper.modifyName(input);
+            if (output == 0) {
+                throw new Exception("휴대폰 번호가 잘못되었거나 존재하지 않는 회원에 대한 요청입니다");
+            }
+        } catch (Exception e) {
+            log.error("이름 변경에 실패했습니다.", e);
+            throw e;
+        }
+
+    }
+
+    @Override
+    public void modifyUserpw(Member input) throws Exception {
+        int output = 0;
+
+        try {
+            output = memberMapper.modifyUserpw(input);
+            if (output == 0) {
+                throw new Exception("비밀번호가 잘못되었거나 존재하지 않는 회원에 대한 요청입니다");
+            }
+        } catch (Exception e) {
+            log.error("비밀번호 변경에 실패했습니다.", e);
+            throw e;
+        }
+    }
+
+    @Override
+    public void ModifyAddReceive(Member input) throws Exception {
+        int output = 0;
+
+        try {
+            output = memberMapper.ModifyAddReceive(input);
+            if (output == 0) {
+                throw new Exception("존재하지 않는 회원에 대한 요청입니다");
+            }
+        } catch (Exception e) {
+            log.error("회원정보 변경에 실패했습니다.", e);
+            throw e;
+        }
     }
 }

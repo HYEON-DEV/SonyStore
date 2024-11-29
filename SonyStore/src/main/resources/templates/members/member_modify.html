@@ -18,9 +18,10 @@
 
                 <div class="hr_black"></div>
 
+
                 <div class="member_text_box">
                     <div class="member_title_box"><label for="#" class="member_title">이름</label></div>
-                    <input type="text" class="input_box member_input_box" value="박진수" style="width: 402px;" disabled />
+                    <input th:value="${session.memberInfo.username}" type="text" class="input_box member_input_box" id="username" style="width: 402px;" readonly />
                     <div class="member_button_box">
                         <button id="changeName" class="large_white_button pointer">이름변경</button>
                     </div>
@@ -29,7 +30,7 @@
 
                 <div class="member_text_box">
                     <div class="member_title_box"><label for="#" class="member_title">휴대폰</label></div>
-                    <input type="text" class="input_box member_input_box" value="010-3306-4205" style="width: 402px;" />
+                    <input th:value="${session.memberInfo.phone}" type="text" class="input_box member_input_box" id="phone" style="width: 402px;" />
                     <div class="member_button_box">
                         <button class="large_white_button pointer">인증번호 전송</button>
                     </div>
@@ -45,103 +46,134 @@
 
                 <div class="member_text_box">
                     <div class="member_title_box"><label for="#" class="member_title">이메일 아이디</label></div>
-                    <input type="text" class="input_box member_input_box" value="jinsu4205@gmail.com" disabled />
+                    <input th:value="${session.memberInfo.email}" type="text" class="input_box member_input_box" id="email" readonly />
                 </div>
 
                 <div class="member_text_box">
                     <div class="member_title_box"><label for="#" class="member_title">생년월일</label></div>
-                    <input type="text" class="input_box member_input_box" value="1996-09-05" disabled />
+                    <input th:value="${session.memberInfo.birthdate}" type="text" class="input_box member_input_box" id="birthdate" readonly />
                 </div>
 
                 <div class="member_text_box">
                     <div class="member_title_box"><label for="#" class="member_title">성별</label></div>
-                    <input type="text" class="input_box member_input_box" value="남" disabled />
+                    <input th:value="${session.memberInfo.gender}" type="text" class="input_box member_input_box" id="gender" readonly />
                 </div>
 
                 <div class="member_text_box">
                     <div class="member_title_box"><label for="#" class="member_title">회원구분</label></div>
-                    <img th:src="@{/assets/img/my_page/membership_family.ea303a8f.svg}" alt="멤버쉽 아이콘" /><input type="text" class="input_box member_input_box" value="MEMBERSHIP" disabled />
+                    <img th:src="@{/assets/img/my_page/membership_family.ea303a8f.svg}" alt="멤버쉽 아이콘" /><input type="text" class="input_box member_input_box" value="MEMBERSHIP" readonly />
                 </div>
 
                 <div class="member_text_box">
                     <div class="member_title_box"><label for="#" class="member_title">비밀번호</label></div>
-                    <input type="password" class="input_box member_input_box" value="123412345" style="width: 402px;" disabled />
+                    <input th:value="${session.memberInfo.userpw}" type="password" class="input_box member_input_box" id="userpw" style="width: 402px;" readonly />
                     <div class="member_button_box">
                         <button id="changePw" class="large_white_button pointer">비밀번호 변경</button>
                     </div>
                     <span class="member_caution_blue">SNS 계정으로 가입하신 회원님은 각 SNS 페이지에서 수정 및 변경하시기 바랍니다.</span>
                 </div>
 
-                <div class="member_text_box">
-                    <div class="member_title_box" style="border:none;"><label for="#" class="member_title">주소</label></div>
-                    <div class="memebr_address_box">
-                        <div class="address_input_button">
-                            <input id="postcode" type="text" class="input_box member_input_box" value="" style="width: 402px;" disabled />
-                            <div class="member_button_box">
-                                <button id="findPostcode" class="large_white_button pointer">주소 변경</button>
+                <form id="modify_add_receive">
+                    <div class="member_text_box">
+                        <div class="member_title_box" style="border:none;"><label for="#" class="member_title">주소</label></div>
+                        <div class="memebr_address_box">
+                            <div class="address_input_button">
+                                <input th:value="${session.memberInfo.postcode}" type="text" class="input_box member_input_box" name="postcode" id="postcode" style="width: 402px;" readonly />
+                                <div class="member_button_box">
+                                    <button id="findPostcode" class="large_white_button pointer">주소 변경</button>
+                                </div>
+                            </div>
+                            <input th:value="${session.memberInfo.addr1}" type="text" class="input_box member_input_box" name="addr1" id="addr1" readonly />
+                            <input th:value="${session.memberInfo.addr2}" type="text" class="input_box member_input_box" name="addr2" id="addr2" />
+                        </div>
+                        
+                        <span class="member_caution">※ 주소는 사은품 및 기타 서비스를 제공받으실 때, 꼭 필요한 부분이므로 정확히 기입해 주시기 바랍니다.</span>
+                    </div>
+                    <div class="member_text_box">
+                        <div class="member_title_box"><label for="#" class="member_title">이벤트/프로모션 알림</label></div>
+                        <!-- <input type="text" class="input_box member_input_box" value="" readonly /> -->
+                        <div class="sns_receive_agree">
+                            <div class="all_agree" style="margin-top:0px;">
+                                <span class="all_agree_text">메일 수신</span>
+                                <label class="switch">
+                                    <input th:value="${session.memberInfo.receiveemail}" type="checkbox" class="input_box member_input_box" name="receiveemail" id="receiveemail" />
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+
+                            <div class="all_agree" style="margin-top:0px;">
+                                <span class="all_agree_text">SNS 수신</span>
+                                <label class="switch">
+                                    <input th:value="${session.memberInfo.receivesms}" type="checkbox" class="input_box member_input_box" name="receivesms" id="receivesms" />
+                                    <span class="slider round"></span>
+                                </label>
                             </div>
                         </div>
-                        <input id="address" type="text" class="input_box member_input_box" value="" disabled />
-                        <input id="addressDetail" type="text" class="input_box member_input_box" value="" />
                     </div>
-                    
-                    <span class="member_caution">※ 주소는 사은품 및 기타 서비스를 제공받으실 때, 꼭 필요한 부분이므로 정확히 기입해 주시기 바랍니다.</span>
-                </div>
-
-                <div class="member_text_box">
-                    <div class="member_title_box"><label for="#" class="member_title">이벤트/프로모션 알림</label></div>
-                    <!-- <input type="text" class="input_box member_input_box" value="" disabled /> -->
-                    <div class="sns_receive_agree">
-                        <div class="all_agree" style="margin-top:0px;">
-                            <span class="all_agree_text">메일 수신</span>
-                            <label class="switch">
-                                <input type="checkbox" class="input_box member_input_box" />
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-
-                        <div class="all_agree" style="margin-top:0px;">
-                            <span class="all_agree_text">SNS 수신</span>
-                            <label class="switch">
-                                <input type="checkbox" class="input_box member_input_box" />
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <button type="button" class="black_button">회원정보 수정</button>
+                <button type="submit" class="black_button">회원정보 수정</button>
+                </form>
             </div>
         </div>   
     </div>
 
     <th:block th:replace="~{/_fragments/_footer :: sony-footer}"></th:block>
     <th:block th:replace="~{/_fragments/_scripts :: sony-scripts}"></th:block>
-   
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
     <script>
+        window.onload = () => {
+            const receivesms = document.getElementById('receivesms');
+            const receiveemail = document.getElementById('receiveemail');
+            if(receivesms.value == 'Y') {
+                receivesms.checked = true;
+            } else {
+                receivesms.checked = false;
+            }
+            if(receiveemail.value == 'Y') {
+                receiveemail.checked = true;
+            } else {
+                receiveemail.checked = false;
+            }
+        }
+
         /* sweetalert2 */
         // 이름 변경
         document.querySelector("#changeName").addEventListener('click', e => {
             new Swal({
-                title: '<span class="alert_title">개명 회원 본인 확인</span>',
-                html:   '<label for="" class="input_label">' +
-                        '<input type="text" class="input_box" placeholder="이름" />' +
+                title:  '<span class="alert_title">개명 회원 본인 확인</span>',
+                html:   '<form id="modifyName">' +
+                        '<label for="" class="input_label">' +
+                        '<input type="text" class="input_box" placeholder="이름" name="username" id="username" />' +
                         '<div class="input_focus_line"></div>' +
                         '</label>' +
                         '<div class="input_button_set"  style="margin-top: 25px;">' +
                         '<label for="phoneNumber" class="input_label" style="width: 100%">' +
-                        '<input type="text" class="input_box" placeholder="휴대폰 번호"/>' +
+                        '<input type="text" class="input_box" placeholder="휴대폰 번호" name="phone" id="phone" />' +
                         '<div class="input_focus_line"></div>' +
                         '</label>' +
                         '<div class="btn_box" style="margin-left:15px;">' +
                         '<div class="btn_blue flex_center">인증번호</div>' +
                         '</div>' +
-                        '</div>',
+                        '</div>' +
+                        '<button type="submit" class="black_button">확인</button>' +
+                        '</form>',
                 showCloseButton: true, // 오른쪽 상단 x 버튼 
-                confirmButtonColor: '#000',
-                confirmButtonText: '확인',
+                showConfirmButton: false,
                 width: '486px',
                 padding: '16px 0 34px 0',
+            });
+
+            document.getElementById('modifyName').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(e.currentTarget);
+
+            const data = await axiosHelper.putMultipart("[[@{/api/sign/modify_name}]]", formData);
+
+                if(data) {
+                    alert("수정이 완료되었습니다.");
+                    location.reload();
+                }
             });
         });
 
@@ -149,25 +181,27 @@
         document.querySelector("#changePw").addEventListener('click', e => {
             new Swal({
                 title: '<span class="alert_title">비밀번호 변경</span>',
-                html:   '<label for="userPw" class="input_label">' +
-                        '<input type="password" class="model_input pw_input" placeholder="비밀번호 입력"/>' +
+                html:   '<form id="modifyUserpw">' +
+                        '<label for="userpw" class="input_label">' +
+                        '<input type="password" class="model_input pw_input" placeholder="비밀번호 입력" name="userpw" id="userpw" />' +
                         '</div>' +
                         '<div class="input_focus_line">' +
                         '</div>' +
                         '</label>' +
                         '<label for="newUserPw" class="input_label">' +
-                        '<input type="password" class="model_input pw_input" placeholder="새 비밀번호 입력"/>' +
+                        '<input type="password" class="model_input pw_input" placeholder="새 비밀번호 입력" name="newuserpw" id="newuserpw" />' +
                         '</div>' +
                         '<div class="input_focus_line">' +
                         '</div>' +
                         '</label>' +
                         '<label for="newUserPwConfirm" class="input_label">' +
-                        '<input type="password" class="model_input pw_input" placeholder="새 비밀번호 확인"/>' +
+                        '<input type="password" class="model_input pw_input" placeholder="새 비밀번호 확인" name="newuserpwconf" id="newuserpwconf" />' +
                         '</div>' +
                         '<div class="input_focus_line">' +
                         '</div>' +
                         '</label>' +
-                        '<button type="button" class="black_button">비밀번호 변경</button>' +
+                        '<button type="submit" class="black_button">비밀번호 변경</button>' +
+                        '</form>' +
                         '<div class="modal_cation_box">' +
                         '<span class="modal_cation_title"><img src="/assets/img/sign/input_error_gray.svg" alt="input_error_icon" />주의사항 및 안내</span>' +
                         '</div>' +
@@ -182,6 +216,35 @@
                 showConfirmButton: false,
                 width: '486px',
                 padding: '16px 0 34px 0',
+            });
+
+            document.getElementById('modifyUserpw').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+                const newUserPw = document.querySelector("#newuserpw").value;
+                const newUserPwConfirm = document.querySelector("#newuserpwconf").value;
+
+                try {
+                // 새로운 비밀번호가 입력되었을 때만 확인값 검사
+                if(newUserPw || newUserPwConfirm) {
+                    regexHelper.compareTo( "#newuserpw", "#newuserpwconf", "비밀번호 확인이 잘못되었습니다.");
+                }
+
+                } catch (e) {
+                    await utilHelper.alertDanger(e.message);
+
+                    // setTimeout(() => e.element.focus(), 300);
+                    return;
+                }
+
+                const formData = new FormData(e.currentTarget);
+
+                const data = await axiosHelper.putMultipart("[[@{/api/sign/modify_userpw}]]", formData);
+
+                if(data) {
+                    alert("수정이 완료되었습니다.");
+                    location.reload();
+                }
             });
         });
         /* sweetalert2 end */
@@ -227,11 +290,50 @@
 
                     // 우편번호와 주소 정보를 해당 필드에 넣는다.
                     document.getElementById('postcode').value = data.zonecode;
-                    document.getElementById("address").value = addr;
+                    document.getElementById("addr1").value = addr;
                     // 커서를 상세주소 필드로 이동한다.
-                    document.getElementById("addressDetail").focus();
+                    document.getElementById("addr2").focus();
                 }
             }).open();
+        });
+
+        document.getElementById('modify_add_receive').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(e.currentTarget);
+
+            const data = await axiosHelper.putMultipart("[[@{/api/sign/modify_add_receive}]]", formData);
+
+            if(data) {
+                new Swal({
+                    html: '<span class="alert_content">회원정보 수정이 완료되었습니다.</span>',
+                    confirmButtonColor: '#000',
+                    confirmButtonText: '확인',
+                    width: '312px',
+                    padding: '16px 0 34px 0',
+                });
+            }
+        });
+
+        const receiveemail = document.getElementById('receiveemail');
+        const receivesms = document.getElementById('receivesms');
+
+        receiveemail.addEventListener('change', (e) => {
+
+            if(receiveemail.checked > 0) {
+                receiveemail.value = "Y"; 
+            } else {
+                receiveemail.value = "N"; 
+            }
+        });
+
+        receivesms.addEventListener('change', (e) => {
+
+            if(receivesms.checked > 0) {
+                receivesms.value = "Y"; 
+            } else {
+                receivesms.value = "N"; 
+            }
         });
     </script>
 </body>

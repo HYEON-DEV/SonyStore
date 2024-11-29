@@ -23,6 +23,8 @@ public class Member implements Serializable {
     private String logindate;
     private String regdate;
     private String isadmin;
+    private String receiveemail;
+    private String receivesms;
 
     // 재로그인 필요
     private String newuserpw;   // 회원정보 수정에서 사용할 신규 비밀번호

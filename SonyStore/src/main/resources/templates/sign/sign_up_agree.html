@@ -25,41 +25,43 @@
                     </label>
                 </div>
 
-                <div class="bg_agree_box">
-                    <div class="agree_box_container">
-                        <div class="checkbox_container">
-                            <input type="checkbox" class="input_checkbox check_only" id="check01" />
-                            <label for="check01" class="checkbox_desc pointer">[필수] 소니스토어 쇼핑몰 이용약관 동의</label>
+                <form id="checkbox_form">
+                    <div class="bg_agree_box">
+                        <div class="agree_box_container">
+                            <div class="checkbox_container">
+                                <input type="checkbox" class="input_checkbox check_only" id="check01" />
+                                <label for="check01" class="checkbox_desc pointer">[필수] 소니스토어 쇼핑몰 이용약관 동의</label>
+                            </div>
+                            <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
                         </div>
-                        <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
+
+                        <div class="agree_box_container">
+                            <div class="checkbox_container">
+                                <input type="checkbox" class="input_checkbox check_only" id="check02" />
+                                <label for="check02" class="checkbox_desc pointer">[필수] 소니 고객지원 사이트(SCS) 이용약관 동의</label>
+                            </div>
+                            <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
+                        </div>
+
+                        <div class="agree_box_container">
+                            <div class="checkbox_container">
+                                <input type="checkbox" class="input_checkbox check_only" id="check03" />
+                                <label for="check03" class="checkbox_desc pointer">[필수] 회원가입 개인정보 수집에 관한 동의</label>
+                            </div>
+                            <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
+                        </div>
+
+                        <div class="agree_box_container">
+                            <div class="checkbox_container">
+                                <input type="checkbox" class="input_checkbox check_only" data-receiveagree="N" id="receivead" />
+                                <label for="check04" class="checkbox_desc pointer">[선택] 마케팅 목적의 개인정보 처리 및 광고성 정보 수신에 관한 동의</label>
+                            </div>
+                            <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
+                        </div>
                     </div>
 
-                    <div class="agree_box_container">
-                        <div class="checkbox_container">
-                            <input type="checkbox" class="input_checkbox check_only" id="check02" />
-                            <label for="check02" class="checkbox_desc pointer">[필수] 소니 고객지원 사이트(SCS) 이용약관 동의</label>
-                        </div>
-                        <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
-                    </div>
-
-                    <div class="agree_box_container">
-                        <div class="checkbox_container">
-                            <input type="checkbox" class="input_checkbox check_only" id="check03" />
-                            <label for="check03" class="checkbox_desc pointer">[필수] 회원가입 개인정보 수집에 관한 동의</label>
-                        </div>
-                        <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
-                    </div>
-
-                    <div class="agree_box_container">
-                        <div class="checkbox_container">
-                            <input type="checkbox" class="input_checkbox check_only" data-receiveagree="N" id="receivead" />
-                            <label for="check04" class="checkbox_desc pointer">[선택] 마케팅 목적의 개인정보 처리 및 광고성 정보 수신에 관한 동의</label>
-                        </div>
-                        <a class="all_view">전체보기 <i class="fas fa-angle-right"></i></a>
-                    </div>
-                </div>
-
-                <a th:href="@{/sign/sign_up_input}" id="agreeConfirm" class="black_button flex_center">동의</a>
+                    <button type="submit" id="agreeConfirm" class="black_button flex_center">동의</button>
+                </form>
             </div>
         </div>
     </div>
@@ -68,6 +70,25 @@
     <th:block th:replace="~{/_fragments/_scripts :: sony-scripts}"></th:block>
 
     <script>
+        /* 선택항목 체크 여부에 따라 다음 페이지로 넘어갈 파라미터 */
+        const receivead = document.getElementById('receivead');
+        const agreeConfirmHref = "[[@{/sign/sign_up_input}]]";
+        let resultUrl = '[(@{/sign/sign_up_input?receiveemail=N&receivesms=N})]';
+        let path = null;
+
+        receivead.addEventListener('change', (e) => {
+            resultUrl = agreeConfirmHref;
+
+            if(receivead.checked > 0) {
+                path = receivead.dataset.receiveagree = "Y"; 
+                resultUrl = agreeConfirmHref + "?receiveemail=" + path + "&" + "receivesms=" + path;
+            } else {
+                path = receivead.dataset.receiveagree = "N";
+                // resultUrl = agreeConfirmHref + "?receiveemail=" + path + "&" + "receivesms" + path; 
+            }
+            return resultUrl;
+        });
+
         /* = = = = = checkbox 전체 체크 제어 = = = = = */
         
         const checkAll = document.querySelector('.check_all');
@@ -76,6 +97,17 @@
             
             document.querySelectorAll('.check_only').forEach(v => {
                 v.checked = checkAll.checked;
+
+                resultUrl = agreeConfirmHref;
+
+                if(receivead.checked > 0) {
+                    path = receivead.dataset.receiveagree = "Y"; 
+                    resultUrl = agreeConfirmHref + "?receiveemail=" + path + "&" + "receivesms=" + path;
+                } else {
+                    path = receivead.dataset.receiveagree = "N";
+                    // resultUrl = agreeConfirmHref + "?receiveemail=" + path + "&" + "receivesms" + path; 
+                }
+                return resultUrl;
             });
 
         });
@@ -91,27 +123,27 @@
             } );
         } ); 
 
-        /* 선택항목 체크 여부에 따라 다음 페이지로 넘어갈 파라미터 */
-        // sns, email 따로 분리해서 mysql에 넣어야 마이페이지에서 수정할 때
-        // 하나씩 체크 풀 수 있음 여기서는 체크하면 sms=Y&email=Y 로 넘어가지만
-        // 데이터베이스에서는 따로 분리해서 하나씩 insert 해야할 듯 ㅋㅋ
-        const receivead = document.getElementById('receivead');
-        const agreeConfirm = document.getElementById('agreeConfirm');
-        const agreeConfirmHref = agreeConfirm.href;
-        let resultUrl = null;
-        let path = null;
+       
+        const checkboxForm = document.getElementById('checkbox_form');
+        const check01 = document.getElementById('check01');
+        const check02 = document.getElementById('check02');
+        const check03 = document.getElementById('check03');
 
-        receivead.addEventListener('click', (e) => {
-            agreeConfirm.href = agreeConfirmHref;
+        checkboxForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-            if(receivead.checked > 0) {
-                path = receivead.dataset.receiveagree = "Y"; 
-                resultUrl = agreeConfirmHref + "?receiveagree=" + path; 
-            } else {
-                path = receivead.dataset.receiveagree = "N";
-                resultUrl = agreeConfirmHref + "?receiveagree=" + path; 
+            if(check01.checked == false || check02.checked == false || check03.checked == false) {
+                new Swal({
+                    html: '<span class="alert_content">필수항목을 체크해주세요.</span>',
+                    confirmButtonColor: '#000',
+                    confirmButtonText: '확인',
+                    width: '312px',
+                    padding: '16px 0 34px 0',
+                })
+                return;
             }
-            agreeConfirm.href = resultUrl;
+            
+            window.location = resultUrl;
         });
     </script>
 
