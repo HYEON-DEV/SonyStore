@@ -19,10 +19,10 @@ public class ImageMapperTest {
     @DisplayName("이미지 추가 테스트")
     void insertImage(){
         Image input = new Image();
-        input.setFilepath("/products/camera1/clr0_0.png");
-        input.setThumbnail("Y");
+        input.setFilepath("/products/camera1/clr1_0.png");
+        input.setThumbnail("N");
         input.setProdid(5);
-        input.setColorid(4);
+        input.setColorid(5);
 
         imageMapper.insert(input);
 

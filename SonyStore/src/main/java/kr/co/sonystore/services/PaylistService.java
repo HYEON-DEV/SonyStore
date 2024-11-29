@@ -19,12 +19,12 @@ public interface PaylistService {
 
 
     /**
-     * 결제 상품을 삭제한다
+     * 미결제 상품의 결제 목록을 삭제한다
      * @param input - 삭제할 결제 상품 정보에 대한 모델 객체
      * @return 삭제된 데이터 수
      * @throws Exception - 데이터베이스 연결 문제, SQL 쿼리 오류, 입력 데이터 문제
      */
-    public int deleteNoPayment(Paylist input) throws Exception;
+    public int deleteByNoPayments(Paylist input) throws Exception;
 
 
     /**

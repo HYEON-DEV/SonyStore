@@ -1,5 +1,6 @@
 let productsByType = []; // type에 따른 제품 리스트
 let productsByType2 = []; // type2에 따른 제품 리스트
+let productsByType3 = []; // type3에 따른 제품 리스트
 let backgrounds = []; // 전역 변수 선언
 
 window.onload = async (e) => {
@@ -21,7 +22,7 @@ window.onload = async (e) => {
         // 필터링된 제품 리스트 렌더링
         renderProductList(productsByType);
 
-        // 배경 이미지 업데이트
+        // 배경 이미지 업데���트
         updateBackgroundImage(backgrounds, productsByType);
 
         // 카테고리 이름 업데이트
@@ -36,6 +37,9 @@ window.onload = async (e) => {
             updateCategoryNameType2(productsByType2);
             updateType2(backgrounds, productsByType2);
         }
+
+        // 정렬 버튼 클릭 이벤트 설정 및 active 클래스 추가
+        setupSortButtons();
         
     } catch (error) {
         console.error(`[Error Code] ${error.code}`);
@@ -43,7 +47,7 @@ window.onload = async (e) => {
         let alertMsg = error.message;
 
         if (error.response !== undefined) {
-            const errorMsg = `${error.response.status} error - ${error.response.statusText}`;
+            const errorMsg = `${error.response.status} ${error.response.statusText}`;
             console.error(`[HTTP Status] ${errorMsg}`);
             alertMsg += `\n${errorMsg}`;
         }
@@ -81,14 +85,64 @@ function renderProductList(products) {
 
         imgContainer.appendChild(img);
         item.appendChild(imgContainer);
+        console.log(product);
+
+        // 색상 선택 버튼들
+        if (product.colors && product.colors.length > 1) {
+            const colorButtons = document.createElement("div");
+            colorButtons.classList.add("color-buttons");
+
+            // pcolor 값이 'Y'인 색상을 먼저 처리
+            const sortedColors = product.colors.sort((a, b) => b.pcolor.localeCompare(a.pcolor));
+
+            sortedColors.forEach((color, index) => {
+                const button = document.createElement("button");
+                const buttonInner = document.createElement("button");
+
+                button.classList.add("color-button");
+                button.setAttribute("data-color-index", index);
+
+                // 버튼 배경색을 실제 색상으로 설정
+                button.style.backgroundColor = color.color;
+                button.appendChild(buttonInner);
+                buttonInner.classList.add("color-button-inner");
+                buttonInner.style.backgroundColor = color.color;
+
+                // pcolor 값이 'Y'인 경우 버튼을 활성화
+                if (color.pcolor === 'Y') {
+                    button.classList.add('active');
+                }
+
+                // 마우스 오버 이벤트 리스너
+                button.addEventListener('mouseover', () => {
+                    const colorImage = product.images.find(image => image.colorid === color.colorid);
+                    if (colorImage) {
+                        img.setAttribute("src", colorImage.filepath);
+                    }
+                    // 모든 버튼의 active 클래스 제거
+                    document.querySelectorAll('.color-button').forEach(btn => btn.classList.remove('active'));
+
+                    // 현재 버튼에 active 클래스 추가
+                    button.classList.add('active');
+                });
+
+                colorButtons.appendChild(button);
+            });
+
+            item.appendChild(colorButtons);
+        } else {
+            img.style.marginBottom = "24px";
+        }
 
         // 제품 정보 컨테이너 생성
         const infoContainer = document.createElement('div');
         infoContainer.classList.add('info_container');
 
+        // 제품명
         const title = document.createElement('h3');
         title.textContent = product.title;
 
+        // 제품 설명
         const desc = document.createElement('p');
         desc.textContent = product.proddesc;
 
@@ -96,12 +150,19 @@ function renderProductList(products) {
         infoContainer.appendChild(desc);
         item.appendChild(infoContainer);
 
-        list_container.appendChild(item);
+        // 제품 가격
+        const price = document.createElement("span");
+        price.innerHTML = product.price.toLocaleString('ko-KR') + '원'; // 숫자 형태를 한국 스타일의 쉼표 구분 형식으로 변환
+        item.appendChild(price);
+
+        list_container.appendChild(item); // 리스트 컨테이너에 아이템 추가
     });
 
+    // 제품 개수 업데이트
+    updateProductCount(products.length);
 }
 
-// 배경 이미지를 설정하는 함수
+// type1 배경 이미지를 설정하는 함수
 function updateBackgroundImage(backgrounds, products) {
     const categoryBackground = document.getElementById('categoryBackground');
     
@@ -111,12 +172,12 @@ function updateBackgroundImage(backgrounds, products) {
         const background = backgrounds.find(bg => bg.type === product.type1);
         if (background) {
             categoryBackground.style.backgroundImage = `url(${background.filepath})`;
-            console.log(`Background: ${background.filepath}`);
+            
         }
     });
 }
 
-// type2 배경 이미지 및 박스영역, 돌아가기 버튼 , 탭 메뉴를 설정하는 함수
+// type2 배경 이미지 및 박스영역, 돌아가기 버튼 설정하는 함수
 function updateType2(backgrounds, products) {
     const categoryBackground = document.getElementById('categoryBackground');
     const categoryList = document.querySelector(".category_list");
@@ -126,7 +187,8 @@ function updateType2(backgrounds, products) {
 
     // 카테고리 맵 가져오기
     const categoryMap = getCategoryMap1();
-    console.log(products);
+   
+    // 탭 메뉴 렌더링
     renderTapMenu(products);
 
     // 제품 리스트에 있는 제품의 타입과 배경 이미지의 타입을 비교하여 일치하는 배경 이미지를 설정
@@ -233,7 +295,7 @@ function renderCategoryList(products) {
 
     // '전체보기' 버튼 추가
     const allItem = document.createElement('li');
-    allItem.innerHTML = `<a href="#" class="All"><img src="assets/img/products/crossHair.svg">전체보기</a>`;
+    allItem.innerHTML = `<a href="#" class="All">전체보기</a>`;
     categoryList.appendChild(allItem);
 
     // type2 종류별로 한 개씩만 담기
@@ -251,7 +313,7 @@ function renderCategoryList(products) {
         const li = document.createElement('li');
         const imgSrc = 'assets/img/subcategories/default.svg'; // 기본 이미지 경로 설정
         const categoryName = categoryMap2[subCategory.type2] || subCategory.type2; // 한글 이름 또는 원래 값 사용
-        li.innerHTML = `<a href="http://localhost:8080/products/${categoryKey}/${subCategory.type2}" class="${subCategory.type2}-filter"><img src="${imgSrc}">${categoryName}</a>`;
+        li.innerHTML = `<a href="http://localhost:8080/products/${categoryKey}/${subCategory.type2}" class="${subCategory.type2}-filter">${categoryName}</a>`;
         categoryList.appendChild(li); // 서브 카테고리 리스트에 추가
     });
 }
@@ -262,8 +324,9 @@ function renderTapMenu(products) {
     const tapMenuList = document.querySelector('.tapMenu_list');
     tapMenuList.innerHTML = ''; // 기존 탭 메뉴 초기화
 
-    if (products.type3 ==="") {
-        console.log('type3 is empty, hiding tap menu'); // 조건 확인
+    
+    if (products[0].type3 == "") {
+        
         tapMenuWrapper.style.display = 'none'; // type3 값이 없으면 탭 메뉴 숨김
         return;
     }
@@ -272,13 +335,19 @@ function renderTapMenu(products) {
 
     // '전체보기' 탭 추가
     const allTab = document.createElement('li');
-    allTab.innerHTML = `<a href="#" class="all-filter"><span>전체보기</span></a>`;
+    allTab.innerHTML = `<a href="#" class="all-filter active"><span>전체보기</span></a>`; // '전체보기'에 active 클래스 추가
     tapMenuList.appendChild(allTab);
 
-    // 활성화 상태 설정: type3 값이 'all'이면 '전체보기' 탭 활성화
-    // if (products.type3 === 'all') {
-    //     allTab.querySelector('a').classList.add('active'); // '전체보기' 탭 활성화
-    // }
+    
+
+    // 탭 메뉴에서 선택된 카테고리에 따라 해당 버튼에 활성화 상태를 설정하는 함수
+    function activateTab(tabElement) {
+        document.querySelectorAll('.tapMenu_list a').forEach(v => {
+            v.classList.remove('active'); // 모든 버튼의 active 클래스 제거
+        });
+        tabElement.classList.add('active'); // 클릭된 버튼에만 active 클래스 추가
+
+    }
 
     // productsByType2 데이터를 기반으로 type3 값에 따른 탭 추가
     const uniqueType3 = [...new Set(productsByType2.map(product => product.type3))].filter(Boolean); // type3 값의 유니크한 배열 생성, 빈 문자열 제거
@@ -293,10 +362,87 @@ function renderTapMenu(products) {
 
     // 탭 클릭 이벤트 추가
     tapMenuList.querySelectorAll('a').forEach(tab => {
-        tab.addEventListener('click', (event) => {
+        tab.addEventListener('click', async (event) => {
             event.preventDefault();
+
             
-            renderProductList(); // 선택된 카테고리에 따라 제품 목록 렌더링
+
+            // 클릭한 탭의 카테고리(type3) 가져오기
+            const type3 = tab.className.replace('-filter', '');
+
+            // '전체보기' 탭 처리
+            let requestUrl;
+            if (type3 === 'all') {
+                requestUrl = `http://localhost:8080/api/products/${type}/${type2}`;
+            } else {
+                requestUrl = `http://localhost:8080/api/products/${type}/${type2}/${type3}`;
+            }
+
+            try {
+                // AJAX 요청 보내기
+                const response = await axios.get(requestUrl);
+                const products = response.data.list;
+
+                // 새로운 데이터로 제품 목록 렌더링
+                renderProductList(products);
+
+                activateTab(tab);
+            } catch (error) {
+                console.error(error);
+            }
         });
     });
+}
+
+// 정렬 버튼 클릭 이벤트 설정 및 active 클래스 추가 함수
+function setupSortButtons() {
+    document.querySelector('.sort_high_price').addEventListener('click', e => {
+        e.preventDefault();
+        sortProductsByPrice('high_to_low');
+    });
+
+    document.querySelector('.sort_low_price').addEventListener('click', e => {
+        e.preventDefault();
+        sortProductsByPrice('low_to_high');
+    });
+
+    document.querySelector('.sort_recent').addEventListener('click', e => {
+        e.preventDefault();
+        sortProductsByDate();
+    });
+
+    document.querySelectorAll('.sort').forEach((v, i) => {
+        v.addEventListener("click", (e) => {
+            document.querySelectorAll('.sort').forEach((v, i) => {
+                v.classList.remove("sort_active");
+            });
+            e.currentTarget.classList.add("sort_active");
+        });
+    });
+}
+
+// 가격순 정렬 함수
+function sortProductsByPrice(order) {
+    const sortedList = [...productsByType].sort((a, b) => {
+        if (order === 'high_to_low') {
+            return b.price - a.price; // 높은 가격순
+        } else {
+            return a.price - b.price; // 낮은 가격순
+        }
+    });
+    renderProductList(sortedList); // 정렬된 리스트 렌더링
+}
+
+// 날짜순 정렬 함수
+function sortProductsByDate() {
+    const sortedList = [...productsByType].sort((a, b) => new Date(b.date) - new Date(a.date));
+    renderProductList(sortedList); // 정렬된 리스트 렌더링
+}
+
+// 제품 개수를 업데이트하는 함수
+function updateProductCount(count) {
+    const productCount = document.querySelector('.list_info_num');
+    if (productCount) {
+        productCount.innerHTML = `(${count})`; // 제품 개수 표시
+    }
 }

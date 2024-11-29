@@ -117,14 +117,28 @@ public interface PaymentMapper {
 
 
     /**
-     * 결제내역을 삭제한다
+     * 미결제 상품의 결제내역을 조회한다
+     * @return 조회된 데이터
+     */
+    @Select(
+        "SELECT \n" +
+            "payid, insertdate, status, paycheck, memberid \n" +
+        "FROM payments \n" +
+        "WHERE paycheck = 'N' AND \n" +
+            "insertdate < DATE_ADD( NOW(), interval -1 minute )"
+    )
+    public List<Payment> selectNoPayments();
+
+
+    /**
+     * 미결제 상품의 결제내역을 삭제한다
      * @param input - 삭제할 결제내역 정보에 대한 모델 객체
      * @return 삭제된 데이터 수
      */
     @Delete(
-        "DELETE FROM payments \n" + //
-            "WHERE paycheck = 'N' AND \n" + //
-                "insertdate < DATE_ADD(NOW(), interval -1 minute)"
+        "DELETE FROM payments \n" + 
+        "WHERE paycheck = 'N' AND \n" + 
+            "insertdate < DATE_ADD(NOW(), interval -1 minute)"
     )
-    public int delete(Payment input);
+    public int deleteNoPayments();
 }

@@ -19,9 +19,9 @@ public class ColorMapperTest {
     @DisplayName("색상 추가 테스트")
     void insertColor() {
         Color input = new Color();
-        input.setColor("black");
+        input.setColor("white");
         input.setProdid(5);
-        input.setPcolor("Y");
+        input.setPcolor("N");
         
        colorMapper.insert(input);
     }

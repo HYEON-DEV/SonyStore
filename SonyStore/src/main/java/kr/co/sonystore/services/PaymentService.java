@@ -44,11 +44,11 @@ public interface PaymentService {
 
 
     /**
-     * 결제내역을 삭제한다
+     * 미결제상품 결제내역을 삭제한다
      * @param input - 삭제할 결제내역에 대한 모델 객체
      * @return  삭제된 데이터 수
      * @throws Exception - 데이터베이스 연결 문제, SQL 쿼리 오류, 입력 데이터 문제
      */
-    public int deleteItem(Payment input) throws Exception;
+    public List<Payment> deleteNoPayments() throws Exception;
 
 }
