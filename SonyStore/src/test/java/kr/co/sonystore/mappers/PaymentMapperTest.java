@@ -24,7 +24,7 @@ public class PaymentMapperTest {
         Payment input = new Payment();
         input.setMemberid(2);
         input.setTotalcount(2);
-        input.setTotal(10000);
+        input.setTotal(100000);
         
         int output = paymentMapper.insert(input);
         
@@ -76,5 +76,23 @@ public class PaymentMapperTest {
         for(Payment item : output) {
             log.debug("output: " + item);
         }
+    }
+
+
+    @Test
+    @DisplayName("미결제상품 조회 테스트")
+    void selectNoPayments() {
+        List<Payment> output = paymentMapper.selectNoPayments();
+        for(Payment item : output) {
+            log.debug("output: " + item);
+        }
+    }
+
+
+    @Test
+    @DisplayName("결제내역 삭제 테스트")
+    void deletePayment() {
+        int output = paymentMapper.deleteNoPayments();   
+        log.debug("output: " + output);
     }
 }

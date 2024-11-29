@@ -2,9 +2,14 @@ package kr.co.sonystore.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import kr.co.sonystore.models.Payment;
 
 @Controller
 public class OrderController {
+
+    
     
     /** 장바구니 페이지 */
     // @GetMapping("/cart")
@@ -13,8 +18,16 @@ public class OrderController {
     // }
 
     /** 주문/결제 페이지 */
-    @GetMapping("/order/sheet")
-    public String order_sheet() {
+    @GetMapping("/order/sheet/{payid}")
+    public String order_sheet(
+        @PathVariable("payid") int payid
+    ) {
+        Payment input = new Payment();
+        input.setPayid(payid);
+
+        
+
+
         return "/orders/order_sheet";
     }
 

@@ -22,11 +22,11 @@ public class PaylistMapperTest {
     @DisplayName("결제 상품 목록 추가 테스트")
     void insertPaylist() {
         Paylist input = new Paylist();
-        input.setPayid(1);
+        input.setPayid(6);
         input.setProdid(4);
         input.setProdthumbnail("/products/camera1/clr1_0.png");
         input.setProdtitle("ZV-E10M2K");
-        input.setProdcolor("화이트");
+        input.setProdcolor("블랙");
         input.setCount(1);
         input.setProdprice(1490000);
         
@@ -57,5 +57,16 @@ public class PaylistMapperTest {
         for (Paylist item : output) {
             log.debug("output: " + item);
         }
+    }
+
+
+    @Test
+    @DisplayName("결제 상품 삭제 테스트")
+    void deletePaylist() {
+        Paylist input = new Paylist();
+        input.setPayid(2);
+        
+        int output = paylistMapper.deleteByNoPayments(input);   
+        log.debug("output: " + output);
     }
 }

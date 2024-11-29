@@ -31,6 +31,7 @@ public interface PaylistMapper {
     @Options(useGeneratedKeys = true, keyProperty = "paylistid", keyColumn = "paylistid")
     public int insert(Paylist input);
 
+    
     /**
      * 결제 상품을 단일 조회한다
      * @param input - 조회할 결제 상품 일련번호를 가진 모델 객체
@@ -75,17 +76,22 @@ public interface PaylistMapper {
 
 
     /**
-     * 결제 상품 목록을 삭제한다
+     * 미결제 상품의 결제 상품 목록을 삭제한다
      * @param input - 삭제할 결제 상품 정보에 대한 모델 객체
      * @return 삭제된 데이터 수
      */
+    // @Delete(
+    //     "DELETE FROM paylist \n" +
+    //         "WHERE payid IN \n" +
+    //             "SELECT payid  \n" +
+    //             "FROM payments \n" +
+    //             "WHERE paycheck = 'N' AND \n" +
+    //                 "insertdate < DATE_ADD(NOW(), interval -1 minute)"
+    // )
+
     @Delete(
-        "DELETE FROM paylist \n" +
-            "WHERE payid IN \n" +
-                "SELECT payid  \n" +
-                "FROM payments \n" +
-                "WHERE paycheck = 'N' AND \n" +
-                    "insertdate < DATE_ADD(NOW(), interval -1 minute) \n"
+        "DELETE FROM paylist WHERE payid = #{payid}"
     )
-    public int deleteNoPayment(Paylist input);
+    public int deleteByNoPayments(Paylist input);
+       
 }
