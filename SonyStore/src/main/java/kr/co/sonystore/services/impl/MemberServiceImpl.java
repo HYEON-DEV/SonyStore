@@ -24,9 +24,8 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member addMember(Member input) throws ServiceNoResultException, Exception {
         int rows = memberMapper.insert(input);
-        
 
-        if(rows == 0) {
+        if (rows == 0) {
             throw new ServiceNoResultException("저장된 데이터가 없습니다.");
         }
 
@@ -40,8 +39,8 @@ public class MemberServiceImpl implements MemberService {
         try {
             rows = memberMapper.update(input);
 
-            //wherw절 조건에 맞는 데이터가 없는 경우 --> 비밀번호 잘못됨
-            if(rows == 0) {
+            // wherw절 조건에 맞는 데이터가 없는 경우 --> 비밀번호 잘못됨
+            if (rows == 0) {
                 throw new Exception("현재 비밀번호를 확인하세요.");
             }
         } catch (Exception e) {
@@ -57,7 +56,7 @@ public class MemberServiceImpl implements MemberService {
         // delete문 수행 --> 리턴되는 값은 수정된 데이터의 수
         int rows = memberMapper.delete(input);
 
-        if(rows == 0) {
+        if (rows == 0) {
             throw new ServiceNoResultException("삭제된 데이터가 없습니다.");
         }
 
@@ -68,7 +67,7 @@ public class MemberServiceImpl implements MemberService {
     public Member getMember(Member input) throws ServiceNoResultException, Exception {
         Member output = memberMapper.selectMember(input);
 
-        if(output == null) {
+        if (output == null) {
             throw new ServiceNoResultException("조회된 데이터가 없습니다.");
         }
 
@@ -80,7 +79,7 @@ public class MemberServiceImpl implements MemberService {
 
         int output = 0;
 
-        try{
+        try {
             output = memberMapper.selectCount(input);
 
             if (output > 0) {
@@ -99,7 +98,7 @@ public class MemberServiceImpl implements MemberService {
 
         int output = 0;
 
-        try{
+        try {
             output = memberMapper.selectCount(input);
 
             if (output > 0) {
@@ -113,13 +112,13 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Member findEmail(Member input) throws Exception {
-        
+
         Member output = null;
 
         try {
             output = memberMapper.findEmail(input);
 
-            if(output == null) {
+            if (output == null) {
                 throw new Exception("가입된 정보가 없습니다.");
             }
         } catch (Exception e) {
@@ -131,13 +130,13 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Member findUserPw(Member input) throws Exception {
-        
+
         Member output = null;
 
         try {
             output = memberMapper.findUserPw(input);
 
-            if(output == null) {
+            if (output == null) {
                 throw new Exception("가입된 정보가 없습니다.");
             }
         } catch (Exception e) {
@@ -154,7 +153,7 @@ public class MemberServiceImpl implements MemberService {
         try {
             output = memberMapper.login(input);
 
-            if(output == null) {
+            if (output == null) {
                 throw new Exception("아이디 혹은 이메일을 확인하세요.");
             }
         } catch (Exception e) {
@@ -165,7 +164,7 @@ public class MemberServiceImpl implements MemberService {
         try {
             int rows = memberMapper.updateLoginDate(output);
 
-            if(rows == 0) {
+            if (rows == 0) {
                 throw new Exception("존재하지 않는 회원에 대한 요청 입니다.");
             }
         } catch (Exception e) {
@@ -176,7 +175,6 @@ public class MemberServiceImpl implements MemberService {
         return output;
     }
 
-    
     @Override
     public int out(Member input) throws Exception {
         int rows = 0;
@@ -190,7 +188,6 @@ public class MemberServiceImpl implements MemberService {
             log.error("회원탈퇴에 실패했습니다.", e);
             throw e;
         }
-        
 
         return rows;
     }
@@ -204,7 +201,7 @@ public class MemberServiceImpl implements MemberService {
         } catch (Exception e) {
             throw new Exception("탈퇴 처리에 실패했습니다.");
         }
-        
+
         return output;
 
     }
@@ -253,5 +250,19 @@ public class MemberServiceImpl implements MemberService {
             log.error("회원정보 변경에 실패했습니다.", e);
             throw e;
         }
+    }
+
+    @Override
+    public List<Member> processOutMembers() throws Exception {
+        List<Member> output = null;
+
+        try {
+            memberMapper.deleteOutMembers();
+        } catch (Exception e) {
+            throw new Exception("탈퇴 처리에 실패했습니다.");
+        }
+
+        return output;
+
     }
 }

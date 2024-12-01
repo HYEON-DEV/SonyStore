@@ -500,7 +500,7 @@ input[type="checkbox"]:checked {
 /* product_section */
 
 .gray_bg_section {
-    width: 1920px;
+    max-width: 1920px;
     background-color: #f4f4f4;
 
     .product_container{
@@ -1569,4 +1569,14 @@ input:disabled {
 
 /* event page end */
 
+@media (max-width: 1919px) {
+
+    .gray_bg_section {
+        .product_container{
+            .product_item {
+                background-position: 150px 40px;
+            }
+        }
+    }
+}
 

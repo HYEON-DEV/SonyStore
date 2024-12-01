@@ -1,4 +1,5 @@
 package kr.co.sonystore.services;
+
 import kr.co.sonystore.exceptions.ServiceNoResultException;
 import kr.co.sonystore.models.Member;
 
@@ -23,7 +24,7 @@ public interface MemberService {
 
     public Member login(Member input) throws Exception;
 
-    public int out (Member input) throws Exception;
+    public int out(Member input) throws Exception;
 
     public List<Member> deleteOutMembers() throws Exception;
 
@@ -32,5 +33,6 @@ public interface MemberService {
     public void modifyUserpw(Member input) throws Exception;
 
     public void ModifyAddReceive(Member input) throws Exception;
+
+    public List<Member> processOutMembers() throws Exception;
 }
-        

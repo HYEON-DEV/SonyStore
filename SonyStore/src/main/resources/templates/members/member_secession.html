@@ -13,7 +13,7 @@
                 <h2 class="h2_title font_48_700" style="margin-bottom:80px;">회원탈퇴</h2>
 
                 <div class="light_grey_box flex_center">
-                    <span class="light_grey_box_text">wlsnt4205@naver.com</span>
+                    <span class="light_grey_box_text" th:text="${session.memberInfo.email}"></span>
                 </div>
 
                 <div class="member_secession_caution flex_center">
@@ -21,27 +21,29 @@
                                                     SNS 계정으로 가입하신 회원님은 하단에 가입하신 SNS로 인증하신 후 탈퇴 사유를 선택해주세요.</span>
                 </div>
 
-                <label for="userPw" class="input_label">
-                    <div class="pw_box">
-                        <input type="password" class="input_box pw_input" />
-                        <i class="fas fa-eye-slash pw_view pointer"></i>
-                    </div>
-                    <div class="input_focus_line">
-                        <span class="placeholder">비밀번호</span>
-                    </div>
-                </label>
+                <form id="memberSecession">
+                    <label for="userpw" class="input_label">
+                        <div class="pw_box">
+                            <input type="password" class="input_box pw_input" name="userpw" id="userpw" />
+                            <i class="fas fa-eye-slash pw_view pointer"></i>
+                        </div>
+                        <div class="input_focus_line">
+                            <span class="placeholder">비밀번호</span>
+                        </div>
+                    </label>
 
-                <div class="selectbox input_box input_label">	
-                    <select class="select_box">
-                        <option value="">탈퇴사유를 선택해주세요.</option>
-                        <option value="1">다른 아이디 변경을 위해 탈퇴</option>
-                        <option value="2">장기간 부재(해외 이민, 유학, 군입대 등)로 인한 탈퇴</option>
-                        <option value="3">개인정보 노출 우려로 인한 탈퇴</option>
-                        <option value="4">기타</option>
-                    </select>
-                </div>
+                    <div class="selectbox input_box input_label">	
+                        <select class="select_box">
+                            <option value="">탈퇴사유를 선택해주세요.</option>
+                            <option value="1">다른 아이디 변경을 위해 탈퇴</option>
+                            <option value="2">장기간 부재(해외 이민, 유학, 군입대 등)로 인한 탈퇴</option>
+                            <option value="3">개인정보 노출 우려로 인한 탈퇴</option>
+                            <option value="4">기타</option>
+                        </select>
+                    </div>
 
-                <button type="button" class="black_button">회원탈퇴</button>
+                    <button type="submit" class="black_button">회원탈퇴</button>
+                </form>
 
                 <p class="modal_cation_desc accent">[안내]</p>
                 </br>
@@ -109,6 +111,25 @@
         });
 
         /* placeholder event end */
+
+        /* 회원탈퇴 */
+        document.getElementById('memberSecession').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(e.currentTarget);
+
+            const data = await axiosHelper.deleteMultipart("[[@{/api/sign/member_secession}]]", formData);
+
+            if(data) {
+                new Swal({
+                    html: '<span class="alert_content">회원탈퇴가 완료되었습니다.</span>',
+                    confirmButtonColor: '#000',
+                    confirmButtonText: '확인',
+                    width: '312px',
+                    padding: '16px 0 34px 0',
+                }).then( () => {window.location = "[[@{/}]]"});
+            }
+        });
     </script>
 </body>
 </html>

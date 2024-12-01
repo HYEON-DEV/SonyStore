@@ -225,10 +225,10 @@
                 const newUserPwConfirm = document.querySelector("#newuserpwconf").value;
 
                 try {
-                // 새로운 비밀번호가 입력되었을 때만 확인값 검사
-                if(newUserPw || newUserPwConfirm) {
+                    regexHelper.maxLength("#newuserpw", 14, "비밀번호는 12~15자리 미만으로 입력하세요.");
+                    regexHelper.minLength("#newuserpw", 12, "비밀번호는 12~15자리 미만으로 입력하세요.");
+                    regexHelper.engUpdownSpecial("#newuserpw", "대/소문자, 숫자, 특수문자가 포함되어야 합니다.")
                     regexHelper.compareTo( "#newuserpw", "#newuserpwconf", "비밀번호 확인이 잘못되었습니다.");
-                }
 
                 } catch (e) {
                     await utilHelper.alertDanger(e.message);
