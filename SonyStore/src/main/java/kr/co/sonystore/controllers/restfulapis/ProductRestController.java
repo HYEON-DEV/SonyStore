@@ -5,19 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.sonystore.helpers.FileHelper;
 import kr.co.sonystore.helpers.RestHelper;
 import kr.co.sonystore.models.Background;
-import kr.co.sonystore.models.Image;
 import kr.co.sonystore.models.Product;
 import kr.co.sonystore.services.BackgroundService;
 import kr.co.sonystore.services.ProductService;
@@ -37,11 +31,6 @@ public class ProductRestController {
     @Autowired
     private RestHelper restHelper;
 
-    // // 제품 목록 조회
-    // @GetMapping("/api/products")
-    // public List<Product> getProductList() throws Exception {
-    //     return productService.getItemList(null);
-    // }
 
     //제품 목록 조회
     @GetMapping("/api/products")
@@ -170,36 +159,38 @@ public class ProductRestController {
         return restHelper.sendJson(data);
     }
 
+    //제품 상세 조회
+    @GetMapping("/api/product-view/{prodid}")
+    public Map<String, Object> getProductView(@PathVariable("prodid") int prodid) throws Exception {
+        Product output;
+        try {
+            output = productService.getItemByProdId(prodid);
+            if (output != null) {
+                if (output.getImages() != null) {
+                    output.getImages().forEach(image -> {
+                        image.setFilepath(fileHelper.getUrl(image.getFilepath()));
+                    });
+                }
+                if (output.getDetailimage1() != null) {
+                    output.setDetailimage1(fileHelper.getUrl(output.getDetailimage1()));
+                }
+                if (output.getDetailgif() != null) {
+                    output.setDetailgif(fileHelper.getUrl(output.getDetailgif()));
+                }
+                if (output.getDetailimage2() != null) {
+                    output.setDetailimage2(fileHelper.getUrl(output.getDetailimage2()));
+                }
+                if (output.getDetailspec() != null) {
+                    output.setDetailspec(fileHelper.getUrl(output.getDetailspec()));
+                }
+            }
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+        Map<String, Object> data = new LinkedHashMap<>();
+        data.put("product", output);
 
-
-    // // 제품 상세 조회
-    // @GetMapping("/{id}")
-    // public Product getProduct(@PathVariable int id) throws Exception {
-    //     Product input = new Product();
-    //     input.setProdid(id);
-    //     return productService.getItem(input);
-    // }
-
-    // // 제품 등록
-    // @PostMapping
-    // public int addProduct(@RequestBody Product product) throws Exception {
-    //     return productService.addItem(product);
-    // }
-
-    // // 제품 수정
-    // @PutMapping("/{id}")
-    // public int updateProduct(@PathVariable int id, @RequestBody Product product) throws Exception {
-    //     product.setProdid(id);
-    //     return productService.updateItem(product);
-    // }
-
-    // // 제품 삭제
-    // @DeleteMapping("/{id}")
-    // public int deleteProduct(@PathVariable int id) throws Exception {
-    //     Product input = new Product();
-    //     input.setProdid(id);
-    //     return productService.deleteItem(input);
-    // }
-
-    
+        return restHelper.sendJson(data);
+    }
+  
 }

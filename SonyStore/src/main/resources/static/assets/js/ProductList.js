@@ -69,7 +69,7 @@ function renderProductList(products) {
     products.forEach(product => {
         const item = document.createElement('a');
         item.classList.add('item');
-        // item.href = `view.html?prodid=${product.prodid}`; // 제품 상세 페이지 링크
+        item.href = `http://localhost:8080/product-view/${product.prodid}`; // 제품 상세 페이지 링크 수정
 
         // 이미지 컨테이너 생성
         const imgContainer = document.createElement('div');

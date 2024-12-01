@@ -46,4 +46,6 @@ public interface ProductService {
     public List<Product> getItemListByType2(Product input) throws Exception;
 
     public List<Product> getItemListByType3(Product input) throws Exception;
+
+    public Product getItemByProdId(int prodid) throws Exception;
 }

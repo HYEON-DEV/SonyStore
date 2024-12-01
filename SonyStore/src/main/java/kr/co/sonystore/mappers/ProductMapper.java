@@ -200,4 +200,20 @@ public interface ProductMapper {
         "ORDER BY p.prodid DESC ")
         @ResultMap("productMap")
         List<Product> selectListByType3(Product input);
+
+// prodid에 따른 상품 조회
+@Select("SELECT p.prodid, p.title, p.proddesc, p.price, p.type1, p.type2, p.type3, " +
+        "p.date, p.detailimage1, p.detailimage2, p.youtube, p.detailgif, " +
+        "p.detailspec, p.soldout, p.sale, p.event, " +
+        "i.imgid, i.filepath, i.thumbnail, " +
+        "c.colorid, c.color, c.pcolor " +
+        "FROM products p " +
+        "LEFT JOIN images i ON p.prodid = i.prodid " +
+        "LEFT JOIN colors c ON p.prodid = c.prodid " +
+        "WHERE p.prodid = #{prodid} " +
+        "ORDER BY p.prodid DESC " +
+        "LIMIT 1")
+@ResultMap("productMap")
+Product selectItemByProdid(int prodid);
+
 }

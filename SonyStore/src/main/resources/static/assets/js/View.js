@@ -50,10 +50,11 @@ const clr_name = clr => {
 
     let response = null;
     let products, item;
+    
 
     try {
         //  전체 json 조회
-        response = await axios.get('http://localhost:3001/products');
+        response = await axios.get(`http://localhost:8080/api/product-view/${prodid}`);
         
         //  paramsArr 요소로 백엔드 json 접근
         products = paramsArr.reduce((acc, key) => {
@@ -100,7 +101,10 @@ const clr_name = clr => {
         alert("요청 실패");
         return;
     }
-    
+
+    // colorid 값 추출
+    // 
+
     const colorArr = item.color;    
     const imgArr = item.img;
     
@@ -637,8 +641,6 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// 초기 총 금액 계산
-// calculateTotal();
 
 
 

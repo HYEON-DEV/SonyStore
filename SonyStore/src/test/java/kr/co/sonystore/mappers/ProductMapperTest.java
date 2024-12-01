@@ -145,4 +145,14 @@ public class ProductMapperTest {
             log.debug("item = " + item.toString());
         }
     }
+
+@Test
+    @DisplayName("상품id별 상세 조회 테스트")
+    void selectItemByProdid() {
+        int prodid = 5; // 조회할 상품의 ID를 설정
+
+        Product output = productMapper.selectItemByProdid(prodid);
+
+        log.debug("output = " + output.toString());
+    }
 }

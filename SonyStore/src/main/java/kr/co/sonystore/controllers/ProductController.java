@@ -26,11 +26,11 @@ public class ProductController {
         return "/products/category";
     }
 
+    /** 상품 상세 페이지 */
+    @GetMapping("/product-view/{prodid}")
+    public String view(@PathVariable("prodid") int prodid , Model model) {
+        model.addAttribute("prodid", prodid);
+        return "/products/view";
+    }
 
-    // @GetMapping("/products/{type}/{categoryKey}")
-    // public String productsByCategory(@PathVariable("type") String type, @PathVariable("categoryKey") String categoryKey, Model model) {
-    //     model.addAttribute("type", type);
-    //     model.addAttribute("categoryKey", categoryKey);
-    //     return "/products/category";
-    // }
 }

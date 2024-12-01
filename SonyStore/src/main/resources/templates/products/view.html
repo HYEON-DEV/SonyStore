@@ -1,29 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title> 상품 상세 화면 </title>
-
-    <link rel="stylesheet" th:href="@{/assets/css/reset.css}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="icon" th:href="@{/assets/img/favicon_144x144.png}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css">
-    <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
-
+    <th:block th:replace="~{/_fragments/_head :: sony-head('상품 상세 화면')}"></th:block>
     <link rel="stylesheet" th:href="@{/assets/css/style_3.css}"/>
 
 </head>
 <body>
-    <!-- header -->
-    <!-- <script src="./assets/js/loadHTML.js"></script> -->
-    <!-- <script>loadHTML("./header.html");</script> -->
-
+    <th:block th:replace="~{/_fragments/_header :: sony-header}"></th:block>
     <!-- body -->
     <div class="main">
 
@@ -61,8 +44,8 @@
                     <div class="product-cont-top">  
                         <div>
                             <div class="flag"> NEW </div>
-                            <div class="prd-name"> ZV-E10M3 </div>
-                            <div class="prd-text"> 기록의 완성 </div>
+                            <div class="prd-name"></div>
+                            <div class="prd-text"></div>
                             <div class="prd-desc"> <div class="icon"></div> <p>이 제품은 기획전을 통해 구매하시면 더 많은 혜택을 받으실 수 있습니다. </p> </div>    
                         </div>
                         <div><a class="share"></a></div>
@@ -357,21 +340,23 @@
                     <div class="tab-zone outline active">
 
                         <div class="pad benefit-zone-container"> 
-                            <div class="benefit-zone"> <img th:src="@{/assets/img/view/pc_benefit.jpg}"/> </div> 
+                            <div class="benefit-zone"> 
+                                <img th:src="@{/assets/img/view/pc_benefit.jpg}"/> 
+                            </div> 
                         </div>
 
                         <div class="outline-content"> 
                             <div class="sony-content pad"> 
-                                <img th:src="@{/assets/img/view/zv-e10m2_960_1.jpg}"/> 
+                                <!-- <img th:src="@{/assets/img/view/zv-e10m2_960_1.jpg}"/>  -->
                             </div>
                             <div class="video-wrap pad"> 
-                                <iframe width="960" height="540" src="https://www.youtube.com/embed/JXDZVOCB4Ts" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe> 
+                                <!-- <iframe width="960" height="540" src="https://www.youtube.com/embed/JXDZVOCB4Ts" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>  -->
                             </div>
                             <div class="sony-content-moving pad"> 
-                                <img th:src="@{/assets/img/view/zv-e10m2_360_960.webp}" alt="제품 개요"/> 
+                                <!-- <img th:src="@{/assets/img/view/zv-e10m2_360_960.webp}" alt="제품 개요"/>  -->
                             </div>
                             <div class="sony-content-detail pad"> 
-                                <img th:src="@{/assets/img/view/zv-e10m2_960_2.jpg}" alt="제품 개요"/>
+                                <!-- <img th:src="@{/assets/img/view/zv-e10m2_960_2.jpg}" alt="제품 개요"/> -->
                             </div>
                         </div>
                     </div>
@@ -381,7 +366,9 @@
                     <div class="tab-zone detail">
 
                         <div class="pad detail-box-container"> 
-                            <div class="detail-box"> <img th:src="@{/assets/img/view/zv-e10m2_960_spec.gif}"/> </div> 
+                            <div class="detail-box"> 
+                                <!-- <img th:src="@{/assets/img/view/zv-e10m2_960_spec.gif}"/>  -->
+                            </div> 
                         </div>
 
                     </div> 
@@ -498,16 +485,12 @@
         </div>
     </div>
 
-    <script>loadHTML("./footer.html");</script>
-    <script th:src="@{/assets/js/UtilHelper.js}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>const prodid = `[[${prodid}]]`;</script>
+    <!-- <script>const type = `[[${type}]]`;</script> -->
+    <th:block th:replace="~{/_fragments/_footer :: sony-footer}"></th:block>
+    <th:block th:replace="~{/_fragments/_scripts :: sony-scripts}"></th:block>
     <script th:src="@{/assets/js/ArrayHyeon.js}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.all.min.js"></script>
-    <script th:src="@{/assets/js/common.js}"></script>
-    <script th:src="@{/assets/js/View.js}"></script>
+    <script th:src="@{/assets/js/ProductView.js}"></script>
     
 </body>
 </html>

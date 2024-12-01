@@ -1,6 +1,7 @@
 package kr.co.sonystore.services.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -87,9 +88,10 @@ public class ProductServiceImpl implements ProductService {
             throw new Exception("상품 정보 조회에 실패했습니다.");
         }
 
-        for (int i = 0; i < result.size(); i++) {
-            Product temp = result.get(i);
+        // 중복된 제품 제거
+        result = result.stream().distinct().collect(Collectors.toList());
 
+        for (Product temp : result) {
             Image image = new Image();
             image.setProdid(temp.getProdid());
 
@@ -107,6 +109,9 @@ public class ProductServiceImpl implements ProductService {
         if (result == null) {
             throw new Exception("상품 정보 조회에 실패했습니다.");
         }
+
+        // 중복된 제품 제거
+        result = result.stream().distinct().collect(Collectors.toList());
 
         for (int i = 0; i < result.size(); i++) {
             Product temp = result.get(i);
@@ -129,6 +134,9 @@ public class ProductServiceImpl implements ProductService {
             throw new Exception("상품 정보 조회에 실패했습니다.");
         }
 
+        // 중복된 제품 제거
+        result = result.stream().distinct().collect(Collectors.toList());
+
         for (int i = 0; i < result.size(); i++) {
             Product temp = result.get(i);
 
@@ -141,4 +149,22 @@ public class ProductServiceImpl implements ProductService {
 
         return result;
     }
+
+    @Override
+    public Product getItemByProdId(int prodid) throws Exception {
+        Product result = productMapper.selectItemByProdid(prodid);
+
+        if (result == null) {
+            throw new Exception("상품 정보 조회에 실패했습니다.");
+        }
+
+        Image image = new Image();
+        image.setProdid(result.getProdid());
+
+        result.setImages(imageMapper.selectImagesByProductId(result));
+        result.setColors(colorMapper.selectColorsByProductId(result));
+
+        return result;
+    }
 }
+
