@@ -69,94 +69,100 @@
                     <!-- 장바구니 내역 테이블 -->
                     <div class="col_table_wrap order_list">
 
-                        <div class="col_table">
+                        <form name="form" id="cart-form">
 
-                            <!-- 테이블 헤더 -->
-                            <div class="col_table_head">
-                                <div class="col_table_row cart_row">
-                                    <div class="col_table_cell">제품</div>
-                                    <div class="col_table_cell">가격</div>
-                                    <div class="col_table_cell">수량</div>
-                                    <div class="col_table_cell">합계</div>
-                                    <div class="col_table_cell"></div>
-                                </div>
-                            </div>
+                            <div class="col_table">
 
-                            <!-- 테이블 바디 -->
-                            <div class="col_table_body">
-
-                                <!-- 테이블 row -->
-                                <div class="col_table_row cart_row" th:each="cart : ${carts}">
-
-                                    <!-- 제품 -->
-                                    <div class="col_table_cell">
-                                        <!-- 체크, 이미지, 제품이름 -->
-                                        <div class="prd">
-                                            <!-- 선택 -->
-                                            <div class="check">
-                                                <input type="checkbox" class="inp_check check_only" checked th:data-cartid="${cart.cartid}" />
-                                            </div>
-                                            <!-- 썸네일 -->
-                                            <div class="prd_thumb">
-                                                <img class="prd_thumb_pic" th:src="${cart.filepath}" th:alt="${cart.title}" />
-                                            </div>
-                                            <!-- 제품이름 -->
-                                            <div class="prd_info">
-                                                <span class="prd_info_name" th:text="${cart.title}"/>&nbsp;
-                                                <span th:if="${cart.color}">(<span th:text="${cart.color}"/>)</span>
-                                            </div>
-                                        </div>
+                                <!-- 테이블 헤더 -->
+                                <div class="col_table_head">
+                                    <div class="col_table_row cart_row">
+                                        <div class="col_table_cell">제품</div>
+                                        <div class="col_table_cell">가격</div>
+                                        <div class="col_table_cell">수량</div>
+                                        <div class="col_table_cell">합계</div>
+                                        <div class="col_table_cell"></div>
                                     </div>
+                                </div>
+
+                                <!-- 테이블 바디 -->
+                                <div class="col_table_body">
+
+                                        <!-- 테이블 row -->
+                                        <div class="col_table_row cart_row" th:each="cart : ${carts}">
+
+                                            <!-- 제품 -->
+                                            <div class="col_table_cell">
+                                                <!-- 체크, 이미지, 제품이름 -->
+                                                <div class="prd">
+                                                    <!-- 선택 -->
+                                                    <div class="check">
+                                                        <input type="checkbox" class="inp_check check_only" checked th:data-cartid="${cart.cartid}" />
+                                                    </div>
+                                                    <!-- 썸네일 -->
+                                                    <div class="prd_thumb">
+                                                        <input type="hidden" name="prodid" th:value="${cart.prodid}" />
+                                                        <input type="hidden" name="filepath" th:value="${cart.filepath}" />
+                                                        <img class="prd_thumb_pic" th:src="${cart.filepath}" th:alt="${cart.title}" />
+                                                    </div>
+                                                    <!-- 제품이름 -->
+                                                    <div class="prd_info">
+                                                        <span class="prd_info_name" th:text="${cart.title}"/>&nbsp;
+                                                        <span th:if="${cart.color}">(<span th:text="${cart.color}" class="cart_prod_color"/>)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        
+                                            <!-- 가격 -->
+                                            <div class="col_table_cell prd_price">
+                                                <span class="price" th:text="${#numbers.formatInteger(cart.price, 1, 'COMMA')}" />
+                                                <span class="won">원</span>
+                                            </div>
+                                            
+                                            <!-- 수량 -->
+                                            <div class="col_table_cell prd_count">
+                                                <div class="count_ui_box">
+                                                    <button class="minus">-</button>
+                                                    <input type="text" readonly class="count" th:value="${cart.count}" th:data-cartid="${cart.cartid}" />
+                                                    <button class="plus">+</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- 합계 -->
+                                            <div class="col_table_cell prd_total_price">
+                                                <span class="total_price" th:text="${#numbers.formatInteger(cart.sum, 1, 'COMMA')}" />
+                                                <span class="won">원</span>
+                                            </div>
+
+                                            <!-- 삭제 -->
+                                            <div class="col_table_cell">
+                                                <button type="button" class="btn_del_prd" th:data-cartid="${cart.cartid}">
+                                                    <img th:src="@{/assets/img/cart/ic_close.svg}" alt="제품 삭제">
+                                                </button>
+                                            </div>
+
+                                        </div>
+
+                                </div>
                                 
-                                    <!-- 가격 -->
-                                    <div class="col_table_cell prd_price">
-                                        <span class="price" th:text="${#numbers.formatInteger(cart.price, 1, 'COMMA')}" />
-                                        <span class="won">원</span>
-                                    </div>
-                                    
-                                    <!-- 수량 -->
-                                    <div class="col_table_cell prd_count">
-                                        <div class="count_ui_box">
-                                            <button class="minus">-</button>
-                                            <input type="text" readonly class="count" th:value="${cart.count}" th:data-cartid="${cart.cartid}" />
-                                            <button class="plus">+</button>
-                                        </div>
-                                    </div>
-
-                                    <!-- 합계 -->
-                                    <div class="col_table_cell prd_total_price">
-                                        <span class="total_price" th:text="${#numbers.formatInteger(cart.sum, 1, 'COMMA')}" />
-                                        <span class="won">원</span>
-                                    </div>
-
-                                    <!-- 삭제 -->
-                                    <div class="col_table_cell">
-                                        <button type="button" class="btn_del_prd" th:data-cartid="${cart.cartid}">
-                                            <img th:src="@{/assets/img/cart/ic_close.svg}" alt="제품 삭제">
-                                        </button>
-                                    </div>
-
                                 </div>
-
                             </div>
-                            
-                            </div>
-                        </div>
 
-                        <!-- 테이블 푸터 -->
-                        <div class="col_table_foot">
-                            <div class="prd_summary">
-                                <span class="prd_summary_length">결제 예정 금액 (총 <span class="total_cnt">5</span>개)</span>
-                                <span class="prd_summary_price font_24_700"> <span class="sum">40662900</span> <span class="won">원</span> </span>
-                                <p class="prd_summary_warning">* 최종 결제금액은 고객님의 쿠폰 / 마일리지 적용에 따라 달라질 수 있습니다. </p>
+                            <!-- 테이블 푸터 -->
+                            <div class="col_table_foot">
+                                <div class="prd_summary">
+                                    <span class="prd_summary_length">결제 예정 금액 (총 <span class="total_cnt"></span>개)</span>
+                                    <span class="prd_summary_price font_24_700"> <span class="sum"></span> <span class="won">원</span> </span>
+                                    <p class="prd_summary_warning">* 최종 결제금액은 고객님의 쿠폰 / 마일리지 적용에 따라 달라질 수 있습니다. </p>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- 푸터 버튼 -->
-                        <div class="btn_wrap btn_footer">
-                            <a class="continue btn_200_64  bg_white" href="/">쇼핑 계속 하기</a>
-                            <button type="button" class="btn_200_64 buy bg_black">구매하기</button>
-                        </div>
+                            <!-- 푸터 버튼 -->
+                            <div class="btn_wrap btn_footer">
+                                <a class="continue btn_200_64  bg_white" href="/">쇼핑 계속 하기</a>
+                                <button type="submit" class="btn_200_64 buy bg_black">구매하기</button>
+                            </div>
+
+                        </form>
 
                     </div>  <!-- 장바구니 내역 테이블 -->
                 </div> 
@@ -350,6 +356,26 @@
         } );
 
 
+        /* = = = = = 총 갯수, 결제금액 (백엔드전달) = = = = = */
+        // <input type="hidden" name="filepath" th:value="${cart.filepath}" />
+        
+        // const prdSummary = document.querySelector('.prd_summary');
+        
+        // // 총 갯수
+        // const input = document.createElement('input');
+        // input.setAttribute('type', 'hidden');
+        // input.setAttribute('name', 'totalcount');
+        // input.setAttribute('value', document.querySelector('.total_cnt').innerText);
+        // prdSummary.appendChild(input);
+
+        // // 총 결제금액
+        // const input2 = document.createElement('input');
+        // input2.setAttribute('type', 'hidden');
+        // input2.setAttribute('name', 'total');
+        // input2.setAttribute('value', document.querySelector('.sum').innerText.replaceAll(',', ''));
+        // prdSummary.appendChild(input2);
+
+
         /* = = = = = 단일 상품 삭제 = = = = = */
 
         document.querySelectorAll('.btn_del_prd').forEach( (v,i) => {
@@ -370,7 +396,7 @@
             const checkedList = document.querySelectorAll('.check_only:checked');
             // console.log(checkedList);
             if( checkedList.length == 0) {
-                alert('구매하실 상품을 선택하여 주세요.');
+                alert('상품을 선택해주세요.');
                 return;
             }
 
@@ -411,6 +437,48 @@
                     content.style.display = 'none';
                 }
             });
+        } );
+
+        
+        /* = = = = = 구매하기 = = = = = */
+        document.querySelector('#cart-form').addEventListener( 'submit', async e => {
+            e.preventDefault();
+            
+            const formData = new FormData();     
+
+            const totalcount = document.querySelector('.total_cnt').innerText;
+            const total = document.querySelector('.sum').innerText.replaceAll(',', '');
+
+            formData.append('totalcount', totalcount);
+            formData.append('total', total);
+
+            document.querySelectorAll('.col_table_row.cart_row').forEach( (v,i) => {
+                const checkbox = v.querySelector('.check_only');
+                if( checkbox && checkbox.checked ) {
+                    const prodid = v.querySelector('input[name="prodid"]').value;
+                    const prodthumbnail = v.querySelector('input[name="filepath"]').value;
+                    const prodtitle = v.querySelector('.prd_info_name').innerText;
+                    // if(v.querySelector('.cart_prod_color')) {
+                        const prodcolor = v.querySelector('.cart_prod_color')? v.querySelector('.cart_prod_color').innerText :  null;
+                    // }
+                    const count = v.querySelector('.count').value;
+                    const prodprice = v.querySelector('.price').innerText.replaceAll(',', '');
+
+                    formData.append('prodid', prodid);
+                    formData.append('prodthumbnail', prodthumbnail);
+                    formData.append('prodtitle', prodtitle);
+                    // if(v.querySelector('.cart_prod_color')) {
+                        formData.append('prodcolor', prodcolor);
+                    // }
+                    formData.append('count', count);
+                    formData.append('prodprice', prodprice);
+                }
+            } );
+
+            let data = await axiosHelper.post( '[[@{/api/order}]]', formData );
+
+            // window.location = `[[@{/order/sheet?orderSheetNo=${data.item.payid}}]]`;
+            window.location = `[[@{/order/sheet}]]/${data.item.payid}`;
         } );
 
     </script>

@@ -3,6 +3,7 @@ package kr.co.sonystore.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.sonystore.models.Payment;
 
@@ -21,6 +22,7 @@ public class OrderController {
     @GetMapping("/order/sheet/{payid}")
     public String order_sheet(
         @PathVariable("payid") int payid
+        
     ) {
         Payment input = new Payment();
         input.setPayid(payid);
