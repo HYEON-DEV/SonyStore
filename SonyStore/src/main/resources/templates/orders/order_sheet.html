@@ -1,26 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title> 주문/결제 </title>
-
-    <link rel="stylesheet" th:href="@{/assets/css/reset.css}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="icon" th:href="@{/assets/img/favicon_144x144.png}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css">
-    <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
-
-    <link rel="stylesheet" th:href="@{/assets/css/style_3.css}"/>
-
+    <th:block th:replace="~{/_fragments/_head :: sony-head('주문/결제')}"></th:block>
+    <link rel="stylesheet" th:href="@{/assets/css/style_3.css}" />
 </head>
 
 <body>
+    <th:block th:replace="~{/_fragments/_header :: sony-header}"></th:block>
     <div class="app">
         <div class="wrapper">
             <div class="container_w1200 page_top_btm_pad order_sheet">
@@ -44,457 +30,427 @@
                     </li>
                 </ul>
 
-                <!-- 장바구니 내역 테이블 -->
-                <div class="col_table_wrap order_list order_sheet_list">
+                <!-- <div th:each="cartid : ${cartids}">
+                    <input type="hidden" th:value="${cartid}" />
+                </div> -->
+                <form id="ordersheet_form">
+                    <!-- 장바구니 내역 테이블 -->
+                    <div class="col_table_wrap order_list order_sheet_list">
 
-                    <div class="col_table">
+                        <div class="col_table">
 
-                        <!-- 테이블 헤더 -->
-                        <div class="col_table_head">
-                            <div class="col_table_row order_sheet_row">
-                                <div class="col_table_cell">제품</div>
-                                <div class="col_table_cell">가격</div>
-                                <div class="col_table_cell">수량</div>
-                                <div class="col_table_cell">합계</div>
-                            </div>
-                        </div>
-
-                        <!-- 테이블 바디 -->
-                        <div class="col_table_body order_sheet_body">
-
-                            <!-- 테이블 row -->
-                            <div class="col_table_row order_sheet_row">
-
-                                <!-- 제품 -->
-                                <div class="col_table_cell">
-                                    <!-- 이미지, 제품이름 -->
-                                    <div class="prd">
-                                        <!-- 썸네일 -->
-                                        <div class="prd_thumb">
-                                            <img class="prd_thumb_pic" th:src="@{/assets/img/cart/prd_img.png}" alt="링크버즈 오픈 에어 피팅 서포터" />
-                                        </div>
-                                        <!-- 제품이름 -->
-                                        <div class="prd_info">
-                                            <div class="prd_info_name">링크버즈 오픈 에어 피팅 서포터</div>
-                                        </div>
-                                    </div>
+                            <!-- 테이블 헤더 -->
+                            <div class="col_table_head">
+                                <div class="col_table_row order_sheet_row">
+                                    <div class="col_table_cell">제품</div>
+                                    <div class="col_table_cell">가격</div>
+                                    <div class="col_table_cell">수량</div>
+                                    <div class="col_table_cell">합계</div>
                                 </div>
-                               
-                                <!-- 가격 -->
-                                <div class="col_table_cell prd_price">
-                                    14,900
-                                    <span class="won">원</span>
-                                </div>
-                                
-                                <!-- 수량 -->
-                                <div class="col_table_cell prd_count"> 1 <span class="won">개</span> </div>
-
-                                <!-- 합계 -->
-                                <div class="col_table_cell prd_total_price">
-                                    14,900 
-                                    <span class="won">원</span>
-                                </div>
-
                             </div>
 
-                            <!-- 테이블 row -->
-                            <div class="col_table_row order_sheet_row">
+                            <!-- 테이블 바디 -->
+                            <div class="col_table_body order_sheet_body">
 
-                                <!-- 제품 -->
-                                <div class="col_table_cell">
-                                    <!-- 이미지, 제품이름 -->
-                                    <div class="prd">
-                                        <!-- 썸네일 -->
-                                        <div class="prd_thumb">
-                                            <img class="prd_thumb_pic" th:src="@{/assets/img/cart/prd_img.png}" alt="링크버즈 오픈 에어 피팅 서포터" />
-                                        </div>
-                                        <!-- 제품이름 -->
-                                        <div class="prd_info">
-                                            <div class="prd_info_name">링크버즈 오픈 에어 피팅 서포터</div>
+                                <!-- 테이블 row -->
+                                <div class="col_table_row order_sheet_row" th:each="paylist : ${paylists}">
+
+                                    <!-- 제품 -->
+                                    <div class="col_table_cell">
+                                        <!-- 이미지, 제품이름 -->
+                                        <div class="prd">
+                                            <!-- 썸네일 -->
+                                            <div class="prd_thumb">
+                                                <img class="prd_thumb_pic" th:src="${paylist.prodthumbnail}" th:alt="${paylist.prodtitle}" />
+                                            </div>
+                                            <!-- 제품이름 -->
+                                            <div class="prd_info">
+                                                <span class="prd_info_name" th:text="${paylist.prodtitle}"></span>
+                                                <span th:if="${paylist.prodcolor!='null'}"> &nbsp; ( <span th:text="${paylist.prodcolor}"></span> ) </span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                               
-                                <!-- 가격 -->
-                                <div class="col_table_cell prd_price">
-                                    14,900
-                                    <span class="won">원</span>
-                                </div>
                                 
-                                <!-- 수량 -->
-                                <div class="col_table_cell prd_count"> 1 <span class="won">개</span> </div>
+                                    <!-- 가격 -->
+                                    <div class="col_table_cell prd_price" th:text="${#numbers.formatInteger(paylist.prodprice, 1, 'COMMA')}">
+                                        <span class="won">원</span>
+                                    </div>
+                                    
+                                    <!-- 수량 -->
+                                    <div class="col_table_cell prd_count" th:text="${paylist.count}"> <span class="won">개</span> </div>
 
-                                <!-- 합계 -->
-                                <div class="col_table_cell prd_total_price">
-                                    14,900 
-                                    <span class="won">원</span>
+                                    <!-- 합계 -->
+                                    <div class="col_table_cell prd_total_price" th:text="${#numbers.formatInteger(paylist.sum, 1, 'COMMA')}">
+                                        <span class="won">원</span>
+                                    </div>
+
                                 </div>
 
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- 주문 정보 -->
-                <div class="clearFix">
+                    <!-- 주문 정보 -->
+                    <div class="clearFix">
 
-                    <!-- 주문 정보  "좌측" -->
-                    <div class="order_left">
-                        <div class="acc acc_ui_zone_order_sheet">
+                        <!-- 주문 정보  "좌측" -->
+                        <div class="order_left">
+                            <div class="acc acc_ui_zone_order_sheet">
 
-                            <!-- 주문자 정보 -->
-                            <div class="acc_item type2 arrow_collapsible_parent active">
-                                <div class="acc_head">
-                                    <a class="acc_btn" title="주문자 정보 열기"> 
-                                        <span class="acc_tit"> 주문자 정보 </span>
-                                        <span class="arrow_collapsible"> 상세 보기 </span>
-                                    </a>
-                                </div>
-                                <div class="acc_inner_order">
-                                    <div class="acc_box">
-                                        <div class="acc_dsc_top"> <p> <i class="necessary"></i> 표시는 필수입력 정보 </p> </div>
-                                        <!-- 이름 -->
-                                        <div class="acc_form">                                            
-                                            <div class="acc_cell vat">
-                                                <label for="user_name"> 이름 <i class="necessary"></i> </label>
-                                            </div>
-                                            <div class="acc_cell">
-                                                <div class="acc_inp">
-                                                    <input type="text" class="inp" id="user_name" placeholder="이름을 입력하세요." name="userName" value="">
-                                                    <span class="focus_bg"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- 이메일 -->
-                                        <div class="acc_form">                                            
-                                            <div class="acc_cell vat">
-                                                <label for="user_email"> 이메일 <i class="necessary"></i> </label>
-                                            </div>
-                                            <div class="acc_cell">
-                                                <div class="acc_inp">
-                                                    <input type="text" class="inp" id="user_email" placeholder="이메일 아이디 (예 : sony@sony.co.kr)" name="userEmail" value="">
-                                                    <span class="focus_bg"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- 휴대폰 번호 -->
-                                        <div class="acc_form">                                            
-                                            <div class="acc_cell vat">
-                                                <label for="user_number"> 휴대폰 번호 <i class="necessary"></i> </label>
-                                            </div>
-                                            <div class="acc_cell">
-                                                <div class="acc_inp">
-                                                    <input type="text" class="inp" id="user_number" name="userNumber" value="">
-                                                    <span class="focus_bg"></span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <!-- 주문자 정보 -->
+                                <div class="acc_item type2 arrow_collapsible_parent active">
+                                    <div class="acc_head">
+                                        <a class="acc_btn" title="주문자 정보 열기"> 
+                                            <span class="acc_tit"> 주문자 정보 </span>
+                                            <span class="arrow_collapsible"> 상세 보기 </span>
+                                        </a>
                                     </div>
-                                </div>
-                            </div>
-
-                            <!-- 배송지 정보 -->
-                            <div class="acc_item type2 arrow_collapsible_parent on active">
-                                <div class="acc_head">
-                                    <a class="acc_btn trigger" title="배송지 정보 열기">
-                                        <span class="acc_tit"> 배송지 정보 </span> 
-                                        <span class="arrow_collapsible">상세 보기</span>
-                                    </a>
-                                </div>
-                                <div class="acc_inner_order">
-                                    <div class="acc_box">
-                                        <div class="acc_dsc_top"> <p> <i class="necessary"></i> 표시는 필수입력 정보 </p> </div>
-                                        <!-- 배송지 선택 -->
-                                        <div class="acc_form">                                            
-                                            <div class="acc_cell vat">
-                                                <label for="delivery_choice" class="delivery_choice_label"> 배송지 선택 </label>
-                                            </div>
-                                            <div class="acc_cell txt_btn">
-                                                <div class="acc_inp txt_btn">
-                                                    <p class="delivery_txt">배송지를 선택하세요.</p>
-                                                    <div class="delivery_btn_box btn_box"> 
-                                                        <button class="button bg_white recent_delivery" type="button" > 최근 배송지 </button>
-                                                    </div>
+                                    <div class="acc_inner_order">
+                                        <div class="acc_box">
+                                            <div class="acc_dsc_top"> <p> <i class="necessary"></i> 표시는 필수입력 정보 </p> </div>
+                                            <!-- 이름 -->
+                                            <div class="acc_form">                                            
+                                                <div class="acc_cell vat">
+                                                    <label for="user_name"> 이름 <i class="necessary"></i> </label>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <!-- 수령인 이름 -->
-                                        <div class="acc_form">                                            
-                                            <div class="acc_cell vat">
-                                                <label for="user_name2"> 수령인 이름 <i class="necessary"></i> </label>
-                                            </div>
-                                            <div class="acc_cell">
-                                                <div class="acc_inp">
-                                                    <input type="text" class="inp" id="user_name2" placeholder="이름을 입력하세요." name="userName2" value="">
-                                                    <span class="focus_bg"></span>
-                                                    <div class="email_check"> 
-                                                        <input type="checkbox" class="inp_check" id="chkSame" />
-                                                        <label for="chkSame">주문자 정보와 동일</label> 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- 휴대폰 번호 -->
-                                        <div class="acc_form">                                            
-                                            <div class="acc_cell vat">
-                                                <label for="user_number2"> 휴대폰 번호 <i class="necessary"></i> </label>
-                                            </div>
-                                            <div class="acc_cell">
-                                                <div class="acc_inp">
-                                                    <input type="text" class="inp" id="user_number2" name="userNumber2" value="">
-                                                    <span class="focus_bg"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- 주소 -->
-                                        <div class="acc_form">                                            
-                                            <div class="acc_cell vat">  <!--pad top 10-->
-                                                <label for="user_address"> 주소 <i class="necessary"></i> </label>
-                                            </div>
-                                            <div class="acc_cell txt_btn">
-                                                <div class="acc_inp txt_btn div_inp_address">
-                                                    <input type="text" class="inp inp_address not_allowed" id="postcode" name="receiverZipCd" placeholder="주소를 입력하세요." readonly />
-                                                    <div class="delivery_btn_box btn_box">  
-                                                        <button class="button popup_comm_btn bg_white" type="button" id="find-postcode" data-popup-name="shipping_addr"> 우편번호 검색 </button>
-                                                    </div>
-                                                </div>
-
-                                                <div class="acc_inp margin_address">
-                                                    <input type="text" class="inp not_allowed" id="addr1" name="receiverAddress" readonly>
-                                                    <input type="text" id="addr2" class="inp" name="receiverDetailAddress" placeholder="상세 주소를 입력하세요.">
-                                                    <span class="focus_bg"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- 배송 요청 사항 -->
-                                        <div class="acc_form">                                            
-                                            <div class="acc_cell vat">
-                                                <label for="delivery_request"> 배송 요청 사항 </label>
-                                            </div>
-                                            <div class="acc_cell delivery_request">
-                                                <div class="acc_inp">
-                                                    <div class="select_ui_zone delivery_request">
-                                                        <div class="selected_btn_wrap delivery arrow_collapsible_parent">
-                                                            <a class="selected_btn delivery">택배 기사님께 요청하실 내용을 선택하세요.</a>  <!--클릭이벤트-->
-                                                            <span class="arrow_collapsible"> 상세 보기 </span>
-                                                        </div>
-                                                        
-                                                        <div class="select_inner delivery">  <!--display: none;-->
-                                                            <!-- <p class="prd_tag"></p> -->
-                                                            <ul class="select_opt delivery">
-                                                                <li> <a> <div class="item"> 택배 기사님께 요청하실 내용을 선택하세요. </div> </a> </li>
-                                                                <li> <a> <div class="item"> 배송 전 연락바랍니다. </div> </a> </li>
-                                                                <li> <a> <div class="item"> 부재 시 경비실에 맡겨 주세요. </div> </a> </li>
-                                                                <li> <a> <div class="item"> 부재 시 무인 택배함에 맡겨주세요. </div> </a> </li>
-                                                                <li> <a> <div class="item"> 부재 시 집 문앞에 놔주세요. </div> </a> </li>
-                                                                <li> <a> <div class="item"> 부재 시 휴대폰으로 연락 주세요. </div> </a> </li>
-                                                                <li> <a> <div class="item"> 파손의 위험이 있는 상품이니 조심히 다뤄주세요. </div> </a> </li>
-                                                                <li> <a> <div class="item"> 직접 입력 </div> </a> </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <input type="text" class="inp inp_memo" name="deliveryMemo" placeholder="배송 메모를 입력하세요." disabled>
-                                                    <span class="focus_bg"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- 배송일 선택 -->
-                                        <div class="acc_form">                                            
-                                            <div class="acc_cell vat">
-                                                <label for="delivery_choice"> 배송일 선택 </label>
-                                            </div>
-                                            <div class="acc_cell delivery_choice">
-                                                <div class="acc_inp">
-                                                    <div class="acc_radio">
-                                                        <div class="radio_box"> 
-                                                            <input type="radio" class="inp_radio" id="delivery_radio1" name="deliveryRadio" value="정상 배송" checked="">
-                                                            <label for="delivery_radio1" class="contentType">정상 배송</label>
-                                                        </div>
-                                                        <div class="radio_box">
-                                                            <input type="radio" class="inp_radio" id="delivery_radio2" name="deliveryRadio" value="출고일 지정">
-                                                            <label for="delivery_radio2" class="contentType">출고일 지정</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="forwarding_date">
-                                                    <input type="date" id="forwarding_date" />
-                                                </div>
-                                                <ul class="list_dot on">
-                                                    <li>정상 배송이 제일 빠른 배송입니다.</li>
-                                                    <li>출고일 지정 배송의 경우 주문 날짜의 3일 후부터 선택이 가능하며,<br>지정된 출고일에 맞춰서 제품이 발송되고, 출고일 기준 2~3일 이내 수령이 가능합니다.</li>
-                                                    <li>소니스토어의 모든 제품은 무료 배송 입니다.</li>
-                                                    <li>배송기간은 서울, 경기일 경우 2~3일(주문일 포함), 기타 지역은 3~5일 정도 걸립니다.<br>(정오(낮12시) 이전 결제완료 기준)</li>
-                                                    <li>단, 지역 및 교통 사정에 따라 배송이 지연되는 경우가 발생할 수 있습니다.</li>
-                                                    <li>일요일, 공휴일은 배송되지 않습니다. (예:토요일 주문 시 월요일에 접수되어 화요일 이후 배송)</li>
-                                                    <li>예약판매는 별도의 배송 일정을 따릅니다.</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- 할인 정보 -->
-                            <div class="acc_item type2 arrow_collapsible_parent active">
-                                <div class="acc_head">
-                                    <a class="acc_btn" title="할인 정보 열기"> 
-                                        <span class="acc_tit">할인 정보</span>
-                                        <span class="arrow_collapsible">상세 보기</span>
-                                    </a>
-                                </div>
-                                
-                                <div class="acc_inner_order">
-                                    <div class="acc_box">
-                                        <!-- 쿠폰 -->
-                                        <div class="acc_form">
-                                            <div class="acc_cell vat">
-                                                <label for="coupon">쿠폰</label>
-                                            </div>
-                                            <div class="acc_cell">
-                                                <div class="acc_group">     <!-- flex -->
-                                                    <div class="acc_inp div_inp">
-                                                        <input type="text" id="coupon" class="inp" disabled="" value="0"> 
-                                                        <span class="unit">원</span> 
-                                                    </div>
-                                                    <div class="acc_btn_box btn_box btn_coupon">
-                                                        <button class="button popup_comm_btn bg_white" data-popup-name="coupon_inquiry" type="button"> 쿠폰 조회 </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- 멤버십 마일리지 -->
-                                        <div class="acc_form">
-                                            <div class="acc_cell vat">
-                                                <label for="mileage">멤버십 마일리지</label>
-                                            </div>
-                                            <div class="acc_cell parent">
-                                                <div class="acc_group">     <!-- flex -->
-                                                    <div class="acc_inp div_inp">
-                                                        <input type="text" id="mileage" class="inp" placeholder="0" disabled="" value=""> 
-                                                        <span class="unit">점</span>
+                                                <div class="acc_cell">
+                                                    <div class="acc_inp">
+                                                        <input type="text" class="inp" id="user_name" placeholder="이름을 입력하세요." name="userName" th:value="${member.username}" required>
                                                         <span class="focus_bg"></span>
                                                     </div>
-                                                    <div class="acc_btn_box btn_box btn_mileage">
-                                                        <button class="button button_negative button-s bg_gray" type="button" disabled=""> 모두 사용 </button>
-                                                        <span class="my_point"> (<span class="blue">0 M &nbsp;</span>보유) </span>
+                                                </div>
+                                            </div>
+                                            <!-- 이메일 -->
+                                            <div class="acc_form">                                            
+                                                <div class="acc_cell vat">
+                                                    <label for="user_email"> 이메일 <i class="necessary"></i> </label>
+                                                </div>
+                                                <div class="acc_cell">
+                                                    <div class="acc_inp">
+                                                        <input type="text" class="inp" id="user_email" placeholder="이메일 아이디 (예 : sony@sony.co.kr)" name="userEmail" th:value="${member.email}" required>
+                                                        <span class="focus_bg"></span>
                                                     </div>
                                                 </div>
-                                                <p class="membership_info"> * 멤버십 마일리지는 최소 5,000점 부터 사용 가능합니다. </p>
+                                            </div>
+                                            <!-- 휴대폰 번호 -->
+                                            <div class="acc_form">                                            
+                                                <div class="acc_cell vat">
+                                                    <label for="user_number"> 휴대폰 번호 <i class="necessary"></i> </label>
+                                                </div>
+                                                <div class="acc_cell">
+                                                    <div class="acc_inp">
+                                                        <input type="text" class="inp" id="user_number" name="userNumber" th:value="${member.phone}" required>
+                                                        <span class="focus_bg"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 배송지 정보 -->
+                                <div class="acc_item type2 arrow_collapsible_parent on active">
+                                    <div class="acc_head">
+                                        <a class="acc_btn trigger" title="배송지 정보 열기">
+                                            <span class="acc_tit"> 배송지 정보 </span> 
+                                            <span class="arrow_collapsible">상세 보기</span>
+                                        </a>
+                                    </div>
+                                    <div class="acc_inner_order">
+                                        <div class="acc_box">
+                                            <div class="acc_dsc_top"> <p> <i class="necessary"></i> 표시는 필수입력 정보 </p> </div>
+                                            <!-- 배송지 선택 -->
+                                            <div class="acc_form">                                            
+                                                <div class="acc_cell vat">
+                                                    <label for="delivery_choice" class="delivery_choice_label"> 배송지 선택 </label>
+                                                </div>
+                                                <div class="acc_cell txt_btn">
+                                                    <div class="acc_inp txt_btn">
+                                                        <p class="delivery_txt">배송지를 선택하세요.</p>
+                                                        <div class="delivery_btn_box btn_box"> 
+                                                            <button class="button bg_white recent_delivery" type="button" > 최근 배송지 </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 수령인 이름 -->
+                                            <div class="acc_form">                                            
+                                                <div class="acc_cell vat">
+                                                    <label for="user_name2"> 수령인 이름 <i class="necessary"></i> </label>
+                                                </div>
+                                                <div class="acc_cell">
+                                                    <div class="acc_inp">
+                                                        <input type="text" class="inp" id="user_name2" placeholder="이름을 입력하세요." name="userName2" value="" required>
+                                                        <span class="focus_bg"></span>
+                                                        <div class="email_check"> 
+                                                            <input type="checkbox" class="inp_check" id="chkSame" />
+                                                            <label for="chkSame">주문자 정보와 동일</label> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 휴대폰 번호 -->
+                                            <div class="acc_form">                                            
+                                                <div class="acc_cell vat">
+                                                    <label for="user_number2"> 휴대폰 번호 <i class="necessary"></i> </label>
+                                                </div>
+                                                <div class="acc_cell">
+                                                    <div class="acc_inp">
+                                                        <input type="text" class="inp" id="user_number2" name="userNumber2" value="" required>
+                                                        <span class="focus_bg"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 주소 -->
+                                            <div class="acc_form">                                            
+                                                <div class="acc_cell vat">  <!--pad top 10-->
+                                                    <label for="user_address"> 주소 <i class="necessary"></i> </label>
+                                                </div>
+                                                <div class="acc_cell txt_btn">
+                                                    <div class="acc_inp txt_btn div_inp_address">
+                                                        <input type="text" class="inp inp_address not_allowed" id="postcode" name="receiverZipCd" placeholder="주소를 입력하세요." readonly required />
+                                                        <div class="delivery_btn_box btn_box">  
+                                                            <button class="button popup_comm_btn bg_white" type="button" id="find-postcode" data-popup-name="shipping_addr"> 우편번호 검색 </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="acc_inp margin_address">
+                                                        <input type="text" class="inp not_allowed" id="addr1" name="receiverAddress" readonly required />
+                                                        <input type="text" id="addr2" class="inp" name="receiverDetailAddress" placeholder="상세 주소를 입력하세요." required />
+                                                        <span class="focus_bg"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 배송 요청 사항 -->
+                                            <div class="acc_form">                                            
+                                                <div class="acc_cell vat">
+                                                    <label for="delivery_request"> 배송 요청 사항 </label>
+                                                </div>
+                                                <div class="acc_cell delivery_request">
+                                                    <div class="acc_inp">
+                                                        <div class="select_ui_zone delivery_request">
+                                                            <div class="selected_btn_wrap delivery arrow_collapsible_parent">
+                                                                <a class="selected_btn delivery" data-dlvnum="0">택배 기사님께 요청하실 내용을 선택하세요.</a>  <!--클릭이벤트-->
+                                                                <span class="arrow_collapsible"> 상세 보기 </span>
+                                                            </div>
+                                                            
+                                                            <div class="select_inner delivery">  <!--display: none;-->
+                                                                <!-- <p class="prd_tag"></p> -->
+                                                                <ul class="select_opt delivery">
+                                                                    <li> <a> <div class="item"> 택배 기사님께 요청하실 내용을 선택하세요. </div> </a> </li>
+                                                                    <li> <a> <div class="item"> 배송 전 연락바랍니다. </div> </a> </li>
+                                                                    <li> <a> <div class="item"> 부재 시 경비실에 맡겨 주세요. </div> </a> </li>
+                                                                    <li> <a> <div class="item"> 부재 시 무인 택배함에 맡겨주세요. </div> </a> </li>
+                                                                    <li> <a> <div class="item"> 부재 시 집 문앞에 놔주세요. </div> </a> </li>
+                                                                    <li> <a> <div class="item"> 부재 시 휴대폰으로 연락 주세요. </div> </a> </li>
+                                                                    <li> <a> <div class="item"> 파손의 위험이 있는 상품이니 조심히 다뤄주세요. </div> </a> </li>
+                                                                    <li> <a> <div class="item"> 직접 입력 </div> </a> </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <input type="text" class="inp inp_memo" name="deliveryMemo" placeholder="배송 메모를 입력하세요." disabled>
+                                                        <span class="focus_bg"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 배송일 선택 -->
+                                            <div class="acc_form">                                            
+                                                <div class="acc_cell vat">
+                                                    <label for="delivery_choice"> 배송일 선택 </label>
+                                                </div>
+                                                <div class="acc_cell delivery_choice">
+                                                    <div class="acc_inp">
+                                                        <div class="acc_radio">
+                                                            <div class="radio_box dlv_date"> 
+                                                                <input type="radio" class="inp_radio" id="delivery_radio1" name="deliveryRadio" value="정상 배송" checked="">
+                                                                <label for="delivery_radio1" class="contentType">정상 배송</label>
+                                                            </div>
+                                                            <div class="radio_box dlv_date">
+                                                                <input type="radio" class="inp_radio" id="delivery_radio2" name="deliveryRadio" value="출고일 지정">
+                                                                <label for="delivery_radio2" class="contentType">출고일 지정</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="forwarding_date">
+                                                        <input type="date" id="forwarding_date" />
+                                                    </div>
+                                                    <ul class="list_dot on">
+                                                        <li>정상 배송이 제일 빠른 배송입니다.</li>
+                                                        <li>출고일 지정 배송의 경우 주문 날짜의 3일 후부터 선택이 가능하며,<br>지정된 출고일에 맞춰서 제품이 발송되고, 출고일 기준 2~3일 이내 수령이 가능합니다.</li>
+                                                        <li>소니스토어의 모든 제품은 무료 배송 입니다.</li>
+                                                        <li>배송기간은 서울, 경기일 경우 2~3일(주문일 포함), 기타 지역은 3~5일 정도 걸립니다.<br>(정오(낮12시) 이전 결제완료 기준)</li>
+                                                        <li>단, 지역 및 교통 사정에 따라 배송이 지연되는 경우가 발생할 수 있습니다.</li>
+                                                        <li>일요일, 공휴일은 배송되지 않습니다. (예:토요일 주문 시 월요일에 접수되어 화요일 이후 배송)</li>
+                                                        <li>예약판매는 별도의 배송 일정을 따릅니다.</li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                            </div>
 
-                            <!-- 결제 방법 -->
-                            <div class="acc_item type2 arrow_collapsible_parent active">  
-                                <div class="acc_head">
-                                    <a class="acc_btn" title="결제 방법 열기"> 
-                                        <span class="acc_tit"> 결제 방법 </span>
-                                        <span class="arrow_collapsible">상세 보기</span>
-                                    </a>
-                                </div>
-                                <div class="acc_form acc_inner_order">                                            
-                                    <div class="acc_cell vat">
-                                        <label for="payment"> 결제 수단 선택 </label>
+                                <!-- 할인 정보 -->
+                                <div class="acc_item type2 arrow_collapsible_parent active">
+                                    <div class="acc_head">
+                                        <a class="acc_btn" title="할인 정보 열기"> 
+                                            <span class="acc_tit">할인 정보</span>
+                                            <span class="arrow_collapsible">상세 보기</span>
+                                        </a>
                                     </div>
-                                    <div class="acc_cell payment">
-                                        <div class="acc_inp">
-                                            <div class="acc_radio">
-                                                <div class="radio_box"> 
-                                                    <input type="radio" class="inp_radio" id="payment_radio1" name="paymentRadio" value="신용카드" checked />
-                                                    <label for="payment_radio1" class="contentType"> 신용카드 </label>
+                                    
+                                    <div class="acc_inner_order">
+                                        <div class="acc_box">
+                                            <!-- 쿠폰 -->
+                                            <div class="acc_form">
+                                                <div class="acc_cell vat">
+                                                    <label for="coupon">쿠폰</label>
                                                 </div>
-                                                <div class="radio_box">
-                                                    <input type="radio" class="inp_radio" id="payment_radio2" name="paymentRadio" value="네이버페이">
-                                                    <label for="payment_radio2" class="contentType"> 네이버페이 </label>
+                                                <div class="acc_cell">
+                                                    <div class="acc_group">     <!-- flex -->
+                                                        <div class="acc_inp div_inp">
+                                                            <input type="text" id="coupon" class="inp" disabled="" value="0"> 
+                                                            <span class="unit">원</span> 
+                                                        </div>
+                                                        <div class="acc_btn_box btn_box btn_coupon">
+                                                            <button class="button popup_comm_btn bg_white" data-popup-name="coupon_inquiry" type="button"> 쿠폰 조회 </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 멤버십 마일리지 -->
+                                            <div class="acc_form">
+                                                <div class="acc_cell vat">
+                                                    <label for="mileage">멤버십 마일리지</label>
+                                                </div>
+                                                <div class="acc_cell parent">
+                                                    <div class="acc_group">     <!-- flex -->
+                                                        <div class="acc_inp div_inp">
+                                                            <input type="text" id="mileage" class="inp" placeholder="0" disabled="" value=""> 
+                                                            <span class="unit">점</span>
+                                                            <span class="focus_bg"></span>
+                                                        </div>
+                                                        <div class="acc_btn_box btn_box btn_mileage">
+                                                            <button class="button button_negative button-s bg_gray" type="button" disabled=""> 모두 사용 </button>
+                                                            <span class="my_point"> (<span class="blue">0 M &nbsp;</span>보유) </span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="membership_info"> * 멤버십 마일리지는 최소 5,000점 부터 사용 가능합니다. </p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <ul class="list_dot">
-                                            <strong class="info_tit">신용카드 무이자 할부 유의사항</strong>
-                                            <li>장기 무이자 혜택은 신용카드 선택 시에만 적용됩니다. 네이버페이 선택 시, 무이자가 적용되지 않습니다.</li>
-                                            <li>무이자 할부 개월 수가 다른 제품을 한꺼번에 결제하면 할부 개월 수가 낮은 제품을 기준으로 할부가 됩니다.</li>
-                                            <li>무이자 할부 개월 수가 다른 제품을 따로 결제하면 해당 제품에 적용된 무이자 할부 혜택을 받으실 수 없습니다.</li>
-                                        </ul>
+                                    </div>
+                                    
+                                </div>
+
+                                <!-- 결제 방법 -->
+                                <div class="acc_item type2 arrow_collapsible_parent active">  
+                                    <div class="acc_head">
+                                        <a class="acc_btn" title="결제 방법 열기"> 
+                                            <span class="acc_tit"> 결제 방법 </span>
+                                            <span class="arrow_collapsible">상세 보기</span>
+                                        </a>
+                                    </div>
+                                    <div class="acc_form acc_inner_order">                                            
+                                        <div class="acc_cell vat">
+                                            <label for="payment"> 결제 수단 선택 </label>
+                                        </div>
+                                        <div class="acc_cell payment">
+                                            <div class="acc_inp">
+                                                <div class="acc_radio">
+                                                    <div class="radio_box"> 
+                                                        <input type="radio" class="inp_radio" id="payment_radio1" name="paymentRadio" value="신용카드" checked />
+                                                        <label for="payment_radio1" class="contentType"> 신용카드 </label>
+                                                    </div>
+                                                    <div class="radio_box">
+                                                        <input type="radio" class="inp_radio" id="payment_radio2" name="paymentRadio" value="네이버페이">
+                                                        <label for="payment_radio2" class="contentType"> 네이버페이 </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ul class="list_dot">
+                                                <strong class="info_tit">신용카드 무이자 할부 유의사항</strong>
+                                                <li>장기 무이자 혜택은 신용카드 선택 시에만 적용됩니다. 네이버페이 선택 시, 무이자가 적용되지 않습니다.</li>
+                                                <li>무이자 할부 개월 수가 다른 제품을 한꺼번에 결제하면 할부 개월 수가 낮은 제품을 기준으로 할부가 됩니다.</li>
+                                                <li>무이자 할부 개월 수가 다른 제품을 따로 결제하면 해당 제품에 적용된 무이자 할부 혜택을 받으실 수 없습니다.</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>  <!-- 주문 정보 좌측 -->
+                        </div>  <!-- 주문 정보 좌측 -->
 
-                    <!-- 주문 정보  "우측" -->
-                    <div class="order_right">
+                        <!-- 주문 정보  "우측" -->
+                        <div class="order_right">
 
-                        <div class="payment_list_wrapper">
+                            <div class="payment_list_wrapper">
 
-                            <div class="payment_list_container">
-                                <div class="payment_body">
-                                    <div class="total">
-                                        <div class="total_tit"> 결제 예정 금액 </div>
-                                        <div class="total_price font_32_700 text_blue_accent"> 533,900 <span>원</span> </div>
-                                    </div>
-        
-                                    <div class="payment_list_detail">
-        
-                                        <div class="payment_list_contents">
-                                            <div class="payment_div">
-                                                <div class="payment_tit"> 주문 금액 </div>
-                                                <div class="payment_price"> 533,900 <span>원</span> </div>
-                                            </div>
-                                            <div class="payment_div">
-                                                <div class="payment_tit"> 제품 금액 </div>
-                                                <div class="payment_price"> 533,900 <span>원</span> </div>
-                                            </div>
-                                            <div class="payment_div">
-                                                <div class="payment_tit"> 구매 수량 </div>
-                                                <div class="payment_price"> 2 <span>개</span> </div>
-                                            </div>
+                                <div class="payment_list_container">
+                                    <div class="payment_body">
+                                        <div class="total">
+                                            <div class="total_tit"> 결제 예정 금액 </div>
+                                            <div class="total_price font_32_700 text_blue_accent" th:text="${#numbers.formatInteger(payment.total,1,'COMMA')}"><span>원</span> </div>
                                         </div>
             
-                                        <div class="payment_list_contents sale">
-                                            <div class="payment_div">
-                                                <div class="payment_tit"> 할인 금액 </div>
-                                                <div class="payment_price sale"> <span>-</span> <span>0</span> <span>원</span> </div>
-                                                <!-- <span class="arrow_collapsible">선택됨/상세 닫기</span> -->
+                                        <div class="payment_list_detail">
+            
+                                            <div class="payment_list_contents">
+                                                <div class="payment_div">
+                                                    <div class="payment_tit"> 주문 금액 </div>
+                                                    <div class="payment_price" th:text="${#numbers.formatInteger(payment.total,1,'COMMA')}"> <span>원</span> </div>
+                                                </div>
+                                                <div class="payment_div">
+                                                    <div class="payment_tit"> 제품 금액 </div>
+                                                    <div class="payment_price" th:text="${#numbers.formatInteger(payment.total,1,'COMMA')}"> <span>원</span> </div>
+                                                </div>
+                                                <div class="payment_div">
+                                                    <div class="payment_tit"> 구매 수량 </div>
+                                                    <div class="payment_price" th:text="${payment.totalcount}">  <span>개</span> </div>
+                                                </div>
                                             </div>
-                                            <div class="payment_div">
-                                                <span class="payment_tit"> 프로모션 할인 </span>
-                                                <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                
+                                            <div class="payment_list_contents sale">
+                                                <div class="payment_div">
+                                                    <div class="payment_tit"> 할인 금액 </div>
+                                                    <div class="payment_price sale"> <span>-</span> <span>0</span> <span>원</span> </div>
+                                                    <!-- <span class="arrow_collapsible">선택됨/상세 닫기</span> -->
+                                                </div>
+                                                <div class="payment_div">
+                                                    <span class="payment_tit"> 프로모션 할인 </span>
+                                                    <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                                                </div>
+                                                <div class="payment_div">
+                                                    <span class="payment_tit"> 쿠폰 사용 </span>
+                                                    <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                                                </div>
+                                                <div class="payment_div">
+                                                    <span class="payment_tit"> 마일리지 사용 </span>
+                                                    <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
+                                                </div>
                                             </div>
-                                            <div class="payment_div">
-                                                <span class="payment_tit"> 쿠폰 사용 </span>
-                                                <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
-                                            </div>
-                                            <div class="payment_div">
-                                                <span class="payment_tit"> 마일리지 사용 </span>
-                                                <div class="payment_price"> <span>-</span> 0 <span>원</span> </div>
-                                            </div>
+                                        </div>                          
+                                    </div>
+                                    <div class="payment_footer">
+                                        <div class="essential_check"> 
+                                            <div> <input type="checkbox" class="inp_check" id="chkEssential" /> </div>
+                                            <label for="chkEssential"> [필수] 주문할 제품의 거래조건을 확인 하였으며, 구매에 동의하시겠습니까?<br/> (전자상거래법 제8조 제2항) </label> 
                                         </div>
-                                    </div>                          
-                                </div>
-                                <div class="payment_footer">
-                                    <div class="essential_check"> 
-                                        <div> <input type="checkbox" class="inp_check" id="chkEssential" /> </div>
-                                        <label for="chkEssential"> [필수] 주문할 제품의 거래조건을 확인 하였으며, 구매에 동의하시겠습니까?<br/> (전자상거래법 제8조 제2항) </label> 
+        
+                                        <div class="pay_btn_container">
+                                            <button type="submit" class="button bg_black"> 결제 </button>
+                                        </div>
                                     </div>
-    
-                                    <div class="pay_btn_container">
-                                        <button class="button bg_black"> 결제 </button>
-                                    </div>
+        
                                 </div>
-    
+        
+                                <!-- 구매 동의 -->
+                                <ul class="list_dot">
+                                    <li>결제가 팝업창에서 이루어집니다.</li>
+                                    <li>브라우저 설정에서 팝업창 차단을 해제해 주세요.</li>
+                                </ul>
                             </div>
-    
-                            <!-- 구매 동의 -->
-                            <ul class="list_dot">
-                                <li>결제가 팝업창에서 이루어집니다.</li>
-                                <li>브라우저 설정에서 팝업창 차단을 해제해 주세요.</li>
-                            </ul>
-                        </div>
 
-                </div> <!-- end <div class="clearFix"> -->
+                    </div> <!-- end <div class="clearFix"> -->
+                </form>
 
             </div> <!-- end <div class="container_w1200 order_page"> -->
         </div> 
@@ -508,24 +464,23 @@
             <div class="popup_inner">
                 <div class="pad font_24_700 popup_tit"> 최근 배송지 </div>
 
-                <div class="pad popup_txt"> 최근에 입력하신 배송지 5개까지 노출됩니다. </div>
+                <div th:if="${#lists.size(dlvs)>0}">
+                    <div class="pad popup_txt"> 최근에 입력하신 배송지 5개까지 노출됩니다. </div>
 
-                <div class="delivery_list">
-                    <div class="delivery_list_item">
-                        <input type="radio" checked/>
-                        <div>
-                            <p> <span class="name"> 이이름 </span> <span class="tel"> 010-0000-0000 </span> </p>
-                            <p> 서울특별시 서대문구 연희로 </p>
-                        </div>
+                    <div class="delivery_list">
+                        <div class="delivery_list_item" th:each="dlv : ${dlvs}">
+                            <input type="radio" name="addr_check"/>
+                            <div>
+                                <input type="hidden" class="dlv_postcode" th:value="${dlv.postcode}" />
+                                <p> <span class="name" th:text="${dlv.receivername}"> </span> <span class="tel" th:text="${dlv.receiverphone}"> </span> </p>
+                                <div> <span th:text="${dlv.addr1}" class="dlv_addr1"> </span> ( <span th:text="${dlv.addr2}" class="dlv_addr2"></span> ) </div>
+                            </div>
+                        </div>                    
                     </div>
-                    <div class="delivery_list_item">
-                        <input type="radio"/>
-                        <div>
-                            <p> <span class="name"> 이이름 </span> <span class="tel"> 010-0000-0000 </span> </p>
-                            <p> 서울특별시 서대문구 연희로 </p>
-                        </div>
-                    </div>
-                    
+                </div>
+
+                <div th:unless="${#lists.size(dlvs)>0}">
+                    <p> 배송 내역이 없습니다. </p>
                 </div>
 
                 <div class="btn_container">
@@ -542,21 +497,12 @@
 
     </div>
     
-  
-    <script th:src="@{/assets/js/UtilHelper.js}"></script>
+    <th:block th:replace="~{/_fragments/_footer :: sony-footer}"></th:block>
+    <th:block th:replace="~{/_fragments/_scripts :: sony-scripts}"></th:block>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
 
     <script>
         
-        /* = = = = = 우편번호 검색 = = = = = */
-
-        document.querySelector('#find-postcode').addEventListener('click', e => {
-            e.preventDefault();
-            utilHelper.findPostCode();
-        });
-
-
         /* = = = = = collapsible 주문자 정보, 배송지 정보, 할인 정보 = = = = = */
         
         document.querySelectorAll('.acc_head').forEach( (v,i) => {
@@ -572,21 +518,12 @@
         } );
 
 
+
         /* = = = = = 최근 배송지 모달창 = = = = = */
 
         document.querySelector('.recent_delivery').addEventListener('click', e => {
             document.querySelector('.modal').style.display = 'block';
             document.querySelector('body').style.overflow = 'hidden';
-        });
-
-        document.querySelector('.ico_x').addEventListener('click', e=>{
-            document.querySelector('.modal').style.display = 'none';
-            document.querySelector('body').style.overflow = 'visible';
-        });
-
-        document.querySelector('.button.ok').addEventListener('click', e=>{
-            document.querySelector('.modal').style.display = 'none';
-            document.querySelector('body').style.overflow = 'visible';
         });
 
         const inp_radio = document.querySelector('.modal').querySelectorAll('input[type="radio"]');
@@ -598,10 +535,56 @@
             });
         });
 
+        document.querySelector('.ico_x').addEventListener('click', e=>{
+            document.querySelector('.modal').style.display = 'none';
+            document.querySelector('body').style.overflow = 'visible';
+        });
+
+        // 확인 버튼 클릭 시 선택된 배송지 정보를 입력란에 적용
+        document.querySelector('.button.ok').addEventListener('click', e=>{
+            inp_radio.forEach( (v,i) => {
+                if (v.checked) {
+                    const item = v.closest('.delivery_list_item');
+                    document.querySelector('#user_name2').value = item.querySelector('.name').innerText;
+                    document.querySelector('#user_number2').value = item.querySelector('.tel').innerText;
+                    document.querySelector('#postcode').value = item.querySelector('.dlv_postcode').value;
+                    document.querySelector('#addr1').value = item.querySelector('.dlv_addr1').innerText;
+                    document.querySelector('#addr2').value = item.querySelector('.dlv_addr2').innerText;
+                }
+            } );
+            document.querySelector('.modal').style.display = 'none';
+            document.querySelector('body').style.overflow = 'visible';
+        });
         
+
+
+        /* = = = = = 주문자 정보와 동일 = = = = = */
+        document.querySelector('#chkSame').addEventListener( 'click', e => {
+            const current = e.currentTarget;
+            if(current.checked) {
+                document.querySelector('#user_name2').value = document.querySelector('#user_name').value;
+                document.querySelector('#user_number2').value = document.querySelector('#user_number').value;
+            } else {
+                document.querySelector('#user_name2').value = '';
+                document.querySelector('#user_number2').value = '';
+            }
+        } );
+
+
+
+        /* = = = = = 우편번호 검색 = = = = = */
+
+        document.querySelector('#find-postcode').addEventListener('click', e => {
+            e.preventDefault();
+            utilHelper.findPostCode();
+        });
+
+        
+
         /* = = = = = collapsible 배송 요청 사항 = = = = = */
 
         const content = document.querySelector('.select_inner.delivery');
+        const dlvRequest = document.querySelector('.selected_btn.delivery');
 
         document.querySelector('.selected_btn_wrap.delivery').addEventListener( 'click', e => {
             const current = e.currentTarget;
@@ -612,7 +595,8 @@
 
         document.querySelectorAll('.item').forEach( (v,i) => {
             v.addEventListener( 'click', e => {
-                document.querySelector('.selected_btn.delivery').innerHTML = e.currentTarget.innerText;
+                dlvRequest.innerText = v.innerText;
+                dlvRequest.setAttribute('data-dlvnum', i);
                 content.style.display = 'none';
             } );
         } );
@@ -630,6 +614,7 @@
         } );
         
 
+
         /* = = = = = 출고일 지정 = = = = = */
         
         var today = new Date();
@@ -641,6 +626,57 @@
                 document.querySelector('.forwarding_date').style.display = (i==1) ? 'block' : 'none';
             })
         } );
+
+
+
+        /* = = = = = 결제 = = = = = */
+
+        document.querySelector('#ordersheet_form').addEventListener('submit', async e => {
+            e.preventDefault();
+
+            // 필수 동의 체크
+            if (!document.querySelector('#chkEssential').checked) {
+                alert('구매에 동의해주셔야 구매가 가능합니다.');
+                return;
+            }
+
+            const formData = new FormData();
+
+            formData.append('ordername', document.querySelector('#user_name').value);
+            formData.append('orderemail', document.querySelector('#user_email').value);
+            formData.append('orderphone', document.querySelector('#user_number').value);
+            formData.append('receivername', document.querySelector('#user_name2').value);
+            formData.append('receiverphone', document.querySelector('#user_number2').value);
+            formData.append('postcode', document.querySelector('#postcode').value);
+            formData.append('addr1', document.querySelector('#addr1').value);
+            formData.append('addr2', document.querySelector('#addr2').value);
+            
+            const dlvNum = dlvRequest.getAttribute('data-dlvnum');
+            if (dlvNum == 0) {
+                formData.append('request', null);
+            } else if (dlvNum == 7) {
+                formData.append('request', document.querySelector('.inp.inp_memo').value);
+            } else {
+                formData.append('request', dlvRequest.innerText);
+            }       
+
+            const deliveryRadios = document.querySelectorAll('input[name="deliveryRadio"]');
+            let dlvDate = null;
+            if (deliveryRadios[1].checked) {
+                formData.append('dlvdate', document.querySelector('#forwarding_date').value);
+            }
+
+            const selectedPaymentRadio = document.querySelector('input[name="paymentRadio"]:checked');
+            if (selectedPaymentRadio) {
+                formData.append('payoption', selectedPaymentRadio.value);
+            }
+
+            let data = await axiosHelper.put( `[[@{/api/order/complete}]]/[[${payment.payid}]]`, formData );
+            console.log(data);
+           
+            // cartid 담아서 컨트롤러로 이동   카트 삭제 추가 
+        });
+        
 
     </script>
 </body>

@@ -35,6 +35,15 @@ public interface PaymentService {
 
 
     /**
+     * 미결제내역을 단일 조회 한다 ( 장바구니 => 주문결제 )
+     * @param input - 조회할 결제정보 일련번호를 가진 모델 객체
+     * @return 조회된 데이터
+     * @throws Exception - 데이터베이스 연결 문제, SQL 쿼리 오류, 입력 데이터 문제
+     */
+    public Payment getItemNoPaid(Payment input) throws Exception;
+
+
+    /**
      * 결제내역 중 최근 5개 까지의 배송지를 조회한다
      * @param input - 조회할 배송지에 대한 결제내역 모델 객체
      * @return 조회된 데이터

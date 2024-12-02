@@ -150,8 +150,8 @@
                             <!-- 테이블 푸터 -->
                             <div class="col_table_foot">
                                 <div class="prd_summary">
-                                    <span class="prd_summary_length">결제 예정 금액 (총 <span class="total_cnt"></span>개)</span>
-                                    <span class="prd_summary_price font_24_700"> <span class="sum"></span> <span class="won">원</span> </span>
+                                    <span class="prd_summary_length">결제 예정 금액 (총 <span class="total_cnt">0</span>개)</span>
+                                    <span class="prd_summary_price font_24_700"> <span class="sum">0</span> <span class="won">원</span> </span>
                                     <p class="prd_summary_warning">* 최종 결제금액은 고객님의 쿠폰 / 마일리지 적용에 따라 달라질 수 있습니다. </p>
                                 </div>
                             </div>
@@ -215,17 +215,36 @@
     <th:block th:replace="~{/_fragments/_footer :: sony-footer}"></th:block>
     <th:block th:replace="~{/_fragments/_scripts :: sony-scripts}"></th:block>
     <script>
-        // ( async () => {
-        //     let data = await axiosHelper.get("[[@{/api/cart}]]");
-            
-        //     console.log(data);
 
-        //     data?.item.forEach( (v,i) => {
-        //         document.querySelector('.cart_list_container').style.display = 'block';
-        //     } );
+        /* = = = = = 총 갯수 = = = = = */
+        const totalCntSelector = document.querySelector('.total_cnt');
 
-        //     // document.querySelector('.empty_cart_box').style.display = 'block';
-        // } )();
+        /* = = = = = 총 결제금액 = = = = = */
+        const sumSelector = document.querySelector('.sum');
+
+        /* = = = = = 총 갯수, 결제금액 변수 = = = = = */
+        let sum = 0;
+        let totalCnt = 0;
+
+
+
+        /* = = = = = collapsible 하단 = = = = = */
+
+        document.querySelectorAll('.acc_item').forEach( (v,i) => {
+            v.addEventListener( 'click', e => {
+                const current = e.currentTarget;
+                current.classList.toggle('active');
+
+                const content = current.querySelector('.acc_inner');
+                
+                if (current.classList.contains('active')) {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+        } );
+
 
 
         /* = = = = = checkbox 전체 체크 제어 = = = = = */
@@ -233,11 +252,8 @@
         const checkAll = document.querySelector('.check_all');
 
         checkAll.addEventListener('click', e => {
-            
-            document.querySelectorAll('.check_only').forEach(v => {
-                v.checked = checkAll.checked;
-            });
-
+            // 전체 체크시, 모든 체크박스 체크
+            document.querySelectorAll('.check_only').forEach(v => v.checked = checkAll.checked);
         });
         
         const checkboxes = document.querySelectorAll('.check_only');
@@ -246,21 +262,14 @@
             v.addEventListener( 'click', e => {
                 const totalCnt = checkboxes.length;
                 const checkedCnt = document.querySelectorAll('.check_only:checked').length;
-                
+                // 체크박스수와 체크된 체크박스수가 같으면 전체체크박스 체크
                 checkAll.checked = (totalCnt == checkedCnt) ? true : false;
             } );
         } ); 
 
 
+
         /* = = = = = 가격 toLocaleString, 갯수, 결제 예정 금액 세팅 = = = = = */
-
-        let sum = 0;
-        let totalCnt = 0;
-
-        // 제품 당 가격
-        // document.querySelectorAll('.price').forEach( (v,i) => {
-        //     v.innerText = parseInt(v.innerText).toLocaleString();
-        // } );    
 
         // 제품 당 합계
         document.querySelectorAll('.total_price').forEach( (v,i) => {
@@ -270,13 +279,14 @@
         } );
 
         // 결제 예정 금액 
-        document.querySelector('.sum').innerText = sum.toLocaleString();
+        sumSelector.innerText = sum.toLocaleString();
         
         // 총 갯수
         document.querySelectorAll('.count').forEach((v,i) => {
             totalCnt += parseInt(v.value);
         });
-        document.querySelector('.total_cnt').innerText = totalCnt;
+        totalCntSelector.innerText = totalCnt;
+
 
 
         /* = = = = = 수량&가격&갯수 변경 = = = = = */
@@ -284,6 +294,8 @@
         // plus
         document.querySelectorAll('.plus').forEach( (v,i) => {
             v.addEventListener( 'click', async e => {
+                e.preventDefault();
+
                 // 수량
                 const current = e.currentTarget;
                 const cntBox = current.closest('.count_ui_box');
@@ -295,10 +307,10 @@
                 const price = parseInt(parent.querySelector('.price').innerText.replaceAll(',', ''));
                 parent.querySelector('.total_price').innerText = (price * cnt.value).toLocaleString();
                 // 갯수
-                document.querySelector('.total_cnt').innerText = ++totalCnt;
+                totalCntSelector.innerText = ++totalCnt;
                 // 결제 예정 금액
                 sum += price;
-                document.querySelector('.sum').innerText = sum.toLocaleString();
+                sumSelector.innerText = sum.toLocaleString();
 
                 // AJAX
                 let data = null;
@@ -313,13 +325,16 @@
                 } catch(error) {
                     console.error(error);
                 }
-                
+
+                window.location.reload();
             } );
         } );
 
         // minus
         document.querySelectorAll('.minus').forEach( (v,i) => {
             v.addEventListener('click', async e => {
+                e.preventDefault();
+
                 // 수량
                 const current = e.currentTarget;
                 const cntBox = current.closest('.count_ui_box');
@@ -333,10 +348,10 @@
                     const price = parseInt(parent.querySelector('.price').innerText.replaceAll(',', ''));
                     parent.querySelector('.total_price').innerText = (price * cnt.value).toLocaleString();
                     // 갯수
-                    document.querySelector('.total_cnt').innerText = --totalCnt;
+                    totalCntSelector.innerText = --totalCnt;
                     // 결제 예정 금액
                     sum -= price;
-                    document.querySelector('.sum').innerText = sum.toLocaleString();
+                    sumSelector.innerText = sum.toLocaleString();
 
                     // AJAX
                     let data = null;
@@ -351,39 +366,67 @@
                     } catch(error) {
                         console.error(error);
                     }
+
+                    window.location.reload();
                 }
             });
         } );
 
 
-        /* = = = = = 총 갯수, 결제금액 (백엔드전달) = = = = = */
-        // <input type="hidden" name="filepath" th:value="${cart.filepath}" />
-        
-        // const prdSummary = document.querySelector('.prd_summary');
-        
-        // // 총 갯수
-        // const input = document.createElement('input');
-        // input.setAttribute('type', 'hidden');
-        // input.setAttribute('name', 'totalcount');
-        // input.setAttribute('value', document.querySelector('.total_cnt').innerText);
-        // prdSummary.appendChild(input);
 
-        // // 총 결제금액
-        // const input2 = document.createElement('input');
-        // input2.setAttribute('type', 'hidden');
-        // input2.setAttribute('name', 'total');
-        // input2.setAttribute('value', document.querySelector('.sum').innerText.replaceAll(',', ''));
-        // prdSummary.appendChild(input2);
+        /* = = = = = 체크박스 change이벤트에 따른 총 갯수, 결제예정금액 변경 = = = = = */
+
+        document.querySelectorAll('.check_only').forEach( (v,i) => {
+            v.addEventListener( 'change', e => {
+                const tableRow = v.closest('.col_table_row');
+                const cnt = parseInt(tableRow.querySelector('.count').value); 
+                const totalPrice = parseInt(tableRow.querySelector('.total_price').innerText.replaceAll(',', ''));
+
+                if( v.checked ) {
+                    totalCnt += cnt;
+                    sum += totalPrice;
+                } else {
+                    totalCnt -= cnt;
+                    sum -= totalPrice;
+                }
+               
+                totalCntSelector.innerText = totalCnt;
+                sumSelector.innerText = sum.toLocaleString();
+            });
+        } );
+
+        // 전체 체크박스 change 이벤트
+        document.querySelector('.check_all').addEventListener('change', e => {
+            const isChecked = e.currentTarget.checked;
+            totalCnt = 0;
+            sum = 0;
+            document.querySelectorAll('.check_only').forEach((v, i) => {
+                v.checked = isChecked;
+                const tableRow = v.closest('.col_table_row');
+                const cnt = parseInt(tableRow.querySelector('.count').value);
+                const totalPrice = parseInt(tableRow.querySelector('.total_price').innerText.replaceAll(',', ''));
+
+                if (isChecked) {
+                    totalCnt += cnt;
+                    sum += totalPrice;
+                }
+            });
+
+            totalCntSelector.innerText = totalCnt;
+            sumSelector.innerText = sum.toLocaleString();
+        });
+
 
 
         /* = = = = = 단일 상품 삭제 = = = = = */
 
         document.querySelectorAll('.btn_del_prd').forEach( (v,i) => {
             v.addEventListener( 'click', async e => {
+                e.preventDefault();
+
                 const cartid = v.getAttribute('data-cartid');
                 const data = await axiosHelper.delete( `[[@{/api/cart/deleteItem}]]/${cartid}` );
                 // console.log(data);
-                // window.location = '[[@{/cart}]]';
                 window.location.reload();
             } );
         } );
@@ -392,7 +435,8 @@
         /* = = = = = 다중 상품 삭제 = = = = = */
 
         document.querySelector('.button_del_checked_items').addEventListener( 'click', async e => {
-            
+            e.preventDefault();
+
             const checkedList = document.querySelectorAll('.check_only:checked');
             // console.log(checkedList);
             if( checkedList.length == 0) {
@@ -422,35 +466,16 @@
         } );
 
 
-        /* = = = = = collapsible 하단 = = = = = */
 
-        document.querySelectorAll('.acc_item').forEach( (v,i) => {
-            v.addEventListener( 'click', e => {
-                const current = e.currentTarget;
-                current.classList.toggle('active');
-
-                const content = current.querySelector('.acc_inner');
-                
-                if (current.classList.contains('active')) {
-                    content.style.display = 'block';
-                } else {
-                    content.style.display = 'none';
-                }
-            });
-        } );
-
-        
         /* = = = = = 구매하기 = = = = = */
+        
         document.querySelector('#cart-form').addEventListener( 'submit', async e => {
             e.preventDefault();
             
             const formData = new FormData();     
 
-            const totalcount = document.querySelector('.total_cnt').innerText;
-            const total = document.querySelector('.sum').innerText.replaceAll(',', '');
-
-            formData.append('totalcount', totalcount);
-            formData.append('total', total);
+            formData.append('totalcount', totalCntSelector.innerText);
+            formData.append('total', sumSelector.innerText.replaceAll(',', ''));
 
             document.querySelectorAll('.col_table_row.cart_row').forEach( (v,i) => {
                 const checkbox = v.querySelector('.check_only');
@@ -472,14 +497,25 @@
                     // }
                     formData.append('count', count);
                     formData.append('prodprice', prodprice);
+                    formData.append('cartid', checkbox.getAttribute('data-cartid'));
                 }
             } );
 
             let data = await axiosHelper.post( '[[@{/api/order}]]', formData );
-
-            // window.location = `[[@{/order/sheet?orderSheetNo=${data.item.payid}}]]`;
-            window.location = `[[@{/order/sheet}]]/${data.item.payid}`;
+            // let data = await axios.post(  '[[@{/api/order}]]', formData, {
+            //     params: {
+            //             cartidList: cartidList
+            //         },
+            //         paramsSerializer: params => {
+            //             return params.cartidList.map( v => `cartidList=${v}` ).join('&');
+            //         }
+            // } );
+            // console.log(data);
+            const cartids = data.cartids.map( v => `cartid=${v}`).join('&');
+            window.location = `/order/sheet?orderSheetNo=${data.item.payid}&${cartids}`;
+            // window.location = `[[@{/order/sheet}]]/${data.item.payid}`;
         } );
+
 
     </script>
     

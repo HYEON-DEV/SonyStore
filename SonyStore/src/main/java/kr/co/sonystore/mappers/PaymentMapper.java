@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -98,6 +99,26 @@ public interface PaymentMapper {
         @Result(property="paycheck", column="paycheck")
     })
     public Payment selectItem(Payment input);
+
+
+    /**
+     * 미결제내역을 단일 조회한다
+     * @param input - 조회할 결제내역 일련번호를 가진 모델 객체
+     * @return 조회된 데이터
+     */
+    @Select(
+        "SELECT \n" +
+            "payid, date, status, \n" +
+            "memberid, ordername, orderemail, orderphone, \n" +
+            "receivername, receiverphone, \n" + 
+            "postcode, addr1, addr2, \n" + 
+            "request, dlvdate, \n" + 
+            "totalcount , total,  payoption, insertdate, paycheck\n" +
+        "FROM payments \n" + 
+        "WHERE payid = #{payid} AND paycheck = 'N'"
+    ) @ResultMap("paymentMap")
+    public Payment selectItemNoPaid (Payment input);
+
 
     
     /**

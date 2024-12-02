@@ -49,7 +49,7 @@ public class PaylistServiceImpl implements PaylistService {
                 throw new Exception("조회된 데이터가 없습니다.");
             }
         } catch (Exception e) {
-            log.error("교수 조회에 실패했습니다.", e);
+            log.error("결제 상품 목록 조회에 실패했습니다.", e);
             throw e;
         }
 
@@ -64,7 +64,7 @@ public class PaylistServiceImpl implements PaylistService {
         try {
             output = paylistMapper.selectList(input);
         } catch (Exception e) {
-            log.error("교수 목록 조회에 실패했습니다.", e);
+            log.error("결제 상품 목록 조회에 실패했습니다.", e);
             throw e;
         }
 
