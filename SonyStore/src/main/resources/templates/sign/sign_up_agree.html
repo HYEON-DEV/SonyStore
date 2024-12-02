@@ -77,9 +77,10 @@
         let path = null;
 
         receivead.addEventListener('change', (e) => {
-            resultUrl = agreeConfirmHref;
+
 
             if(receivead.checked > 0) {
+                resultUrl = agreeConfirmHref;
                 path = receivead.dataset.receiveagree = "Y"; 
                 resultUrl = agreeConfirmHref + "?receiveemail=" + path + "&" + "receivesms=" + path;
             } else {
@@ -98,9 +99,8 @@
             document.querySelectorAll('.check_only').forEach(v => {
                 v.checked = checkAll.checked;
 
-                resultUrl = agreeConfirmHref;
-
                 if(receivead.checked > 0) {
+                    resultUrl = agreeConfirmHref;
                     path = receivead.dataset.receiveagree = "Y"; 
                     resultUrl = agreeConfirmHref + "?receiveemail=" + path + "&" + "receivesms=" + path;
                 } else {
