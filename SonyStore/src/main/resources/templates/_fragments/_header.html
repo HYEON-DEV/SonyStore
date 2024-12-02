@@ -183,7 +183,16 @@
             <a class="mypage_drop_down_login pointer"><span th:text="${session.memberInfo.username}" />님<br /> 안녕하세요!</a>
             <a class="mypage_drop_down_menu pointer">마이페이지</a>
             <a class="mypage_drop_down_menu pointer">주문/배송 조회</a>
-            <a id="btn_logout" class="mypage_drop_down_menu pointer" style="text-decoration: none;" th:href="@{/api/sign/logout}">로그아웃</a>
+            <a id="btn_logout" class="mypage_drop_down_menu pointer" style="text-decoration: none;">로그아웃</a>
+            <script>
+                document.querySelector('#btn_logout').addEventListener('click', async (e) => {
+                    e.preventDefault();
+        
+                    const data = await axiosHelper.get("[[@{/api/sign/logout}]]");
+
+                    window.location = "[[@{/index}]]"
+                });
+            </script>
         </div>
     </div>
     <!-- PC header end -->

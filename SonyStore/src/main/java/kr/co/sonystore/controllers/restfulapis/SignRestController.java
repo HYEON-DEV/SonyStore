@@ -45,7 +45,7 @@ public class SignRestController {
     private UtilHelper utilHelper;
 
     @Autowired
-    private MailHelper mailhelper;
+    private MailHelper mailHelper;
 
     @PostMapping("/api/sign/login")
     public Map<String, Object> login(
@@ -90,6 +90,7 @@ public class SignRestController {
     public Map<String, Object> logout(HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.invalidate();
+
         return restHelper.sendJson();
     }
 
@@ -113,6 +114,62 @@ public class SignRestController {
         data.put("member", output.getEmail());
         return restHelper.sendJson(data);
 
+    }
+
+    @PostMapping("/api/sign/find_pw")
+    public Map<String, Object> findPw(
+            @RequestParam("find_pw_email") String email,
+            @RequestParam("find_pw_phone") String phone) {
+        
+        String newPassword = utilHelper.randomPassword(8);
+        
+        Member input = new Member();
+        input.setEmail(email);
+        input.setPhone(phone);
+        input.setUserpw(newPassword);
+
+
+        try {
+            memberService.findUserPw(input);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+
+        // 메일 템플릿 파일 경로
+        ClassPathResource resource = new ClassPathResource("mail_templates/reset_pw.html");
+        String mailTemplatePath = null;
+
+        try {
+            mailTemplatePath = resource.getFile().getAbsolutePath();
+        } catch (IOException e) {
+            return restHelper.serverError("메일 템플릿을 찾을 수 없습니다.");
+        }
+
+        // 메일 템플릿 파일 가져오기
+        String template = null;
+
+        try {
+            template = fileHelper.readString(mailTemplatePath);
+        } catch (Exception e) {
+            return restHelper.serverError("메일 템플릿을 읽을 수 없습니다.");
+        }
+
+        // 메일 템플릿 안의 치환자 처리
+        template = template.replace("{{password}}", newPassword);
+
+        /** 3) 메일 발송 */
+        String subject = "비밀번호가 재설정 되었습니다.";
+
+        try {
+            mailHelper.sendMail(email, subject, template);
+        } catch (Exception e) {
+            return restHelper.serverError("메일 발송에 실패했습니다.");
+        }
+
+        
+        Map<String, Object> data = new LinkedHashMap<String, Object>();
+        data.put("member", input.getEmail());
+        return restHelper.sendJson(data);
     }
 
     @PostMapping("/api/sign/sign_up_input")
@@ -258,40 +315,6 @@ public class SignRestController {
 
         request.getSession().setAttribute("memberInfo", input);
 
-        // 메일 템플릿 파일 경로
-        ClassPathResource resource = new ClassPathResource("mail_templates/reset_pw.html");
-        String mailTemplatePath = null;
-
-        try {
-            mailTemplatePath = resource.getFile().getAbsolutePath();
-        } catch (IOException e) {
-            return restHelper.serverError("메일 템플릿을 찾을 수 없습니다.");
-        }
-
-        // 메일 템플릿 파일 가져오기
-        String template = null;
-
-        try {
-            template = fileHelper.readString(mailTemplatePath);
-        } catch (Exception e) {
-            return restHelper.serverError("메일 템플릿을 읽을 수 없습니다.");
-        }
-
-        String username = memberInfo.getUsername();
-        String email = memberInfo.getEmail();
-
-        // 메일 템플릿 안의 치환자 처리
-        template = template.replace("{{username}}", username);
-
-        /** 3) 메일 발송 */
-        String subject = username + "님의 비밀번호가 재설정 되었습니다.";
-
-        try {
-            mailhelper.sendMail(email, subject, template);
-        } catch (Exception e) {
-            return restHelper.serverError("메일 발송에 실패했습니다.");
-        }
-
         return restHelper.sendJson();
     }
 
@@ -339,6 +362,7 @@ public class SignRestController {
             HttpServletRequest request,
             @SessionAttribute("memberInfo") Member memberInfo,
             @RequestParam("userpw") String userpw) {
+
         // 세션으로부터 추출한 Member 객체에 입력받은 비밀번호를 넣어준다
         memberInfo.setUserpw(userpw);
 

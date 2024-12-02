@@ -113,11 +113,13 @@ public interface MemberMapper {
         @ResultMap("memberMap")
         Member findEmail(Member input);
 
+
+
         // 비밀번호 찾기 (이메일과 휴대폰 본인인증)
-        @Select("select email from members " +
-                        "where email = #{email} and phone = #{phone}")
+        @Update("update members set userpw = #{userpw} " +
+                "where email = #{email} and phone = #{phone}")
         @ResultMap("memberMap")
-        Member findUserPw(Member input);
+        int findUserPw(Member input);
 
         // 로그인
         @Select("select \n" +

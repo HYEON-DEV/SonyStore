@@ -106,7 +106,7 @@ public class MemberMapperTest {
         input.setEmail("chang@gmail.com");
         input.setPhone("01033064205");
 
-        Member output = memberMapper.findUserPw(input);
+        int output = memberMapper.findUserPw(input);
         log.debug("비밀번호: " + output);
     }
 

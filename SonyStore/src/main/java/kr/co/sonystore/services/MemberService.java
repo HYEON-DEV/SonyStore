@@ -20,7 +20,7 @@ public interface MemberService {
 
     public Member findEmail(Member input) throws Exception;
 
-    public Member findUserPw(Member input) throws Exception;
+    public int findUserPw(Member input) throws Exception;
 
     public Member login(Member input) throws Exception;
 
