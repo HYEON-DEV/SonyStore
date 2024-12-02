@@ -129,21 +129,22 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member findUserPw(Member input) throws Exception {
+    public int findUserPw(Member input) throws Exception {
 
-        Member output = null;
+        int rows = 0;
 
         try {
-            output = memberMapper.findUserPw(input);
+            rows = memberMapper.findUserPw(input);
 
-            if (output == null) {
+            if (rows == 0) {
                 throw new Exception("가입된 정보가 없습니다.");
             }
         } catch (Exception e) {
             log.error("비밀번호 찾기에 실패했습니다.", e);
             throw e;
         }
-        return output;
+
+        return rows;
     }
 
     @Override

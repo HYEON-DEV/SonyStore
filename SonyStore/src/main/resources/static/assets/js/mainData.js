@@ -182,7 +182,7 @@ SubSlide.forEach((slide) => {
         const prodName = document.createElement("span");
         
         prodItem.classList.add("product_item");
-        prodItem.setAttribute('href', `category.html?category=${v.category}`)
+        prodItem.setAttribute('href', `category.html?category=${v.category}`);
         prodItem.classList.add("pointer");
         prodName.innerHTML = v.prodName;
 

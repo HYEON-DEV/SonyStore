@@ -8,10 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 // import org.springframework.web.bind.annotation.PutMapping;
 // import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.co.sonystore.helpers.FileHelper;
 import kr.co.sonystore.helpers.WebHelper;
 import kr.co.sonystore.models.Cart;
+import kr.co.sonystore.models.Member;
 import kr.co.sonystore.services.CartService;
 
 
@@ -34,12 +36,13 @@ public class CartController {
      * @return View 페이지 경로
      */
     @GetMapping("/cart")
-    public String cart( Model model ) {
-        
-        // 파라미터 추가  세션의 memberid 받아오기 @RequestParam("memberid") int memberid
-        
+    public String cart( 
+        Model model,
+        @SessionAttribute("memberInfo") Member memberInfo
+    ) {
+               
         Cart input = new Cart();
-        input.setMemberid(2);
+        input.setMemberid( memberInfo.getMemberid() );
 
         List<Cart> output = null;
 

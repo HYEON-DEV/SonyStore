@@ -115,7 +115,7 @@
                                                 </div>
                                                 <div class="acc_cell">
                                                     <div class="acc_inp">
-                                                        <input type="text" class="inp" id="user_name" placeholder="이름을 입력하세요." name="userName" th:value="${member.username}" required>
+                                                        <input type="text" class="inp" id="user_name" placeholder="이름을 입력하세요." name="ordername" th:value="${member.username}" required>
                                                         <span class="focus_bg"></span>
                                                     </div>
                                                 </div>
@@ -127,7 +127,7 @@
                                                 </div>
                                                 <div class="acc_cell">
                                                     <div class="acc_inp">
-                                                        <input type="text" class="inp" id="user_email" placeholder="이메일 아이디 (예 : sony@sony.co.kr)" name="userEmail" th:value="${member.email}" required>
+                                                        <input type="text" class="inp" id="user_email" placeholder="이메일 아이디 (예 : sony@sony.co.kr)" name="orderemail" th:value="${member.email}" required>
                                                         <span class="focus_bg"></span>
                                                     </div>
                                                 </div>
@@ -139,7 +139,7 @@
                                                 </div>
                                                 <div class="acc_cell">
                                                     <div class="acc_inp">
-                                                        <input type="text" class="inp" id="user_number" name="userNumber" th:value="${member.phone}" required>
+                                                        <input type="text" class="inp" id="user_number" name="orderphone" th:value="${member.phone}" required>
                                                         <span class="focus_bg"></span>
                                                     </div>
                                                 </div>
@@ -180,7 +180,7 @@
                                                 </div>
                                                 <div class="acc_cell">
                                                     <div class="acc_inp">
-                                                        <input type="text" class="inp" id="user_name2" placeholder="이름을 입력하세요." name="userName2" value="" required>
+                                                        <input type="text" class="inp" id="user_name2" placeholder="이름을 입력하세요." name="receivername" value="" required>
                                                         <span class="focus_bg"></span>
                                                         <div class="email_check"> 
                                                             <input type="checkbox" class="inp_check" id="chkSame" />
@@ -196,7 +196,7 @@
                                                 </div>
                                                 <div class="acc_cell">
                                                     <div class="acc_inp">
-                                                        <input type="text" class="inp" id="user_number2" name="userNumber2" value="" required>
+                                                        <input type="text" class="inp" id="user_number2" name="receiverphone" value="" required>
                                                         <span class="focus_bg"></span>
                                                     </div>
                                                 </div>
@@ -208,15 +208,15 @@
                                                 </div>
                                                 <div class="acc_cell txt_btn">
                                                     <div class="acc_inp txt_btn div_inp_address">
-                                                        <input type="text" class="inp inp_address not_allowed" id="postcode" name="receiverZipCd" placeholder="주소를 입력하세요." readonly required />
+                                                        <input type="text" class="inp inp_address not_allowed" id="postcode" name="postcode" placeholder="주소를 입력하세요." readonly required />
                                                         <div class="delivery_btn_box btn_box">  
                                                             <button class="button popup_comm_btn bg_white" type="button" id="find-postcode" data-popup-name="shipping_addr"> 우편번호 검색 </button>
                                                         </div>
                                                     </div>
 
                                                     <div class="acc_inp margin_address">
-                                                        <input type="text" class="inp not_allowed" id="addr1" name="receiverAddress" readonly required />
-                                                        <input type="text" id="addr2" class="inp" name="receiverDetailAddress" placeholder="상세 주소를 입력하세요." required />
+                                                        <input type="text" class="inp not_allowed" id="addr1" name="addr1" readonly required />
+                                                        <input type="text" id="addr2" class="inp" name="addr2" placeholder="상세 주소를 입력하세요." required />
                                                         <span class="focus_bg"></span>
                                                     </div>
                                                 </div>
@@ -404,7 +404,7 @@
                                                 </div>
                                                 <div class="payment_div">
                                                     <div class="payment_tit"> 구매 수량 </div>
-                                                    <div class="payment_price" th:text="${payment.totalcount}">  <span>개</span> </div>
+                                                    <div class="payment_price" th:text="${payment.totalcount}"> </div>
                                                 </div>
                                             </div>
                 
@@ -640,16 +640,16 @@
                 return;
             }
 
-            const formData = new FormData();
+            const formData = new FormData(e.currentTarget);
 
-            formData.append('ordername', document.querySelector('#user_name').value);
-            formData.append('orderemail', document.querySelector('#user_email').value);
-            formData.append('orderphone', document.querySelector('#user_number').value);
-            formData.append('receivername', document.querySelector('#user_name2').value);
-            formData.append('receiverphone', document.querySelector('#user_number2').value);
-            formData.append('postcode', document.querySelector('#postcode').value);
-            formData.append('addr1', document.querySelector('#addr1').value);
-            formData.append('addr2', document.querySelector('#addr2').value);
+            // formData.append('ordername', document.querySelector('#user_name').value);
+            // formData.append('orderemail', document.querySelector('#user_email').value);
+            // formData.append('orderphone', document.querySelector('#user_number').value);
+            // formData.append('receivername', document.querySelector('#user_name2').value);
+            // formData.append('receiverphone', document.querySelector('#user_number2').value);
+            // formData.append('postcode', document.querySelector('#postcode').value);
+            // formData.append('addr1', document.querySelector('#addr1').value);
+            // formData.append('addr2', document.querySelector('#addr2').value);
             
             const dlvNum = dlvRequest.getAttribute('data-dlvnum');
             if (dlvNum == 0) {
@@ -661,9 +661,10 @@
             }       
 
             const deliveryRadios = document.querySelectorAll('input[name="deliveryRadio"]');
-            let dlvDate = null;
             if (deliveryRadios[1].checked) {
                 formData.append('dlvdate', document.querySelector('#forwarding_date').value);
+            } else {
+                formData.append('dlvdate', null);
             }
 
             const selectedPaymentRadio = document.querySelector('input[name="paymentRadio"]:checked');
@@ -671,10 +672,14 @@
                 formData.append('payoption', selectedPaymentRadio.value);
             }
 
-            let data = await axiosHelper.put( `[[@{/api/order/complete}]]/[[${payment.payid}]]`, formData );
-            console.log(data);
-           
-            // cartid 담아서 컨트롤러로 이동   카트 삭제 추가 
+            // 현재 페이지의 URL에서 쿼리 스트링 추출
+            const queryString = window.location.search;
+            // console.log(queryString);
+            
+            let data = await axiosHelper.put( `[[@{/api/order/complete}]]${queryString}`, formData );
+            // console.log(data);
+
+            window.location = `/order/complete${queryString}`;
         });
         
 

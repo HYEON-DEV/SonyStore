@@ -38,7 +38,6 @@ public class OrderController {
     @SuppressWarnings("null")
     @GetMapping("/order/sheet")
     public String order_sheet(
-        // @PathVariable("payid") int payid
         @RequestParam("orderSheetNo") int payid,
         @RequestParam("cartid") List<Integer> cartids,
         Model model
@@ -86,6 +85,7 @@ public class OrderController {
     @GetMapping("/order/complete")
     public String order_complete(
         @RequestParam("orderSheetNo") int payid,
+        @RequestParam("cartid") List<Integer> cartids,
         Model model
     ) {
         Payment input = new Payment();

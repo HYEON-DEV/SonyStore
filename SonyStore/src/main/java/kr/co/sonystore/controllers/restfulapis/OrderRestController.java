@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import kr.co.sonystore.helpers.RestHelper;
+import kr.co.sonystore.models.Member;
 import kr.co.sonystore.models.Paylist;
 import kr.co.sonystore.models.Payment;
 import kr.co.sonystore.services.CartService;
@@ -48,10 +52,11 @@ public class OrderRestController {
         @RequestParam("prodcolor") List<String> prodcolor,
         @RequestParam("count") List<Integer> count,
         @RequestParam("prodprice") List<Integer> prodprice,
-        @RequestParam("cartid") List<Integer> cartids
+        @RequestParam("cartid") List<Integer> cartids,
+        @SessionAttribute("memberInfo") Member memberInfo
     ) {
         Payment payment = new Payment();
-        payment.setMemberid(2);
+        payment.setMemberid( memberInfo.getMemberid() );
         payment.setTotalcount(totalcount);
         payment.setTotal(total);
 
@@ -93,7 +98,7 @@ public class OrderRestController {
     /**
      * 주문/결제 페이지 => 주문 완료 페이지 ( 결제 테이블의 주문 정보 수정 )
      */
-    @PutMapping("/api/order/complete/{payid}") 
+    @PutMapping("/api/order/complete") 
     public Map<String,Object> order_complete (
         @RequestParam("ordername") String ordername,
         @RequestParam("orderemail") String orderemail,
@@ -106,7 +111,9 @@ public class OrderRestController {
         @RequestParam("request") String request,
         @RequestParam("dlvdate") String dlvdate,
         @RequestParam("payoption") String payoption,
-        @PathVariable("payid") int payid
+        // @PathVariable("payid") int payid,
+        @RequestParam("SheetNo") int payid,
+        @RequestParam("cartid") List<Integer> cartids
     ) {
         Payment payment = new Payment();
         payment.setPayid(payid);
@@ -125,7 +132,7 @@ public class OrderRestController {
         Payment outputPayment = null;
         try {
             outputPayment = paymentService.editItem(payment);
-
+            cartService.deleteList(cartids);
         } catch (Exception e) {
             return restHelper.serverError(e);
         }

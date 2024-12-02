@@ -22,5 +22,6 @@ public class Payment {
     private int total;             // 총 결제금액            
     private String payoption;      // 결제방법           
     private String insertdate;     // 구매 희망 일시 
-    private String paycheck;       // 결제유무         
+    private String paycheck;       // 결제유무       
+    private String orderno;        // 주문번호  
 }

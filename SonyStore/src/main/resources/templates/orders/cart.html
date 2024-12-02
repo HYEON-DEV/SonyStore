@@ -38,7 +38,7 @@
                     <i class="empty_ico"></i>
                     <p class="emptyinfo_tit">장바구니에 담긴 상품이 없습니다.</p>
                     <div class="btn_wrap">
-                        <a class="continue btn_200_64 bg_white" href="#"> 쇼핑 계속 하기 </a>
+                        <a class="continue btn_200_64 bg_white" th:href="@{/}"> 쇼핑 계속 하기 </a>
                     </div>
                 </div>
 
@@ -158,7 +158,7 @@
 
                             <!-- 푸터 버튼 -->
                             <div class="btn_wrap btn_footer">
-                                <a class="continue btn_200_64  bg_white" href="/">쇼핑 계속 하기</a>
+                                <a class="continue btn_200_64  bg_white" th:href="@{/}">쇼핑 계속 하기</a>
                                 <button type="submit" class="btn_200_64 buy bg_black">구매하기</button>
                             </div>
 
@@ -502,15 +502,7 @@
             } );
 
             let data = await axiosHelper.post( '[[@{/api/order}]]', formData );
-            // let data = await axios.post(  '[[@{/api/order}]]', formData, {
-            //     params: {
-            //             cartidList: cartidList
-            //         },
-            //         paramsSerializer: params => {
-            //             return params.cartidList.map( v => `cartidList=${v}` ).join('&');
-            //         }
-            // } );
-            // console.log(data);
+            
             const cartids = data.cartids.map( v => `cartid=${v}`).join('&');
             window.location = `/order/sheet?orderSheetNo=${data.item.payid}&${cartids}`;
             // window.location = `[[@{/order/sheet}]]/${data.item.payid}`;

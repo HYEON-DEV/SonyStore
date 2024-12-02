@@ -68,7 +68,9 @@ public interface PaymentMapper {
      */
     @Select(
         "SELECT \n" +
-            "payid, date, status, \n" +
+            "payid, \n" + 
+            "CONCAT( DATE_FORMAT(date, '%Y%m%d%H%i%s'), LPAD(payid,6,'0') ) AS orderno, \n" + 
+            "date, status, \n" +
             "memberid, ordername, orderemail, orderphone, \n" +
             "receivername, receiverphone, \n" + 
             "postcode, addr1, addr2, \n" + 
@@ -96,7 +98,8 @@ public interface PaymentMapper {
         @Result(property="total", column="total"),
         @Result(property="payoption", column="payoption"),
         @Result(property="insertdate", column="insertdate"),
-        @Result(property="paycheck", column="paycheck")
+        @Result(property="paycheck", column="paycheck"),
+        @Result(property = "orderno", column = "orderno")
     })
     public Payment selectItem(Payment input);
 

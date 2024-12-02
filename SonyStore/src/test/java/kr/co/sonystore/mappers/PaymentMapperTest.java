@@ -36,7 +36,7 @@ public class PaymentMapperTest {
     @DisplayName("결제내역 단일 조회 테스트")
     void selectItem() {
         Payment input = new Payment();
-        input.setPayid(2);
+        input.setPayid(44);
         
         Payment output = paymentMapper.selectItem(input);
         log.debug("output: " + output);
