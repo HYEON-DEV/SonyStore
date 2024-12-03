@@ -1,10 +1,14 @@
 package kr.co.sonystore.controllers.restfulapis;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -40,7 +44,7 @@ public class OrderRestController {
 
 
     /**
-     * 장바구니 => 주문·결제 ( 결제 테이블에 장바구니 데이터 추가 )
+     * 장바구니 => 주문·결제 ( 결제 테이블에 데이터 추가 )
      */
     @PostMapping("/api/order")
     public Map<String,Object> buy (
@@ -96,7 +100,56 @@ public class OrderRestController {
 
 
     /**
-     * 주문/결제 페이지 => 주문 완료 페이지 ( 결제 테이블의 주문 정보 수정 )
+     * 상품 상세 => 주문·결제 ( 결제 테이블에 데이터 추가 )
+     */
+    @PostMapping("/api/order_by_detail")
+    public Map<String,Object> buyByDetail (
+        @RequestParam("prodid") int prodid,
+        @SessionAttribute("memberInfo") Member memberInfo,
+        @RequestParam("total") int total,
+        @RequestParam("thumbnail") String prodthumbnail,
+        @RequestParam("title") String prodtitle,
+        @RequestParam("color") String prodcolor,
+        @RequestParam("count") int count,
+        @RequestParam("price") int prodprice
+    ) {
+        Payment payment = new Payment();
+        payment.setMemberid( memberInfo.getMemberid() );
+        payment.setTotalcount(count);
+        payment.setTotal(total);
+
+        Payment outputPayment = null;
+        try {
+            outputPayment = paymentService.addItem(payment);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+
+        Map<String,Object> data = new LinkedHashMap<String,Object>();
+        data.put("item", outputPayment);
+
+        Paylist paylist = new Paylist();
+        paylist.setPayid(payment.getPayid());
+        paylist.setProdid(prodid);
+        paylist.setProdthumbnail(prodthumbnail);
+        paylist.setProdtitle(prodtitle);
+        paylist.setProdcolor(prodcolor);
+        paylist.setCount(count);
+        paylist.setProdprice(prodprice);
+
+        Paylist outputPaylist = null;
+        try {
+            outputPaylist = paylistService.addItem(paylist);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+
+        return restHelper.sendJson(data);
+    }
+
+
+    /**
+     * 주문/결제 페이지 => 주문 완료 페이지 ( 결제 테이블 데이터 수정 )
      */
     @PutMapping("/api/order/complete") 
     public Map<String,Object> order_complete (
@@ -111,9 +164,9 @@ public class OrderRestController {
         @RequestParam("request") String request,
         @RequestParam("dlvdate") String dlvdate,
         @RequestParam("payoption") String payoption,
-        // @PathVariable("payid") int payid,
-        @RequestParam("SheetNo") int payid,
-        @RequestParam("cartid") List<Integer> cartids
+        @RequestParam("orderSheetNo") int payid,
+        @RequestParam(value="cartid", required = false) List<Integer> cartids
+        // HttpServletRequest httpRequest
     ) {
         Payment payment = new Payment();
         payment.setPayid(payid);
@@ -130,9 +183,12 @@ public class OrderRestController {
         payment.setPayoption(payoption);
 
         Payment outputPayment = null;
+        // String referer = httpRequest.getHeader("referer");
         try {
             outputPayment = paymentService.editItem(payment);
-            cartService.deleteList(cartids);
+            if( cartids != null ) {
+                cartService.deleteList(cartids);
+            }
         } catch (Exception e) {
             return restHelper.serverError(e);
         }
@@ -140,6 +196,37 @@ public class OrderRestController {
         Map<String,Object> data = new LinkedHashMap<String,Object>();
         data.put("item", outputPayment);
         
+        return restHelper.sendJson(data);
+    }
+
+
+    /**
+     * 지정한 기간내의 주문 내역 조회
+     */
+    @GetMapping("/api/order_list_by_date")
+    public Map<String,Object> order_list (
+        @SessionAttribute("memberInfo") Member memberInfo
+    ) {
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH) + 1;
+        int date = cal.get(Calendar.DATE);
+
+        Payment input = new Payment();
+        input.setMemberid(memberInfo.getMemberid());
+        input.setFromdate(String.format("%04d-%02d-%02d 00:00:00", year-1, month, date));
+        input.setTodate(String.format("%04d-%02d-%02d 23:59:59", year, month, date));
+
+        List<Payment> output = null;
+        try {
+            output = paymentService.getPayListByDate(input);
+        } catch (Exception e) {
+            return restHelper.serverError(e);
+        }
+
+        Map<String,Object> data = new LinkedHashMap<String,Object>();
+        data.put("payment", output);
+
         return restHelper.sendJson(data);
     }
 }

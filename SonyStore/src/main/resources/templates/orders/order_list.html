@@ -1,26 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title> 마이페이지 : 주문/배송 조회 </title>
-
-    <link rel="stylesheet" th:href="@{/assets/css/reset.css}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="icon" th:href="@{/assets/img/favicon_144x144.png}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css">
-    <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
-
-    <link rel="stylesheet" th:href="@{/assets/css/style_3.css}"/>
-
+    <th:block th:replace="~{/_fragments/_head :: sony-head('마이페이지 : 주문/배송 조회')}"></th:block>
+    <link rel="stylesheet" th:href="@{/assets/css/style_3.css}" />
 </head>
 
 <body>
+    <th:block th:replace="~{/_fragments/_header :: sony-header}"></th:block>
     <div class="app">
         <div class="wrapper">
             <div class="container_w1200 page_top_btm_pad order_list">
@@ -35,12 +21,12 @@
                             <li>
                                 <div class="icon_container"> <i class="ico_order_step"></i> </div>
                                 <span class="order_status"> 입금대기 </span>
-                                <a class="order_step_cnt"> <span class="order_step_cnt_num">1</span>건 </a>
+                                <a class="order_step_cnt"> <span class="order_step_cnt_num">0</span>건 </a>
                             </li>
                             <li>
                                 <div class="icon_container"> <i class="ico_order_step"></i> </div>
                                 <span class="order_status"> 결제완료 </span>
-                                <a class="order_step_cnt"> <span class="order_step_cnt_num">0</span>건 </a>
+                                <a class="order_step_cnt"> <span class="order_step_cnt_num" th:text="${payComplete}"></span>건 </a>
                             </li>
                             <li>
                                 <div class="icon_container"> <i class="ico_order_step"></i> </div>
@@ -93,7 +79,7 @@
                             </div>
                         </div>
                         <div class="claim">
-                            <div class="divide_parent"> <div> 주문 취소 <span class="claim_cnt"> <span class="claim_num">2</span>건 </span> </div> </div>
+                            <div class="divide_parent"> <div> 주문 취소 <span class="claim_cnt"> <span class="claim_num">0</span>건 </span> </div> </div>
                             <div class="divide_parent"> <div class="divide"> 교환 반품 <span class="claim_cnt"> <span class="claim_num">0</span>건 </span> </div> </div>
                         </div>
                     </div>
@@ -116,35 +102,6 @@
                             <!-- 테이블 바디 -->
                             <div class="col_table_body order_sheet_body">
     
-                                <!-- 테이블 row -->
-                                <div class="col_table_row order_list_row">
-                                    <!-- 주문날짜/번호 -->
-                                    <div class="col_table_cell order_date_num">
-                                        <span> 2024-11-08 15:12:58 </span>
-                                        <a class="order_num"> 202411081512586580 </a>
-                                    </div>
-                                    <!-- 제품 -->
-                                    <div class="col_table_cell">
-                                        <!-- 이미지, 제품이름 -->
-                                        <div class="prd">
-                                            <!-- 썸네일 -->
-                                            <div class="prd_thumb">
-                                                <img class="prd_thumb_pic" th:src="@{/assets/img/cart/prd_img.png}" alt="링크버즈 오픈 에어 피팅 서포터" />
-                                            </div>
-                                            <!-- 제품이름 -->
-                                            <div class="prd_info">
-                                                <div class="prd_info_name">링크버즈 오픈 에어 피팅 서포터</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- 수량 -->
-                                    <div class="col_table_cell prd_count"> 1 <span class="won">개</span> </div>
-                                    <!-- 처리상태 -->
-                                    <div class="col_table_cell prd_total_price text_blue_accent">
-                                        취소완료
-                                    </div>
-                                </div>
-
                                 <!-- 테이블 row -->
                                 <div class="col_table_row order_list_row">
                                     <!-- 주문날짜/번호 -->
@@ -203,6 +160,8 @@
         </div>
     </div>
    
+    <th:block th:replace="~{/_fragments/_footer :: sony-footer}"></th:block>
+    <th:block th:replace="~{/_fragments/_scripts :: sony-scripts}"></th:block>
 
     <script>
 
@@ -262,6 +221,42 @@
             claimCnt.style.textDecoration = 'underline';
             claimCnt.style.color = 'var(--color-blue)';
         }
+
+
+        /* = = = = = 주문 내역 테이블 = = = = = */
+        ( async () => {
+            let data = await axiosHelper.get('[[@{/api/order_list_by_date}]]');
+            // console.log(data);
+
+            data?.item.forEach( (v,i) => {
+                const tableRow = document.createElement('div');
+                tableRow.classList.add('col_table_row', 'order_list_row');
+                
+                const orderDateNo = document.createElement('div');
+                orderDateNo.classList.add('col_table_cell', 'order_date_num');
+                
+                const orderDate = document.createElement('span');
+                orderDate.innerText = v.date;
+                
+                const orderNum = document.createElement('a');
+                orderNum.classList.add('order_num');
+                orderNum.innerText = v.orderNum;
+                
+                const colTableCell = document.createElement('div');
+                colTableCell.classList.add('col_table_cell');
+                const prd = document.createElement('div');
+                prd.classList.add('prd');
+
+                const prdThumb = document.createElement('div'); 
+                prdThumb.classList.add('prd_thumb');
+
+                const prdThumbPic = document.createElement('img');
+                prdThumbPic.classList.add('prd_thumb_pic');
+                // prdThumbPic.src = 
+                
+            } );
+            
+        } )();
 
     </script>
 </body>

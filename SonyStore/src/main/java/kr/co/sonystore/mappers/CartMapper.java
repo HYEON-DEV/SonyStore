@@ -124,6 +124,17 @@ public interface CartMapper {
 
 
     /**
+     * 장바구니에 담긴 상품의 총 개수를 조회한다
+     * @param input - 조회할 장바구니 정보에 대한 모델 객체
+     * @return 조회된 데이터 수
+     */
+    @Select (
+        "SELECT COUNT(*) FROM carts WHERE memberid = #{memberid}"
+    )
+    public int selectCountAll(Cart input);
+
+
+    /**
      * 장바구니에서 단일 상품을 삭제한다
      * @param input - 삭제할 장바구니 정보에 대한 모델 객체
      * @return 삭제된 데이터 수

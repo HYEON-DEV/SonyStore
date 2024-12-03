@@ -21,7 +21,7 @@
 
                 <div class="order_num_container">
                     <span class="order_num_txt"> 주문번호 &nbsp; : </span> 
-                    <span class="order_num text_blue_accent" th:text="${payment.payid}"> </span>
+                    <span class="order_num text_blue_accent" th:text="${payment.orderno}"> </span>
                 </div>
 
                 <div class="explain"> * 주문하신 상품에 대한 배송 상태 등의 조회는 마이페이지에서 확인하실 수 있습니다. </div>
@@ -34,7 +34,7 @@
                         <a class="continue btn_200_64 bg_white" > 설문조사 참여하기 </a>
                     </div>
                     <div class="btn_wrap">
-                        <a class="continue btn_200_64 bg_black" > 주문/배송 조회 </a>
+                        <a class="continue btn_200_64 bg_black" th:href="@{/my-page/order-list}" > 주문/배송 조회 </a>
                     </div>
                 </div>
                 

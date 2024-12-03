@@ -86,5 +86,20 @@ public class PaylistServiceImpl implements PaylistService {
 
         return rows;
     }
+
+
+    @Override
+    public List<Paylist> getListByDate(Paylist input) throws Exception {
+        List<Paylist> output = null;
+
+        try {
+            output = paylistMapper.selectListByDate(input);
+        } catch(Exception e) {
+            log.error("지정 기간 내의 주문 상품 목록 조회에 실패했습니다.", e);
+            throw e;
+        }
+        
+        return output;
+    }
     
 }

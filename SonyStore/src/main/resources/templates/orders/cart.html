@@ -34,7 +34,7 @@
                 <!-- 장바구니 데이터 없을 때 -->
                 <!-- 장바구니에 담긴 상품이 없습니다 -->
                                 
-                <div class="empty_cart_box" th:if="${carts==null or carts.size()==0}">
+                <div class="empty_cart_box" th:if="${session.memberInfo == null or carts==null or carts.size()==0}">
                     <i class="empty_ico"></i>
                     <p class="emptyinfo_tit">장바구니에 담긴 상품이 없습니다.</p>
                     <div class="btn_wrap">
@@ -507,7 +507,6 @@
             window.location = `/order/sheet?orderSheetNo=${data.item.payid}&${cartids}`;
             // window.location = `[[@{/order/sheet}]]/${data.item.payid}`;
         } );
-
 
     </script>
     

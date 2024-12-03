@@ -12,5 +12,7 @@ public class Paylist {
     private String prodcolor;       // 구매한 상품의 색상       NULL YES         
     private int count;              // 상품의 수량                        
     private int prodprice;          // 상품의 가격            
-    private int sum;                // 상품의 가격 * 수량          
+    private int sum;                // 상품의 가격 * 수량        
+    private String fromdate;       // 검색 시작일
+    private String todate;         // 검색 종료일  
 }

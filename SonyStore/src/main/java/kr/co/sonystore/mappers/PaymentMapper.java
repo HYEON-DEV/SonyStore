@@ -119,7 +119,8 @@ public interface PaymentMapper {
             "totalcount , total,  payoption, insertdate, paycheck\n" +
         "FROM payments \n" + 
         "WHERE payid = #{payid} AND paycheck = 'N'"
-    ) @ResultMap("paymentMap")
+    )
+    @ResultMap("paymentMap")
     public Payment selectItemNoPaid (Payment input);
 
 
@@ -137,6 +138,7 @@ public interface PaymentMapper {
         "ORDER BY date DESC \n" +
         "LIMIT 5"
     )
+    @ResultMap("paymentMap")
     public List<Payment> selectDlvList(Payment input);
 
 
@@ -151,6 +153,7 @@ public interface PaymentMapper {
         "WHERE paycheck = 'N' AND \n" +
             "insertdate < DATE_ADD( NOW(), interval -1 minute )"
     )
+    @ResultMap("paymentMap")
     public List<Payment> selectNoPayments();
 
 
@@ -165,4 +168,36 @@ public interface PaymentMapper {
             "insertdate < DATE_ADD(NOW(), interval -1 minute)"
     )
     public int deleteNoPayments();
+
+
+    /**
+     * 결제완료된 데이터를 조회한다
+     * @param input - 조회할 결제내역 정보에 대한 모델 객체
+     * @return 조회된 데이터 수
+     */
+    @Select(
+        "SELECT COUNT(*) FROM payments \n" + 
+        "WHERE memberid = #{memberid} AND status='결제완료'"
+    )
+    @ResultMap("paymentMap")
+    public int selectCountPayComplete(Payment input);
+
+
+    /**
+     * 날짜 범위를 지정하여 결제내역을 조회한다
+     * @param input - 조회할 결제내역 정보에 대한 모델 객체
+     * @return 조회된 데이터 목록
+     */
+    @Select (
+        "SELECT \n" +
+            "payid, date, status, \n" +
+            "CONCAT( DATE_FORMAT(date, '%Y%m%d%H%i%s'), LPAD(payid,6,'0') ) AS orderno \n" + 
+        "FROM payments \n " +
+        "WHERE memberid = #{memberid} AND \n" +
+            "date BETWEEN #{fromdate} AND #{todate} \n" +
+        "ORDER BY date DESC"
+    )
+    @ResultMap("paymentMap")
+    public List<Payment> selectListByDate (Payment input);
+
 }

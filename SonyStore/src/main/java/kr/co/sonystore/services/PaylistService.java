@@ -44,4 +44,13 @@ public interface PaylistService {
      */
     public List<Paylist> getList(Paylist input) throws Exception;
 
+
+    /**
+     * 지정 기간내의 결제 상품 목록을 조회한다
+     * @param input - 조회할 결제 상품 정보에 대한 모델 객체
+     * @return 조회된 데이터
+     * @throws Exception
+     */
+    public List<Paylist> getListByDate(Paylist input) throws Exception;
+
 }

@@ -20,10 +20,9 @@ public class CartServiceImpl implements CartService {
 
     
     @Override
-    public int addOrEditItem(Cart input) throws Exception {
+    public Cart addOrEditItem(Cart input) throws Exception {
     
         int rows = 0;
-        // Cart output = null; 
 
         try {
             rows = cartMapper.selectCount(input);
@@ -45,7 +44,7 @@ public class CartServiceImpl implements CartService {
             throw e;
         }
 
-        return rows;
+        return cartMapper.selectItem(input);
     }
 
 
@@ -137,6 +136,23 @@ public class CartServiceImpl implements CartService {
             throw e;
         }
 
+        return rows;
+    }
+
+
+    /**
+     * 장바구니에 담긴 수량을 조회한다
+     */
+    @Override
+    public int getCount(Cart input) throws Exception {
+        int rows = 0;
+        try {
+            rows = cartMapper.selectCountAll(input);
+        } catch(Exception e) {
+            log.error("장바구니 수량 조회에 실패했습니다.", e);
+            throw e;
+        }
+        
         return rows;
     }
     

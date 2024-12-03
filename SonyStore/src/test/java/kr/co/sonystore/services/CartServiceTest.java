@@ -28,7 +28,7 @@ public class CartServiceTest {
         input.setProdid(5);
         // input.setColor("블랙");
 
-        int output = 0;
+        Cart output = null;
 
         try {
             output = cartService.addOrEditItem(input);
@@ -128,6 +128,24 @@ public class CartServiceTest {
 
         try {
             output = cartService.deleteList(input);
+        } catch (Exception e) {
+            log.error("Mapper 구현 에러", e);
+        }
+
+        log.debug("output: " + output);
+    }
+
+
+    @Test
+    @DisplayName("장바구니에 담긴 수량 조회 테스트")
+    void getCount() {
+        Cart input = new Cart();
+        input.setMemberid(19);
+
+        int output = 0;
+
+        try {
+            output = cartService.getCount(input);
         } catch (Exception e) {
             log.error("Mapper 구현 에러", e);
         }

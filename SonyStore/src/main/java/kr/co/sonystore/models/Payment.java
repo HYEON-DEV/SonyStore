@@ -24,4 +24,6 @@ public class Payment {
     private String insertdate;     // 구매 희망 일시 
     private String paycheck;       // 결제유무       
     private String orderno;        // 주문번호  
+    private String fromdate;       // 검색 시작일
+    private String todate;         // 검색 종료일
 }

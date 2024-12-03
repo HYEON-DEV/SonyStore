@@ -125,5 +125,28 @@ public class PaymentServiceTest {
             }
         }
     }
+
+
+    @Test
+    @DisplayName("지정된 기간내의 주문내역 조회")
+    void getPayListByDate () {
+        Payment input = new Payment();
+        input.setMemberid(19);
+        input.setFromdate("2023-12-03");
+        input.setTodate("2024-12-03");
+
+        List<Payment> output = null;
+        try {
+            output = paymentService.getPayListByDate(input);
+        } catch (Exception e) {
+            log.error("Mapper 구현 에러", e);
+        }
+
+        if(output != null) {
+            for(Payment item : output) {
+                log.debug("output: " + item);
+            }
+        }
+    }
     
 }

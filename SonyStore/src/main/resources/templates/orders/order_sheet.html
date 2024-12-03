@@ -115,7 +115,7 @@
                                                 </div>
                                                 <div class="acc_cell">
                                                     <div class="acc_inp">
-                                                        <input type="text" class="inp" id="user_name" placeholder="이름을 입력하세요." name="ordername" th:value="${member.username}" required>
+                                                        <input type="text" class="inp" id="user_name" placeholder="이름을 입력하세요." name="ordername" th:value="${session.memberInfo.username}" required>
                                                         <span class="focus_bg"></span>
                                                     </div>
                                                 </div>
@@ -127,7 +127,7 @@
                                                 </div>
                                                 <div class="acc_cell">
                                                     <div class="acc_inp">
-                                                        <input type="text" class="inp" id="user_email" placeholder="이메일 아이디 (예 : sony@sony.co.kr)" name="orderemail" th:value="${member.email}" required>
+                                                        <input type="text" class="inp" id="user_email" placeholder="이메일 아이디 (예 : sony@sony.co.kr)" name="orderemail" th:value="${session.memberInfo.email}" required>
                                                         <span class="focus_bg"></span>
                                                     </div>
                                                 </div>
@@ -139,7 +139,7 @@
                                                 </div>
                                                 <div class="acc_cell">
                                                     <div class="acc_inp">
-                                                        <input type="text" class="inp" id="user_number" name="orderphone" th:value="${member.phone}" required>
+                                                        <input type="text" class="inp" id="user_number" name="orderphone" th:value="${session.memberInfo.phone}" required>
                                                         <span class="focus_bg"></span>
                                                     </div>
                                                 </div>
@@ -661,11 +661,8 @@
             }       
 
             const deliveryRadios = document.querySelectorAll('input[name="deliveryRadio"]');
-            if (deliveryRadios[1].checked) {
-                formData.append('dlvdate', document.querySelector('#forwarding_date').value);
-            } else {
-                formData.append('dlvdate', null);
-            }
+            const dlvdate = deliveryRadios[1].checked? document.querySelector('#forwarding_date').value : null;
+            formData.append('dlvdate', dlvdate);    
 
             const selectedPaymentRadio = document.querySelector('input[name="paymentRadio"]:checked');
             if (selectedPaymentRadio) {
@@ -682,7 +679,6 @@
             window.location = `/order/complete${queryString}`;
         });
         
-
     </script>
 </body>
 

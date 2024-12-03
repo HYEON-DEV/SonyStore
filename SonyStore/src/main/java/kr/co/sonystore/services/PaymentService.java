@@ -60,4 +60,21 @@ public interface PaymentService {
      */
     public List<Payment> deleteNoPayments() throws Exception;
 
+
+    /**
+     * 결제완료된 데이터를 조회한다
+     * @param input - 조회할 결제내역 정보에 대한 모델 객체
+     * @return 조회된 데이터 수
+     * @throws Exception
+     */
+    public int getCountPayComplete(Payment input) throws Exception;
+
+
+    /**
+     * 날짜 범위를 지정하여 결제내역을 조회한다
+     * @param input - 조회할 결제내역 정보에 대한 모델 객체
+     * @return 조회된 데이터
+     * @throws Exception
+     */
+    public List<Payment> getPayListByDate(Payment input) throws Exception;
 }

@@ -95,4 +95,24 @@ public class PaylistServiceTest {
         log.debug("output: " + output);
     }
 
+
+    @Test
+    @DisplayName("지정 기간 내의 주문 상품 목록 조회")
+    void getListByDate() {
+        Paylist input = new Paylist();
+        input.
+        
+        List<Paylist> output = null;
+        try {
+            output = paylistService.getListByDate(input);
+        } catch (Exception e) {
+            log.error("Mapper 구현 에러", e);
+        }
+
+        if( output != null)
+        for (Paylist item : output) {
+            log.debug("output: " + item);
+        }
+    }
+
 }

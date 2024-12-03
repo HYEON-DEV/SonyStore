@@ -80,18 +80,30 @@ public interface PaylistMapper {
      * @param input - 삭제할 결제 상품 정보에 대한 모델 객체
      * @return 삭제된 데이터 수
      */
-    // @Delete(
-    //     "DELETE FROM paylist \n" +
-    //         "WHERE payid IN \n" +
-    //             "SELECT payid  \n" +
-    //             "FROM payments \n" +
-    //             "WHERE paycheck = 'N' AND \n" +
-    //                 "insertdate < DATE_ADD(NOW(), interval -1 minute)"
-    // )
-
     @Delete(
         "DELETE FROM paylist WHERE payid = #{payid}"
     )
     public int deleteByNoPayments(Paylist input);
-       
+
+
+
+    /**
+     * 지정 기간 내의 주문 상품을 조회한다
+     * @param input
+     * @return
+     */
+    @Select (
+        "SELECT \n" +
+        "pl.payid, pm.date, pm.status, \n" +
+        "CONCAT( DATE_FORMAT(pm.date, '%Y%m%d%H%i%s'), LPAD(pl.payid,6,'0') ) AS orderno, \n" +
+        "paylistid, prodid, prodthumbnail, prodtitle, \n" +
+        "prodcolor, prodprice, count, prodprice*count AS sum \n" +
+        "FROM paylist pl \n" +
+        "INNER JOIN payments pm ON pl.payid = pm.payid \n" +
+        "WHERE memberid = #{memberid} AND \n" +
+        "pm.date BETWEEN #{fromdate} AND #{todate} \n" +
+        "ORDER BY paylistid"
+    )
+    @ResultMap("paylistMap")
+    public List<Paylist> selectListByDate(Paylist input);
 }

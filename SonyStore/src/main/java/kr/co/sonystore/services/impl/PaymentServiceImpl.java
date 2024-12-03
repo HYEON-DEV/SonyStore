@@ -158,5 +158,33 @@ public class PaymentServiceImpl implements PaymentService {
 
         return output;
     }
+
+
+    @Override
+    public int getCountPayComplete(Payment input) throws Exception {
+        int rows = 0;
+        try {
+            rows = paymentMapper.selectCountPayComplete(input);
+        } catch(Exception e) {
+            log.error("결제완료 데이터 조회에 실패했습니다.", e);
+            throw e;
+        }
+        
+        return rows;
+    }
+
+
+    @Override
+    public List<Payment> getPayListByDate(Payment input) throws Exception {
+        List<Payment> output = null;
+        try {
+            output = paymentMapper.selectListByDate(input);
+        } catch (Exception e) {
+            log.error("주문 내역 조회에 실패했습니다.", e);
+            throw e;
+        }
+
+        return output;
+    }
     
 }
