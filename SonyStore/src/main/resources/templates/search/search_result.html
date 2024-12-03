@@ -10,10 +10,10 @@
     <div class="container_w1920">
         <div class="container_w1200 pd-90-160">
             <div class="search_container">
-                <form action="#" class="search_input_form">
+                <form th:action="@{/search/search_result}" class="search_input_form">
                     <label class="search_input_label" for="search_input">검색결과</label>
-                    <input type="text" id="search_input" class="input_text font_32_700" value="카메라" />
-                    <button type="button" class="search_button" title="검색">검색</button>
+                    <input type="text" name="keyword" class="input_text font_32_700" value="카메라" />
+                    <button type="button" class="search_button pointer" title="검색">검색</button>
                 </form>
             </div>
 

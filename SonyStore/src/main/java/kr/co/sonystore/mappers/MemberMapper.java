@@ -69,12 +69,12 @@ public interface MemberMapper {
         public int delete(Member input);
 
         @Select("select " +
-                        "memberid, email, userpw, username, gender, " +
-                        "birthdate, phone, editdate, postcode, addr1, " +
-                        "addr2, isout, logindate, regdate, isadmin, " +
-                        "receiveemail, receivesms " +
-                        "FROM Members " +
-                        "WHERE memberid = #{memberid}")
+                "memberid, email, userpw, username, gender, " +
+                "birthdate, phone, editdate, postcode, addr1, " +
+                "addr2, isout, logindate, regdate, isadmin, " +
+                "receiveemail, receivesms " +
+                "FROM Members " +
+                "WHERE memberid = #{memberid}")
         @Results(id = "memberMap", value = {
                         @Result(property = "memberid", column = "memberid"),
                         @Result(property = "email", column = "email"),
