@@ -45,8 +45,8 @@ window.onload = async (e) => {
     
     const swiperWrapper1 = document.querySelector('.swiper-wrapper');
     const images = productByProdid.images;
-    const primaryColor = productByProdid.colors.find(color => color.pcolor === 'Y').colorid;
-    const primaryImages = images.filter(img => img.colorid === primaryColor);
+    const primaryColor = productByProdid.colors.find(color => color.pcolor === 'Y' && color.colorid !== null)?.colorid;
+    const primaryImages = images.filter(img => img.colorid === primaryColor || img.colorid === null);
     const thumbnailImage = primaryImages.find(img => img.thumbnail === 'Y');
     // const otherImages = primaryImages.filter(img => img.thumbnail !== 'Y');
 
@@ -136,7 +136,7 @@ window.onload = async (e) => {
 
     /* -- -- 색상 -- -- */
     const colors = productByProdid.colors.sort((a, b) => b.pcolor.localeCompare(a.pcolor));
-    if (colors.length > 1) {         
+    if (colors.length > 1 && colors.some(color => color.colorid !== null)) {         
         const div = document.createElement('div');
         div.classList.add('color-select');
         document.querySelector('.product-cont-color-select').appendChild(div);
@@ -149,32 +149,34 @@ window.onload = async (e) => {
         ul.classList.add('circle-color-box');
 
         colors.forEach((color, i) => {
-            const li = document.createElement('li');
+            if (color.colorid !== null) {
+                const li = document.createElement('li');
 
-            const a = document.createElement('a');
-            a.classList.add('color-btn');
-            a.classList.add(color.color);
+                const a = document.createElement('a');
+                a.classList.add('color-btn');
+                a.classList.add(color.color);
 
-            const span1 = document.createElement('span');
-            span1.classList.add('circle-color');
-            if (i == 0) span1.classList.add('active');
+                const span1 = document.createElement('span');
+                span1.classList.add('circle-color');
+                if (i == 0) span1.classList.add('active');
 
-            const span2 = document.createElement('span');
-            span2.classList.add('c-bg');
+                const span2 = document.createElement('span');
+                span2.classList.add('c-bg');
 
-            span1.appendChild(span2);
+                span1.appendChild(span2);
 
-            const span3 = document.createElement('span');
-            span3.classList.add('color-name');
-            if (i == 0) span3.classList.add('active');
-            span3.innerHTML = color.color;
+                const span3 = document.createElement('span');
+                span3.classList.add('color-name');
+                if (i == 0) span3.classList.add('active');
+                span3.innerHTML = color.color;
 
-            a.appendChild(span1);
-            a.appendChild(span3);
-            
-            li.appendChild(a);
+                a.appendChild(span1);
+                a.appendChild(span3);
+                
+                li.appendChild(a);
 
-            ul.appendChild(li);
+                ul.appendChild(li);
+            }
         });
 
         div.appendChild(p);
@@ -252,9 +254,18 @@ window.onload = async (e) => {
 
     /* 제품을 선택하세요 */
     const ulSelectInner = document.querySelector('.select-inner');
-    const colorArr = productByProdid.colors.map(color => color.color); // 색상 배열 생성
-
-    const colorNum = colorArr.length; 
+    
+    const colorArr = productByProdid.colors.filter(color => color.colorid).map(color => color.color); // 색상 배열 생성
+    const colorNum = colorArr.length;
+    if(colorArr == 0){
+        const li = document.createElement('li');
+        li.classList.add('inner-list');
+        
+        const a = document.createElement('a');
+        
+        li.appendChild(a);
+        ulSelectInner.appendChild(li);
+    }
     for (let i = 0; i < colorNum; i++) {
         const li = document.createElement('li');
         li.classList.add('inner-list');
@@ -264,6 +275,8 @@ window.onload = async (e) => {
         li.appendChild(a);
         ulSelectInner.appendChild(li);
     } 
+
+
     document.querySelectorAll('.inner-list').forEach((v, i) => {
         let span1, span2;
         if (colorNum > 1) {
@@ -328,6 +341,8 @@ window.onload = async (e) => {
 
                 const div4 = document.createElement('div');
                 div4.classList.add('selected-name');
+
+                
         
                 if (innerList.length > 1) {
                     const circlePrdClr = current.querySelector('.circle-prd-clr');
@@ -403,6 +418,11 @@ window.onload = async (e) => {
             ulSelectInner.classList.remove('active');
         });
     });
+
+
+    /* -- -- -- -- 색상이 없는 제품 -- -- -- -- */
+    
+
 
 
     /* -- -- -- -- 총 상품금액 계산 -- -- -- -- */

@@ -25,6 +25,7 @@ public class Product {
     private String soldout;
     private String sale;
     private String event;
+    private String keyword;
 
     private List<Image> images;
     private List<Color> colors;
