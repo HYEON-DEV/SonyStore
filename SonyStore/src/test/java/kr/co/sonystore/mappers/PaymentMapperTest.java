@@ -95,4 +95,16 @@ public class PaymentMapperTest {
         int output = paymentMapper.deleteNoPayments();   
         log.debug("output: " + output);
     }
+
+
+    @Test
+    @DisplayName("결제완료된 데이터 조회")
+    void selectPayComplete() {
+        Payment input = new Payment();
+        input.setMemberid(19);
+        
+        int output = paymentMapper.selectCountPayComplete(input);
+        log.debug("output: " + output);
+    }
+
 }

@@ -100,7 +100,9 @@ public class PaylistServiceTest {
     @DisplayName("지정 기간 내의 주문 상품 목록 조회")
     void getListByDate() {
         Paylist input = new Paylist();
-        input.
+        input.setMemberid(19);
+        input.setFromdate("2023-12-03 00:00:00");
+        input.setTodate("2024-12-31 23:59:59");
         
         List<Paylist> output = null;
         try {

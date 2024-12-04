@@ -128,6 +128,22 @@ public class PaymentServiceTest {
 
 
     @Test
+    @DisplayName("결제완료된 데이터 조회")
+    void getCountPayComplete(Payment input) throws Exception {
+        input.setMemberid(19);
+        
+        int rows = 0;
+        
+        try {
+            rows = paymentService.getCountPayComplete(input);
+        } catch(Exception e) {
+            log.error("Mapper 구현 에러");
+        }
+        
+        log.debug("output" + rows);
+    }
+
+    @Test
     @DisplayName("지정된 기간내의 주문내역 조회")
     void getPayListByDate () {
         Payment input = new Payment();

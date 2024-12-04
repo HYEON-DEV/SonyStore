@@ -1,23 +1,18 @@
 package kr.co.sonystore.controllers.restfulapis;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import kr.co.sonystore.helpers.RestHelper;
 import kr.co.sonystore.models.Member;
 import kr.co.sonystore.models.Paylist;
@@ -212,20 +207,20 @@ public class OrderRestController {
         int month = cal.get(Calendar.MONTH) + 1;
         int date = cal.get(Calendar.DATE);
 
-        Payment input = new Payment();
+        Paylist input = new Paylist();
         input.setMemberid(memberInfo.getMemberid());
         input.setFromdate(String.format("%04d-%02d-%02d 00:00:00", year-1, month, date));
         input.setTodate(String.format("%04d-%02d-%02d 23:59:59", year, month, date));
 
-        List<Payment> output = null;
+        List<Paylist> output = null;
         try {
-            output = paymentService.getPayListByDate(input);
+            output = paylistService.getListByDate(input);
         } catch (Exception e) {
             return restHelper.serverError(e);
         }
 
         Map<String,Object> data = new LinkedHashMap<String,Object>();
-        data.put("payment", output);
+        data.put("paylist", output);
 
         return restHelper.sendJson(data);
     }

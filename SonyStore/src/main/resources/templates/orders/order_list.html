@@ -99,40 +99,7 @@
                                 </div>
                             </div>
     
-                            <!-- 테이블 바디 -->
-                            <div class="col_table_body order_sheet_body">
-    
-                                <!-- 테이블 row -->
-                                <div class="col_table_row order_list_row">
-                                    <!-- 주문날짜/번호 -->
-                                    <div class="col_table_cell order_date_num">
-                                        <span> 2024-11-08 15:12:58 </span>
-                                        <a class="order_num"> 202411081512586580 </a>
-                                    </div>
-                                    <!-- 제품 -->
-                                    <div class="col_table_cell">
-                                        <!-- 이미지, 제품이름 -->
-                                        <div class="prd">
-                                            <!-- 썸네일 -->
-                                            <div class="prd_thumb">
-                                                <img class="prd_thumb_pic" th:src="@{/assets/img/cart/prd_img.png}" alt="링크버즈 오픈 에어 피팅 서포터" />
-                                            </div>
-                                            <!-- 제품이름 -->
-                                            <div class="prd_info">
-                                                <div class="prd_info_name">링크버즈 오픈 에어 피팅 서포터</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- 수량 -->
-                                    <div class="col_table_cell prd_count"> 1 <span class="won">개</span> </div>
-                                    <!-- 처리상태 -->
-                                    <div class="col_table_cell prd_total_price text_blue_accent">
-                                        취소완료
-                                    </div>
-                                </div>
-    
-                            </div>
-                        </div>
+                            
                     </div>
                 </div>      <!-- end 주문 내역-->
 
@@ -226,35 +193,74 @@
         /* = = = = = 주문 내역 테이블 = = = = = */
         ( async () => {
             let data = await axiosHelper.get('[[@{/api/order_list_by_date}]]');
-            // console.log(data);
+            console.log(data);
 
-            data?.item.forEach( (v,i) => {
-                const tableRow = document.createElement('div');
-                tableRow.classList.add('col_table_row', 'order_list_row');
+            
+            // data?.item.forEach( (v,i) => {
+            //     const tableRow = document.createElement('div');
+            //     tableRow.classList.add('col_table_row', 'order_list_row');
                 
-                const orderDateNo = document.createElement('div');
-                orderDateNo.classList.add('col_table_cell', 'order_date_num');
+            //     const colTableCell = document.createElement('div');
+            //     colTableCell.classList.add('col_table_cell', 'order_date_num');
                 
-                const orderDate = document.createElement('span');
-                orderDate.innerText = v.date;
+            //     const orderDate = document.createElement('span');
+            //     orderDate.innerText = v.date;
                 
-                const orderNum = document.createElement('a');
-                orderNum.classList.add('order_num');
-                orderNum.innerText = v.orderNum;
+            //     const orderNum = document.createElement('a');
+            //     orderNum.classList.add('order_num');
+            //     orderNum.innerText = v.orderno;
                 
-                const colTableCell = document.createElement('div');
-                colTableCell.classList.add('col_table_cell');
-                const prd = document.createElement('div');
-                prd.classList.add('prd');
+            //     const colTableCell2 = document.createElement('div');
+            //     colTableCell2.classList.add('col_table_cell');
+                
+            //     const prd = document.createElement('div');
+            //     prd.classList.add('prd');
 
-                const prdThumb = document.createElement('div'); 
-                prdThumb.classList.add('prd_thumb');
+            //     const prdThumb = document.createElement('div'); 
+            //     prdThumb.classList.add('prd_thumb');
 
-                const prdThumbPic = document.createElement('img');
-                prdThumbPic.classList.add('prd_thumb_pic');
-                // prdThumbPic.src = 
+            //     const prdThumbPic = document.createElement('img');
+            //     prdThumbPic.classList.add('prd_thumb_pic');
+            //     prdThumbPic.src = v.prodthumbnail;
+            //     prdThumbPic.alt = v.title;
+
+            //     const prdInfo = document.createElement('div');
+            //     prdInfo.classList.add('prd_info');
+
+            //     const prdInfoName = document.createElement('div');
+            //     prdInfoName.classList.add('prd_info_name');
+            //     prdInfoName.innerText = v.title;
+
+            //     const colTableCell3 = document.createElement('div');
+            //     colTableCell3.classList.add('col_table_cell', 'prd_count');
+            //     colTableCell3.innerText = v.count;
+
+            //     const won = document.createElement('span');
+            //     won.classList.add('won');
+            //     won.innerText = '개';
+
+            //     const colTableCell4 = document.createElement('div');
+            //     colTableCell4.classList.add('col_table_cell','prd_total_price','text_blue_accent');
+            //     colTableCell4.innerText = v.status;
+
+            //     colTableCell.appendChild(orderDate);
+            //     colTableCell.appendChild(orderNum);
+
+            //     prdThumb.appendChild(prdThumbPic);
+            //     prdInfo.appendChild(prdInfoName);
+
+            //     prd.appendChild(prdThumb);
+            //     prd.appendChild(prdInfo);
                 
-            } );
+            //     colTableCell2.appendChild(prd);
+                
+            //     colTableCell3.appendChild(won);
+
+            //     tableRow.appendChild(colTableCell);
+            //     tableRow.appendChild(colTableCell2);
+            //     tableRow.appendChild(colTableCell3);
+            //     tableRow.appendChild(colTableCell4);
+            // } );
             
         } )();
 

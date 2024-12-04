@@ -13,6 +13,10 @@ public class Paylist {
     private int count;              // 상품의 수량                        
     private int prodprice;          // 상품의 가격            
     private int sum;                // 상품의 가격 * 수량        
-    private String fromdate;       // 검색 시작일
-    private String todate;         // 검색 종료일  
+    private String fromdate;        // 검색 시작일
+    private String todate;          // 검색 종료일  
+    private int memberid;           // 회원의 일련번호
+    private String date;            // 결제날짜
+    private String status;          // 처리상태
+    private String orderno;         // 주문번호
 }

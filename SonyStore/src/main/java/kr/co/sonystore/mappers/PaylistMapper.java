@@ -53,7 +53,11 @@ public interface PaylistMapper {
         @Result(property="prodcolor", column="prodcolor"),
         @Result(property="prodprice", column="prodprice"),
         @Result(property="count", column="count"),
-        @Result(property="sum", column="sum")
+        @Result(property="sum", column="sum"),
+        @Result(property="memberid", column="memberid"),
+        @Result(property="date", column="date"),
+        @Result(property="status", column="status"),
+        @Result(property="orderno", column="orderno")
     })
     public Paylist selectItem(Paylist input);
 
@@ -102,7 +106,7 @@ public interface PaylistMapper {
         "INNER JOIN payments pm ON pl.payid = pm.payid \n" +
         "WHERE memberid = #{memberid} AND \n" +
         "pm.date BETWEEN #{fromdate} AND #{todate} \n" +
-        "ORDER BY paylistid"
+        "ORDER BY pm.date DESC"
     )
     @ResultMap("paylistMap")
     public List<Paylist> selectListByDate(Paylist input);
