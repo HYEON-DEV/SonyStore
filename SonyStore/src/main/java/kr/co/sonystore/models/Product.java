@@ -27,6 +27,8 @@ public class Product {
     private String event;
     private String keyword;
 
+    private String pcolor;
+
     private List<Image> images;
     private List<Color> colors;
 

@@ -258,3 +258,19 @@ if(document.querySelector("#btn_logout")) {
         }
     });
 }
+
+const headerKeyword = document.getElementById('headerKeyword');
+const searchForm = document.getElementById('searchForm');
+
+document.querySelectorAll('.hash_tag').forEach( (e) => {
+    e.addEventListener('click', e => {
+        SearchhashTag(e.currentTarget.innerHTML);
+    });
+});
+   
+
+function SearchhashTag(hashTag) {
+    headerKeyword.value = hashTag;
+    searchForm.submit();
+}
+
