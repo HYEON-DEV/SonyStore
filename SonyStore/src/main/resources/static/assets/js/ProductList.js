@@ -2,6 +2,7 @@ let productsByType = []; // type에 따른 제품 리스트
 let productsByType2 = []; // type2에 따른 제품 리스트
 let productsByType3 = []; // type3에 따른 제품 리스트
 let backgrounds = []; // 전역 변수 선언
+let currentProducts = []; // 현재 선택된 제품 리스트를 저장할 변수
 
 window.onload = async (e) => {
     let response = null;
@@ -21,6 +22,9 @@ window.onload = async (e) => {
 
         // 필터링된 제품 리스트 렌더링
         renderProductList(productsByType);
+        currentProducts = productsByType; // 현재 제품 리스트 업데이트
+        sortProductsByDate(); // 페이지 로드 시 최신순으로 정렬
+        document.querySelector('.sort_recent').classList.add('sort_active'); // 최신순 버튼에 active 클래스 추가
 
         // 배경 이미지 업데이트
         updateBackgroundImage(backgrounds, productsByType);
@@ -34,6 +38,9 @@ window.onload = async (e) => {
             response3 = await axios.get(`http://localhost:8080/api/products/${type}/${type2}`);
             productsByType2 = response3.data.list; // type2에 따른 데이터 로딩 후 전역 변수에 할당
             renderProductList(productsByType2);
+            currentProducts = productsByType2; // 현재 제품 리스트 업데이트
+            sortProductsByDate(); // 페이지 로드 시 최신순으로 정렬
+            document.querySelector('.sort_recent').classList.add('sort_active'); // 최신순 버튼에 active 클래스 추가
             updateCategoryNameType2(productsByType2);
             updateType2(backgrounds, productsByType2);
         }
@@ -159,6 +166,7 @@ function renderProductList(products) {
 
     // 제품 개수 업데이트
     updateProductCount(products.length);
+    currentProducts = products; // 현재 제품 리스트 업데이트
 }
 
 // type1 배경 이미지를 설정하는 함수
@@ -273,7 +281,7 @@ function updateCategoryNameType2(products) {
     // 제품 리스트에 있는 제품의 type2을 카테고리 이름으로 설정
     if(products.length > 0) {
         const type2 = products[0].type2;
-        categoryName.textContent = categoryMap[type2] || type2; // 매핑된 값이 없으면 원래 값을 사용
+        categoryName.textContent = categoryMap[type2] || type2; // 매핑된 값이 없으면 ��래 값을 사용
     }
 }
 
@@ -425,7 +433,7 @@ function setupSortButtons() {
 
 // 가격순 정렬 함수
 function sortProductsByPrice(order) {
-    const sortedList = [...productsByType].sort((a, b) => {
+    const sortedList = [...currentProducts].sort((a, b) => {
         if (order === 'high_to_low') {
             return b.price - a.price; // 높은 가격순
         } else {
@@ -437,7 +445,7 @@ function sortProductsByPrice(order) {
 
 // 날짜순 정렬 함수
 function sortProductsByDate() {
-    const sortedList = [...productsByType].sort((a, b) => new Date(b.date) - new Date(a.date));
+    const sortedList = [...currentProducts].sort((a, b) => new Date(b.date) - new Date(a.date));
     renderProductList(sortedList); // 정렬된 리스트 렌더링
 }
 
