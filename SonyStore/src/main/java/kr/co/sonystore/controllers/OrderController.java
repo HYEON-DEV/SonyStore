@@ -1,5 +1,6 @@
 package kr.co.sonystore.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import kr.co.sonystore.helpers.FileHelper;
 import kr.co.sonystore.helpers.WebHelper;
 import kr.co.sonystore.models.Cart;
@@ -18,7 +21,9 @@ import kr.co.sonystore.models.Payment;
 import kr.co.sonystore.services.CartService;
 import kr.co.sonystore.services.PaylistService;
 import kr.co.sonystore.services.PaymentService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 public class OrderController {
 
@@ -45,12 +50,21 @@ public class OrderController {
      * 장바구니 페이지를 표시한다
      * @param model - view 에 전달할 데이터
      * @return View 페이지 경로
-     */
-    @GetMapping("/cart")
-    public String cart( 
-        Model model,
-        @SessionAttribute(value="memberInfo", required = false) Member memberInfo
-    ) {               
+          * @throws IOException 
+          */
+         @GetMapping("/cart")
+         public String cart( 
+             Model model,
+             @SessionAttribute(value="memberInfo", required = false) Member memberInfo,
+             HttpServletRequest httpRequest,
+             HttpServletResponse response
+         ) throws IOException {               
+        String referer = httpRequest.getHeader("referer");
+        if(referer.contains("/order/sheet")) {
+           response.sendRedirect("/orders/cart");
+           log.debug("이전페이지 주문결제 맞아");
+        }
+
         if(memberInfo == null) {
             return "/orders/cart";
         }
@@ -78,15 +92,26 @@ public class OrderController {
 
     /** 
      * 주문/결제 페이지
+     * @throws IOException 
      */
     @SuppressWarnings("null")
     @GetMapping("/order/sheet")
     public String order_sheet(
         @RequestParam("orderSheetNo") int payid,
         @RequestParam(value="cartid", required = false) List<Integer> cartids,
-        Model model
-        // HttpServletRequest request
-    ) {
+        Model model,
+        HttpServletRequest httpRequest,
+        HttpServletResponse response
+    ) throws IOException {
+        String referer = httpRequest.getHeader("referer");
+        // log.debug("referer: " + referer);
+
+        // if ( referer==null || !referer.contains("cart") || !referer.contains("/product-view")  ) {
+        //     webHelper.badRequest("올바르지 않은 접근입니다");
+        //     response.sendRedirect(referer!=null ? referer : "/");
+        //     return null;
+        // }
+
         Payment payment = new Payment();
         payment.setPayid(payid);
 
@@ -133,8 +158,17 @@ public class OrderController {
     public String order_complete(
         @RequestParam("orderSheetNo") int payid,
         @RequestParam("cartid") List<Integer> cartids,
-        Model model
+        Model model,
+        HttpServletRequest httpRequest
     ) {
+        String referer = httpRequest.getHeader("referer");
+        // log.debug("referer: " + referer);
+
+        if ( referer==null || !referer.contains("/order/sheet") ) {
+            webHelper.badRequest("올바르지 않은 접근입니다");
+            return "/orders/order_complete";
+        }
+
         Payment input = new Payment();
         input.setPayid(payid);
         

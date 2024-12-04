@@ -25,11 +25,7 @@ public interface SearchMapper {
             "select count(*) " +
             "from products " +
             "<where>" +
-            "<if test='title != null'>title like concat('%', #{title}, '%')</if>" +
-            "<if test='proddesc != null'>or proddesc like concat('%', #{proddesc}, '%')</if> " +
-            "<if test='type1 != null'>or type1 like concat('%', #{type1}, '%')</if> " +
-            "<if test='type2 != null'>or type2 like concat('%', #{type2}, '%')</if> " +
-            "<if test='type3 != null'>or type3 like concat('%', #{type3}, '%')</if> " +
+            "<if test='keyword != null'>keyword like concat('%', #{keyword}, '%')</if>" +
             "</where>" +
             "</script>")
     public int selectCount(Product input);
@@ -47,19 +43,19 @@ public interface SearchMapper {
 
 
     @Select("<script>" + 
-            "select " +
+            "select distinct " +
             "p.prodid, p.title, p.proddesc, p.price, p.type1, " +
             "p.type2, p.type3, p.date, p.soldout, p.sale, " +
-            "p.event, i.imgid, i.filepath, i.thumbnail, c.colorid, " +
-            "c.color, c.pcolor " +
+            "p.event, i.imgid, i.filepath, i.thumbnail, c.colorid as ccolorid, " +
+            "i.colorid as icolorid, c.color, c.pcolor " +
             "from products p " +
-            "left join images i on p.prodid = i.prodid " +
-            "left join colors c on p.prodid = c.prodid" +
+            "inner join images i on p.prodid = i.prodid " +
+            "inner join colors c on p.prodid = c.prodid" +
             "<where>" +
             "<if test='keyword != null'>keyword like concat('%', #{keyword}, '%')</if>" +
-            "and i.thumbnail = 'Y' and c.pcolor = 'Y'" +
+            "and i.thumbnail = 'Y' and i.colorid = c.colorid and c.pcolor = 'Y' " +
             "</where>" +
-            "order by p.prodid desc" +
+            "order by p.prodid desc " +
             "</script>")
     @Results(id = "productMap", value = {
         @Result(property = "prodid", column = "prodid"),
@@ -73,6 +69,7 @@ public interface SearchMapper {
         @Result(property = "soldout", column = "soldout"),
         @Result(property = "sale", column = "sale"),
         @Result(property = "event", column = "event"),
+        @Result(property = "pcolor", column = "pcolor"),
         @Result(property = "images", column = "prodid", many = @Many(select = "selectImagesByProductId")),
         @Result(property = "colors", column = "prodid", many = @Many(select = "selectColorsByProductId"))
     })

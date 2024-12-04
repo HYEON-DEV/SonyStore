@@ -66,7 +66,7 @@
                                 <div class="date_container">
                                     <div class="divide_parent term"> <span>3개월</span> </div>
                                     <div class="divide_parent term"> <span class="divide">6개월</span> </div>
-                                    <div class="divide_parent term active"> <span class="divide">1년</span> </div>
+                                    <div class="divide_parent term year active"> <span class="divide">1년</span> </div>
                                 </div>
                                 <div>
                                     <input type="date" class="date1"/>
@@ -84,7 +84,9 @@
                         </div>
                     </div>
 
+
                     <!-- 주문 내역 테이블 -->
+
                     <div class="col_table_wrap order_list order_sheet_list">
 
                         <div class="col_table">
@@ -98,10 +100,15 @@
                                     <div class="col_table_cell"> 처리상태 </div>
                                 </div>
                             </div>
-    
-                            
+
+                            <!-- 테이블 바디 -->
+                            <div class="col_table_body order_sheet_body">
+
+                        </div>
                     </div>
-                </div>      <!-- end 주문 내역-->
+
+                </div>
+
 
                 <!-- 주문/배송 시 주의사항 -->
                 <div class="order_notice">
@@ -190,79 +197,119 @@
         }
 
 
-        /* = = = = = 주문 내역 테이블 = = = = = */
-        ( async () => {
-            let data = await axiosHelper.get('[[@{/api/order_list_by_date}]]');
-            console.log(data);
 
-            
-            // data?.item.forEach( (v,i) => {
-            //     const tableRow = document.createElement('div');
-            //     tableRow.classList.add('col_table_row', 'order_list_row');
-                
-            //     const colTableCell = document.createElement('div');
-            //     colTableCell.classList.add('col_table_cell', 'order_date_num');
-                
-            //     const orderDate = document.createElement('span');
-            //     orderDate.innerText = v.date;
-                
-            //     const orderNum = document.createElement('a');
-            //     orderNum.classList.add('order_num');
-            //     orderNum.innerText = v.orderno;
-                
-            //     const colTableCell2 = document.createElement('div');
-            //     colTableCell2.classList.add('col_table_cell');
-                
-            //     const prd = document.createElement('div');
-            //     prd.classList.add('prd');
+        /* = = = = = 주문내역 조회 클릭 이벤트 = = = = = */
 
-            //     const prdThumb = document.createElement('div'); 
-            //     prdThumb.classList.add('prd_thumb');
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.term.year').click();
+            document.querySelector('.search').click();
+        } );
 
-            //     const prdThumbPic = document.createElement('img');
-            //     prdThumbPic.classList.add('prd_thumb_pic');
-            //     prdThumbPic.src = v.prodthumbnail;
-            //     prdThumbPic.alt = v.title;
+        const colTableWrap = document.querySelector('.col_table_wrap.order_list.order_sheet_list');
+        const colTable = document.querySelector('.col_table');
+        const colTableBody = document.querySelector('.col_table_body.order_sheet_body');
 
-            //     const prdInfo = document.createElement('div');
-            //     prdInfo.classList.add('prd_info');
+        document.querySelector('.search').addEventListener( 'click', async e => {
+            e.preventDefault();
 
-            //     const prdInfoName = document.createElement('div');
-            //     prdInfoName.classList.add('prd_info_name');
-            //     prdInfoName.innerText = v.title;
+            const fromdate = document.querySelector('.date1').value + ' 00:00:00';
+            const todate = document.querySelector('.date2').value + ' 23:59:59';
+            // console.log(fromdate, todate);
 
-            //     const colTableCell3 = document.createElement('div');
-            //     colTableCell3.classList.add('col_table_cell', 'prd_count');
-            //     colTableCell3.innerText = v.count;
+            const formData = new FormData();
+            formData.append('fromdate', fromdate);
+            formData.append('todate', todate);
 
-            //     const won = document.createElement('span');
-            //     won.classList.add('won');
-            //     won.innerText = '개';
+            let data = await axiosHelper.get('[[@{/api/order_list_by_date}]]', formData);
+            // console.log(data);
 
-            //     const colTableCell4 = document.createElement('div');
-            //     colTableCell4.classList.add('col_table_cell','prd_total_price','text_blue_accent');
-            //     colTableCell4.innerText = v.status;
+            if ( colTableBody.children.length > 0 ) {
+                colTableBody.innerHTML = '';
+            }
 
-            //     colTableCell.appendChild(orderDate);
-            //     colTableCell.appendChild(orderNum);
+            if(data.paylist.length > 0) {
+                console.log(data);
 
-            //     prdThumb.appendChild(prdThumbPic);
-            //     prdInfo.appendChild(prdInfoName);
+                data.paylist.forEach( (v,i) => {
+                    
+                    const tableRow = document.createElement('div');
+                    tableRow.classList.add('col_table_row', 'order_list_row');
+                    
+                    const colTableCell = document.createElement('div');
+                    colTableCell.classList.add('col_table_cell', 'order_date_num');
+                    
+                    const orderDate = document.createElement('span');
+                    orderDate.innerText = v.date;
+                    
+                    const orderNum = document.createElement('a');
+                    orderNum.classList.add('order_num');
+                    orderNum.innerText = v.orderno;
+                    
+                    const colTableCell2 = document.createElement('div');
+                    colTableCell2.classList.add('col_table_cell');
+                    
+                    const prd = document.createElement('div');
+                    prd.classList.add('prd');
 
-            //     prd.appendChild(prdThumb);
-            //     prd.appendChild(prdInfo);
-                
-            //     colTableCell2.appendChild(prd);
-                
-            //     colTableCell3.appendChild(won);
+                    const prdThumb = document.createElement('div'); 
+                    prdThumb.classList.add('prd_thumb');
 
-            //     tableRow.appendChild(colTableCell);
-            //     tableRow.appendChild(colTableCell2);
-            //     tableRow.appendChild(colTableCell3);
-            //     tableRow.appendChild(colTableCell4);
-            // } );
-            
-        } )();
+                    const prdThumbPic = document.createElement('img');
+                    prdThumbPic.classList.add('prd_thumb_pic');
+                    prdThumbPic.src = v.prodthumbnail;
+                    prdThumbPic.alt = v.prodtitle;
+
+                    const prdInfo = document.createElement('div');
+                    prdInfo.classList.add('prd_info');
+
+                    const prdInfoName = document.createElement('div');
+                    prdInfoName.classList.add('prd_info_name');
+                    let color = v.prodcolor!='null' ? `(${v.prodcolor})` : '';
+                    prdInfoName.innerText = `${v.prodtitle} ${color}`;
+
+                    const colTableCell3 = document.createElement('div');
+                    colTableCell3.classList.add('col_table_cell', 'prd_count');
+                    colTableCell3.innerText = v.count;
+
+                    const won = document.createElement('span');
+                    won.classList.add('won');
+                    won.innerText = '개';
+
+                    const colTableCell4 = document.createElement('div');
+                    colTableCell4.classList.add('col_table_cell','prd_total_price','text_blue_accent');
+                    colTableCell4.innerText = v.status;
+
+                    colTableCell.appendChild(orderDate);
+                    colTableCell.appendChild(orderNum);
+
+                    prdThumb.appendChild(prdThumbPic);
+                    prdInfo.appendChild(prdInfoName);
+
+                    prd.appendChild(prdThumb);
+                    prd.appendChild(prdInfo);
+                    
+                    colTableCell2.appendChild(prd);
+                    
+                    colTableCell3.appendChild(won);
+
+                    tableRow.appendChild(colTableCell);
+                    tableRow.appendChild(colTableCell2);
+                    tableRow.appendChild(colTableCell3);
+                    tableRow.appendChild(colTableCell4);
+
+                    colTableBody.appendChild(tableRow);
+                } );
+            } else {
+                const noPayment = document.createElement('div');
+                noPayment.classList.add('no_payment_content','font_20_500');
+                noPayment.innerText = '주문 내역이 없습니다.';
+
+                colTableBody.appendChild(noPayment);
+            }
+
+        } );
+
+        
 
     </script>
 </body>

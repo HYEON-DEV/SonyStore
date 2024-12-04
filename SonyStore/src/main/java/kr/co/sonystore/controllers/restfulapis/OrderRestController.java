@@ -200,18 +200,27 @@ public class OrderRestController {
      */
     @GetMapping("/api/order_list_by_date")
     public Map<String,Object> order_list (
-        @SessionAttribute("memberInfo") Member memberInfo
-    ) {
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH) + 1;
-        int date = cal.get(Calendar.DATE);
+        @SessionAttribute("memberInfo") Member memberInfo,
+        @RequestParam(value="fromdate", required=false) String fromdate,
+        @RequestParam(value="todate", required=false) String todate
 
+    ) {
         Paylist input = new Paylist();
         input.setMemberid(memberInfo.getMemberid());
-        input.setFromdate(String.format("%04d-%02d-%02d 00:00:00", year-1, month, date));
-        input.setTodate(String.format("%04d-%02d-%02d 23:59:59", year, month, date));
 
+        if( fromdate==null || todate==null ) {
+            Calendar cal = Calendar.getInstance();
+            int year = cal.get(Calendar.YEAR);
+            int month = cal.get(Calendar.MONTH) + 1;
+            int date = cal.get(Calendar.DATE);
+    
+            input.setFromdate(String.format("%04d-%02d-%02d 00:00:00", year-1, month, date));
+            input.setTodate(String.format("%04d-%02d-%02d 23:59:59", year, month, date));    
+        } else {
+            input.setFromdate(fromdate + " 00:00:00");
+            input.setTodate(todate + " 23:59:59");
+        }
+        
         List<Paylist> output = null;
         try {
             output = paylistService.getListByDate(input);

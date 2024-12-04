@@ -18,16 +18,13 @@ public class SearchServiceImpl implements SearchService {
     private SearchMapper searchMapper;
 
     @Override
-    public int selectCount(Product input) throws Exception {
+    public int getCount(Product input) throws Exception {
         int rows = 0;
 
         try {
             rows = searchMapper.selectCount(input);
-            if (rows == 0) {
-                throw new Exception("비밀번호 확인이 잘못되었거나 존재하지 않는 회원에 대한 요청입니다");
-            }
         } catch (Exception e) {
-            log.error("회원탈퇴에 실패했습니다.", e);
+            log.error("조회에 실패했습니다.", e);
             throw e;
         }
 
@@ -42,7 +39,7 @@ public class SearchServiceImpl implements SearchService {
         try {
             output = searchMapper.selectList(input);
         } catch (Exception e) {
-            throw new Exception("탈퇴 처리에 실패했습니다.");
+            throw new Exception("조회에 실패했습니다.");
         }
 
         return output;

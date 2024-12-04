@@ -100,7 +100,7 @@ public interface PaymentMapper {
         @Result(property="insertdate", column="insertdate"),
         @Result(property="paycheck", column="paycheck"),
         @Result(property = "orderno", column = "orderno")
-    })
+    }) 
     public Payment selectItem(Payment input);
 
 
@@ -179,7 +179,6 @@ public interface PaymentMapper {
         "SELECT COUNT(*) FROM payments \n" + 
         "WHERE memberid = #{memberid} AND status='결제완료'"
     )
-    @ResultMap("paymentMap")
     public int selectCountPayComplete(Payment input);
 
 
