@@ -447,7 +447,7 @@ input::placeholder {
 }
 
 .search_button_white {
-    background-image: url('/assets/img/search_icon_white.svg');
+    background-image: url('/assets/img/search/search_icon_white.svg');
     width:32px;
     background-repeat: no-repeat;
     background-position: center;

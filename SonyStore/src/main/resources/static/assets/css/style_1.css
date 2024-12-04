@@ -1226,7 +1226,7 @@ input:disabled {
         }
 
         .search_button {
-            background-image: url(/assets/img/search_result/search_icon.svg);
+            background-image: url('/assets/img/search_result/search_icon.svg');
             width:32px;
             background-repeat: no-repeat;
             background-position: center;
