@@ -51,7 +51,7 @@ window.onload = async (e) => {
     // const otherImages = primaryImages.filter(img => img.thumbnail !== 'Y');
 
     if (thumbnailImage) {
-        primaryImages.unshift(thumbnailImage);
+        primaryImages[0] = thumbnailImage;
     }
 
     primaryImages.forEach(img => {

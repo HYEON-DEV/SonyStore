@@ -22,7 +22,7 @@ window.onload = async (e) => {
         // 필터링된 제품 리스트 렌더링
         renderProductList(productsByType);
 
-        // 배경 이미지 업데���트
+        // 배경 이미지 업데이트
         updateBackgroundImage(backgrounds, productsByType);
 
         // 카테고리 이름 업데이트
@@ -85,7 +85,6 @@ function renderProductList(products) {
 
         imgContainer.appendChild(img);
         item.appendChild(imgContainer);
-        console.log(product);
 
         // 색상 선택 버튼들
         if (product.colors && product.colors.length > 1) {
@@ -309,7 +308,7 @@ function renderCategoryList(products) {
     const categoryMap2 = getCategoryMap2();
 
     // uniqueType2 객체를 배열로 변환하여 렌더링
-    Object.values(uniqueType2).forEach(subCategory => {
+    Object.values(uniqueType2).reverse().forEach(subCategory => {
         const li = document.createElement('li');
         const imgSrc = 'assets/img/subcategories/default.svg'; // 기본 이미지 경로 설정
         const categoryName = categoryMap2[subCategory.type2] || subCategory.type2; // 한글 이름 또는 원래 값 사용
@@ -323,9 +322,12 @@ function renderTapMenu(products) {
     const tapMenuWrapper = document.querySelector('.tapMenu_wrapper');
     const tapMenuList = document.querySelector('.tapMenu_list');
     tapMenuList.innerHTML = ''; // 기존 탭 메뉴 초기화
+    const type3Length = products.filter(product => product.type3).length; // type3 값이 있는 제품 개수
+    console.log(products);
+    console.log(products.type3);
 
     
-    if (products[0].type3 == "") {
+    if (type3Length === 0) {
         
         tapMenuWrapper.style.display = 'none'; // type3 값이 없으면 탭 메뉴 숨김
         return;
