@@ -30,7 +30,7 @@ a, button {
     color: var(--color-black-3);
 }
 
-img:not(.side_toggle_box img) {
+img:not(.side_toggle_box img, .consumer_logo img) {
     width: 100%;
     object-fit: cover;
 }
