@@ -1,3 +1,4 @@
+// console.log(window.location.search);
 const clr_light_grey = '#fbfbfb';
 
 

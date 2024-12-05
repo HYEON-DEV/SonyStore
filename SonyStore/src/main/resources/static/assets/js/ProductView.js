@@ -1,5 +1,6 @@
 let productByProdid = []; // type에 따른 제품 리스트
 let productsByType = []; // prodid에 해당하는 제품 정보
+let thumbnails = [];
 
 window.onload = async (e) => {
     let response = null;
@@ -45,11 +46,20 @@ window.onload = async (e) => {
     
     const swiperWrapper1 = document.querySelector('.swiper-wrapper');
     const images = productByProdid.images;
+    
+    // pcolor인 colorid
     const primaryColor = productByProdid.colors.find(color => color.pcolor === 'Y' && color.colorid !== null)?.colorid;
+    
+    // pcolor인 이미지들
     const primaryImages = images.filter(img => img.colorid === primaryColor || img.colorid === null);
-    const thumbnailImage = primaryImages.find(img => img.thumbnail === 'Y');
+    
+    // 썸네일 이미지
+    const thumbnailImage = primaryImages.find(img => img.thumbnail === 'Y'); 
+    
     // const otherImages = primaryImages.filter(img => img.thumbnail !== 'Y');
-
+    thumbnails = images.filter(img => img.thumbnail === 'Y');
+    
+// console.log(thumbnails);
     if (thumbnailImage) {
         primaryImages[0] = thumbnailImage;
     }
@@ -293,6 +303,8 @@ window.onload = async (e) => {
             span2.classList.add('submenu-txt');
             span2.classList.add('pad');
             span2.innerHTML = `${productByProdid.title} / ${colorName}`;
+            span2.dataset.index = i;
+            span2.dataset.color = colorName;
         } else {
             span2 = document.createElement('span');
             span2.classList.add('submenu-txt');
@@ -620,6 +632,74 @@ window.onload = async (e) => {
             document.querySelector('.swiper-button-prev-2').style.display = '';
         }
     }
-        
+    
 };
 
+
+
+/* == == == == == 장바구니 담기 == == == == == */
+
+document.querySelector('.cart.btn-icon-container').addEventListener('click', async e => {
+    e.preventDefault();
+
+    if( !document.querySelector('.selected-opt-container') ) {
+        alert('제품을 선택해주세요.');
+        return;
+    } else if (!document.querySelector('#memberid')) {
+        alert('로그인 후 이용해주세요.');
+        return;
+    } else {
+        const formData = new FormData();
+
+        document.querySelectorAll('.selected-opt').forEach( (v,i) => {
+            const idx = v.querySelector('.submenu-txt.pad').dataset.index;
+
+            formData.append('prodid', productByProdid.prodid);
+            formData.append('color', v.querySelector('.submenu-txt.pad').dataset.color? v.querySelector('.submenu-txt.pad').dataset.color : null);    
+            formData.append('count', parseInt(v.querySelector('.cnt-box.count').value));
+        } );
+
+        let data = await axiosHelper.post( 'http://localhost:8080/api/cart/add', formData );
+
+        window.location = '/cart';
+    }
+});
+
+
+/* == == == == == 바로 구매하기 == == == == == */
+
+document.querySelector('.buy_now').addEventListener( 'click', async e => {
+    e.preventDefault();
+
+    if( !document.querySelector('.selected-opt-container') ) {
+        alert('제품을 선택해주세요.');
+        return;
+    } else if (!document.querySelector('#memberid')) {
+        alert('로그인 후 주문해주세요.');
+        return;
+    } else {
+        let totalCount = 0;
+        const formData = new FormData();
+
+        document.querySelectorAll('.selected-opt').forEach( (v,i) => {
+            const idx = v.querySelector('.submenu-txt.pad').dataset.index;
+
+            formData.append('prodid', productByProdid.prodid);
+            formData.append('prodthumbnail', idx? thumbnails[idx].filepath : thumbnails[0].filepath);
+            formData.append('prodtitle', productByProdid.title);
+            formData.append('prodcolor', v.querySelector('.submenu-txt.pad').dataset.color? v.querySelector('.submenu-txt.pad').dataset.color : null);    
+            const cnt = parseInt(v.querySelector('.cnt-box.count').value.replaceAll(',', ''));
+            formData.append('count', cnt);
+            formData.append('prodprice', productByProdid.price);
+            totalCount += cnt;
+        } );
+        
+        formData.append('totalcount', totalCount);
+        formData.append('total', parseInt(document.querySelector('.result-price .num').innerText.replaceAll(',', '')));
+
+        let data = await axiosHelper.post( 'http://localhost:8080/api/order', formData );
+        // let data = await axiosHelper.post( '[[@{/api/order_by_detail}]]', formData );
+
+        window.location = `/order/sheet?orderSheetNo=${data.item.payid}`;
+    }
+} );

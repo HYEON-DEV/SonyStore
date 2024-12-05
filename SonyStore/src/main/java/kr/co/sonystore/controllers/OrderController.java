@@ -157,7 +157,7 @@ public class OrderController {
     @GetMapping("/order/complete")
     public String order_complete(
         @RequestParam("orderSheetNo") int payid,
-        @RequestParam("cartid") List<Integer> cartids,
+        @RequestParam(value="cartid", required = false) List<Integer> cartids,
         Model model,
         HttpServletRequest httpRequest
     ) {

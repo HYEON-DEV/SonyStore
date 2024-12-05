@@ -540,6 +540,7 @@ img:not(.side_toggle_box img, .consumer_logo img) {
                 height: 64px;
                 border: 1px solid var(--color-black);
                 margin-right: 10px;
+                cursor: pointer;
                 
                 &:last-child {
                     flex: 1;
@@ -562,7 +563,9 @@ img:not(.side_toggle_box img, .consumer_logo img) {
     }
 }
 .final {
-    a {
+    a { 
+        width: 100%;
+        height: 100%;
         display: inline-block;
         color: var(--color-white);
     }

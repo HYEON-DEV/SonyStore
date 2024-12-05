@@ -39,6 +39,60 @@ public class OrderRestController {
 
 
     /**
+     * 상품 상세 => 장바구니
+     */
+    // @PostMapping("/api/cart")
+    // public Map<String,Object> add_cart (
+    //     @RequestParam("prodid") List<Integer> prodid,
+    //     @RequestParam(value="color", required = false) List<String> prodcolor,
+    //     @RequestParam("count") List<Integer> count,
+    //     @RequestParam("prodprice") List<Integer> prodprice,
+    //     @RequestParam(value="cartid", required=false) List<Integer> cartids,
+    //     @SessionAttribute("memberInfo") Member memberInfo
+    // ) {
+    //     Payment payment = new Payment();
+    //     payment.setMemberid( memberInfo.getMemberid() );
+    //     payment.setTotalcount(totalcount);
+    //     payment.setTotal(total);
+
+    //     Payment outputPayment = null;
+    //     try {
+    //         outputPayment = paymentService.addItem(payment);
+    //     } catch (Exception e) {
+    //         return restHelper.serverError(e);
+    //     }
+
+    //     Map<String,Object> data = new LinkedHashMap<String,Object>();
+    //     data.put("item", outputPayment);
+
+    //     Paylist paylist = new Paylist();
+    //     paylist.setPayid(payment.getPayid());
+        
+    //     Paylist outputPaylist = null;
+
+    //     try {
+    //         for ( int i=0; i<prodid.size(); i++) {
+    //             paylist.setProdid(prodid.get(i));
+    //             paylist.setProdthumbnail(prodthumbnail.get(i));
+    //             paylist.setProdtitle(prodtitle.get(i));
+    //             paylist.setProdcolor(prodcolor.get(i));
+    //             paylist.setCount(count.get(i));
+    //             paylist.setProdprice(prodprice.get(i));
+    //             outputPaylist = paylistService.addItem(paylist);
+    //         }
+    //     } catch (Exception e) {
+    //         return restHelper.serverError(e);
+    //     }
+        
+    //     if ( cartids != null ) {
+    //         data.put("cartids", cartids);
+    //     }
+
+    //     return restHelper.sendJson(data);
+    // }
+
+
+    /**
      * 장바구니 => 주문·결제 ( 결제 테이블에 데이터 추가 )
      */
     @PostMapping("/api/order")
@@ -51,7 +105,7 @@ public class OrderRestController {
         @RequestParam("prodcolor") List<String> prodcolor,
         @RequestParam("count") List<Integer> count,
         @RequestParam("prodprice") List<Integer> prodprice,
-        @RequestParam("cartid") List<Integer> cartids,
+        @RequestParam(value="cartid", required=false) List<Integer> cartids,
         @SessionAttribute("memberInfo") Member memberInfo
     ) {
         Payment payment = new Payment();
@@ -88,59 +142,62 @@ public class OrderRestController {
             return restHelper.serverError(e);
         }
         
-        data.put("cartids", cartids);
-
-        return restHelper.sendJson(data);
-    }
-
-
-    /**
-     * 상품 상세 => 주문·결제 ( 결제 테이블에 데이터 추가 )
-     */
-    @PostMapping("/api/order_by_detail")
-    public Map<String,Object> buyByDetail (
-        @RequestParam("prodid") int prodid,
-        @SessionAttribute("memberInfo") Member memberInfo,
-        @RequestParam("total") int total,
-        @RequestParam("thumbnail") String prodthumbnail,
-        @RequestParam("title") String prodtitle,
-        @RequestParam("color") String prodcolor,
-        @RequestParam("count") int count,
-        @RequestParam("price") int prodprice
-    ) {
-        Payment payment = new Payment();
-        payment.setMemberid( memberInfo.getMemberid() );
-        payment.setTotalcount(count);
-        payment.setTotal(total);
-
-        Payment outputPayment = null;
-        try {
-            outputPayment = paymentService.addItem(payment);
-        } catch (Exception e) {
-            return restHelper.serverError(e);
-        }
-
-        Map<String,Object> data = new LinkedHashMap<String,Object>();
-        data.put("item", outputPayment);
-
-        Paylist paylist = new Paylist();
-        paylist.setPayid(payment.getPayid());
-        paylist.setProdid(prodid);
-        paylist.setProdthumbnail(prodthumbnail);
-        paylist.setProdtitle(prodtitle);
-        paylist.setProdcolor(prodcolor);
-        paylist.setCount(count);
-        paylist.setProdprice(prodprice);
-
-        Paylist outputPaylist = null;
-        try {
-            outputPaylist = paylistService.addItem(paylist);
-        } catch (Exception e) {
-            return restHelper.serverError(e);
+        if ( cartids != null ) {
+            data.put("cartids", cartids);
         }
 
         return restHelper.sendJson(data);
     }
+
+
+    // /**
+    //  * 상품 상세 => 주문·결제 ( 결제 테이블에 데이터 추가 )
+    //  */
+    // @PostMapping("/api/order_by_detail")
+    // public Map<String,Object> buyByDetail (
+    //     @SessionAttribute("memberInfo") Member memberInfo,
+    //     @RequestParam("total") int total,
+    //     @RequestParam("totalCount") int totalCount,
+    //     @RequestParam("prodid") int prodid,
+    //     @RequestParam("thumbnail") String prodthumbnail,
+    //     @RequestParam("title") String prodtitle,
+    //     @RequestParam("color") String prodcolor,
+    //     @RequestParam("count") int count,
+    //     @RequestParam("price") int prodprice
+    // ) {
+    //     Payment payment = new Payment();
+    //     payment.setMemberid( memberInfo.getMemberid() );
+    //     payment.setTotalcount(totalCount);
+    //     payment.setTotal(total);
+
+    //     Payment outputPayment = null;
+    //     try {
+    //         outputPayment = paymentService.addItem(payment);
+    //     } catch (Exception e) {
+    //         return restHelper.serverError(e);
+    //     }
+
+    //     Map<String,Object> data = new LinkedHashMap<String,Object>();
+    //     data.put("item", outputPayment);
+
+    //     Paylist paylist = new Paylist();
+    //     paylist.setPayid(payment.getPayid());
+    //     paylist.setProdid(prodid);
+    //     paylist.setProdthumbnail(prodthumbnail);
+    //     paylist.setProdtitle(prodtitle);
+    //     paylist.setProdcolor(prodcolor);
+    //     paylist.setCount(count);
+    //     paylist.setProdprice(prodprice);
+
+    //     Paylist outputPaylist = null;
+    //     try {
+    //         outputPaylist = paylistService.addItem(paylist);
+    //     } catch (Exception e) {
+    //         return restHelper.serverError(e);
+    //     }
+
+    //     return restHelper.sendJson(data);
+    // }
 
 
     /**

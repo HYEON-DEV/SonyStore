@@ -11,6 +11,8 @@
     <div class="main">
 
         <div class="product-view-wrap">    
+            
+            <input type="hidden" id="memberid" th:value="${session.memberInfo.memberid}" th:if="${session.memberInfo}"/>
 
             <div class="product-view-main">   <!-- flex 좌측 우측 나누기 -->
                 
@@ -39,7 +41,7 @@
                 
                 <!-- 메인 우측 - 구매관련 -->  
                 <div class="product-view-about">    <!-- flex width 42% -->
-                    
+                        
                     <!-- 상품명 -->
                     <div class="product-cont-top">  
                         <div>
@@ -220,7 +222,7 @@
                                     <li class="gift btn-icon-container"></li>
                                     
                                     <li class="final"> 
-                                        <a> 바로 구매하기 </a> 
+                                        <a class="buy_now"> 바로 구매하기 </a> 
                                     </li>
                                 </ul>
                             </div>

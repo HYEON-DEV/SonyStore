@@ -35,19 +35,24 @@ public class CartRestController {
     @PostMapping("/api/cart/add")
     public Map<String,Object> addCart (
         @SessionAttribute("memberInfo") Member memberInfo,
-        // @RequestParam("prodid") int prodid,
-        @RequestParam("color") String color,
-        @RequestParam("count") int count
+        @RequestParam("prodid") List<Integer> prodid,
+        @RequestParam("color") List<String> color,
+        @RequestParam("count") List<Integer> count
     ) {
         Cart input = new Cart();
-        input.setCount(count);
-        input.setMemberid(memberInfo.getMemberid());
-        // input.setProdid(prodid);
-        input.setColor(color);
 
         Cart output = null;
+
         try {
-            output = cartService.addOrEditItem(input);
+            for ( int i=0; i<prodid.size(); i++ ) {
+                input.setMemberid(memberInfo.getMemberid());
+                input.setProdid(prodid.get(i));
+                if ( color.get(i) != null && !color.get(i).equals("") && !color.get(i).equals("null") ) {
+                    input.setColor(color.get(i));
+                }
+                input.setCount(count.get(i));
+                output = cartService.addOrEditItem(input);
+            }
         } catch (Exception e) {
             return restHelper.serverError(e);
         }
