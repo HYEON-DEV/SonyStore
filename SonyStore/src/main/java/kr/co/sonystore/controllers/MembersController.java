@@ -15,4 +15,9 @@ public class MembersController {
     public String memberSescession() {
         return "members/member_secession";
     }
+
+    @GetMapping("/members/my_page")
+    public String memberMyPage() {
+        return "members/my_page";
+    }
 }

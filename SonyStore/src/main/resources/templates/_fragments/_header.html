@@ -13,7 +13,7 @@
                     <a href="#" class="gnb_title" data-num="2">제품</a>
                 </li>
                 <li>
-                    <a href="#" class="gnb_title" data-num="3">기획전</a>
+                    <a th:href="@{/events/event}" class="gnb_title" data-num="3">기획전</a>
                 </li>
                 <li>
                     <a href="#" class="gnb_title" data-num="4">멤버쉽</a>
@@ -28,10 +28,10 @@
                                 <a href="#">추천 제품</a>
                             </li>
                             <li>
-                                <a href="#">선물 제안</a>
+                                <a th:href="@{/gift/gift_proposition}">선물 제안</a>
                             </li>
                             <li>
-                                <a href="#">교육 할인</a>
+                                <a th:href="@{/education/education_discount}">교육 할인</a>
                             </li>
                         </ul>
                         <ul class="secondary_menu_list" data-num="2">
@@ -53,19 +53,19 @@
                         </ul>
                         <ul class="secondary_menu_list" data-num="3">
                             <li>
-                                <a href="#">소니스토어 단독</a>
+                                <a th:href="@{/events/event}">소니스토어 단독</a>
                             </li>
                             <li>
-                                <a href="#">혜택존</a>
+                                <a th:href="@{/events/event}">혜택존</a>
                             </li>
                             <li>
-                                <a href="#">예약판매</a>
+                                <a th:href="@{/events/event}">예약판매</a>
                             </li>
                             <li>
-                                <a href="#">정품등록 이벤트</a>
+                                <a th:href="@{/events/event}">정품등록 이벤트</a>
                             </li>
                             <li>
-                                <a href="#">LIVE ON</a>
+                                <a th:href="@{/events/event}">LIVE ON</a>
                             </li>
                         </ul>
                         <ul class="secondary_menu_list" data-num="4">
@@ -75,7 +75,7 @@
                             </ul>
                         <ul class="secondary_menu_list" data-num="5">
                             <li>
-                                <a href="#">FAQ&공지사항</a>
+                                <a th:href="@{/notice}">FAQ&공지사항</a>
                             </li>
                             <li>
                                 <a href="#">정품등록 안내</a>
@@ -102,7 +102,7 @@
             <a href="#" class="drop_down_btn_1">
                 <img th:src="@{/assets/img/header/icon_search.svg}" alt="검색">
             </a>
-            <a href="#" class="drop_down_btn_2">
+            <a class="drop_down_btn_2">
                 <img th:src="@{/assets/img/header/icon_mypage.svg}" alt="마이페이지">
             </a>
             <a th:href="@{/cart}">
@@ -181,7 +181,7 @@
 
         <div class="mypage_drop_down flex_center" style="height: 200px; text-align: center;;" th:unless="${session.memberInfo == null}">
             <a class="mypage_drop_down_login pointer"><span th:text="${session.memberInfo.username}" />님<br /> 안녕하세요!</a>
-            <a class="mypage_drop_down_menu pointer">마이페이지</a>
+            <a class="mypage_drop_down_menu pointer" th:href="@{/members/my_page}">마이페이지</a>
             <a class="mypage_drop_down_menu pointer" th:href="@{/my-page/order-list}">주문/배송 조회</a>
             <a id="btn_logout" class="mypage_drop_down_menu pointer" style="text-decoration: none;">로그아웃</a>
             <script>
