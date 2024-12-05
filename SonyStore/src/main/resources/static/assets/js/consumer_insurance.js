@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
               고객님은 안전거래를 위해 현금 결제 시 저희 쇼핑몰이 가입한 구매안전서비스 소비자 피해 보상보험서비스를 이용하실 수 있습니다.
             </p>
             <p style="color: #444; font-size: 16px; line-height: 24px; margin-right: 0;">보상대상 : 미배송/반품, 환불거부/쇼핑몰부도</p>
-            <div class="btn_box" style="margin-top: 20px;">
+            <div class="btn_box flex_center" style="margin-top: 20px;">
               <a href="https://mall.sgic.co.kr/csh/iutf/sh/shop/CSHINFO004VM0.mvc?tm=3&amp;q_sk=2&amp;q_sv=1068123810" target="_blank" title="새창열림" rel="noreferrer" style="display: inline-block; padding: 15px 34px; background-color: black; color: #fff; font-weight: 700; text-decoration: none;">
                 서비스 가입 사실 확인하기
               </a>

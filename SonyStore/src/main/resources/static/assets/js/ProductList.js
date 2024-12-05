@@ -281,7 +281,7 @@ function updateCategoryNameType2(products) {
     // 제품 리스트에 있는 제품의 type2을 카테고리 이름으로 설정
     if(products.length > 0) {
         const type2 = products[0].type2;
-        categoryName.textContent = categoryMap[type2] || type2; // 매핑된 값이 없으면 ��래 값을 사용
+        categoryName.textContent = categoryMap[type2] || type2; // 매핑된 값이 없으면 원래 값을 사용
     }
 }
 
