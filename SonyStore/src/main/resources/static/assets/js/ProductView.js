@@ -33,7 +33,6 @@ window.onload = async (e) => {
         }
 
         alert(alertMsg);
-        return;
     }
 
 
