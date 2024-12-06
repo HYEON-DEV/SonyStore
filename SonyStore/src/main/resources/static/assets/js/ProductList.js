@@ -37,6 +37,12 @@ window.onload = async (e) => {
         if (type2) {
             response3 = await axios.get(`http://localhost:8080/api/products/${type}/${type2}`);
             productsByType2 = response3.data.list; // type2에 따른 데이터 로딩 후 전역 변수에 할당
+
+            if(productsByType2.length == 0) {
+                window.location = "/error/error_404";
+                return;
+            }
+            
             renderProductList(productsByType2);
             currentProducts = productsByType2; // 현재 제품 리스트 업데이트
             sortProductsByDate(); // 페이지 로드 시 최신순으로 정렬
@@ -49,17 +55,18 @@ window.onload = async (e) => {
         setupSortButtons();
         
     } catch (error) {
-        console.error(`[Error Code] ${error.code}`);
-        console.error(`[Error message] ${error.message}`);
-        let alertMsg = error.message;
+        // console.error(`[Error Code] ${error.code}`);
+        // console.error(`[Error message] ${error.message}`);
+        // let alertMsg = error.message;
 
-        if (error.response !== undefined) {
-            const errorMsg = `${error.response.status} ${error.response.statusText}`;
-            console.error(`[HTTP Status] ${errorMsg}`);
-            alertMsg += `\n${errorMsg}`;
-        }
+        // if (error.response !== undefined) {
+        //     const errorMsg = `${error.response.status} ${error.response.statusText}`;
+        //     console.error(`[HTTP Status] ${errorMsg}`);
+        //     alertMsg += `\n${errorMsg}`;
+        // }
 
-        alert(alertMsg);
+        // alert(alertMsg);
+        window.location = "/error/error_404";
         return;
     }
 };

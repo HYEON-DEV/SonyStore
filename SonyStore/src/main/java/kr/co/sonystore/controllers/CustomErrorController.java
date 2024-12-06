@@ -1,15 +1,8 @@
 package kr.co.sonystore.controllers;
 
-import java.util.Collections;
-import java.util.Map;
-
-import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
 import org.springframework.boot.web.servlet.error.ErrorController;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,11 +23,14 @@ public class CustomErrorController implements ErrorController {
             int statusCode = Integer.valueOf(status.toString());
             log.debug("아아ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ : " + statusCode);
 
-            if(statusCode == HttpStatus.NOT_FOUND.value()){
+            if(statusCode == 404){
                 return VIEW_PATH + "error_404";
             }
-            if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()){
-                return VIEW_PATH + "error_500";
+            if(statusCode == 500){
+                return VIEW_PATH + "error_404";
+            }
+            if(statusCode == 400){
+                return VIEW_PATH + "error_404";
             }
         }
         return "error";

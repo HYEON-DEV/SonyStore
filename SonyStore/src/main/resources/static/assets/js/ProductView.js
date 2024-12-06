@@ -22,17 +22,19 @@ window.onload = async (e) => {
  
     }
     catch (error) {
-        console.error(`[Error Code] ${error.code}`);
-        console.error(`[Error message] ${error.message}`);
-        let alertMsg = error.message;
+        // console.error(`[Error Code] ${error.code}`);
+        // console.error(`[Error message] ${error.message}`);
+        // let alertMsg = error.message;
 
-        if (error.response !== undefined) {
-            const errorMsg = `${error.response.status} ${error.response.statusText}`;
-            console.error(`[HTTP Status] ${errorMsg}`);
-            alertMsg += `\n${errorMsg}`;
-        }
+        // if (error.response !== undefined) {
+        //     const errorMsg = `${error.response.status} ${error.response.statusText}`;
+        //     console.error(`[HTTP Status] ${errorMsg}`);
+        //     alertMsg += `\n${errorMsg}`;
+        // }
 
-        alert(alertMsg);
+        // alert(alertMsg);
+
+        window.location = "/error/error_404";
     }
 
 

@@ -1,6 +1,7 @@
 package kr.co.sonystore.controllers;
 
 import java.io.IOException;
+import java.net.http.HttpHeaders;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,6 +105,11 @@ public class OrderController {
         HttpServletResponse response
     ) throws IOException {
         String referer = httpRequest.getHeader("referer");
+
+        if ( referer==null || !referer.contains("/cart") || !referer.contains("/product-view") ) {
+            webHelper.badRequest("올바르지 않은 접근입니다");
+            return null;
+        }
         // log.debug("referer: " + referer);
 
         // if ( referer==null || !referer.contains("cart") || !referer.contains("/product-view")  ) {
@@ -111,6 +117,9 @@ public class OrderController {
         //     response.sendRedirect(referer!=null ? referer : "/");
         //     return null;
         // }
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+        response.setHeader("Expires", "0"); // Proxies.
 
         Payment payment = new Payment();
         payment.setPayid(payid);
