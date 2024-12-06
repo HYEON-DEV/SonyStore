@@ -593,6 +593,7 @@ input[type="checkbox"]:checked {
             align-items: flex-end;
             width: calc(21px + 7.2vw);
             justify-content: center;
+            position: relative;
 
             &.notice {
                 background-image: url("/assets/img/main/main_help_notice.svg");
@@ -617,6 +618,10 @@ input[type="checkbox"]:checked {
                 line-height: 1.4;
                 letter-spacing: -.025em;
                 font-size: 18px;
+                height: 100px;
+                display: flex;
+                position: absolute;
+                align-items: flex-end;
             }
         }  
     }

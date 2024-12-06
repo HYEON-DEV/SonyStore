@@ -54,7 +54,7 @@
                                 </label>
 
                                 <label for="birthdate" class="input_label" style="width: 49%">
-                                        <input type="text" class="input_box" name="birthdate" id="birthdate" />
+                                        <input type="date" class="input_box" name="birthdate" id="birthdate" />
                                     <div class="input_focus_line">
                                         <span class="placeholder">생년월일&nbsp;&nbsp;<span class="placeholder_hide">(예:20210307)</span></span>
                                     </div>
@@ -210,6 +210,11 @@
             }
         });
 
+
+        let now_utc = Date.now()
+        let timeOff = new Date().getTimezoneOffset()*60000;
+        let today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+        document.getElementById("birthdate").setAttribute("max", today);
     </script>
 </body>
 </html>

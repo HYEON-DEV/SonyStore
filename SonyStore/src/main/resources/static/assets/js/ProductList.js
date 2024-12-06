@@ -20,6 +20,12 @@ window.onload = async (e) => {
     
         backgrounds = response2.data.list; // 데이터 로딩 후 전역 변수에 할당
 
+        if(productsByType.length == 0) {
+            window.location = "/error/error_404";
+            return;
+        }
+
+
         // 필터링된 제품 리스트 렌더링
         renderProductList(productsByType);
         currentProducts = productsByType; // 현재 제품 리스트 업데이트
@@ -42,7 +48,7 @@ window.onload = async (e) => {
                 window.location = "/error/error_404";
                 return;
             }
-            
+
             renderProductList(productsByType2);
             currentProducts = productsByType2; // 현재 제품 리스트 업데이트
             sortProductsByDate(); // 페이지 로드 시 최신순으로 정렬
