@@ -17,7 +17,12 @@ public class MembersController {
     }
 
     @GetMapping("/members/my_page")
-    public String memberMyPage() {
+    public String memberMyPage(
+        @SessionAttribute(value="memberInfo", required = false) Member memberInfo,
+        Model model
+    ) {
+        
+
         return "members/my_page";
     }
 }
