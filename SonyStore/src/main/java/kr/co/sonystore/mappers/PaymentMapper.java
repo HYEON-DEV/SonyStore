@@ -56,7 +56,7 @@ public interface PaymentMapper {
             "dlvdate = #{dlvdate},\n" +
             "payoption = #{payoption},\n" +
             "paycheck = 'Y'\n" +
-        "WHERE payid = #{payid}"
+        "WHERE payid = #{payid} AND status='결제대기'"
     )
     public int update(Payment input);
 
@@ -131,13 +131,24 @@ public interface PaymentMapper {
      * @return 조회된 데이터 목록
      */
     @Select(
-        "SELECT DISTINCT \n" +
-        	"receivername, receiverphone, postcode, addr1, addr2, date \n" +
-        "FROM payments \n" +
-        "WHERE memberid = #{memberid} AND paycheck = 'Y'\n" +
-        "ORDER BY date DESC \n" +
-        "LIMIT 5"
-    )
+    "SELECT p.receivername, p.receiverphone, p.postcode, p.addr1, p.addr2, p.date \n" +
+    "FROM payments p \n" +
+    "JOIN (\n" +
+    "    SELECT receivername, receiverphone, postcode, addr1, addr2, MAX(date) as max_date \n" +
+    "    FROM payments \n" +
+    "    WHERE memberid = #{memberid} AND paycheck = 'Y'\n" +
+    "    GROUP BY receivername, receiverphone, postcode, addr1, addr2 \n" +
+    ") dp ON \n" +
+    "    p.receivername = dp.receivername AND \n" +
+    "    p.receiverphone = dp.receiverphone AND \n" +
+    "    p.postcode = dp.postcode AND \n" +
+    "    p.addr1 = dp.addr1 AND \n" +
+    "    p.addr2 = dp.addr2 AND \n" +
+    "    p.date = dp.max_date \n" +
+    "WHERE p.memberid = #{memberid} AND p.paycheck = 'Y'\n" +
+    "ORDER BY p.date DESC \n" +
+    "LIMIT 5"
+)
     @ResultMap("paymentMap")
     public List<Payment> selectDlvList(Payment input);
 

@@ -93,7 +93,7 @@
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide column">
                                         <span class="sub_swiper_title opacity_1">기록의 완성</span>
-                                        <a href="view.html?id=1&path1=camera&path2=lens_change&path3=APS-C" class="swiper-slide-container sub_img">
+                                        <a class="swiper-slide-container sub_img">
                                             <img th:src="@{/assets/img/main/swiper_camera.png}" alt="camera" />
                                         </a>
                                         <span class="sub_swiper_name opacity_1">ZV-E10M2</span>
@@ -150,7 +150,7 @@
                     <span class="event_info">가을이 익는 소리, 소니와 함께 감성 충전! 특별한 혜택을 지금 만나보세요.</span>
                 </div>
             </div>
-            <a href="#" class="event_more_view">더 보러 가기 +</a>
+            <a th:href="@{/events/event}" class="event_more_view">더 보러 가기 +</a>
         </div>
 
         <div class="gray_bg_section pd_6vw">
@@ -165,7 +165,7 @@
             <div class="hr_banner">
                 <div class="hr_banner_contents">
                     <span class="hr_banner_text">알파 아카데이<br />9월 수강 신청</span>
-                    <a href="#" class="event_more_view">자세히보기&nbsp;<i class="fas fa-angle-right"></i></a>
+                    <!-- <a href="#" class="event_more_view">자세히보기&nbsp;<i class="fas fa-angle-right"></i></a> -->
                 </div>
             </div>
         </div>
@@ -177,16 +177,16 @@
                 <span class="main_helf_banner_text">무엇을<br />도와드릴까요?</span>
                 <ul class="main_helf_lists">
                     <li class="main_helf_list notice pointer">
-                        <a href="#">FAQ & 공지사항</a>
+                        <a th:href="@{/faq-notice}">FAQ & 공지사항</a>
                     </li>
                     <li class="main_helf_list location pointer">
-                        <a href="#">매장안내</a>
+                        <a th:href="@{/store-info}">매장안내</a>
                     </li>
                     <li class="main_helf_list service pointer">
-                        <a href="#">고객센터</a>
+                        <a >고객센터</a>
                     </li>
                     <li class="main_helf_list advice pointer">
-                        <a href="#">제품지원</a>
+                        <a href="https://www.sony.co.kr/electronics/support">제품지원</a>
                     </li>
                 </ul>
             </div>

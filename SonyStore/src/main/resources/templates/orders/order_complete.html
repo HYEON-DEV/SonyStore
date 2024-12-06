@@ -44,6 +44,22 @@
 
     <th:block th:replace="~{/_fragments/_footer :: sony-footer}"></th:block>
     <th:block th:replace="~{/_fragments/_scripts :: sony-scripts}"></th:block>
+
+    <script>
+        const referrer = document.referrer;
+        // console.log("referrer: " + referrer);
+        // console.log('[[@{/order/sheet}]]');
+
+        window.addEventListener('popstate', e => {
+            // const referrer = document.referrer;
+            // console.log("referrer: " + referrer);
+
+            if ( referrer.includes('/order/sheet}') ) {
+                alert('잘못된 페이지 입니다. 메인 페이지로 이동합니다.');
+                window.locaton.href = '/';
+            }
+        });
+    </script>
     
 </body>
 

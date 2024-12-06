@@ -815,17 +815,17 @@ img:not(.side_toggle_box img, .consumer_logo img) {
 
             .sony-content {
                 width: 960px;
-                height: 1970px;
+                /* height: 1970px; */
             }
             
             .sony-content-moving {
                 width: 960px;
-                height: 768px;
+                /* height: 768px; */
             }
 
             .sony-content-detail {
                 width: 960px;
-                height: 41081px;
+                /* height: 41081px; */
             }
 
             .video-wrap {
