@@ -197,7 +197,7 @@
             }
             const formData = new FormData(e.currentTarget);
 
-            const data = await axiosHelper.postMultipart("[[@{/api/sign/sign_up_input}]]", formData);
+            const data = await axiosHelper.post("[[@{/api/sign/sign_up_input}]]", formData);
 
             if(data) {
                 new Swal({

@@ -168,7 +168,7 @@
 
             const formData = new FormData(e.currentTarget);
 
-            const data = await axiosHelper.putMultipart("[[@{/api/sign/modify_name}]]", formData);
+            const data = await axiosHelper.put("[[@{/api/sign/modify_name}]]", formData);
 
                 if(data) {
                     alert("수정이 완료되었습니다.");
@@ -239,7 +239,7 @@
 
                 const formData = new FormData(e.currentTarget);
 
-                const data = await axiosHelper.putMultipart("[[@{/api/sign/modify_userpw}]]", formData);
+                const data = await axiosHelper.put("[[@{/api/sign/modify_userpw}]]", formData);
 
                 if(data) {
                     alert("수정이 완료되었습니다.");
@@ -302,7 +302,7 @@
 
             const formData = new FormData(e.currentTarget);
 
-            const data = await axiosHelper.putMultipart("[[@{/api/sign/modify_add_receive}]]", formData);
+            const data = await axiosHelper.put("[[@{/api/sign/modify_add_receive}]]", formData);
 
             if(data) {
                 new Swal({

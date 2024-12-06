@@ -1,28 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title> 멤버십 : 등급/혜택안내 </title>
-
-    <link rel="stylesheet" th:href="@{/assets/css/reset.css}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="icon" th:href="@{/assets/img/favicon_144x144.png}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.13.1/sweetalert2.min.css">
-    <link rel="stylesheet" th:href="@{/assets/css/common.css}" />
-
+    <th:block th:replace="~{/_fragments/_head :: sony-head('멤버십 : 등급/혜택 안내')}"></th:block>
     <link rel="stylesheet" th:href="@{/assets/css/style_3.css}"/>
-
 </head>
-
 <body>
+    <th:block th:replace="~{/_fragments/_header :: sony-header}"></th:block>
     <div class="app">
-        <div class="wrapper page_top_btm_pad">
+        <div class="wrapper page_top_btm_pad" style="padding: 80px 0;">
 
             <div class="header_area_bg">
 
@@ -222,7 +207,8 @@
             </div>
         </div>
     </div>
-
+    <th:block th:replace="~{/_fragments/_footer :: sony-footer}"></th:block>
+    <th:block th:replace="~{/_fragments/_scripts :: sony-scripts}"></th:block>
     <script>
 
         /* tab-menu */

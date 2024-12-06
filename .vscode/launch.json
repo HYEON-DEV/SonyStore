@@ -9,6 +9,16 @@
             "projectName": "SonyStore",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SonystoreApplication<sonystore>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "kr.co.sonystore.SonystoreApplication",
+            "projectName": "sonystore",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

@@ -176,13 +176,13 @@ SubSlide.forEach((slide) => {
 
     const prodContainer = document.querySelector(".product_container");
     const productList = response.data.productList;
+    console.log(productList);
 
     productList.forEach((v, i) => {
         const prodItem = document.createElement("a");
         const prodName = document.createElement("span");
-        
         prodItem.classList.add("product_item");
-        prodItem.setAttribute('href', `category.html?category=${v.category}`);
+        prodItem.setAttribute('href', `${v.path}`);
         prodItem.classList.add("pointer");
         prodName.innerHTML = v.prodName;
 

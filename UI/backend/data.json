@@ -10,7 +10,8 @@
                     "price": 7980000,
                     "date": 202401,
                     "color": ["black"],
-                    "img": [["clr0_0.png","clr0_1.png","clr0_2.png","clr0_3.png"]]
+                    "img": [["clr0_0.png","clr0_1.png","clr0_2.png","clr0_3.png"]],
+                    "path": "/products/camera"
                 },
                 {
                     "id": 4,

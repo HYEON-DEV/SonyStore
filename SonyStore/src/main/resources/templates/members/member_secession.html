@@ -118,7 +118,7 @@
 
             const formData = new FormData(e.currentTarget);
 
-            const data = await axiosHelper.deleteMultipart("[[@{/api/sign/member_secession}]]", formData);
+            const data = await axiosHelper.delete("[[@{/api/sign/member_secession}]]", formData);
 
             if(data) {
                 new Swal({
