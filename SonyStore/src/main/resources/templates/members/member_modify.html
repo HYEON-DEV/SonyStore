@@ -30,17 +30,18 @@
 
                 <div class="member_text_box">
                     <div class="member_title_box"><label for="#" class="member_title">휴대폰</label></div>
-                    <input th:value="${session.memberInfo.phone}" type="text" class="input_box member_input_box" id="phone" style="width: 402px;" />
+                    <input th:value="${session.memberInfo.phone}" type="text" class="input_box member_input_box" id="phone2" style="width: 402px;" />
                     <div class="member_button_box">
-                        <button class="large_white_button pointer">인증번호 전송</button>
+                        <button id="receiveCertification" class="large_white_button pointer">인증번호 전송</button>
                     </div>
                 </div>
 
                 <div class="member_text_box">
                     <div class="member_title_box none_select" style="border:none;"></div>
-                    <input type="text" class="input_box member_input_box" style="width: 402px;" placeholder="인증번호" />
+                    <input id="inputCertification" type="text" class="input_box member_input_box" style="width: 402px;" placeholder="인증번호" />
                     <div class="member_button_box">
-                        <button class="large_white_button pointer">인증</button>
+                        <button id="certification" class="large_white_button pointer">인증</button>
+                        <input type="hidden" name="certification_check2" id="certification_check2" value="N" />
                     </div>
                 </div>
 
@@ -152,10 +153,11 @@
                         '<div class="input_focus_line"></div>' +
                         '</label>' +
                         '<div class="btn_box" style="margin-left:15px;">' +
-                        '<div class="btn_blue flex_center">인증번호</div>' +
+                        // '<div id="certification" class="btn_blue flex_center" onclick="modifyNameCertification()">본인인증</div>' +
                         '</div>' +
                         '</div>' +
                         '<button type="submit" class="black_button">확인</button>' +
+                        // '<input type="hidden" name="certification_check" id="certification_check" value="N" />' +
                         '</form>',
                 showCloseButton: true, // 오른쪽 상단 x 버튼 
                 showConfirmButton: false,
@@ -163,8 +165,37 @@
                 padding: '16px 0 34px 0',
             });
 
+            // function modifyNameCertification() {
+            //     try {
+            //         regexHelper.value("#phone", "휴대폰 번호를 입력하세요.");
+            //     } catch (err) {
+            //         utilHelper.alertDanger(err.message);
+
+            //         // setTimeout(() => err.element.focus(), 1);
+            //         return;
+            //     }
+            //     document.querySelector("#certification_check").value = "Y";
+            //     // new Swal({
+            //     //     html: '<span class="alert_content">인증 되었습니다.</span>',
+            //     //     confirmButtonColor: '#000',
+            //     //     confirmButtonText: '확인',
+            //     //     width: '312px',
+            //     //     padding: '16px 0 34px 0',
+            //     // });
+            //     alert('인증되었습니다.');
+            // }
+
+            // document.getElementById('phone').addEventListener('change', (e) => {
+            //     document.querySelector("#certification_check").value = "N";
+            // })
+
             document.getElementById('modifyName').addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            // if(document.getElementById('certification_check').value == 'N') {
+            //     utilHelper.alertWarning("본인인증을 진행해주세요.");
+            //     return;
+            // }
 
             const formData = new FormData(e.currentTarget);
 
@@ -297,8 +328,18 @@
             }).open();
         });
 
+        document.getElementById('phone2').addEventListener('change', (e) => {
+            document.querySelector("#certification_check2").value = "N";
+        })
+
         document.getElementById('modify_add_receive').addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            
+            if(document.getElementById('certification_check2').value == 'N') {
+                utilHelper.alertWarning("본인인증을 진행해주세요.");
+                return;
+            }
 
             const formData = new FormData(e.currentTarget);
 
@@ -334,6 +375,48 @@
             } else {
                 receivesms.value = "N"; 
             }
+        });
+
+        /* 인증번호 받기 */
+        document.getElementById('receiveCertification').addEventListener('click', async () =>{
+            try {
+                regexHelper.value("#phone2", "휴대폰 번호를 입력하세요.");
+            } catch (err) {
+                await utilHelper.alertDanger(err.message);
+
+                // setTimeout(() => err.element.focus(), 1);
+                return;
+            }
+
+            new Swal({
+                html: '<span class="alert_content">인증번호가 발송되었습니다.</span>',
+                confirmButtonColor: '#000',
+                confirmButtonText: '확인',
+                width: '312px',
+                padding: '16px 0 34px 0',
+            });
+        });
+
+        /* 인증번호 확인 */
+        document.getElementById('certification').addEventListener('click', async () =>{
+            try {
+                regexHelper.value("#inputCertification", "인증번호를 입력하세요.");
+            } catch (err) {
+                await utilHelper.alertDanger(err.message);
+
+                // setTimeout(() => err.element.focus(), 1);
+                return;
+            }
+
+            document.querySelector("#certification_check2").value = "Y";
+
+            new Swal({
+                html: '<span class="alert_content">인증 되었습니다.</span>',
+                confirmButtonColor: '#000',
+                confirmButtonText: '확인',
+                width: '312px',
+                padding: '16px 0 34px 0',
+            });
         });
     </script>
 </body>

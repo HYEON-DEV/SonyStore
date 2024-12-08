@@ -8,7 +8,7 @@
     <th:block th:replace="~{/_fragments/_header :: sony-header}"></th:block>
 
     <div class="container_w1920">
-        <img th:src="@{/assets/img/gift_proposition/gift_proposition_bg.jpg}" alt="선물 제안 배경이미지" />
+        <img class="not_allowed" th:src="@{/assets/img/gift_proposition/gift_proposition_bg.jpg}" alt="선물 제안 배경이미지" />
 
         <div class="container_w1200">
         <div class="exhibition_detail_caution_box">
@@ -18,7 +18,7 @@
         </div>
 
             <div class="button_container flex_center">
-                <button class="black_button_w200">목록</button>
+                <a th:href="@{/events/event}" class="black_button_w200 flex_center">목록</a>
             </div>
         </div>   
     </div>

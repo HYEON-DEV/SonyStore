@@ -56,7 +56,7 @@
                                 <label for="birthdate" class="input_label" style="width: 49%">
                                         <input type="date" class="input_box" name="birthdate" id="birthdate" />
                                     <div class="input_focus_line">
-                                        <span class="placeholder">생년월일&nbsp;&nbsp;<span class="placeholder_hide">(예:20210307)</span></span>
+                                        <span class="placeholder"><span class="placeholder_hide"></span></span>
                                     </div>
                                 </label>
                             </div>
@@ -81,7 +81,8 @@
                                     </div>
                                 </label>
                                 <div class="btn_box" style="margin-left:15px;">
-                                    <div class="btn_blue flex_center">인증번호</div>
+                                    <div id="certification" class="btn_blue flex_center">인증번호</div>
+                                    <input type="hidden" name="certification_check" id="certification_check" value="N" />
                                 </div>
                             </div>
 
@@ -141,6 +142,9 @@
             // input에 focus가 있을 때 placeholder 스타일 변경
             v.addEventListener('focus', () => {
                 placeholder.classList.add('placeholder_focused');
+                if(v == document.getElementById('phone')) {
+                    document.querySelector("#certification_check").value = "N";
+                }
             });
 
             // input에서 focus가 사라질 때
@@ -195,6 +199,12 @@
                 // setTimeout(() => e.element.focus(), 1);
                 return;
             }
+
+            if(document.getElementById('certification_check').value == 'N') {
+                utilHelper.alertWarning("휴대폰인증을 진행해주세요.");
+                return;
+            }
+
             const formData = new FormData(e.currentTarget);
 
             const data = await axiosHelper.post("[[@{/api/sign/sign_up_input}]]", formData);
@@ -215,6 +225,26 @@
         let timeOff = new Date().getTimezoneOffset()*60000;
         let today = new Date(now_utc-timeOff).toISOString().split("T")[0];
         document.getElementById("birthdate").setAttribute("max", today);
+
+        /* 인증번호 확인 */
+        document.getElementById('certification').addEventListener('click', async () =>{
+            try {
+                regexHelper.value("#phone", "휴대폰번호를 입력하세요.");
+            } catch (err) {
+                await utilHelper.alertDanger(err.message);
+
+                // setTimeout(() => err.element.focus(), 1);
+                return;
+            }
+            document.querySelector("#certification_check").value = "Y";
+            new Swal({
+                html: '<span class="alert_content">인증 되었습니다.</span>',
+                confirmButtonColor: '#000',
+                confirmButtonText: '확인',
+                width: '312px',
+                padding: '16px 0 34px 0',
+            });
+        });
     </script>
 </body>
 </html>

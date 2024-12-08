@@ -44,10 +44,11 @@
                                 </div>
                             </label>
                             <div class="btn_box" style="margin-left:15px;">
-                                <div class="btn_blue flex_center">인증번호</div>
+                                <div id="certification" class="btn_blue flex_center">본인인증</div>
                             </div>
                         </div>
                         <button type="submit" class="black_button pointer">확인</button>
+                        <input type="hidden" name="certification_check" id="certification_check" value="N" />
                     </form>
 
                     <div class="find_result flex_center">
@@ -80,10 +81,11 @@
                                 </div>
                             </label>
                             <div class="btn_box" style="margin-left:15px;">
-                                <div class="btn_blue flex_center">인증번호</div>
+                                <div id="certification2" class="btn_blue flex_center">본인인증</div>
                             </div>
                         </div>
                         <button type="submit" class="black_button pointer">확인</button>
+                        <input type="hidden" name="certification_check2" id="certification_check2" value="N" />
                     </form>
 
                     <div class="light_grey_box">
@@ -130,6 +132,13 @@
             // input에 focus가 있을 때 placeholder 스타일 변경
             v.addEventListener('focus', () => {
                 placeholder.classList.add('placeholder_focused');
+                if(v == document.getElementById('phone')) {
+                    document.querySelector("#certification_check").value = "N";
+                }
+
+                if(v == document.getElementById('find_pw_phone')) {
+                    document.querySelector("#certification_check2").value = "N";
+                }
             });
 
             // input에서 focus가 사라질 때
@@ -167,6 +176,11 @@
                 return;
             }
 
+            if(document.getElementById('certification_check').value == 'N') {
+                utilHelper.alertWarning("본인인증을 진행해주세요.");
+                return;
+            }
+
             const data = await axiosHelper.post('[[@{/api/sign/find_id_pw}]]', new FormData(e.currentTarget));
 
             if(data) {
@@ -198,6 +212,11 @@
                 return;
             }
 
+            if(document.getElementById('certification_check2').value == 'N') {
+                utilHelper.alertWarning("본인인증을 진행해주세요.");
+                return;
+            }
+
             const data = await axiosHelper.post('[[@{/api/sign/find_pw}]]', new FormData(e.currentTarget));
 
             if(data) {
@@ -211,6 +230,45 @@
                     padding: '16px 0 34px 0',
                 });                
             }
+        });
+
+        /* 인증번호 확인 */
+        document.getElementById('certification').addEventListener('click', async () =>{
+            try {
+                regexHelper.value("#phone", "휴대폰 번호를 입력하세요.");
+            } catch (err) {
+                await utilHelper.alertDanger(err.message);
+
+                // setTimeout(() => err.element.focus(), 1);
+                return;
+            }
+            document.querySelector("#certification_check").value = "Y";
+            new Swal({
+                html: '<span class="alert_content">인증 되었습니다.</span>',
+                confirmButtonColor: '#000',
+                confirmButtonText: '확인',
+                width: '312px',
+                padding: '16px 0 34px 0',
+            });
+        });
+
+        document.getElementById('certification2').addEventListener('click', async () =>{
+            try {
+                regexHelper.value("#find_pw_phone", "휴대폰 번호를 입력하세요.");
+            } catch (err) {
+                await utilHelper.alertDanger(err.message);
+
+                // setTimeout(() => err.element.focus(), 1);
+                return;
+            }
+            document.querySelector("#certification_check2").value = "Y";
+            new Swal({
+                html: '<span class="alert_content">인증 되었습니다.</span>',
+                confirmButtonColor: '#000',
+                confirmButtonText: '확인',
+                width: '312px',
+                padding: '16px 0 34px 0',
+            });
         });
     </script>
 </body>

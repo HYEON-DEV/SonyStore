@@ -93,6 +93,10 @@
     cursor: pointer;
 }
 
+.not_allowed {
+    cursor: not-allowed;
+}
+
 .search_container {
     width: 588px;
     margin: auto;

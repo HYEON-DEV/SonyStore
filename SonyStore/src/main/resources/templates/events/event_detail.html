@@ -9,7 +9,7 @@
     
     <div class="container_w1920">
 
-        <img th:src="@{/assets/img/event_detail/event_detail_01.jpg}" alt="소니스토어 압구정 이벤트" />
+        <img class="not_allowed" th:src="@{/assets/img/event_detail/event_detail_01.jpg}" alt="소니스토어 압구정 이벤트" />
 
         <div class="container_w1200">
         <div class="exhibition_detail_caution_box">
@@ -18,7 +18,7 @@
         </div>
 
             <div class="button_container flex_center">
-                <button class="black_button_w200">목록</button>
+                <a th:href="@{/events/event}" class="black_button_w200 flex_center">목록</a>
             </div>
         </div>   
         

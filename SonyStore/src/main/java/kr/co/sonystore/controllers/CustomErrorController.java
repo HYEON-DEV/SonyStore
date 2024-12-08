@@ -17,19 +17,17 @@ public class CustomErrorController implements ErrorController {
     @RequestMapping(value = "/error")
     public String handleError(HttpServletRequest request, HttpServletResponse response) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-        
 
-        if(status != null){
+        if (status != null) {
             int statusCode = Integer.valueOf(status.toString());
-            log.debug("아아ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ : " + statusCode);
 
-            if(statusCode == 404){
+            if (statusCode == 404) {
                 return VIEW_PATH + "error_404";
             }
-            if(statusCode == 500){
+            if (statusCode == 500) {
                 return VIEW_PATH + "error_404";
             }
-            if(statusCode == 400){
+            if (statusCode == 400) {
                 return VIEW_PATH + "error_404";
             }
         }
