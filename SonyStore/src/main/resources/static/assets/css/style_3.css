@@ -14,7 +14,7 @@ a, button {
 
 
 .not_allowed {
-    cursor: not-allowed;
+    cursor: not-allowed !important;
 }
 
 .app {
@@ -1472,6 +1472,7 @@ img:not(.side_toggle_box img, .consumer_logo img) {
         color: #666;
      }
 }
+.delivery_txt { cursor: default; }
 
 /* 배송지 선택, 최근 배송지 */
 .acc_inp.txt_btn {
@@ -1686,6 +1687,7 @@ input[type='date'] {
         left: 110px;
         font-weight: 500;
         color: var(--color-grey-2);
+        cursor: default;
     }
     .blue{
         color: var(--color-blue);

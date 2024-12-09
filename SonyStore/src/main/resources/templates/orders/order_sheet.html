@@ -115,7 +115,7 @@
                                                 </div>
                                                 <div class="acc_cell">
                                                     <div class="acc_inp">
-                                                        <input type="text" class="inp" id="user_name" placeholder="이름을 입력하세요." name="ordername" th:value="${session.memberInfo.username}" required>
+                                                        <input type="text" class="inp" id="user_name" placeholder="이름을 입력하세요." name="ordername" th:value="${session.memberInfo.username}" >
                                                         <span class="focus_bg"></span>
                                                     </div>
                                                 </div>
@@ -127,7 +127,7 @@
                                                 </div>
                                                 <div class="acc_cell">
                                                     <div class="acc_inp">
-                                                        <input type="text" class="inp" id="user_email" placeholder="이메일 아이디 (예 : sony@sony.co.kr)" name="orderemail" th:value="${session.memberInfo.email}" required>
+                                                        <input type="text" class="inp" id="user_email" placeholder="이메일 아이디 (예 : sony@sony.co.kr)" name="orderemail" th:value="${session.memberInfo.email}" >
                                                         <span class="focus_bg"></span>
                                                     </div>
                                                 </div>
@@ -139,7 +139,7 @@
                                                 </div>
                                                 <div class="acc_cell">
                                                     <div class="acc_inp">
-                                                        <input type="text" class="inp" id="user_number" name="orderphone" th:value="${session.memberInfo.phone}" required>
+                                                        <input type="text" class="inp" id="user_number" name="orderphone" th:value="${session.memberInfo.phone}" >
                                                         <span class="focus_bg"></span>
                                                     </div>
                                                 </div>
@@ -180,7 +180,7 @@
                                                 </div>
                                                 <div class="acc_cell">
                                                     <div class="acc_inp">
-                                                        <input type="text" class="inp" id="user_name2" placeholder="이름을 입력하세요." name="receivername" value="" required>
+                                                        <input type="text" class="inp" id="user_name2" placeholder="이름을 입력하세요." name="receivername" value="" >
                                                         <span class="focus_bg"></span>
                                                         <div class="email_check"> 
                                                             <input type="checkbox" class="inp_check" id="chkSame" />
@@ -196,7 +196,7 @@
                                                 </div>
                                                 <div class="acc_cell">
                                                     <div class="acc_inp">
-                                                        <input type="text" class="inp" id="user_number2" name="receiverphone" value="" required>
+                                                        <input type="text" class="inp" id="user_number2" name="receiverphone" value="" >
                                                         <span class="focus_bg"></span>
                                                     </div>
                                                 </div>
@@ -208,15 +208,15 @@
                                                 </div>
                                                 <div class="acc_cell txt_btn">
                                                     <div class="acc_inp txt_btn div_inp_address">
-                                                        <input type="text" class="inp inp_address not_allowed" id="postcode" name="postcode" placeholder="주소를 입력하세요." readonly required />
+                                                        <input type="text" class="inp inp_address not_allowed" id="postcode" name="postcode" placeholder="주소를 입력하세요." readonly  />
                                                         <div class="delivery_btn_box btn_box">  
                                                             <button class="button popup_comm_btn bg_white" type="button" id="find-postcode" data-popup-name="shipping_addr"> 우편번호 검색 </button>
                                                         </div>
                                                     </div>
 
                                                     <div class="acc_inp margin_address">
-                                                        <input type="text" class="inp not_allowed" id="addr1" name="addr1" readonly required />
-                                                        <input type="text" id="addr2" class="inp" name="addr2" placeholder="상세 주소를 입력하세요." required />
+                                                        <input type="text" class="inp not_allowed" id="addr1" name="addr1" readonly  />
+                                                        <input type="text" id="addr2" class="inp" name="addr2" placeholder="상세 주소를 입력하세요."  />
                                                         <span class="focus_bg"></span>
                                                     </div>
                                                 </div>
@@ -308,11 +308,11 @@
                                                 <div class="acc_cell">
                                                     <div class="acc_group">     <!-- flex -->
                                                         <div class="acc_inp div_inp">
-                                                            <input type="text" id="coupon" class="inp" disabled="" value="0"> 
+                                                            <input type="text" id="coupon" class="inp not_allowed" disabled="" value="0"> 
                                                             <span class="unit">원</span> 
                                                         </div>
                                                         <div class="acc_btn_box btn_box btn_coupon">
-                                                            <button class="button popup_comm_btn bg_white" data-popup-name="coupon_inquiry" type="button"> 쿠폰 조회 </button>
+                                                            <button class="button popup_comm_btn bg_white not_allowed" data-popup-name="coupon_inquiry" type="button"> 쿠폰 조회 </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -325,12 +325,12 @@
                                                 <div class="acc_cell parent">
                                                     <div class="acc_group">     <!-- flex -->
                                                         <div class="acc_inp div_inp">
-                                                            <input type="text" id="mileage" class="inp" placeholder="0" disabled="" value=""> 
+                                                            <input type="text" id="mileage" class="inp not_allowed" placeholder="0" disabled="" value=""> 
                                                             <span class="unit">점</span>
                                                             <span class="focus_bg"></span>
                                                         </div>
                                                         <div class="acc_btn_box btn_box btn_mileage">
-                                                            <button class="button button_negative button-s bg_gray" type="button" disabled=""> 모두 사용 </button>
+                                                            <button class="button button_negative button-s bg_gray not_allowed" type="button" disabled=""> 모두 사용 </button>
                                                             <span class="my_point"> (<span class="blue">0 M &nbsp;</span>보유) </span>
                                                         </div>
                                                     </div>
@@ -579,6 +579,11 @@
             utilHelper.findPostCode();
         });
 
+
+        /* = = = = = 검색된 주소 = = = = = */
+
+        
+
         
 
         /* = = = = = collapsible 배송 요청 사항 = = = = = */
@@ -634,6 +639,42 @@
         document.querySelector('#ordersheet_form').addEventListener('submit', async e => {
             e.preventDefault();
 
+            
+            try {
+                regexHelper.value( '#user_name', '이름을 입력하세요' );
+                regexHelper.korEng("#username", "이름은 한글과 영문으로만 입력할 수 있습니다.");
+                regexHelper.minLength( '#user_name', 2, '이름은 2자 이상 20자 이하로 입력하세요' );
+                regexHelper.maxLength( '#user_name', 20, '이름은 2자 이상 20자 이하로 입력하세요' );
+
+                regexHelper.value("#user_email", "이메일 아이디를 입력하세요.");
+                regexHelper.email("#user_email", "이메일 주소가 잘못되었습니다.");
+
+                regexHelper.value("#user_number", "휴대폰 번호를 입력하세요.");
+                regexHelper.phone("#user_number", "휴대폰 번호 형식이 잘못되었습니다.");
+
+                regexHelper.value( '#user_name2', '수령인 이름을 입력하세요' );
+                regexHelper.korEng("#username2", "이름은 한글과 영문으로만 입력할 수 있습니다.");
+                regexHelper.minLength( '#user_name2', 2, '이름은 2자 이상 20자 이하로 입력하세요' );
+                regexHelper.maxLength( '#user_name2', 20, '이름은 2자 이상 20자 이하로 입력하세요' );
+
+                regexHelper.value("#user_number2", "수령인 휴대폰 번호를 입력하세요.");
+                regexHelper.phone("#user_number2", "수령인 휴대폰 번호 형식이 잘못되었습니다.");
+
+                regexHelper.value( '#postcode', '주소를 입력하세요' );
+
+                regexHelper.value( '#addr2', '상세 주소를 입력하세요' );
+            } catch (e) {
+                await utilHelper.alertDanger(e.message);
+
+                // setTimeout(() => e.element.focus(), 1);
+                return;
+            }
+
+            // if ( document.querySelector('#postcode').value === '' || document.querySelector('#addr1').value === '' ) {
+            //     alert('주소를 입력해주세요.');
+            //     return;
+            // }
+
             // 필수 동의 체크
             if (!document.querySelector('#chkEssential').checked) {
                 alert('구매에 동의해주셔야 구매가 가능합니다.');
@@ -641,15 +682,6 @@
             }
 
             const formData = new FormData(e.currentTarget);
-
-            // formData.append('ordername', document.querySelector('#user_name').value);
-            // formData.append('orderemail', document.querySelector('#user_email').value);
-            // formData.append('orderphone', document.querySelector('#user_number').value);
-            // formData.append('receivername', document.querySelector('#user_name2').value);
-            // formData.append('receiverphone', document.querySelector('#user_number2').value);
-            // formData.append('postcode', document.querySelector('#postcode').value);
-            // formData.append('addr1', document.querySelector('#addr1').value);
-            // formData.append('addr2', document.querySelector('#addr2').value);
             
             const dlvNum = dlvRequest.getAttribute('data-dlvnum');
             if (dlvNum == 0) {
