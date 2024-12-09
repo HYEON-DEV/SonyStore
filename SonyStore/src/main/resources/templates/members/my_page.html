@@ -24,8 +24,8 @@
 
           <div class="user_info">
             <ul>
-              <li class="user_item grade">
-                <a class="user_tabs flex_center" href="#">
+              <li class="user_item grade cursor_default">
+                <a class="user_tabs flex_center" >
                   <span class="ico_txt flex_center">
                     <img
                       th:src="@{/assets/img/my_page/ico_mypage_grade.18023618.svg}"
@@ -45,7 +45,7 @@
                 </a>
               </li>
               <li class="user_item mileage">
-                <a class="user_tabs flex_center" href="#">
+                <a class="user_tabs flex_center" >
                   <span class="ico_txt flex_center">
                     <img
                       th:src="@{/assets/img/my_page/ico_mypage_mileage.3c0404d0.svg}"
@@ -60,7 +60,7 @@
                 </a>
               </li>
               <li class="user_item coupon">
-                <a class="user_tabs flex_center" href="#">
+                <a class="user_tabs flex_center" >
                   <span class="ico_txt flex_center">
                     <img
                       th:src="@{/assets/img/my_page/ico_mypage_coupon.4dbc6b24.svg}"
@@ -75,7 +75,7 @@
                 </a>
               </li>
               <li class="user_item like">
-                <a class="user_tabs flex_center" href="#">
+                <a class="user_tabs flex_center" >
                   <span class="ico_txt flex_center">
                     <img
                       th:src="@{/assets/img/my_page/ico_mypage_like.18038068.svg}"
@@ -170,18 +170,18 @@
 
             <div class="date_search">
               <div class="date_container flex_center">
-                <div class="divide_parent term"><span>3개월</span></div>
-                <div class="divide_parent term">
+                <div class="divide_parent term cursor_default"><span>3개월</span></div>
+                <div class="divide_parent term cursor_default">
                   <span class="divide">6개월</span>
                 </div>
-                <div class="divide_parent term active">
+                <div class="divide_parent term active cursor_default">
                   <span class="divide">1년</span>
                 </div>
               </div>
               <div>
-                <input type="date" class="date1" />
+                <input type="date" class="date1" readonly/>
                 <span> ~ </span>
-                <input type="date" class="date2" />
+                <input type="date" class="date2" readonly />
 
                 <button class="bg_black search">조회</button>
               </div>
@@ -258,7 +258,7 @@
           </div>
 
           <div class="ico_box_link flex_center">
-            <a class="box_link_inner flex_center" href="#">
+            <a class="box_link_inner flex_center" >
               <img
                 th:src="@{/assets/img/my_page/ico_mypage_link_1.73a2134b.svg}"
                 alt=""
@@ -295,7 +295,7 @@
           <div class="wish_head">
             <div class="mileage_tit flex_center">
               <p class="font_24_700">찜</p>
-              <div class="like_select_btn flex_center">
+              <!-- <div class="like_select_btn flex_center">
                 <button class="bg_white" type="button">선택 삭제</button
                 ><button
                   class="bg_black"
@@ -304,23 +304,23 @@
                 >
                   <span>선택 제품</span> 장바구니 담기
                 </button>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="wish_list">
-            <div class="all_checked flex_center">
+            <!-- <div class="all_checked flex_center">
               <input
                 type="checkbox"
                 class="inp_check check_all"
                 id="allChk"
                 name="likeChk"
               /><label for="allChk">전체</label>
-            </div>
-            <!-- <span>내역이 없습니다.</span> -->
+            </div> -->
+            <span>내역이 없습니다.</span>
 
-            <div class="like_prod_container">
+            <!-- <div class="like_prod_container">
               <div class="like_prod_list">
-                <a class="like_prod" href="#">
+                <a class="like_prod" >
                   <div class="prod_img">
                     <div class="check check_only">
                       <input type="checkbox" class="inp_check" name="likeChk" />
@@ -336,7 +336,7 @@
                   </div>
                 </a>
 
-                <a class="like_prod" href="#">
+                <a class="like_prod" >
                   <div class="prod_img">
                     <div class="check check_only">
                       <input type="checkbox" class="inp_check" name="likeChk" />
@@ -352,7 +352,7 @@
                   </div>
                 </a>
 
-                <a class="like_prod" href="#">
+                <a class="like_prod" >
                   <div class="prod_img">
                     <div class="check check_only">
                       <input type="checkbox" class="inp_check" name="likeChk" />
@@ -368,7 +368,7 @@
                   </div>
                 </a>
 
-                <a class="like_prod" href="#">
+                <a class="like_prod" >
                   <div class="prod_img">
                     <div class="check check_only">
                       <input type="checkbox" class="inp_check" name="likeChk" />
@@ -384,7 +384,7 @@
                   </div>
                 </a>
 
-                <a class="like_prod" href="#">
+                <a class="like_prod" >
                   <div class="prod_img">
                     <div class="check check_only">
                       <input type="checkbox" class="inp_check" name="likeChk" />
@@ -400,7 +400,7 @@
                   </div>
                 </a>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

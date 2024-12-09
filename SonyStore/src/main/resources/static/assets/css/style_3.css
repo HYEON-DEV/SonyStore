@@ -13,9 +13,7 @@ a, button {
 }
 
 
-.not_allowed {
-    cursor: not-allowed !important;
-}
+
 
 .app {
     background-color: var(--color-black);
@@ -2043,6 +2041,7 @@ input[type='date'] {
    .order_step_cnt {
         font-weight: 700;
         font-size: 18px;
+        cursor: default;
    }
     
 }
@@ -2139,6 +2138,7 @@ input[type='date'] {
     .order_num {
         color: var(--color-grey);
         text-decoration: underline;
+        cursor: default;
     }
 }
 

@@ -20,7 +20,8 @@ public class outScheduler {
     private MemberService memberService;
 
     // @SCheuled(cron = "0 0 4 * * *") // 매일 새벽 4시에 자동 실행
-    @Scheduled(cron = "0 * * * * ?")
+    @Scheduled(cron = "0 5 * * * ?")
+    // @Scheduled(cron = "0 * * * * ?")
     public void processOutMembers() throws InterruptedException {
         log.debug("탈퇴 회원 정리 시작");
 

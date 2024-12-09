@@ -45,10 +45,10 @@
                                 <a th:href="@{/products/lens}">렌즈</a>
                             </li>
                             <li>
-                                <a th:href="@{/products/audio}">오디오</a>
+                                <a th:href="@{/products/audio}" class="not_allowed">오디오</a>
                             </li>
                             <li>
-                                <a th:href="@{/products/accessory}">액세서리</a>
+                                <a th:href="@{/products/accessory}" class="not_allowed">액세서리</a>
                             </li>
                         </ul>
                         <ul class="secondary_menu_list" data-num="3">
@@ -100,7 +100,7 @@
                 <img th:src="@{/assets/img/header/icon_search.svg}" alt="검색">
             </a>
             <a class="drop_down_btn_2">
-                <img th:src="@{/assets/img/header/icon_mypage.svg}" alt="마이페이지">
+                <img th:src="@{/assets/img/header/icon_mypage.svg}" alt="마이페이지" class="pointer">
             </a>
             <a th:href="@{/cart}">
                 <img th:src="@{/assets/img/header/icon_cart.svg}" alt="장바구니">

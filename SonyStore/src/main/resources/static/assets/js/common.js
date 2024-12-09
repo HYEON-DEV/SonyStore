@@ -175,19 +175,19 @@ document.querySelector(".go_service").addEventListener('click', e => {
     });
 });
 
-document.querySelector(".go_kakao").addEventListener('click', e => {
-    new Swal({
-        html: '<span class="alert_content">카톡 상담을 위해선 로그인이 필요합니다.<br/>로그인 하시겠습니까?</span>',
-        confirmButtonColor: '#000',
-        confirmButtonText: '확인',
-        showCancelButton: true,
-        cancelButtonColor: '#fff',
-        cancelButtonText: '취소',
-        width: '312px',
-        padding: '16px 0 34px 0',
-        reverseButtons: true
-    });
-});
+// document.querySelector(".go_kakao").addEventListener('click', e => {
+//     new Swal({
+//         html: '<span class="alert_content">카톡 상담을 위해선 로그인이 필요합니다.<br/>로그인 하시겠습니까?</span>',
+//         confirmButtonColor: '#000',
+//         confirmButtonText: '확인',
+//         showCancelButton: true,
+//         cancelButtonColor: '#fff',
+//         cancelButtonText: '취소',
+//         width: '312px',
+//         padding: '16px 0 34px 0',
+//         reverseButtons: true
+//     });
+// });
 
 /*** sweetalert (modal) end ***/
 

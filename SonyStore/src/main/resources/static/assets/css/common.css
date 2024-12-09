@@ -94,7 +94,11 @@
 }
 
 .not_allowed {
-    cursor: not-allowed;
+    cursor: not-allowed !important;
+}
+
+.cursor_default {
+    cursor: default !important;
 }
 
 .search_container {

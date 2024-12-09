@@ -1595,14 +1595,14 @@ body {
     border-bottom: 1px solid #888888;
     min-height: 480px;
 
-    /* span {
+    span {
       width: 100%;
       min-height: 240px;
       display: flex;
       justify-content: center;
       align-items: center;
       border-bottom: 1px solid #888888;
-    } */
+    }
 
     .all_checked {
       margin-top: 10px;

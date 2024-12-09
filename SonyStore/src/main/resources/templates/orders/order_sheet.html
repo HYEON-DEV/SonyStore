@@ -580,11 +580,6 @@
         });
 
 
-        /* = = = = = 검색된 주소 = = = = = */
-
-        
-
-        
 
         /* = = = = = collapsible 배송 요청 사항 = = = = = */
 
@@ -621,15 +616,28 @@
 
 
         /* = = = = = 출고일 지정 = = = = = */
+
+        const today = new Date();
+        today.setDate(today.getDate()+3);
+        const monthLater = new Date(today);
+        monthLater.setMonth(today.getMonth()+1);
+
+        const formatDate = date => {
+            const year = date.getFullYear();
+            const month = String(date.getMonth()+1).padStart(2,'0');
+            const day = String(date.getDate()).padStart(2,'0');
+            return `${year}-${month}-${day}`;
+        };
+
+        const forwardingDate = document.querySelector('#forwarding_date');
         
-        var today = new Date();
-        document.querySelector('#forwarding_date').value = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()+3).padStart(2,'0')}`;
+        forwardingDate.value = formatDate(today);
+        forwardingDate.min = forwardingDate.value;
+        forwardingDate.max = formatDate(monthLater);
 
         const radio = document.querySelectorAll('input[name="deliveryRadio"]');
         radio.forEach( (v,i) => {
-            v.addEventListener('change', e => {
-                document.querySelector('.forwarding_date').style.display = (i==1) ? 'block' : 'none';
-            })
+            v.addEventListener('change', e => document.querySelector('.forwarding_date').style.display = (i==1) ? 'block' : 'none' );
         } );
 
 
@@ -642,7 +650,7 @@
             
             try {
                 regexHelper.value( '#user_name', '이름을 입력하세요' );
-                regexHelper.korEng("#username", "이름은 한글과 영문으로만 입력할 수 있습니다.");
+                regexHelper.korEng("#user_name", "이름은 한글과 영문으로만 입력할 수 있습니다.");
                 regexHelper.minLength( '#user_name', 2, '이름은 2자 이상 20자 이하로 입력하세요' );
                 regexHelper.maxLength( '#user_name', 20, '이름은 2자 이상 20자 이하로 입력하세요' );
 
@@ -653,7 +661,7 @@
                 regexHelper.phone("#user_number", "휴대폰 번호 형식이 잘못되었습니다.");
 
                 regexHelper.value( '#user_name2', '수령인 이름을 입력하세요' );
-                regexHelper.korEng("#username2", "이름은 한글과 영문으로만 입력할 수 있습니다.");
+                regexHelper.korEng("#user_name2", "이름은 한글과 영문으로만 입력할 수 있습니다.");
                 regexHelper.minLength( '#user_name2', 2, '이름은 2자 이상 20자 이하로 입력하세요' );
                 regexHelper.maxLength( '#user_name2', 20, '이름은 2자 이상 20자 이하로 입력하세요' );
 
@@ -666,7 +674,7 @@
             } catch (e) {
                 await utilHelper.alertDanger(e.message);
 
-                // setTimeout(() => e.element.focus(), 1);
+                setTimeout(() => e.element.focus(), 300);
                 return;
             }
 
@@ -677,7 +685,8 @@
 
             // 필수 동의 체크
             if (!document.querySelector('#chkEssential').checked) {
-                alert('구매에 동의해주셔야 구매가 가능합니다.');
+                await utilHelper.alertWarning('구매에 동의해주셔야 구매가 가능합니다.');
+                // alert('구매에 동의해주셔야 구매가 가능합니다.');
                 return;
             }
 
