@@ -83,6 +83,9 @@ window.onload = async (e) => {
         swiperWrapper1.appendChild(div1);
     });
 
+    
+    createPagination();
+
     const swiper1 = new Swiper('.swiper', {
         direction: 'horizontal',
         loop: true,
@@ -95,7 +98,6 @@ window.onload = async (e) => {
 
         on: {
             init: function() {
-                createPagination();
                 updatePagination(this.realIndex);
             },
             slideChange: function () {
@@ -196,6 +198,7 @@ window.onload = async (e) => {
         document.querySelectorAll('.color-btn').forEach((v, i) => {
             v.addEventListener('click', e => {
                 e.preventDefault();
+                swiper1.slideToLoop(0, 0); // 첫 번째 슬라이드로 즉시 이동
                 const clickIdx = i;
                 const selectedColorId = colors[clickIdx].colorid;
                 const selectedImages = images.filter(img => img.colorid === selectedColorId);
@@ -225,8 +228,7 @@ window.onload = async (e) => {
                     swiperWrapper1.appendChild(div1);
                 });
 
-                swiper1.update();
-                createPagination();
+                
 
                 document.querySelectorAll('.circle-color').forEach((v1, i1) => {
                     if (clickIdx == i1) {
@@ -245,7 +247,7 @@ window.onload = async (e) => {
             });
         });
     }
-
+    
     /* -- -- -- -- -- -- circleColor 메서드 -- -- -- -- -- -- */
     const circleColor = selector => {
         //const selector = document.querySelector( selectorName ); //console.log(selector);
