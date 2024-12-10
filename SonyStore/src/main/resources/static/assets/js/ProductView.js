@@ -198,7 +198,7 @@ window.onload = async (e) => {
         document.querySelectorAll('.color-btn').forEach((v, i) => {
             v.addEventListener('click', e => {
                 e.preventDefault();
-                swiper1.slideToLoop(0, 0); // 첫 번째 슬라이드로 즉시 이동
+                swiper1.slideToLoop(0);
                 const clickIdx = i;
                 const selectedColorId = colors[clickIdx].colorid;
                 const selectedImages = images.filter(img => img.colorid === selectedColorId);
@@ -229,7 +229,6 @@ window.onload = async (e) => {
                 });
 
                 
-
                 document.querySelectorAll('.circle-color').forEach((v1, i1) => {
                     if (clickIdx == i1) {
                         v1.classList.add('active');
