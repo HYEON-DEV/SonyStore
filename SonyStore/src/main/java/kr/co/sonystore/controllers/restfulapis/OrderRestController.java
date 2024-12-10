@@ -135,6 +135,8 @@ public class OrderRestController {
         @RequestParam("payoption") String payoption,
         @RequestParam("orderSheetNo") int payid,
         @RequestParam(value="cartid", required = false) List<Integer> cartids,
+        @RequestParam("prodtitle") List<String> prodtitles,
+        @RequestParam("prodcount") List<Integer> prodcounts,
         HttpServletResponse response
     ) {
         Payment payment = new Payment();
@@ -152,6 +154,7 @@ public class OrderRestController {
         payment.setPayoption(payoption);
 
         Payment outputPayment = null;
+
         
         try {
             outputPayment = paymentService.editItem(payment);
@@ -183,10 +186,20 @@ public class OrderRestController {
 
         template = template.replace("{{userName}}", ordername);
         template = template.replace("{{orderNumber}}", outputPayment.getOrderno());
-        // template = template.replace("{{productName}}", outputPayment.get);
         template = template.replace("{{qty}}", String.valueOf(outputPayment.getTotalcount()));
         template = template.replace("{{orderDate}}", outputPayment.getDate());
         template = template.replace("{{orderPrice}}", String.valueOf(outputPayment.getTotal()));
+
+        String products = "";
+        for ( int i=0; i<prodtitles.size(); i++) {
+            // String.format("<p>%s</p>", prodtitles.get(i)));
+            products += String.format("%s (%s개)", prodtitles.get(i), prodcounts.get(i));
+            if ( i+1 < prodtitles.size() ) {
+                products += ", ";
+            }
+        }
+        template = template.replace("{{productName}}", products);
+
         String subject = ordername + "님, 주문이 완료되었습니다.";
 
         try {

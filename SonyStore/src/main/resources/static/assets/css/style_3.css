@@ -12,9 +12,6 @@ a, button {
     cursor: pointer;
 }
 
-
-
-
 .app {
     background-color: var(--color-black);
 }
@@ -88,6 +85,9 @@ img:not(.side_toggle_box img, .consumer_logo img) {
 .arrow_collapsible_parent.active .arrow_collapsible:after {
     transform: translateY(-50%) rotate(45deg);
 }
+
+/* = = = = = = = = = = = = = = = = = = = = */
+
 
 /* = = = = = = = = = = view.html - 제품 상세 페이지 = = = = = = = = = = */
 

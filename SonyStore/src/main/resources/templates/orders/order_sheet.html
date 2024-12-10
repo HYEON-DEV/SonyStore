@@ -7,6 +7,9 @@
 
 <body>
     <th:block th:replace="~{/_fragments/_header :: sony-header}"></th:block>
+    
+    <div id="loading"></div>
+
     <div class="app">
         <div class="wrapper">
             <div class="container_w1200 page_top_btm_pad order_sheet">
@@ -34,7 +37,7 @@
                     <input type="hidden" th:value="${cartid}" />
                 </div> -->
                 <form id="ordersheet_form">
-                    <!-- 장바구니 내역 테이블 -->
+                    <!-- 결제할 내역 테이블 -->
                     <div class="col_table_wrap order_list order_sheet_list">
 
                         <div class="col_table">
@@ -65,6 +68,7 @@
                                             </div>
                                             <!-- 제품이름 -->
                                             <div class="prd_info">
+                                                <input type="hidden" name="prodtitle" th:value="${paylist.prodtitle}" />
                                                 <span class="prd_info_name" th:text="${paylist.prodtitle}"></span>
                                                 <span th:if="${paylist.prodcolor!='null'}"> &nbsp; ( <span th:text="${paylist.prodcolor}"></span> ) </span>
                                             </div>
@@ -77,6 +81,7 @@
                                     </div>
                                     
                                     <!-- 수량 -->
+                                    <input type="hidden" name="prodcount" th:value="${paylist.count}" />
                                     <div class="col_table_cell prd_count" th:text="${paylist.count}"> <span class="won">개</span> </div>
 
                                     <!-- 합계 -->
@@ -502,7 +507,11 @@
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
     <script>
+        const body = document.querySelector('body');
+        const loading = document.querySelector('#loading');
+
         
+
         /* = = = = = collapsible 주문자 정보, 배송지 정보, 할인 정보 = = = = = */
         
         document.querySelectorAll('.acc_head').forEach( (v,i) => {
@@ -523,7 +532,7 @@
 
         document.querySelector('.recent_delivery').addEventListener('click', e => {
             document.querySelector('.modal').style.display = 'block';
-            document.querySelector('body').style.overflow = 'hidden';
+            body.style.overflow = 'hidden';
         });
 
         const inp_radio = document.querySelector('.modal').querySelectorAll('input[type="radio"]');
@@ -537,7 +546,7 @@
 
         document.querySelector('.ico_x').addEventListener('click', e=>{
             document.querySelector('.modal').style.display = 'none';
-            document.querySelector('body').style.overflow = 'visible';
+            body.style.overflow = 'visible';
         });
 
         // 확인 버튼 클릭 시 선택된 배송지 정보를 입력란에 적용
@@ -553,12 +562,13 @@
                 }
             } );
             document.querySelector('.modal').style.display = 'none';
-            document.querySelector('body').style.overflow = 'visible';
+            body.style.overflow = 'visible';
         });
         
 
 
         /* = = = = = 주문자 정보와 동일 = = = = = */
+
         document.querySelector('#chkSame').addEventListener( 'click', e => {
             const current = e.currentTarget;
             if(current.checked) {
@@ -646,7 +656,6 @@
 
         document.querySelector('#ordersheet_form').addEventListener('submit', async e => {
             e.preventDefault();
-
             
             try {
                 regexHelper.value( '#user_name', '이름을 입력하세요' );
@@ -678,11 +687,6 @@
                 return;
             }
 
-            // if ( document.querySelector('#postcode').value === '' || document.querySelector('#addr1').value === '' ) {
-            //     alert('주소를 입력해주세요.');
-            //     return;
-            // }
-
             // 필수 동의 체크
             if (!document.querySelector('#chkEssential').checked) {
                 await utilHelper.alertWarning('구매에 동의해주셔야 구매가 가능합니다.');
@@ -710,12 +714,26 @@
                 formData.append('payoption', selectedPaymentRadio.value);
             }
 
+
+            // 로딩바 활성화
+            loading.classList.add('active');
+            body.style.opacity = '0.6';
+            body.style.pointerEvents = 'none';
+            body.style.overflow = 'hidden';
+
             // 현재 페이지의 URL에서 쿼리 스트링 추출
             const queryString = window.location.search;
             // console.log(queryString);
             
             let data = await axiosHelper.put( `[[@{/api/order/complete}]]${queryString}`, formData );
             // console.log(data);
+
+            
+            // 로딩바 비활성화
+            loading.classList.remove('active');
+            body.style.opacity = '1';
+            body.style.pointerEvents = 'all';
+            body.style.overflow = 'visible';
 
             window.location = `/order/complete${queryString}`;
         });
