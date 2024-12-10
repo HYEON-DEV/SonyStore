@@ -20,10 +20,19 @@
             overflow: hidden;
         }
         .email-header {
-            background-color: #4CAF50;
-            padding: 20px;
+            background-color: #222;
+            padding: 35px;
             text-align: center;
             color: #ffffff;
+
+            .img_container {
+                width: 180px;
+                margin: auto;
+
+                img {
+                    width: 100%;
+                }
+            }
         }
         .email-body {
             padding: 20px;
@@ -31,22 +40,29 @@
         }
         .email-body h1 {
             font-size: 24px;
-            margin-bottom: 10px;
+            margin-bottom: 25px;
         }
         .email-body p {
             font-size: 16px;
             line-height: 1.5;
-            margin-bottom: 20px;
+            margin: 0px;
+            margin-bottom: 5px;
         }
+        .email-body .head_txt {
+            font-size: 18px;
+        }
+        
         .order-details {
             background-color: #f0f0f0;
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
+            margin-top: 30px;
         }
         .order-details h2 {
             font-size: 18px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            margin-top: 5px;
         }
         .order-details p {
             font-size: 16px;
@@ -63,43 +79,39 @@
             color: #ffffff;
             text-decoration: none;
         }
-
-        .logo-img {
-            text-align: center;
-            margin-top: 20px;
+        .footer_txt {
+            font-size: 14px !important;
         }
 
-        .logo-img img {
-            width: 50%;
-        }
     </style>
 </head>
 <body>
     <div class="email-container">
         <div class="email-header">
-            <h1>결제가 완료되었습니다</h1>
+            <div class="img_container"><img src="https://store.sony.co.kr/static/media/logo.cae2c042.svg" class /></div>
+            <!-- <div class="img_container"><img src="../" class /></div> -->
         </div>
         <div class="email-body">
-            <p class="logo-img">
-                <img src="https://img.megastudyacademy.co.kr/campus/intra/logo/B0002/2022111413335616684004367613.png" />
-            </p>
             <h1>안녕하세요, {{userName}}님!</h1>
-            <p>고객님의 주문이 성공적으로 결제되었습니다. 아래 주문 내역을 확인해 주세요.</p>
+            <p class="head_txt">고객님의 주문이 성공적으로 결제되었습니다.</p>
+            <p class="head_txt">아래 주문 내역을 확인해 주세요.</p>
             <div class="order-details">
                 <h2>주문 상세 정보</h2>
-                <p><strong>주문 번호:</strong> {{orderNumber}}</p>
-                <p><strong>주문 상품:</strong> {{productName}}</p>
-                <p><strong>주문 수량:</strong> {{qty}}</p>
-                <p><strong>결제 일자:</strong> {{orderDate}}</p>
-                <p><strong>총 결제 금액:</strong> {{orderPrice}}원</p>
+                <p><strong>주문 번호 : &nbsp;</strong> {{orderNumber}}</p>
+                <p><strong>주문 상품 : &nbsp;</strong> {{productName}}</p>
+                <p><strong>결제 일자 : &nbsp;</strong> {{orderDate}}</p>
+                <p><strong>결제 수단 : &nbsp;</strong> {{orderOption}}</p>
+                <p><strong>총 주문 수량 : &nbsp;</strong> {{qty}}</p>
+                <p><strong>총 결제 금액 : &nbsp;</strong> {{orderPrice}}원</p>
             </div>
-            <p>주문 상품은 빠른 시일 내에 발송될 예정입니다. 배송 진행 상황은 별도의 이메일로 알려드리겠습니다.</p>
-            <p>추가 문의 사항이 있으시면 언제든지 저희 고객센터로 연락해 주세요.</p>
-            <p>감사합니다.</p>
+            <p class="footer_txt">ㆍ본 메일은 발신전용 메일 이므로 회신을 통한 문의는 처리되지 않습니다. </p>
+            <p class="footer_txt">ㆍ주문 상품은 빠른 시일 내에 발송될 예정입니다. 배송 진행 상황은 별도의 이메일로 알려드리겠습니다.</p>
+            <p class="footer_txt">ㆍ추가 문의 사항이 있으시면 언제든지 저희 고객센터로 연락해 주세요.</p>
+            <p class="footer_txt">감사합니다.</p>
         </div>
         <div class="email-footer">
-            <p>© 2024 메가스터디 IT 아카데미. All rights reserved.</p>
-            <p><a href="#">이용약관</a> | <a href="#">개인정보처리방침</a></p>
+            <p>Copyright © Sony Store Corporation. All rights reserved.</p>
+            <p>TEL : 소니코리아 고객센터 1588-0911 &nbsp;&nbsp;&nbsp; E-MAIL : cshelp@sony.co.kr</p>
         </div>
     </div>
 </body>

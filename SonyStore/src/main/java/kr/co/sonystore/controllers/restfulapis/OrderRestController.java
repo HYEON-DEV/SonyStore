@@ -1,5 +1,6 @@
 package kr.co.sonystore.controllers.restfulapis;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -188,7 +189,11 @@ public class OrderRestController {
         template = template.replace("{{orderNumber}}", outputPayment.getOrderno());
         template = template.replace("{{qty}}", String.valueOf(outputPayment.getTotalcount()));
         template = template.replace("{{orderDate}}", outputPayment.getDate());
-        template = template.replace("{{orderPrice}}", String.valueOf(outputPayment.getTotal()));
+        template = template.replace("{{orderOption}}", outputPayment.getPayoption());
+
+        DecimalFormat df = new DecimalFormat("###,###");
+        String price = df.format(outputPayment.getTotal());
+        template = template.replace("{{orderPrice}}", String.valueOf(price));
 
         String products = "";
         for ( int i=0; i<prodtitles.size(); i++) {

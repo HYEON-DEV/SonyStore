@@ -98,6 +98,7 @@ window.onload = async (e) => {
 
         on: {
             init: function() {
+                // createPagination();
                 updatePagination(this.realIndex);
             },
             slideChange: function () {
@@ -198,18 +199,21 @@ window.onload = async (e) => {
         document.querySelectorAll('.color-btn').forEach((v, i) => {
             v.addEventListener('click', e => {
                 e.preventDefault();
-                swiper1.slideToLoop(0);
+                
                 const clickIdx = i;
                 const selectedColorId = colors[clickIdx].colorid;
-                const selectedImages = images.filter(img => img.colorid === selectedColorId);
+                let selectedImages = images.filter(img => img.colorid === selectedColorId);
                 const selectedThumbnailImage = selectedImages.find(img => img.thumbnail === 'Y');
-                // const selectedOtherImages = selectedImages.filter(img => img.thumbnail !== 'Y');
-
+                
                 if (selectedThumbnailImage) {
+                    selectedImages = selectedImages.filter(img => img.imgid!=selectedThumbnailImage.imgid);
                     selectedImages.unshift(selectedThumbnailImage);
                 }
+                // console.log(selectedImages);
 
-                swiperWrapper1.innerHTML = '';
+                swiper1.removeAllSlides();
+
+                // swiperWrapper1.innerHTML = '';
                 selectedImages.forEach(img => {
                     const div1 = document.createElement('div');
                     div1.classList.add('swiper-slide');
@@ -225,8 +229,14 @@ window.onload = async (e) => {
                     div2.appendChild(image);
                     div1.appendChild(div2);
                     
-                    swiperWrapper1.appendChild(div1);
+                    // swiperWrapper1.appendChild(div1);
+                    swiper1.appendSlide(div1);
                 });
+
+                swiper1.update();
+                swiper1.pagination.render();
+                swiper1.pagination.update();
+                swiper1.slideToLoop(0);
 
                 
                 document.querySelectorAll('.circle-color').forEach((v1, i1) => {
