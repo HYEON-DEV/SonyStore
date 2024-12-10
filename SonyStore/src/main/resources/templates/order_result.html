@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Radley:ital@0;1" rel="stylesheet"> -->
+
     <title>결제 완료 알림</title>
     <style>
         body {
@@ -21,18 +26,26 @@
         }
         .email-header {
             background-color: #222;
-            padding: 35px;
+            /* padding: 0px; */
+            /* margin: 0; */
             text-align: center;
             color: #ffffff;
 
-            .img_container {
+            /* h1 {
+                font-family: "Radley";
+                font-size: 55px;
+                letter-spacing: 0.2em;
+                padding: 35px;
+                margin: 0;
+            } */
+            /* .img_container {
                 width: 180px;
                 margin: auto;
 
                 img {
                     width: 100%;
                 }
-            }
+            } */
         }
         .email-body {
             padding: 20px;
@@ -88,8 +101,9 @@
 <body>
     <div class="email-container">
         <div class="email-header">
-            <div class="img_container"><img src="https://store.sony.co.kr/static/media/logo.cae2c042.svg" class /></div>
+            <!-- <div class="img_container"><img src="https://www.sony.co.kr/content/dam/sony/contents/g…bal/common/sony-logo/Sony_logo_black_1200x630.png" alt="Sony Store Logo" /></div> -->
             <!-- <div class="img_container"><img src="../" class /></div> -->
+            <h1> SONY </h1>
         </div>
         <div class="email-body">
             <h1>안녕하세요, {{userName}}님!</h1>

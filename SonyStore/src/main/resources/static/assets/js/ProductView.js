@@ -673,7 +673,28 @@ document.querySelector('.cart.btn-icon-container').addEventListener('click', asy
 
         let data = await axiosHelper.post( 'http://localhost:8080/api/cart/add', formData );
 
-        window.location = '/cart';
+        if(data) {
+            Swal.fire({
+                title: "해당 상품이 장바구니에 담겼습니다.",
+                showCancelButton: true,
+                cancelButtonText: '쇼핑 계속하기',
+                cancelButtonColor: '#fff',
+                confirmButtonText: '장바구니 이동',
+                confirmButtonColor: '#000',
+                reverseButtons: true,
+                width: '450px',
+                customClass: { 
+                    popup: 'swal_cart_popup', 
+                    title: 'swal_cart_title'
+                },
+                padding: '16px 0 34px 0',
+            }).then( result => {
+                if(result.isConfirmed) {
+                    window.location = '/cart';            
+                }
+            } );
+        }
+        // window.location = '/cart';
     }
 });
 

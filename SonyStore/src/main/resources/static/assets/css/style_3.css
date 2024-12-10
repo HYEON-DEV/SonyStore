@@ -88,6 +88,14 @@ img:not(.side_toggle_box img, .consumer_logo img) {
 
 /* = = = = = = = = = = = = = = = = = = = = */
 
+/* 장바구니 이동 sweet alert */
+.swal_cart_popup {
+    height: 250px;
+}
+.swal_cart_title {
+    font-size: 24px;
+    margin-top: 40px;
+}
 
 /* = = = = = = = = = = view.html - 제품 상세 페이지 = = = = = = = = = = */
 
