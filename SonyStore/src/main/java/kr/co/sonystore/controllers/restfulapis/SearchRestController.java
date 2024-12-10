@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.sonystore.helpers.FileHelper;
 import kr.co.sonystore.helpers.RestHelper;
-import kr.co.sonystore.models.Image;
 import kr.co.sonystore.models.Product;
 import kr.co.sonystore.services.SearchService;
 import lombok.extern.slf4j.Slf4j;

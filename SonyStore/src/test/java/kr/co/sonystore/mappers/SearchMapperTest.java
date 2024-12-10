@@ -36,10 +36,10 @@ public class SearchMapperTest {
     @DisplayName("검색한 결과 목록 테스트")
     void SearchListTest() {
         Product input = new Product();
-        input.setKeyword("카메라");
+        input.setKeyword("비디오");
 
         List<Product> output = searchMapper.selectList(input);
 
-        log.debug("카메라로 검색한 결과 = " + output);
+        log.debug("비디오로 검색한 결과 = " + output);
     }
 }
