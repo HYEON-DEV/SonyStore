@@ -175,7 +175,7 @@ public class OrderRestController {
          * 결제 완료 메일 발송
          */
 
-        String mailTemplatePath = "src/main/resources/templates/order_result.html";
+        String mailTemplatePath = "src/main/resources/mail_templates/order_result.html";
 
         String template = null;
 
@@ -205,7 +205,7 @@ public class OrderRestController {
         }
         template = template.replace("{{productName}}", products);
 
-        String subject = ordername + "님, 주문이 완료되었습니다.";
+        String subject = ordername + "님, 결제가 완료되었습니다.";
 
         try {
             mailHelper.sendMail( orderemail, subject, template ); 
