@@ -88,6 +88,7 @@ img:not(.side_toggle_box img, .consumer_logo img) {
 
 /* = = = = = = = = = = = = = = = = = = = = */
 
+
 /* 장바구니 이동 sweet alert */
 .swal_cart_popup {
     height: 250px;

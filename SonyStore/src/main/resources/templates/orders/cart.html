@@ -7,6 +7,9 @@
 
 <body>
     <th:block th:replace="~{/_fragments/_header :: sony-header}"></th:block>
+
+    <div id="loading"></div>
+
     <div class="app">
         <div class="wrapper">
             <div class="container_w1200 page_top_btm_pad cart">
@@ -215,6 +218,27 @@
     <th:block th:replace="~{/_fragments/_footer :: sony-footer}"></th:block>
     <th:block th:replace="~{/_fragments/_scripts :: sony-scripts}"></th:block>
     <script>
+
+        const body = document.querySelector('body');
+        const loading = document.querySelector('#loading');
+
+        // 페이지 로딩 => 로딩바 활성화
+        document.addEventListener( 'DOMContentLoaded', () => {
+            loading.classList.add('active');
+            body.style.opacity = '0.6';
+            body.style.pointerEvents = 'none';
+            body.style.overflow = 'hidden';
+        } );
+
+        // 페이지 로딩 완료 => 로딩바 비활성화
+        window.addEventListener('load', () => {
+            loading.classList.remove('active');
+            body.style.opacity = '1';
+            body.style.pointerEvents = 'all';
+            body.style.overflow = 'visible';
+        } );
+
+        
 
         /* = = = = = 총 갯수 = = = = = */
         const totalCntSelector = document.querySelector('.total_cnt');
@@ -471,6 +495,12 @@
         
         document.querySelector('#cart-form').addEventListener( 'submit', async e => {
             e.preventDefault();
+
+            // 페이지 로딩 => 로딩바 활성화
+            loading.classList.add('active');
+            body.style.opacity = '0.6';
+            body.style.pointerEvents = 'none';
+            body.style.overflow = 'hidden';
             
             const formData = new FormData();     
 
@@ -500,6 +530,12 @@
             } );
 
             let data = await axiosHelper.post( '[[@{/api/order}]]', formData );
+
+            // 페이지 로딩 완료 => 로딩바 비활성화
+            loading.classList.remove('active');
+            body.style.opacity = '1';
+            body.style.pointerEvents = 'all';
+            body.style.overflow = 'visible';
             
             const cartids = data.cartids.map( v => `cartid=${v}`).join('&');
             window.location = `/order/sheet?orderSheetNo=${data.item.payid}&${cartids}`;

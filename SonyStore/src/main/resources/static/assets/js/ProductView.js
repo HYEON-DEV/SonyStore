@@ -2,7 +2,18 @@ let productByProdid = []; // type에 따른 제품 리스트
 let productsByType = []; // prodid에 해당하는 제품 정보
 let thumbnails = [];
 
+const body = document.querySelector('body');
+const loading = document.querySelector('#loading');
+
 window.onload = async (e) => {
+
+    // 페이지 로딩 => 로딩바 활성화
+    loading.classList.add('active');
+    body.style.opacity = '0.6';
+    body.style.pointerEvents = 'none';
+    body.style.overflow = 'hidden';
+
+
     let response = null;
     let response2 = null;
 
@@ -195,7 +206,15 @@ window.onload = async (e) => {
 
         div.appendChild(p);
         div.appendChild(ul);
+
+
+        // 페이지 로딩 완료 => 로딩바 비활성화
+        loading.classList.remove('active');
+        body.style.opacity = '1';
+        body.style.pointerEvents = 'all';
+        body.style.overflow = 'visible';
         
+
         document.querySelectorAll('.color-btn').forEach((v, i) => {
             v.addEventListener('click', e => {
                 e.preventDefault();
@@ -544,6 +563,14 @@ window.onload = async (e) => {
 
     /* -- -- -- 제품개요 -- -- -- */
 
+
+    // 페이지 로딩 => 로딩바 활성화
+    loading.classList.add('active');
+    body.style.opacity = '0.6';
+    body.style.pointerEvents = 'none';
+    body.style.overflow = 'hidden';
+
+
     // 제품 개요 이미지 및 동영상 설정
     document.querySelector('.sony-content.pad').innerHTML = `<img src="${productByProdid.detailimage1}" />`;
     document.querySelector('.video-wrap.pad').innerHTML = `<iframe width="960" height="540" src="${productByProdid.youtube}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>`;
@@ -645,6 +672,12 @@ window.onload = async (e) => {
         }
     }
     
+
+    // 페이지 로딩 완료 => 로딩바 비활성화
+    loading.classList.remove('active');
+    body.style.opacity = '1';
+    body.style.pointerEvents = 'all';
+    body.style.overflow = 'visible';
 };
 
 
@@ -671,7 +704,19 @@ document.querySelector('.cart.btn-icon-container').addEventListener('click', asy
             formData.append('count', parseInt(v.querySelector('.cnt-box.count').value));
         } );
 
+        // 페이지 로딩 => 로딩바 활성화
+        loading.classList.add('active');
+        body.style.opacity = '0.6';
+        body.style.pointerEvents = 'none';
+        body.style.overflow = 'hidden';
+
         let data = await axiosHelper.post( 'http://localhost:8080/api/cart/add', formData );
+
+        // 페이지 로딩 완료 => 로딩바 비활성화
+        loading.classList.remove('active');
+        body.style.opacity = '1';
+        body.style.pointerEvents = 'all';
+        body.style.overflow = 'visible';
 
         if(data) {
             Swal.fire({
@@ -730,8 +775,20 @@ document.querySelector('.buy_now').addEventListener( 'click', async e => {
         formData.append('totalcount', totalCount);
         formData.append('total', parseInt(document.querySelector('.result-price .num').innerText.replaceAll(',', '')));
 
+        // 페이지 로딩 => 로딩바 활성화
+        loading.classList.add('active');
+        body.style.opacity = '0.6';
+        body.style.pointerEvents = 'none';
+        body.style.overflow = 'hidden';
+
         let data = await axiosHelper.post( 'http://localhost:8080/api/order', formData );
         // let data = await axiosHelper.post( '[[@{/api/order_by_detail}]]', formData );
+
+        // 페이지 로딩 완료 => 로딩바 비활성화
+        loading.classList.remove('active');
+        body.style.opacity = '1';
+        body.style.pointerEvents = 'all';
+        body.style.overflow = 'visible';
 
         window.location = `/order/sheet?orderSheetNo=${data.item.payid}`;
     }

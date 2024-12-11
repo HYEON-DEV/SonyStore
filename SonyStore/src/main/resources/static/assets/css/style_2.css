@@ -282,6 +282,7 @@ body {
     letter-spacing: -0.025em;
     justify-content: flex-start;
     margin: 16px 0 6px 0;
+    color: var(--color-black-3);
   }
 
   p {

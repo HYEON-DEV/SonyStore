@@ -54,6 +54,19 @@
  */
 /*** dual slide get data end ***/
 
+
+const body = document.querySelector('body');
+const loading = document.querySelector('#loading');
+
+// 페이지 로딩 => 로딩바 활성화
+document.addEventListener( 'DOMContentLoaded', () => {
+    loading.classList.add('active');
+    body.style.opacity = '0.6';
+    body.style.pointerEvents = 'none';
+    body.style.overflow = 'hidden';
+} );
+
+
 /***  banner swiper ***/
 let loop_slider = true;
 const num_of_slides = 4;
@@ -195,3 +208,11 @@ SubSlide.forEach((slide) => {
 })();
 
 /*** product get data end ***/
+
+// 페이지 로딩 완료 => 로딩바 비활성화
+window.addEventListener('load', () => {
+    loading.classList.remove('active');
+    body.style.opacity = '1';
+    body.style.pointerEvents = 'all';
+    body.style.overflow = 'visible';
+} );

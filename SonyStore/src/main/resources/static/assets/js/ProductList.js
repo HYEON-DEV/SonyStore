@@ -4,7 +4,17 @@ let productsByType3 = []; // type3에 따른 제품 리스트
 let backgrounds = []; // 전역 변수 선언
 let currentProducts = []; // 현재 선택된 제품 리스트를 저장할 변수
 
+const body = document.querySelector('body');
+const loading = document.querySelector('#loading');
+
 window.onload = async (e) => {
+
+    // 페이지 로딩 => 로딩바 활성화
+    loading.classList.add('active');
+    body.style.opacity = '0.6';
+    body.style.pointerEvents = 'none';
+    body.style.overflow = 'hidden';
+
     let response = null;
     let response2 = null;
     let response3 = null;
@@ -74,6 +84,12 @@ window.onload = async (e) => {
         // alert(alertMsg);
         window.location = "/error/error_404";
         return;
+    } finally {
+        // 페이지 로딩 완료 => 로딩바 비활성화
+        loading.classList.remove('active');
+        body.style.opacity = '1';
+        body.style.pointerEvents = 'all';
+        body.style.overflow = 'visible';
     }
 };
 
