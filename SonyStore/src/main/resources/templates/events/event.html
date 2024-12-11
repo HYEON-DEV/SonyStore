@@ -45,16 +45,16 @@
 
             <div class="tab_menu_style_1" style="margin:0;">
                 <ul class="tab_button_container flex_center">
-                    <li class="tab_01 font_32_700 tab_button_box border_bottom"><a href="#tab_01" class="flex_center tab_button event_tab_button tab_button_active">전체</a></li>
-                    <li class="tab_02 font_32_700 tab_button_box border_bottom"><a href="#tab_02" class="flex_center tab_button event_tab_button ">소니스토어 단독</a></li>
-                    <li class="tab_03 font_32_700 tab_button_box border_bottom"><a href="#tab_03" class="flex_center tab_button event_tab_button ">혜택존</a></li>
-                    <li class="tab_04 font_32_700 tab_button_box border_bottom"><a href="#tab_04" class="flex_center tab_button event_tab_button ">예약판매</a></li>
-                    <li class="tab_05 font_32_700 tab_button_box border_bottom"><a href="#tab_05" class="flex_center tab_button event_tab_button ">정품등록 이벤트</a></li>                
-                    <li class="tab_06 font_32_700 tab_button_box border_bottom"><a href="#tab_06" class="flex_center tab_button event_tab_button ">LIVE ON</a></li>                
+                    <li class="tab_01 font_32_700 tab_button_box border_bottom"><a href="#tab_01" class="flex_center tab_button event_tab_button" data-eventname="tab_01">전체</a></li>
+                    <li class="tab_02 font_32_700 tab_button_box border_bottom"><a href="#tab_02" class="flex_center tab_button event_tab_button" data-eventname="tab_02">소니스토어 단독</a></li>
+                    <li class="tab_03 font_32_700 tab_button_box border_bottom"><a href="#tab_03" class="flex_center tab_button event_tab_button" data-eventname="tab_03">혜택존</a></li>
+                    <li class="tab_04 font_32_700 tab_button_box border_bottom"><a href="#tab_04" class="flex_center tab_button event_tab_button" data-eventname="tab_04">예약판매</a></li>
+                    <li class="tab_05 font_32_700 tab_button_box border_bottom"><a href="#tab_05" class="flex_center tab_button event_tab_button" data-eventname="tab_05">정품등록 이벤트</a></li>                
+                    <li class="tab_06 font_32_700 tab_button_box border_bottom"><a href="#tab_06" class="flex_center tab_button event_tab_button" data-eventname="tab_06">LIVE ON</a></li>                
                 </ul>
             </div>
 
-            <div id="tab_01" class="tab_page tab_page_active">
+            <div id="tab_01" class="tab_pagex">
                 <div class="event_h2_box">
                     <h2 class="event_h2" style="margin:0;">전체</h2>
 
@@ -331,6 +331,29 @@
             })
         });
 
+
+        //선택한 메뉴에 해당하는 탭메뉴 활성화
+        const eventname  = Object.fromEntries(new URLSearchParams(location.search)).eventname;
+        
+        console.log(`eventname: ${eventname}`)
+        
+        const tabButton = document.querySelectorAll('.tab_button');
+
+        tabButton.forEach((v, i) => {
+            for(let x = 0; x < tabButton.length; x++) {
+                if( v.dataset.eventname == eventname ) {
+                    v.classList.add('tab_button_active');
+                } else {
+                    v.classList.remove('tab_button_active');
+                }
+
+                document.querySelectorAll('.tab_page').forEach((v2, i2) => {
+                    v2.classList.remove('tab_page_active');
+                });
+
+                document.querySelector(`#${eventname}`).classList.add('tab_page_active');
+            }
+        });
     </script>
 
 

@@ -4,7 +4,7 @@
         <a th:href="@{/}" class="logo">
             <img th:src="@{/assets/img/header/sony_logo.svg}" class="logo_img" alt="sony_logo">
         </a>
-        <nav class="gnb">
+        <nav class="gnb"> 
             <ul class="gnb_menu">
                 <li>
                     <a href="#" class="gnb_title" data-num="1">스토어 추천 제품</a>
@@ -13,7 +13,7 @@
                     <a href="#" class="gnb_title" data-num="2">제품</a>
                 </li>
                 <li>
-                    <a th:href="@{/events/event}" class="gnb_title" data-num="3">기획전</a>
+                    <a th:href="@{/events/event?eventname=tab_01}" class="gnb_title" data-num="3">기획전</a>
                 </li>
                 <li>
                     <a href="#" class="gnb_title" data-num="4">멤버쉽</a>
@@ -53,19 +53,20 @@
                         </ul>
                         <ul class="secondary_menu_list" data-num="3">
                             <li>
-                                <a th:href="@{/events/event}" class="cursor_default">소니스토어 단독</a>
+                                <a th:href="@{/events/event?eventname=tab_02}">소니스토어 단독</a>
+                            </li>
+                            <!-- ?eventName=single -->
+                            <li>
+                                <a th:href="@{/events/event?eventname=tab_03}">혜택존</a>
                             </li>
                             <li>
-                                <a th:href="@{/events/event}" class="cursor_default">혜택존</a>
+                                <a th:href="@{/events/event?eventname=tab_04}">예약판매</a>
                             </li>
                             <li>
-                                <a th:href="@{/events/event}" class="cursor_default">예약판매</a>
+                                <a th:href="@{/events/event?eventname=tab_05}">정품등록 이벤트</a>
                             </li>
                             <li>
-                                <a th:href="@{/events/event}" class="cursor_default">정품등록 이벤트</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/events/event}" class="cursor_default">LIVE ON</a>
+                                <a th:href="@{/events/event?eventname=tab_06}">LIVE ON</a>
                             </li>
                         </ul>
                         <ul class="secondary_menu_list" data-num="4">
@@ -194,3 +195,5 @@
     </div>
     <!-- PC header end -->
 </th:block>
+
+

@@ -189,7 +189,6 @@ SubSlide.forEach((slide) => {
 
     const prodContainer = document.querySelector(".product_container");
     const productList = response.data.productList;
-    console.log(productList);
 
     productList.forEach((v, i) => {
         const prodItem = document.createElement("a");
