@@ -25,7 +25,7 @@ window.onload = async (e) => {
 
         if(productByProdid.type1){
             const type = productByProdid.type1;
-            console.log(type);
+            // console.log(type);
             response2 = await axios.get(`http://localhost:8080/api/products/${type}`);
             productsByType = response2.data.list; // type에 따른 제품 리스트
             
@@ -50,8 +50,8 @@ window.onload = async (e) => {
 
 
 
-    console.log(productByProdid);
-    console.log(productsByType);
+    // console.log(productByProdid);
+    // console.log(productsByType);
     
 
     /* -- -- -- 메인 좌측 - 슬라이더 -- -- -- */
