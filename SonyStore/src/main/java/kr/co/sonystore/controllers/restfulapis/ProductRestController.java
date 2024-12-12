@@ -18,7 +18,6 @@ import kr.co.sonystore.services.BackgroundService;
 import kr.co.sonystore.services.ProductService;
 
 @RestController
-// @RequestMapping("/api/products")
 public class ProductRestController {
     @Autowired
     private ProductService productService;

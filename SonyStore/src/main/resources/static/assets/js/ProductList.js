@@ -105,7 +105,7 @@ function renderProductList(products) {
     products.forEach(product => {
         const item = document.createElement('a');
         item.classList.add('item');
-        item.href = `http://localhost:8080/product-view/${product.prodid}`; // 제품 상세 페이지 링크 수정
+        item.href = `http://localhost:8080/product-view/${product.prodid}`; // 제품 상세 페이지 링크
 
         // 이미지 컨테이너 생성
         const imgContainer = document.createElement('div');
@@ -256,6 +256,7 @@ function getCategoryMap1() {
         'camera': '카메라',
         'video': '비디오 카메라',
         'audio': '오디오',
+        'lens': '렌즈',
         'accessory': '액세서리'
     };
 }
@@ -266,7 +267,9 @@ function getCategoryMap2() {
         'lens_change': '렌즈교환식 카메라',
         'compact': '컴팩트 카메라',
         'cinema': '시네마 라인 카메라',
-        'camcorder': '캠코더'
+        'camcorder': '캠코더',
+        'fullframe': '풀프레임 렌즈',
+        'APS-C': 'APS-C 렌즈'
     };
 }
 
