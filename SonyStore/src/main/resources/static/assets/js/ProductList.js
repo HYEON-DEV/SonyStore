@@ -363,8 +363,8 @@ function renderTapMenu(products) {
     const tapMenuList = document.querySelector('.tapMenu_list');
     tapMenuList.innerHTML = ''; // 기존 탭 메뉴 초기화
     const type3Length = products.filter(product => product.type3).length; // type3 값이 있는 제품 개수
-    console.log(products);
-    console.log(products.type3);
+    // console.log(products);
+    // console.log(products.type3);
 
     
     if (type3Length === 0) {
