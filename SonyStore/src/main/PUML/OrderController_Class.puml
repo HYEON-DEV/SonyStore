@@ -1,0 +1,34 @@
+@startuml
+skinparam dpi 200
+
+class OrderController {
+    +OrderController()
+    +cartService : CartService
+    +paylistService : PaylistService
+    +paymentService : PaymentService
+    +fileHelper : FileHelper
+    +webHelper : WebHelper
+}
+
+class CartService {
+}
+
+class PaylistService {
+}
+
+class PaymentService {
+}
+
+class FileHelper {
+}
+
+class WebHelper {
+}
+
+OrderController ..> CartService : has
+OrderController ..> PaylistService : has
+OrderController ..> PaymentService : has
+OrderController ..> FileHelper : has
+OrderController ..> WebHelper : has
+
+@enduml

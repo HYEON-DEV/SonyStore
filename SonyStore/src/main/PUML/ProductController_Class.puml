@@ -1,0 +1,17 @@
+@startuml
+skinparam dpi 200
+
+class ProductController {
+    +ProductController()
+    +products() : String
+    +productsByType1(type : String, model : Model) : String
+    +productsByType2(type : String, type2 : String, model : Model) : String
+    +view(prodid : int, model : Model) : String
+}
+
+class Model {
+}
+
+ProductController ..> Model : uses
+
+@enduml

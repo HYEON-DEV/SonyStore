@@ -1,0 +1,23 @@
+@startuml
+skinparam dpi 200
+
+actor User
+
+User -> ProductRestController : getProductView(int prodid)
+activate ProductRestController
+
+ProductRestController -> ProductService : getProductView(int prodid)
+activate ProductService
+
+ProductService -> ProductMapper : selectProductById(int prodid)
+activate ProductMapper
+ProductMapper -> Database : SELECT * FROM products WHERE id = #{prodid}
+deactivate ProductMapper
+
+ProductService -> ProductRestController : Product
+deactivate ProductService
+
+ProductRestController -> User : Product
+deactivate ProductRestController
+
+@enduml

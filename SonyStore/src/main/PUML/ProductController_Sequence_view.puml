@@ -1,0 +1,24 @@
+@startuml
+skinparam dpi 200
+
+actor User
+
+User -> ProductController : view(int prodid, Model model)
+activate ProductController
+
+ProductController -> ProductService : getProductById(int prodid)
+activate ProductService
+
+ProductService -> ProductMapper : selectProductById(int prodid)
+activate ProductMapper
+ProductMapper -> Database : SELECT * FROM products WHERE id = #{prodid}
+deactivate ProductMapper
+
+ProductService -> ProductController : Product
+deactivate ProductService
+
+ProductController -> Model : addAttribute("prodid", prodid)
+ProductController -> Model : addAttribute("product", Product)
+deactivate ProductController
+
+@enduml

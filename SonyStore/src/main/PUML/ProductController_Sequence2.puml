@@ -1,0 +1,25 @@
+@startuml
+skinparam dpi 200
+
+actor User
+
+User -> ProductController : productsByType2(String type, String type2, Model model)
+activate ProductController
+
+ProductController -> ProductService : getProductsByType2(String type, String type2)
+activate ProductService
+
+ProductService -> ProductMapper : selectProductsByType2(String type, String type2)
+activate ProductMapper
+ProductMapper -> Database : SELECT * FROM products WHERE type = #{type} AND type2 = #{type2}
+deactivate ProductMapper
+
+ProductService -> ProductController : List<Product>
+deactivate ProductService
+
+ProductController -> Model : addAttribute("type", type)
+ProductController -> Model : addAttribute("type2", type2)
+ProductController -> Model : addAttribute("products", List<Product>)
+deactivate ProductController
+
+@enduml

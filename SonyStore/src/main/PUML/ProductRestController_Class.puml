@@ -1,0 +1,29 @@
+@startuml
+skinparam dpi 200
+
+class ProductRestController {
+    +ProductRestController()
+    +productService : ProductService
+    +backgroundService : BackgroundService
+    +fileHelper : FileHelper
+    +restHelper : RestHelper
+}
+
+class ProductService {
+}
+
+class BackgroundService {
+}
+
+class FileHelper {
+}
+
+class RestHelper {
+}
+
+ProductRestController ..> ProductService : has
+ProductRestController ..> BackgroundService : has
+ProductRestController ..> FileHelper : has
+ProductRestController ..> RestHelper : has
+
+@enduml

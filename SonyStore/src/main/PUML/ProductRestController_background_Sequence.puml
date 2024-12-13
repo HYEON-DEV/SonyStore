@@ -1,0 +1,23 @@
+@startuml
+skinparam dpi 200
+
+actor User
+
+User -> ProductRestController : getBackgroundList()
+activate ProductRestController
+
+ProductRestController -> BackgroundService : getBackgroundList()
+activate BackgroundService
+
+BackgroundService -> BackgroundMapper : selectAllBackgrounds()
+activate BackgroundMapper
+BackgroundMapper -> Database : SELECT * FROM backgrounds
+deactivate BackgroundMapper
+
+BackgroundService -> ProductRestController : List<Background>
+deactivate BackgroundService
+
+ProductRestController -> User : List<Background>
+deactivate ProductRestController
+
+@enduml

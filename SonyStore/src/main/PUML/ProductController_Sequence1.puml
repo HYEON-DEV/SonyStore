@@ -1,0 +1,24 @@
+@startuml
+skinparam dpi 200
+
+actor User
+
+User -> ProductController : productsByType1(String type, Model model)
+activate ProductController
+
+ProductController -> ProductService : getProductsByType(String type)
+activate ProductService
+
+ProductService -> ProductMapper : selectProductsByType(String type)
+activate ProductMapper
+ProductMapper -> Database : SELECT * FROM products WHERE type = #{type}
+deactivate ProductMapper
+
+ProductService -> ProductController : List<Product>
+deactivate ProductService
+
+ProductController -> Model : addAttribute("type", type)
+ProductController -> Model : addAttribute("products", List<Product>)
+deactivate ProductController
+
+@enduml
