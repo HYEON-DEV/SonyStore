@@ -53,7 +53,7 @@ public interface SearchMapper {
             "inner join colors c on p.prodid = c.prodid" +
             "<where>" +
             "<if test='keyword != null'>keyword like concat('%', #{keyword}, '%')</if>" +
-            "and (c.pcolor = 'Y' and i.colorid = c.colorid and i.thumbnail = 'Y') or (i.colorid is null and i.thumbnail = 'Y')" +
+            "and ((c.pcolor = 'Y' and i.colorid = c.colorid and i.thumbnail = 'Y') or (i.colorid is null and i.thumbnail = 'Y'))" +
             "</where>" +
             "order by p.prodid desc " +
             "</script>")

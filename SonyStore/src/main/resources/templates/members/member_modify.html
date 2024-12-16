@@ -165,37 +165,8 @@
                 padding: '16px 0 34px 0',
             });
 
-            // function modifyNameCertification() {
-            //     try {
-            //         regexHelper.value("#phone", "휴대폰 번호를 입력하세요.");
-            //     } catch (err) {
-            //         utilHelper.alertDanger(err.message);
-
-            //         // setTimeout(() => err.element.focus(), 1);
-            //         return;
-            //     }
-            //     document.querySelector("#certification_check").value = "Y";
-            //     // new Swal({
-            //     //     html: '<span class="alert_content">인증 되었습니다.</span>',
-            //     //     confirmButtonColor: '#000',
-            //     //     confirmButtonText: '확인',
-            //     //     width: '312px',
-            //     //     padding: '16px 0 34px 0',
-            //     // });
-            //     alert('인증되었습니다.');
-            // }
-
-            // document.getElementById('phone').addEventListener('change', (e) => {
-            //     document.querySelector("#certification_check").value = "N";
-            // })
-
             document.getElementById('modifyName').addEventListener('submit', async (e) => {
             e.preventDefault();
-
-            // if(document.getElementById('certification_check').value == 'N') {
-            //     utilHelper.alertWarning("본인인증을 진행해주세요.");
-            //     return;
-            // }
 
             const formData = new FormData(e.currentTarget);
 

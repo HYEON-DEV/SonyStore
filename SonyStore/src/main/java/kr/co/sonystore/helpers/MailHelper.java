@@ -43,12 +43,9 @@ public class MailHelper {
         log.debug(String.format("ReceiverEmail : %s", receiverEmail));
         log.debug(String.format("Subject : %s", subject));
         //log.debug(String.format("Content : %s", content));
-        // 출력량이 너무 많아서 주석 처리
         log.debug("------------------------------");
 
-        // => import jakarta.mail.internet.MimeMessage;
         MimeMessage message = javaMailSender.createMimeMessage();
-        // => import org.springframework.mail.javamail.MimeMessageHelper;
         MimeMessageHelper helper = new MimeMessageHelper(message);
  
         try{
