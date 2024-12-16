@@ -67,3 +67,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+
+/* = = = = = 진행 중인 주문 건수 = = = = = */
+
+document.querySelectorAll('.order_step_cnt').forEach( (v,i) => {
+  if ( v.querySelector('.order_step_cnt_num').textContent > 0 ) {
+      v.style.textDecoration = 'underline';
+      v.style.color = 'var(--color-blue)';
+      v.style.fontSize = '20px';
+  }    
+} );

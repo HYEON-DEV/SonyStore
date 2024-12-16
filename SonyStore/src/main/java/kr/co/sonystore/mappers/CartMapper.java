@@ -62,7 +62,6 @@ public interface CartMapper {
      * @return 조회된 장바구니 목록
      */
     @Select (
-        // "<script> " +
         "SELECT cartid, memberid, c.prodid, title, i.colorid, \n" + 
         "c.color, filepath, price, count, price*count AS sum \n" +
         "FROM carts c \n" +
@@ -73,7 +72,6 @@ public interface CartMapper {
             "AND i.thumbnail = 'Y' \n" +
         "WHERE memberid = #{memberid} \n" +
         "ORDER BY cartid"
-        // + "</script>"
     )        
     @Results ( id="cartMap", value = {
         @Result ( property="cartid", column="cartid" ),

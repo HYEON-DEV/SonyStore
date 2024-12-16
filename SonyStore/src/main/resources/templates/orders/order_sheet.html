@@ -33,9 +33,6 @@
                     </li>
                 </ul>
 
-                <!-- <div th:each="cartid : ${cartids}">
-                    <input type="hidden" th:value="${cartid}" />
-                </div> -->
                 <form id="ordersheet_form">
                     <!-- 결제할 내역 테이블 -->
                     <div class="col_table_wrap order_list order_sheet_list">
@@ -525,7 +522,6 @@
             body.style.pointerEvents = 'all';
             body.style.overflow = 'visible';
         } );
-
         
 
         /* = = = = = collapsible 주문자 정보, 배송지 정보, 할인 정보 = = = = = */
@@ -706,7 +702,6 @@
             // 필수 동의 체크
             if (!document.querySelector('#chkEssential').checked) {
                 await utilHelper.alertWarning('구매에 동의해주셔야 구매가 가능합니다.');
-                // alert('구매에 동의해주셔야 구매가 가능합니다.');
                 return;
             }
 
@@ -730,7 +725,6 @@
                 formData.append('payoption', selectedPaymentRadio.value);
             }
 
-
             // 로딩바 활성화
             loading.classList.add('active');
             body.style.opacity = '0.6';
@@ -743,7 +737,6 @@
             
             let data = await axiosHelper.put( `[[@{/api/order/complete}]]${queryString}`, formData );
             // console.log(data);
-
             
             // 로딩바 비활성화
             loading.classList.remove('active');

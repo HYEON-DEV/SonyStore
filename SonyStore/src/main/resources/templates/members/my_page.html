@@ -408,6 +408,6 @@
 
     <th:block th:replace="~{/_fragments/_footer :: sony-footer}"></th:block>
     <th:block th:replace="~{/_fragments/_scripts :: sony-scripts}"></th:block>
-    <script src="./assets/js/my_page.js"></script>
+    <script th:src="@{/assets/js/my_page.js}"></script>
   </body>
 </html>

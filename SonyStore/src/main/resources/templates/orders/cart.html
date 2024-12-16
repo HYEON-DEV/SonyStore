@@ -462,9 +462,19 @@
             e.preventDefault();
 
             const checkedList = document.querySelectorAll('.check_only:checked');
-            // console.log(checkedList);
+            
             if( checkedList.length == 0) {
-                alert('상품을 선택해주세요.');
+                new Swal({
+                    title: "상품을 선택해주세요.",
+                    confirmButtonColor: '#000',
+                    confirmButtonText: '확인',
+                    width: '450px',
+                    padding: '16px 0 34px 0',
+                    customClass: { 
+                        popup: 'swal_popup', 
+                        title: 'swal_title'
+                    },
+                });
                 return;
             }
 
@@ -496,6 +506,23 @@
         document.querySelector('#cart-form').addEventListener( 'submit', async e => {
             e.preventDefault();
 
+            const checkedList = document.querySelectorAll('.check_only:checked');
+            
+            if( checkedList.length == 0) {
+                new Swal({
+                    title: "상품을 선택해주세요.",
+                    confirmButtonColor: '#000',
+                    confirmButtonText: '확인',
+                    width: '450px',
+                    padding: '16px 0 34px 0',
+                    customClass: { 
+                        popup: 'swal_popup', 
+                        title: 'swal_title'
+                    },
+                });
+                return;
+            }
+
             // 페이지 로딩 => 로딩바 활성화
             loading.classList.add('active');
             body.style.opacity = '0.6';
@@ -513,9 +540,7 @@
                     const prodid = v.querySelector('input[name="prodid"]').value;
                     const prodthumbnail = v.querySelector('input[name="filepath"]').value;
                     const prodtitle = v.querySelector('.prd_info_name').innerText;
-                    // if(v.querySelector('.cart_prod_color')) {
-                        const prodcolor = v.querySelector('.cart_prod_color')? v.querySelector('.cart_prod_color').innerText :  null;
-                    // }
+                    const prodcolor = v.querySelector('.cart_prod_color')? v.querySelector('.cart_prod_color').innerText :  null;
                     const count = v.querySelector('.count').value;
                     const prodprice = v.querySelector('.price').innerText.replaceAll(',', '');
 
@@ -539,7 +564,6 @@
             
             const cartids = data.cartids.map( v => `cartid=${v}`).join('&');
             window.location = `/order/sheet?orderSheetNo=${data.item.payid}&${cartids}`;
-            // window.location = `[[@{/order/sheet}]]/${data.item.payid}`;
         } );
 
     </script>

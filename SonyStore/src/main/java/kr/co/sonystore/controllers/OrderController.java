@@ -51,20 +51,20 @@ public class OrderController {
      * 장바구니 페이지를 표시한다
      * @param model - view 에 전달할 데이터
      * @return View 페이지 경로
-          * @throws IOException 
-          */
-         @GetMapping("/cart")
-         public String cart( 
-             Model model,
-             @SessionAttribute(value="memberInfo", required = false) Member memberInfo,
-             HttpServletRequest httpRequest,
-             HttpServletResponse response
-         ) throws IOException {               
-        String referer = httpRequest.getHeader("referer");
-        if(referer.contains("/order/sheet")) {
-           response.sendRedirect("/orders/cart");
-           log.debug("이전페이지 주문결제 맞아");
-        }
+     * @throws IOException 
+     */
+    @GetMapping("/cart")
+    public String cart( 
+        Model model,
+        @SessionAttribute(value="memberInfo", required = false) Member memberInfo,
+        HttpServletRequest httpRequest,
+        HttpServletResponse response
+    ) throws IOException {               
+
+        // HTTP 응답 헤더 설정하여 캐시 방지
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
+        response.setHeader("Pragma", "no-cache"); 
+        response.setHeader("Expires", "0"); 
 
         if(memberInfo == null) {
             return "/orders/cart";
@@ -112,10 +112,9 @@ public class OrderController {
             return null;
         }
 
-        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-        response.setHeader("Expires", "0"); // Proxies.
-
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
+        response.setHeader("Pragma", "no-cache"); 
+        response.setHeader("Expires", "0");
 
         Payment payment = new Payment();
         payment.setPayid(payid);
@@ -133,13 +132,8 @@ public class OrderController {
         List<Paylist> outputPaylist = null;
         List<Payment> outputDelivery = null;
 
-        // Member member = new Member();
-        // member.setMemberid(outputPayment.getMemberid());
-        // Member outputMember = null;
-
         try {
             outputPaylist = paylistService.getList(paylist);
-            // outputMember = memberService.getMember(member);
             outputDelivery = paymentService.getDlvList(outputPayment);
         } catch (Exception e) {
             webHelper.serverError(e);
@@ -147,12 +141,7 @@ public class OrderController {
 
         model.addAttribute("payment", outputPayment);
         model.addAttribute("paylists", outputPaylist);
-        // model.addAttribute("member", outputMember);
         model.addAttribute("dlvs", outputDelivery);
-        
-        // model.addAttribute("cartids", cartids);
-
-        
 
         return "/orders/order_sheet";
     }
@@ -164,12 +153,10 @@ public class OrderController {
     @GetMapping("/order/complete")
     public String order_complete(
         @RequestParam("orderSheetNo") int payid,
-        @RequestParam(value="cartid", required = false) List<Integer> cartids,
         Model model,
         HttpServletRequest httpRequest
     ) {
         String referer = httpRequest.getHeader("referer");
-        // log.debug("referer: " + referer);
 
         if ( referer==null || !referer.contains("/order/sheet") ) {
             webHelper.badRequest("올바르지 않은 접근입니다");

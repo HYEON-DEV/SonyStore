@@ -162,7 +162,7 @@ public interface PaymentMapper {
             "payid, insertdate, status, paycheck, memberid \n" +
         "FROM payments \n" +
         "WHERE paycheck = 'N' AND \n" +
-            "insertdate < DATE_ADD( NOW(), interval -1 minute )"
+            "insertdate < DATE_ADD( NOW(), interval -1 hour )"
     )
     @ResultMap("paymentMap")
     public List<Payment> selectNoPayments();
@@ -176,7 +176,7 @@ public interface PaymentMapper {
     @Delete(
         "DELETE FROM payments \n" + 
         "WHERE paycheck = 'N' AND \n" + 
-            "insertdate < DATE_ADD(NOW(), interval -1 minute)"
+            "insertdate < DATE_ADD(NOW(), interval -1 hour)"
     )
     public int deleteNoPayments();
 

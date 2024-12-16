@@ -98,6 +98,20 @@ img:not(.side_toggle_box img, .consumer_logo img) {
     margin-top: 40px;
 }
 
+.swal_popup {
+    height: 250px;
+}
+.swal_title {
+    font-size: 24px;
+    margin-top: 40px;
+}
+
+/* .sweet_alert_content{
+    font-size: 20px;
+    font-weight: 500;
+    height: 300px;
+} */
+
 /* = = = = = = = = = = view.html - 제품 상세 페이지 = = = = = = = = = = */
 
 .divider-bold {

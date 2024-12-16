@@ -88,7 +88,8 @@ public class PaymentServiceImpl implements PaymentService {
             output = paymentMapper.selectItemNoPaid(input);
 
             if (output == null) {
-                throw new Exception("미결제 내역 조회된 데이터가 없습니다.");
+                // throw new Exception("미결제 내역 조회된 데이터가 없습니다.");
+                throw new Exception("올바르지 않은 접근입니다.");
             }
         } catch (Exception e) {
             log.error("미결제 내역 데이터 조회에 실패했습니다.", e);
