@@ -3,23 +3,31 @@ skinparam dpi 200
 
 actor User
 
-User -> ProductController : productsByType2(String type, String type2, Model model)
-activate ProductController
+participant ProductRestController
+participant ProductService
+participant ProductMapper
+participant RestHelper
+database Database
 
-ProductController -> ProductService : getProductsByType2(String type, String type2)
-activate ProductService
-
-ProductService -> ProductMapper : selectProductsByType2(String type, String type2)
-activate ProductMapper
-ProductMapper -> Database : SELECT * FROM products WHERE type = #{type} AND type2 = #{type2}
-deactivate ProductMapper
-
-ProductService -> ProductController : List<Product>
-deactivate ProductService
-
-ProductController -> Model : addAttribute("type", type)
-ProductController -> Model : addAttribute("type2", type2)
-ProductController -> Model : addAttribute("products", List<Product>)
-deactivate ProductController
+User -> ProductRestController: getProductListByType2()
+ProductRestController -> ProductService: getItemListByType2()
+ProductService -> ProductMapper: selectListByType2()
+ProductMapper -> Database
+Database --> ProductMapper
+ProductMapper --> ProductService
+ProductService --> ProductRestController
+ProductRestController -> RestHelper: sendJson()
+RestHelper --> ProductRestController
+ProductRestController --> User
+User -> ProductRestController: getProductListByType3()
+ProductRestController -> ProductService: getItemListByType3()
+ProductService -> ProductMapper: selectListByType3()
+ProductMapper -> Database
+Database --> ProductMapper
+ProductMapper --> ProductService
+ProductService --> ProductRestController
+ProductRestController -> RestHelper: sendJson()
+RestHelper --> ProductRestController
+ProductRestController --> User
 
 @enduml

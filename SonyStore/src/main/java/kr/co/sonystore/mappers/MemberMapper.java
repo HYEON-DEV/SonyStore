@@ -141,10 +141,10 @@ public interface MemberMapper {
                         "where memberid = #{memberid} and userpw = #{userpw} and isout = 'N'")
         public int out(Member input);
 
-        // 탈퇴한 회원 중 탈퇴 후 1분이 지난 회원 삭제
+        // 탈퇴한 회원 중 탈퇴 후 7일이 지난 회원 삭제
         @Delete("delete from members \n" +
                         "where isout='Y' and \n" +
-                        "editdate < date_add(now(), interval -1 minute)")
+                        "editdate < date_add(now(), interval -7 day)")
         public int deleteOutMembers();
 
         // 이름 변경
