@@ -18,7 +18,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired ProductMapper productMapper;
     @Autowired ImageMapper imageMapper;
-    @Autowired ColorMapper colorMapper;
+    @Autowired ColorMapper colorMapper; 
     
     @Override
     public int addItem(Product input) throws Exception {

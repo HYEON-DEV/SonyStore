@@ -11,7 +11,6 @@ activate ProductService
 
 ProductService -> ProductMapper : selectProductsByType(String type)
 activate ProductMapper
-ProductMapper -> Database : SELECT * FROM products WHERE type = #{type}
 deactivate ProductMapper
 
 ProductService -> ProductController : List<Product>
