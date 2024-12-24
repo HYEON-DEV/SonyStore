@@ -1,30 +1,52 @@
 package kr.co.sonystore.mappers;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Select;
+
+import kr.co.sonystore.models.TodaySale;
 
 
 @Mapper
 public interface TodaySaleMapper {
     
+
+    /**
+     * 일별 매출 집계 추가
+     * @return 추가된 데이터 수
+     */
     @Insert(
-        "<script>" +
+        "<script> " +
         "INSERT INTO today_sales (date, total)"+
         "<choose>" +
-            "<when test='exists'>" +        
-                "SELECT DATE(p.date) AS dt, SUM(p.total) AS total "+
-                    "FROM payments p"+
-                "WHERE paycheck = 'Y' AND" +
-                    "DATE(p.date) = DATE(NOW())"+
-                "GROUP BY dt" +
-            "</when>" +
-            "<otherwise>" + 
-                "VALUES (DATE(NOW()), 0)" +
-            "</otherwise>" +
+        "<when test='exists'>" +        
+            "SELECT DATE(p.date) AS dt, SUM(p.total) AS total "+
+                "FROM payments p"+
+            "WHERE paycheck = 'Y' AND" +
+                "DATE(p.date) = DATE(DATE_ADD(NOW(), INTERVAL -0 DAY))"+
+            "GROUP BY dt" +
+        "</when>" +
+        "<otherwise>" + 
+            "VALUES (DATE(NOW()), 0)" +
+        "</otherwise>" +
         "</choose>" +
         "</script>"
     )
-    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     public int insert();
+
+
+
+    /**
+     * 일별 매출 집계 조회
+     * @return 조회된 데이터 리스트
+     */
+    @Select(
+        "SELECT id, date, total FROM today_sales " +
+        "WHERE date BETWEEN DATE(DATE_ADD(NOW(), INTERVAL -7 DAY)) " +
+                    "AND DATE(DATE_ADD(NOW(), INTERVAL -1 DAY)) " +
+        "ORDER BY date"
+    )
+    public List<TodaySale> selectList();
 }

@@ -55,6 +55,8 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.session/spring-session-jdbc
 	implementation 'org.springframework.session:spring-session-jdbc:3.3.2'
 
+	/** Swagger */
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.2.0'
 }
 
 tasks.named('test') {
