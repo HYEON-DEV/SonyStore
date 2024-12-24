@@ -6,6 +6,8 @@ import lombok.Data;
 public class Today_BestProduct {
     private int id;
     private String title;
-    private int date;
+    private String date;
     private int cnt;
+    private String dayOfWeek; // 요일
+    private int weekOfMonth; // 주차
 }
