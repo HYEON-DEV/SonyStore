@@ -32,7 +32,7 @@ public class TodaySaleRestController {
 
 
     @GetMapping("/sale/weekly")
-    @Operation(summary="주간 총 매출 조회", description="주간 총 매출을 조회한다.")
+    @Operation(summary="주간 총 매출 조회", description="주간 매출을 조회한다.")
     @ApiResponses( value={
         @ApiResponse(responseCode="200", description="주간 총 매출 조회 성공"),
         @ApiResponse(responseCode="500", description="주간 총 매출 조회 실패")
