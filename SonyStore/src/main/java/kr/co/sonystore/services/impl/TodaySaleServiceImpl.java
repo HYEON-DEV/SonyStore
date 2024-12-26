@@ -38,10 +38,11 @@ public class TodaySaleServiceImpl implements TodaySaleService {
 
 
     @Override
-    public List<TodaySale> getList() throws Exception {
+    public List<TodaySale> getList(int day) throws Exception {
+        day *= -1;
         List<TodaySale> output = null;
         try {
-            output = todaySaleMapper.selectList();
+            output = todaySaleMapper.selectList(day);
         } catch(Exception e){
             log.error("일별 매출 조회에 실패했습니다.", e);
             throw e;

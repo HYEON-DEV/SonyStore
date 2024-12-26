@@ -25,7 +25,7 @@ public interface TodaySaleMapper {
             "SELECT DATE(p.date) AS dt, SUM(p.total) AS total "+
                 "FROM payments p"+
             "WHERE paycheck = 'Y' AND" +
-                "DATE(p.date) = DATE(DATE_ADD(NOW(), INTERVAL -0 DAY))"+
+                "DATE(p.date) = DATE(DATE_ADD(NOW(), INTERVAL -1 DAY))"+
             "GROUP BY dt" +
         "</when>" +
         "<otherwise>" + 
@@ -39,14 +39,17 @@ public interface TodaySaleMapper {
 
 
     /**
-     * 일별 매출 집계 조회
+     * 한 달간 일별 매출 집계 조회
      * @return 조회된 데이터 리스트
      */
     @Select(
         "SELECT id, date, total FROM today_sales " +
-        "WHERE date BETWEEN DATE(DATE_ADD(NOW(), INTERVAL -7 DAY)) " +
+        "WHERE date BETWEEN DATE(DATE_ADD(NOW(), INTERVAL #{day} DAY)) " +
                     "AND DATE(DATE_ADD(NOW(), INTERVAL -1 DAY)) " +
         "ORDER BY date"
     )
-    public List<TodaySale> selectList();
+    public List<TodaySale> selectList(int day);
+
+
+
 }

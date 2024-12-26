@@ -19,5 +19,5 @@ public interface TodaySaleService {
      * @return 조회된 데이터 리스트
      * @throws Exception
      */
-    public List<TodaySale> getList() throws Exception;
+    public List<TodaySale> getList(int day) throws Exception;
 }

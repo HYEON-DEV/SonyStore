@@ -27,7 +27,8 @@ public class TodaySaleMapperTest {
     @Test
     @DisplayName("일별 매출 집계 조회 테스트")
     void selectListTest() {
-        List<TodaySale> output = todaySaleMapper.selectList();
+        // TodaySale input = new TodaySale();
+        List<TodaySale> output = todaySaleMapper.selectList(-7);
         log.debug("output: " + output);
     }
 }

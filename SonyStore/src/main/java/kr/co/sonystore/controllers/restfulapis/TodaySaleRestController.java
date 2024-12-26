@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,16 +32,21 @@ public class TodaySaleRestController {
     private RestHelper restHelper;
 
 
-    @GetMapping("/sale/weekly")
-    @Operation(summary="주간 총 매출 조회", description="주간 매출을 조회한다.")
+    @GetMapping("/api/today_sales/day")
+    @Operation(summary="총 매출 조회", description="매출을 조회한다.")
     @ApiResponses( value={
-        @ApiResponse(responseCode="200", description="주간 총 매출 조회 성공"),
-        @ApiResponse(responseCode="500", description="주간 총 매출 조회 실패")
+        @ApiResponse(responseCode="200", description="총 매출 조회 성공"),
+        @ApiResponse(responseCode="500", description="총 매출 조회 실패")
     })
-    public Map<String,Object> getWeeklySale() {
+    @Parameters({
+        @Parameter(name="day", description = "조회할 일자", required = false)
+    })
+    public Map<String,Object> getWeeklySale(
+        @RequestParam(value = "day", defaultValue = "7", required = false) int day
+    ) {
         List<TodaySale> output = null;
         try {
-            output = todaySaleService.getList();
+            output = todaySaleService.getList(day);
         } catch(Exception e) {
             return restHelper.serverError(e);
         }

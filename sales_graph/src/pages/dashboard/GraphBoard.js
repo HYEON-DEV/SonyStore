@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import SalesGraph from "./SalesGraph";
 
 const GraphBoardContainer = styled.div`
-
+    * {
+        margin-top: 20px;
+    }
 `;
 
 const GraphBoard = memo( () => {
