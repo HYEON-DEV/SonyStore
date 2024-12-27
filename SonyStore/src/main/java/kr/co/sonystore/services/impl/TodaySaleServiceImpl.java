@@ -20,20 +20,24 @@ public class TodaySaleServiceImpl implements TodaySaleService {
     
 
     @Override
-    public int addItem() throws Exception {
-        int rows = 0;
+    public TodaySale addItem() throws Exception {
+        int result = 0;
 
         try {
-            rows = todaySaleMapper.insert();
-            if (rows == 0) {
-                throw new Exception("오늘 매출이 없습니다.");
+            result = todaySaleMapper.countYesterdaySale();
+            
+            if (result > 0) {
+                todaySaleMapper.insert();
+            } else {
+                todaySaleMapper.insertZero();
+                log.debug("매출이 없습니다.");
             }
         } catch(Exception e) {
             log.error("일별 매출 추가에 실패했습니다.", e);
             throw e;
         }
         
-        return rows;
+        return todaySaleMapper.selectItem();
     }
 
 

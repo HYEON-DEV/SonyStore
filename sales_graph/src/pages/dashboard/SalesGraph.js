@@ -7,7 +7,7 @@ import {getList} from '../../slices/SaleSlice';
 import { Chart, CategoryScale, LinearScale, Title, Tooltip, Legend, BarElement } from 'chart.js';
 import {Bar} from 'react-chartjs-2';
 Chart.register(CategoryScale, LinearScale, Title, Tooltip, Legend, BarElement);
-// import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 
 const SalesGraphContainer = styled.div`
     background-color: rgba(0,0,0,0.02);
@@ -36,7 +36,7 @@ const SalesGraphContainer = styled.div`
     .container {
         /* background-color:rgb(219, 232, 218); */
         margin: 30px;
-        height: 300px;        
+        height: 300px;   
     }
     
 `;
@@ -46,24 +46,6 @@ const SalesGraph = memo( () => {
     const {item} = useSelector( state => state.SaleSlice );
     const [period, setPeriod] = useState('weekly');
     const [data, setData] = useState({ keys: [], values: [] });
-
-    // const { keys, values } = useMemo( () => {
-
-    //     if(!item) {
-    //         return {keys:null, values:null};
-    //     }
-
-    //     const keys = item.map( v => v.date );
-    //     // console.log(keys);
-
-    //     const values = item.map( v => v.total );
-    //     // console.log(values);
-
-    //     // const result = { keys, values };
-    //     // console.log(result);
-    //     return { keys, values };
-
-    // }, [item] );
 
     useEffect(() => {
         const url = period === 'weekly' ? '/api/today_sales/day' : '/api/today_sales/day?day=28';
@@ -85,12 +67,13 @@ const SalesGraph = memo( () => {
             for (let i=0; i<item.length; i+=7) {
                 weeks.push( item.slice( i, i+7 ) );
             }
-            console.log(weeks);
+            // console.log(weeks);
 
             const weeklyData = weeks.map( week => week.reduce( (acc, cur) => acc + cur.total, 0 ) );
-            console.log(weeklyData);
+            // console.log(weeklyData);
 
-            keys = weeklyData.map( (v, i) => `-${weeklyData.length-i}주` );
+            // keys = weeklyData.map( (v, i) => `-${weeklyData.length-i}주` );
+            keys = weeks.map( (v,i) => `${v[0].date} ~ ${v[v.length-1].date}`);
             values = weeklyData;
         }
 
@@ -142,15 +125,7 @@ const SalesGraph = memo( () => {
                                         size: 18,
                                         color: "#000",
                                     }
-                                }, 
-                                // datalabels: {
-                                //     anchor: 'end',
-                                //     align: 'top',
-                                //     font: {
-                                //         size: 12,
-                                //         color: "#000"
-                                //     }
-                                // }
+                                }
                             }
                         }}
                     />

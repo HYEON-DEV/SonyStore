@@ -17,6 +17,7 @@ public class TodaySaleMapperTest {
     @Autowired
     private TodaySaleMapper todaySaleMapper;
 
+
     @Test
     @DisplayName("일별 매출 집계 추가 테스트")
     void insertTest() {
@@ -29,6 +30,13 @@ public class TodaySaleMapperTest {
     void selectListTest() {
         // TodaySale input = new TodaySale();
         List<TodaySale> output = todaySaleMapper.selectList(-7);
+        log.debug("output: " + output);
+    }
+
+    @Test
+    @DisplayName("전날 매출 집계 조회 테스트")
+    void selectItemTest() {
+        TodaySale output = todaySaleMapper.selectItem();
         log.debug("output: " + output);
     }
 }
