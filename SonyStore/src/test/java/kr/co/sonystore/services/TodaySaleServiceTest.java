@@ -35,7 +35,7 @@ public class TodaySaleServiceTest {
     @DisplayName("일별 매출 조회 테스트")
     void getList() {
         List<TodaySale> output = null;
-        int day = 7*-1;
+        int day = 7;
         try {
             output = todaySaleService.getList(day);
         } catch (Exception e) {
