@@ -25,7 +25,8 @@ public class PaymentScheduler {
     private PaymentService paymentService;
 
     // @Scheduled(cron = "0 * * * * ?")    // 매 분 0초에 실행
-    @Scheduled(cron = "0 0 * * * ?")     // 매 시간 0분 0초에 실행
+    // @Scheduled(cron = "0 0 * * * ?")     // 매 시간 0분 0초에 실행
+    @Scheduled(cron="0 0 4 * * ?")
     public void processNoPayments() throws InterruptedException {
         log.debug("결제대기 목록 정리 시작");
         
