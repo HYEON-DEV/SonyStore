@@ -32,6 +32,7 @@ const rejected = (state, {meta, payload}) => {
 };
 
 const reduxHelper = {
+    
 
     // 리덕스 Slice 객체를 생성하는 함수
     // 1) sliceName: slice 객체의 이름
@@ -56,7 +57,7 @@ const reduxHelper = {
                 })
             }
         });
-    }
+    },
 }
 
 export default reduxHelper;
