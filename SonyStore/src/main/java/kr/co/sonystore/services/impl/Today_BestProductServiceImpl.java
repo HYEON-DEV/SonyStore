@@ -32,12 +32,13 @@ public class Today_BestProductServiceImpl implements Today_BestProductService{
         return result;
     }
 
+
     @Override
-    public List<Today_BestProduct> selectDayList(Today_BestProduct input) throws Exception {
+    public List<Today_BestProduct> selectWeeklyList(Today_BestProduct input) throws Exception {
         List<Today_BestProduct> result = null;
 
         try {
-            result = today_BestProductMapper.selectDayList(input);
+            result = today_BestProductMapper.selectWeeklyList(input);
         } catch (Exception e) {
             log.error("데이터 조회에 실패했습니다.", e);
             throw new Exception("데이터 조회에 실패했습니다.");
@@ -47,11 +48,11 @@ public class Today_BestProductServiceImpl implements Today_BestProductService{
     }
 
     @Override
-    public List<Today_BestProduct> selectWeeklyList(Today_BestProduct input) throws Exception {
+    public List<Today_BestProduct> selectMonthlyList(Today_BestProduct input) throws Exception {
         List<Today_BestProduct> result = null;
 
         try {
-            result = today_BestProductMapper.selectWeeklyList(input);
+            result = today_BestProductMapper.selectMonthlyList(input);
         } catch (Exception e) {
             log.error("데이터 조회에 실패했습니다.", e);
             throw new Exception("데이터 조회에 실패했습니다.");

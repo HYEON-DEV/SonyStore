@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import SalesGraph from "./SalesGraph";
 import MemberGraph from "./MemberGraph";
+import BestProduct from "./BestProduct";
 
 const GraphBoardContainer = styled.div`
     * {
@@ -15,6 +16,7 @@ const GraphBoard = memo( () => {
         <GraphBoardContainer>
             <SalesGraph />
             <MemberGraph />
+            <BestProduct />
         </GraphBoardContainer>
     );
 } );

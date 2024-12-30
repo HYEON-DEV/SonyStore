@@ -30,15 +30,15 @@ public class Today_BestProductRestController {
         List<Today_BestProduct> output1 = null;
         List<Today_BestProduct> output2 = null;
         try {
-            output1 = today_bestProductService.selectDayList(input);
-            output2 = today_bestProductService.selectWeeklyList(input);
+            output1 = today_bestProductService.selectWeeklyList(input);
+            output2 = today_bestProductService.selectMonthlyList(input);
            
         } catch (Exception e) {
             return restHelper.serverError(e);
         }
         Map<String, Object> data = new LinkedHashMap<>();
-        data.put("daily", output1);
-        data.put("weekly", output2);
+        data.put("weekly", output1);
+        data.put("monthly", output2);
         return restHelper.sendJson(data);
     }
     

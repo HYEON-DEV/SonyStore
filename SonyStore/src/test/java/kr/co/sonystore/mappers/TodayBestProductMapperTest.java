@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @SpringBootTest
-public class Today_BestProductMapperTest {
+public class TodayBestProductMapperTest {
     
     @Autowired
     private Today_BestProductMapper today_BestProductMapper;
@@ -20,7 +20,7 @@ public class Today_BestProductMapperTest {
     @Test
     @DisplayName("오늘의 베스트 상품 검색 테스트")
     void selectList() {
-        List<Today_BestProduct> input = today_BestProductMapper.selectDayList(null);
+        List<Today_BestProduct> input = today_BestProductMapper.selectMonthlyList(null);
         for (Today_BestProduct item : input) {
             log.debug("item: " + item.toString());
         }
