@@ -36,7 +36,7 @@ const SalesGraphContainer = styled.div`
     .container {
         /* background-color:rgb(219, 232, 218); */
         margin: 30px;
-        height: 300px;        
+        height: 300px;   
     }
     
 `;
@@ -46,24 +46,6 @@ const SalesGraph = memo( () => {
     const {item} = useSelector( state => state.SaleSlice );
     const [period, setPeriod] = useState('weekly');
     const [data, setData] = useState({ keys: [], values: [] });
-
-    // const { keys, values } = useMemo( () => {
-
-    //     if(!item) {
-    //         return {keys:null, values:null};
-    //     }
-
-    //     const keys = item.map( v => v.date );
-    //     // console.log(keys);
-
-    //     const values = item.map( v => v.total );
-    //     // console.log(values);
-
-    //     // const result = { keys, values };
-    //     // console.log(result);
-    //     return { keys, values };
-
-    // }, [item] );
 
     useEffect(() => {
         const url = period === 'weekly' ? '/api/today_sales/day' : '/api/today_sales/day?day=28';

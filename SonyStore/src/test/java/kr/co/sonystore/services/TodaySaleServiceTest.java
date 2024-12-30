@@ -21,7 +21,7 @@ public class TodaySaleServiceTest {
     @Test
     @DisplayName("일별 매출 추가 테스트")
     void addItem() {
-        int output = 0;
+        TodaySale output = null;
         try {
             output = todaySaleService.addItem();
         } catch (Exception e) {

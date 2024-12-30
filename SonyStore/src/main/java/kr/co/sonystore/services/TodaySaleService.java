@@ -11,7 +11,7 @@ public interface TodaySaleService {
      * @return 
      * @throws Exception
      */
-    public int addItem() throws Exception;
+    public TodaySale addItem() throws Exception;
 
 
     /**
