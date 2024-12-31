@@ -34,7 +34,6 @@ const MemberGraphContainer = styled.div`
     }
 
     .container {
-        /* background-color:rgb(219, 232, 218); */
         margin: 30px;
         height: 300px;
     }
@@ -54,13 +53,13 @@ const MemberGraph = memo(() => {
         }
 
         const keys = item.map( v => v.date );
-        console.log("keys : " + keys);
+        // console.log("keys : " + keys);
 
         const values = item.map( v => v.count );
-        console.log("values : " + values);
+        // console.log("values : " + values);
 
         const result = { keys, values };
-        console.log("result : " + result);
+        // console.log("result : " + result);
         return { keys, values };
 
     }, [item] );
@@ -89,12 +88,12 @@ const MemberGraph = memo(() => {
 
     }, [item, period]);
 
-    console.log(item);
+    // console.log(item);
 
     return (
         <MemberGraphContainer>
             <div className="container_title">
-                <h2> 가입자수 </h2>
+                <h2> 가입자 수 </h2>
 
                 <select className="dropdown" value={period} onChange={(e) => setPeriod(e.target.value)}>
                     <option value="weekly">주간</option>
@@ -112,8 +111,8 @@ const MemberGraph = memo(() => {
                     datasets: [{
                         label: "가입자 수",
                         data: values,
-                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 139, 165, 0.7)',
+                        borderColor: 'rgba(255, 139, 165, 1)',
                         borderWidth: 1
                     }]
                 }}

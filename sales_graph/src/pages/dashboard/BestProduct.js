@@ -14,6 +14,7 @@ const BestProductContainer = styled.div`
     .container_title {
         display: flex;
         align-items: center;
+        padding-left: 30px;
 
         * {
             margin-right: 30px;
@@ -82,8 +83,8 @@ const BestProduct = () => {
                                 {
                                     label: '판매량',
                                     data: data.values,
-                                    backgroundColor: 'rgba(219, 232, 218, 0.5)',
-                                    borderColor: 'rgba(219, 232, 218, 1)',
+                                    backgroundColor: 'rgba(139, 120, 226, 0.7)',
+                                    borderColor: 'rgba(139, 120, 226, 1)',
                                     borderWidth: 1
                                 }
                             ]

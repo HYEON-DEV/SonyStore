@@ -2,7 +2,7 @@
   "name": "sales_graph",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
+  "homepage": "/dashboard",
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
     "@testing-library/jest-dom": "^5.14.1",

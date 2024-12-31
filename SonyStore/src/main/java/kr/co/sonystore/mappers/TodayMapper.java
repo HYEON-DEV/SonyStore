@@ -22,7 +22,7 @@ public interface TodayMapper {
     public int insertNewMemberCount();
 
     // 7간 일간 통계
-    @Select("select date, count " +
+    @Select("select DATE_FORMAT(date,'%Y/%m/%d') AS date, count " +
     "from today_member " +
     "where date between DATE(DATE_ADD(NOW(), INTERVAL -7 DAY)) and DATE(DATE_ADD(NOW(), INTERVAL -1 DAY)) ")
     public List<TodayMember> selectWeekMemberCount();

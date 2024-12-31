@@ -20,6 +20,7 @@ const SalesGraphContainer = styled.div`
     .container_title {
         display: flex;
         align-items: center;
+        padding-left: 30px;
 
         * {
             margin-right: 30px;
@@ -34,7 +35,6 @@ const SalesGraphContainer = styled.div`
     }
 
     .container {
-        /* background-color:rgb(219, 232, 218); */
         margin: 30px;
         height: 300px;   
     }
@@ -67,13 +67,10 @@ const SalesGraph = memo( () => {
             for (let i=0; i<item.length; i+=7) {
                 weeks.push( item.slice( i, i+7 ) );
             }
-            // console.log(weeks);
 
             const weeklyData = weeks.map( week => week.reduce( (acc, cur) => acc + cur.total, 0 ) );
-            // console.log(weeklyData);
 
-            // keys = weeklyData.map( (v, i) => `-${weeklyData.length-i}주` );
-            keys = weeks.map( (v,i) => `${v[0].date} ~ ${v[v.length-1].date}`);
+            keys = weeks.map( (v,i) => `${v[0].date} - ${v[v.length-1].date}`);
             values = weeklyData;
         }
 
@@ -105,8 +102,8 @@ const SalesGraph = memo( () => {
                                 {
                                     label: '원',
                                     data: data.values,
-                                    backgroundColor: 'rgba(219, 232, 218, 0.5)',
-                                    borderColor: 'rgba(219, 232, 218, 1)',
+                                    backgroundColor: 'rgba(122, 165, 119, 0.7)',
+                                    borderColor: 'rgba(122, 165, 119, 1)',
                                     borderWidth: 1
                                 }
                             ]

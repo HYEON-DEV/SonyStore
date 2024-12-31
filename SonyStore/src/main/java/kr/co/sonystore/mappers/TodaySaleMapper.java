@@ -55,7 +55,7 @@ public interface TodaySaleMapper {
      * @return 조회된 데이터 리스트
      */
     @Select(
-        "SELECT id, date, total FROM today_sales \n" +
+        "SELECT id, DATE_FORMAT(date,'%Y/%m/%d') AS date, total FROM today_sales \n" +
             "WHERE date BETWEEN DATE(DATE_ADD(NOW(), INTERVAL #{day} DAY)) \n" +
                 "AND DATE(DATE_ADD(NOW(), INTERVAL -1 DAY)) \n" +
             "ORDER BY date"
