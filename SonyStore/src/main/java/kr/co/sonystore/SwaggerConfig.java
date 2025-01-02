@@ -19,7 +19,7 @@ public class SwaggerConfig {
 
     private Info apiInfo() {
         return new Info().title("SonyStore Swagger")          // API 문서 제목
-                        .description("Sale REST API")    // API 문서 설명
+                        .description("SonyStore REST API")    // API 문서 설명
                         .version("1.0.0");                  // API 문서 버전
     }
 }
