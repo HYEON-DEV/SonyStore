@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Slf4j
 @RestController
-@Tag(name="newMember API", description="주간, 월간 신규 가입자 수 API" )
+@Tag(name="New Member API", description="주간, 월간 신규 가입자 수 API" )
 public class TodayMemberRestController {
 
     @Autowired

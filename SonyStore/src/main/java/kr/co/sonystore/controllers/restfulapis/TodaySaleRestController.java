@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@Tag(name="Sale API", description="주간, 월간 총 매출 관련 API" )
+@Tag(name="Sale API", description="주간, 월간 총 매출 API" )
 public class TodaySaleRestController {
 
     @Autowired
