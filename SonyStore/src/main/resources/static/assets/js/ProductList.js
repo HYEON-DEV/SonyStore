@@ -22,9 +22,11 @@ window.onload = async (e) => {
     
 
     try {
-        // response = await axios.get(`http://localhost:8080/api/products`);
-        response = await axios.get(`http://localhost:8080/api/products/${type}`);
-        response2 = await axios.get('http://localhost:8080/api/backgrounds');
+        // response = await axiosHelper.get(`http://localhost:8080/api/products`);
+        // response = await axiosHelper.get(`http://localhost:8080/api/products/${type}`);
+        response = await axiosHelper.get(`[[@{/api/products/${type}}]]`);
+        // response2 = await axiosHelper.get('http://localhost:8080/api/backgrounds');
+        response2 = await axiosHelper.get(`[[@{/api/backgrounds}]]`);
 
         productsByType = response.data.list; // type에 따른 데이터 로딩 후 전역 변수에 할당
     
@@ -51,7 +53,9 @@ window.onload = async (e) => {
         renderCategoryList(productsByType);
 
         if (type2) {
-            response3 = await axios.get(`http://localhost:8080/api/products/${type}/${type2}`);
+            // response3 = await axiosHelper.get(`http://localhost:8080/api/products/${type}/${type2}`);
+            response3 = await axiosHelper.get(`[[@{/api/products/${type}/${type2}}]]`);
+            
             productsByType2 = response3.data.list; // type2에 따른 데이터 로딩 후 전역 변수에 할당
 
             if(productsByType2.length == 0) {
@@ -105,7 +109,8 @@ function renderProductList(products) {
     products.forEach(product => {
         const item = document.createElement('a');
         item.classList.add('item');
-        item.href = `http://localhost:8080/product-view/${product.prodid}`; // 제품 상세 페이지 링크
+        // item.href = `http://localhost:8080/product-view/${product.prodid}`; // 제품 상세 페이지 링크
+        item.href = `[[@{product-view/${product.prodid}}]]`;
 
         // 이미지 컨테이너 생성
         const imgContainer = document.createElement('div');
@@ -243,7 +248,8 @@ function updateType2(backgrounds, products) {
 
             // 'go_back' 버튼 클릭 이벤트 추가
             goBack.addEventListener('click', () => {
-                window.location.href = `http://localhost:8080/products/${product.type1}`;
+                // window.location.href = `http://localhost:8080/products/${product.type1}`;
+                window.location.href = `[[@{/products/${product.type1}}]]`;
             });
         }
     });
@@ -352,7 +358,7 @@ function renderCategoryList(products) {
         const li = document.createElement('li');
         const imgSrc = 'assets/img/subcategories/default.svg'; // 기본 이미지 경로 설정
         const categoryName = categoryMap2[subCategory.type2] || subCategory.type2; // 한글 이름 또는 원래 값 사용
-        li.innerHTML = `<a href="http://localhost:8080/products/${categoryKey}/${subCategory.type2}" class="${subCategory.type2}-filter">${categoryName}</a>`;
+        li.innerHTML = `<a href="http://wlstn4205.cafe24.com/products/${categoryKey}/${subCategory.type2}" class="${subCategory.type2}-filter">${categoryName}</a>`;
         categoryList.appendChild(li); // 서브 카테고리 리스트에 추가
     });
 }
@@ -415,14 +421,16 @@ function renderTapMenu(products) {
             // '전체보기' 탭 처리
             let requestUrl;
             if (type3 === 'all') {
-                requestUrl = `http://localhost:8080/api/products/${type}/${type2}`;
+                // requestUrl = `http://localhost:8080/api/products/${type}/${type2}`;
+                requestUrl = `[[@{/api/products/${type}/${type2}}]]`;
             } else {
-                requestUrl = `http://localhost:8080/api/products/${type}/${type2}/${type3}`;
+                // requestUrl = `http://localhost:8080/api/products/${type}/${type2}/${type3}`;
+                requestUrl = `[[@{/api/products/${type}/${type2}/${type3}}]]`;
             }
 
             try {
                 // AJAX 요청 보내기
-                const response = await axios.get(requestUrl);
+                const response = await axiosHelper.get(requestUrl);
                 const products = response.data.list;
 
                 // 새로운 데이터로 제품 목록 렌더링

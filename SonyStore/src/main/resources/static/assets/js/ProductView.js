@@ -18,7 +18,8 @@ window.onload = async (e) => {
     let response2 = null;
 
     try {
-        response = await axios.get(`http://localhost:8080/api/product-view/${prodid}`);
+        // response = await axios.get(`http://localhost:8080/api/product-view/${prodid}`);
+        response = await axios.get(`[[@{/api/product-view/${prodid}}]]`);
         
 
         productByProdid = response.data.product; // prodid에 해당하는 제품 정보
@@ -26,7 +27,8 @@ window.onload = async (e) => {
         if(productByProdid.type1){
             const type = productByProdid.type1;
             // console.log(type);
-            response2 = await axios.get(`http://localhost:8080/api/products/${type}`);
+            // response2 = await axios.get(`http://localhost:8080/api/products/${type}`);
+            response2 = await axios.get(`[[@{/api/products/${type}}]]`);
             productsByType = response2.data.list; // type에 따른 제품 리스트
             
         }
@@ -605,7 +607,7 @@ window.onload = async (e) => {
         rcmd_img_container.classList.add('recommend-img-container');
         
         const a = document.createElement('a');
-        a.setAttribute('href', `http://localhost:8080/product-view/${v.prodid}`);
+        a.setAttribute('href', `http://wlstn4205.cafe24.com/product-view/${v.prodid}`);
 
         const thumbnailImage = v.images.find(img => img.thumbnail === 'Y');
         const img = document.createElement('img');
@@ -710,7 +712,8 @@ document.querySelector('.cart.btn-icon-container').addEventListener('click', asy
         body.style.pointerEvents = 'none';
         body.style.overflow = 'hidden';
 
-        let data = await axiosHelper.post( 'http://localhost:8080/api/cart/add', formData );
+        // let data = await axiosHelper.post( 'http://localhost:8080/api/cart/add', formData );
+        let data = await axiosHelper.post( '[[@{/api/cart/add}]]', formData );
 
         // 페이지 로딩 완료 => 로딩바 비활성화
         loading.classList.remove('active');
@@ -781,8 +784,9 @@ document.querySelector('.buy_now').addEventListener( 'click', async e => {
         body.style.pointerEvents = 'none';
         body.style.overflow = 'hidden';
 
-        let data = await axiosHelper.post( 'http://localhost:8080/api/order', formData );
-        // let data = await axiosHelper.post( '[[@{/api/order_by_detail}]]', formData );
+        // let data = await axiosHelper.post( 'http://localhost:8080/api/order', formData );
+        let data = await axiosHelper.post( '[[@{/api/order}]]', formData );
+        //let data = await axiosHelper.post( '[[@{/api/order_by_detail}]]', formData );
 
         // 페이지 로딩 완료 => 로딩바 비활성화
         loading.classList.remove('active');

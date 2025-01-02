@@ -73,7 +73,7 @@ public interface MemberMapper {
                 "birthdate, phone, editdate, postcode, addr1, " +
                 "addr2, isout, logindate, regdate, isadmin, " +
                 "receiveemail, receivesms " +
-                "FROM Members " +
+                "FROM members " +
                 "WHERE memberid = #{memberid}")
         @Results(id = "memberMap", value = {
                         @Result(property = "memberid", column = "memberid"),

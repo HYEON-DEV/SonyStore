@@ -55,7 +55,8 @@ const clr_name = clr => {
 
     try {
         //  전체 json 조회
-        response = await axios.get(`http://localhost:8080/api/product-view/${prodid}`);
+        // response = await axios.get(`http://localhost:8080/api/product-view/${prodid}`);
+        response = await axios.get(`[[@{/api/product-view/${prodid}}]]`);
         
         //  paramsArr 요소로 백엔드 json 접근
         products = paramsArr.reduce((acc, key) => {

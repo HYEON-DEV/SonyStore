@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <th:block th:replace="~{/_fragments/_head :: sony-head('추천상품')}"></th:block>
-    <link rel="stylesheet" href="assets/css/style_2.css" />
+    <link rel="stylesheet" th:href="@{/assets/css/style_2.css}" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -20,7 +20,7 @@
       <div class="recommend">
         <div class="reco_kv">
           <div class="reco_kv_img">
-            <img src="/assets/img/recommend/KV_Full_PC.jpg" />
+            <img th:src="@{/assets/img/recommend/KV_Full_PC.jpg}" />
             <div class="reco_kv_text">
               <h2>Sony Store</h2>
               <h2>Products</h2>
@@ -37,7 +37,7 @@
             <div class="reco_item_inner">
               <a  class="reco_prod">
                 <div class="img_wrap cursor_default">
-                <img src="/assets/img/recommend/Origin_01.jpg" alt="" />
+                <img th:src="@{/assets/img/recommend/Origin_01.jpg}" alt="" />
                 </div>
                 <h2 class="reco_item_title">WF-1000XM5</h2>
                 <p class="reco_item_desc">이것은 작게 진화한 헤드폰</p>
@@ -48,7 +48,7 @@
             <div class="reco_item_inner">
               <a  class="reco_prod">
                 <div class="img_wrap cursor_default">
-                <img src="/assets/img/recommend/Origin_02.jpg" alt="" />
+                <img th:src="@{/assets/img/recommend/Origin_02.jpg}" alt="" />
                 </div>
                 <h2 class="reco_item_title">ILCE-7CM2</h2>
                 <p class="reco_item_desc">원핸드 컴팩트 풀프레임</p>
@@ -59,7 +59,7 @@
             <div class="reco_item_inner">
               <a  class="reco_prod">
                 <div class="img_wrap cursor_default">
-                <img src="/assets/img/recommend/Origin_03.jpg" alt="" />
+                <img th:src="@{/assets/img/recommend/Origin_03.jpg}" alt="" />
                 </div>
                 <h2 class="reco_item_title">ZV-1M2</h2>
                 <p class="reco_item_desc">올인원 브이로그 카메라</p>
@@ -70,7 +70,7 @@
             <div class="reco_item_inner">
               <a  class="reco_prod">
                 <div class="img_wrap cursor_default">
-                <img src="/assets/img/recommend/Origin_04.jpg" alt="" />
+                <img th:src="@{/assets/img/recommend/Origin_04.jpg}" alt="" />
                 </div>
                 <h2 class="reco_item_title">플로트 런 Float Run</h2>
                 <p class="reco_item_desc">달리면서 느끼는 진정한 자유로움</p>
@@ -87,7 +87,7 @@
                   "
                 >
                   <img
-                    src="/assets/img/recommend/IMG_T_PC_Product.png"
+                    th:src="@{/assets/img/recommend/IMG_T_PC_Product.png}"
                     alt=""
                   />
                 </div>
@@ -98,7 +98,7 @@
             <div class="reco_item_inner">
               <a  class="reco_prod">
                 <div class="img_wrap">
-                <img src="/assets/img/recommend/Origin_05.jpg" alt="" />
+                <img th:src="@{/assets/img/recommend/Origin_05.jpg}" alt="" />
                </div>
                 <h2 class="reco_item_title">LSPX-S3</h2>
                 <p class="reco_item_desc">
@@ -112,7 +112,7 @@
             <div class="reco_item_inner">
               <a  class="reco_prod">
                 <div class="img_wrap">
-                <img src="/assets/img/recommend/Origin_06.jpg" alt="" />
+                <img th:src="@{/assets/img/recommend/Origin_06.jpg}" alt="" />
                 </div>
                 <h2 class="reco_item_title">SRS-XE300</h2>
                 <p class="reco_item_desc">언제 어디서든 콘서트 사운드</p>
@@ -123,7 +123,7 @@
             <div class="reco_item_inner">
               <a  class="reco_prod">
                 <div class="img_wrap">
-                <img src="/assets/img/recommend/Origin_07.jpg" alt="" />
+                <img th:src="@{/assets/img/recommend/Origin_07.jpg}" alt="" />
                 </div>
                 <h2 class="reco_item_title">SEL1635GM2</h2>
                 <p class="reco_item_desc">광각 렌즈의 새로운 기준</p>
@@ -139,59 +139,59 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <a >
-              <img src="/assets/img/recommend/Event-List-Banner (1).jpg" alt="들어보고! 할인받고!">
+              <img th:src="@{/assets/img/recommend/Event-List-Banner (1).jpg}" alt="들어보고! 할인받고!">
               <div class="event_desc">
                 <p class="tit">들어보고! 할인받고!</p>
               </div></a>
             </div>
             <div class="swiper-slide">
               <a >
-              <img src="/assets/img/recommend/Event-List-Banner (2).jpg" alt="Exhibition 2">
+              <img th:src="@{/assets/img/recommend/Event-List-Banner (2).jpg}" alt="Exhibition 2">
               <p class="tit">입문자 추천! 카메라+렌즈 스타터 세트</p>
             </div></a>
             <div class="swiper-slide">
               <a >
-              <img src="/assets/img/recommend/Event-List-Banner (3).jpg" alt="Exhibition 3">
+              <img th:src="@{/assets/img/recommend/Event-List-Banner (3).jpg}" alt="Exhibition 3">
               <p class="tit">연장 서비스 플랜 ESP</p>
             </div></a>
             <div class="swiper-slide">
               <a >
-              <img src="/assets/img/recommend/Event-List-Banner (4).jpg" alt="Exhibition 4">
+              <img th:src="@{/assets/img/recommend/Event-List-Banner (4).jpg}" alt="Exhibition 4">
               <p class="tit">ZV 파우치 증정 프로모션</p>
             </div></a>
             <div class="swiper-slide">
               <a >
-              <img src="/assets/img/recommend/Event-List-Banner (5).jpg" alt="Exhibition 5">
+              <img th:src="@{/assets/img/recommend/Event-List-Banner (5).jpg}" alt="Exhibition 5">
               <p class="tit">렌즈 마일리지 적립 이벤트</p>
             </div></a>
             <div class="swiper-slide">
               <a >
-              <img src="/assets/img/recommend/Event-List-Banner (6).jpg" alt="Exhibition 6">
+              <img th:src="@{/assets/img/recommend/Event-List-Banner (6).jpg}" alt="Exhibition 6">
               <p class="tit">소니스토어 압구정 11월 혜택 몰아보기</p>
             </div></a>
             <div class="swiper-slide">
               <a >
-              <img src="/assets/img/recommend/Event-List-Banner (7).jpg" alt="Exhibition 7">
+              <img th:src="@{/assets/img/recommend/Event-List-Banner (7).jpg}" alt="Exhibition 7">
               <p class="tit">시네마 라인 마일리지 적립 이벤트</p>
             </div></a>
             <div class="swiper-slide">
               <a >
-              <img src="/assets/img/recommend/Event-List-Banner (8).jpg" alt="Exhibition 8">
+              <img th:src="@{/assets/img/recommend/Event-List-Banner (8).jpg}" alt="Exhibition 8">
               <p class="tit">Sound Connect 앱 출시 기념 노캔 헤드폰 프로모션</p>
             </div></a>
             <div class="swiper-slide">
               <a >
-              <img src="/assets/img/recommend/Event-List-Banner (9).jpg" alt="Exhibition 9">
+              <img th:src="@{/assets/img/recommend/Event-List-Banner (9).jpg}" alt="Exhibition 9">
               <p class="tit">공부할 떈, 스터디헤드폰 몰입의즐거움WH1000XM5</p>
             </div></a>
           </div>
           
            <div class="arrow_btn">
             <button class="custom-prev">
-                <img src="/assets/img/recommend/arrow.svg" alt="이전">
-            </button>
+                <img th:src="@{/assets/img/recommend/arrow.svg}" alt="이전">
+            </button>1
             <button class="custom-next">
-                <img src="/assets/img/recommend/arrow.svg" alt="다음">
+                <img th:src="@{/assets/img/recommend/arrow.svg}" alt="다음">
             </button>
            </div>
           

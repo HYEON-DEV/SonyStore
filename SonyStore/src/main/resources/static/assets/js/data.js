@@ -4,7 +4,8 @@ window.onload = async (e) => {
     let response = null;
 
     try {
-        response = await axios.get('http://localhost:8080/api/products');
+        //response = await axios.get('http://localhost:8080/api/products');
+        response = await axios.get('[[@{/api/products}]]');
         product = response.data; // 데이터 로딩 후 전역 변수에 할당
     } catch (error) {
         console.error(`[Error Code] ${error.code}`);
