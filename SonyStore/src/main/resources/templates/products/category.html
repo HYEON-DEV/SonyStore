@@ -25,8 +25,8 @@
           </ul>
         </div>
         <div class="category_link">
-          <a th:href="@{#}">제품 비교</a>
-          <a th:href="@{#}">연장 서비스 플랜 ESP 보기</a>
+          <!-- <a th:href="@{#}">제품 비교</a> -->
+          <!-- <a th:href="@{#}">연장 서비스 플랜 ESP 보기</a> -->
         </div>
 
       </div>
@@ -64,6 +64,13 @@
   <script>const type2 = `[[${type2}]]`;</script>
   <!-- <script>const category = `[[${category}]]`;</script>  -->
   <!-- controller에서 보내는 category값을 자바스크립트에서 쓸 수 있게 함 -->
+
+  <script>
+    const apiBackgrounds = '[[@{/api/backgrounds}]]';
+    const productView = '[[@{/product-view}]]';
+    const urlProducts = '[[@{/products}]]';
+    const apiProducts = '[[@{/api/products}]]';
+  </script>
   <script th:src="@{/assets/js/ProductList.js}"></script>
   
 </body>

@@ -7,7 +7,6 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -48,17 +47,17 @@ DROP TABLE IF EXISTS `carts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `carts` (
-  `cartid` int NOT NULL AUTO_INCREMENT COMMENT '일련번호',
-  `count` int NOT NULL COMMENT '수량',
-  `memberid` int NOT NULL COMMENT '회원의 일련번호',
-  `prodid` int NOT NULL COMMENT '상품의 일련번호',
-  `color` varchar(45) DEFAULT NULL COMMENT '상품의 색상',
+  `cartid` int NOT NULL AUTO_INCREMENT COMMENT '?Ϸù',
+  `count` int NOT NULL COMMENT '?',
+  `memberid` int NOT NULL COMMENT 'ȸ???? ?Ϸù',
+  `prodid` int NOT NULL COMMENT '??ǰ?? ?Ϸù',
+  `color` varchar(45) DEFAULT NULL COMMENT '??ǰ?? ?',
   PRIMARY KEY (`cartid`),
   KEY `fk_carts_members1_idx` (`memberid`),
   KEY `fk_carts_products1_idx1` (`prodid`),
   CONSTRAINT `fk_carts_members1` FOREIGN KEY (`memberid`) REFERENCES `members` (`memberid`),
   CONSTRAINT `fk_carts_products1` FOREIGN KEY (`prodid`) REFERENCES `products` (`prodid`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8 COMMENT='장바구니';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='???ٱ??';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,6 +66,7 @@ CREATE TABLE `carts` (
 
 LOCK TABLES `carts` WRITE;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
+INSERT INTO `carts` VALUES (13,1,23,4,'silver');
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,14 +78,14 @@ DROP TABLE IF EXISTS `colors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `colors` (
-  `colorid` int NOT NULL AUTO_INCREMENT COMMENT '일련번호',
-  `color` varchar(45) NOT NULL COMMENT '색상',
-  `prodid` int DEFAULT NULL COMMENT '상품의 일련번호',
+  `colorid` int NOT NULL AUTO_INCREMENT COMMENT '???? ?',
+  `color` varchar(45) NOT NULL COMMENT '?',
+  `prodid` int DEFAULT NULL COMMENT '??ǰ?? ?Ϸù',
   `pcolor` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '기본색상',
   PRIMARY KEY (`colorid`),
   KEY `fk_colors_products1_idx1` (`prodid`),
   CONSTRAINT `fk_colors_products1` FOREIGN KEY (`prodid`) REFERENCES `products` (`prodid`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='색상';
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='색상';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +94,7 @@ CREATE TABLE `colors` (
 
 LOCK TABLES `colors` WRITE;
 /*!40000 ALTER TABLE `colors` DISABLE KEYS */;
-INSERT INTO `colors` VALUES (1,'white',1,'Y'),(2,'black',1,'N'),(3,'black',2,'Y'),(4,'white',2,'N'),(5,'silver',4,'Y'),(6,'black',4,'N'),(7,'white',5,'Y'),(8,'black',5,'N'),(9,'white',6,'Y'),(10,'black',6,'N'),(11,'black',15,'Y'),(12,'silver',15,'N');
+INSERT INTO `colors` VALUES (1,'white',1,'Y'),(2,'black',1,'N'),(3,'black',2,'Y'),(4,'white',2,'N'),(5,'silver',4,'Y'),(6,'black',4,'N'),(7,'white',5,'Y'),(8,'black',5,'N'),(9,'white',6,'Y'),(10,'black',6,'N'),(11,'black',15,'Y'),(12,'silver',15,'N'),(14,'default',3,'N'),(15,'default',7,'N'),(16,'default',8,'N'),(17,'default',9,'N'),(18,'default',10,'N'),(19,'default',11,'N'),(20,'default',12,'N'),(21,'default',13,'N'),(22,'default',14,'N'),(23,'default',16,'N');
 /*!40000 ALTER TABLE `colors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,16 +106,16 @@ DROP TABLE IF EXISTS `events`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `events` (
-  `eventid` int NOT NULL AUTO_INCREMENT COMMENT '일련번호',
-  `title` varchar(255) NOT NULL COMMENT '제목',
-  `caution` text COMMENT '유의사항',
-  `thumbnail` varchar(255) NOT NULL COMMENT '기획전 대표 이미지 경로',
-  `startdate` date DEFAULT NULL COMMENT '기획전 시작날짜',
-  `enddate` date DEFAULT NULL COMMENT '기획전 종료날짜',
-  `eventdesc` varchar(255) DEFAULT NULL COMMENT '기획전 설명',
-  `image` varchar(255) NOT NULL COMMENT '기획전 상세이미지 경로',
+  `eventid` int NOT NULL AUTO_INCREMENT COMMENT '?Ϸù',
+  `title` varchar(255) NOT NULL COMMENT '???',
+  `caution` text COMMENT '???ǻ??',
+  `thumbnail` varchar(255) NOT NULL COMMENT '??ȹ?? ??ǥ ?̹??? ???',
+  `startdate` date DEFAULT NULL COMMENT '??ȹ?? ???۳?¥',
+  `enddate` date DEFAULT NULL COMMENT '??ȹ?? ???ᳯ¥',
+  `eventdesc` varchar(255) DEFAULT NULL COMMENT '??ȹ?? ???',
+  `image` varchar(255) NOT NULL COMMENT '??ȹ?? ?????̹??? ???',
   PRIMARY KEY (`eventid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='기획전';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='??ȹ?';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,17 +135,17 @@ DROP TABLE IF EXISTS `images`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `images` (
-  `imgid` int NOT NULL AUTO_INCREMENT COMMENT '일련번호',
-  `filepath` varchar(255) NOT NULL COMMENT '이미지 파일 경로',
-  `thumbnail` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '상품 대표 이미지 (Y/N)',
-  `prodid` int NOT NULL COMMENT '상품의 일련번호',
-  `colorid` int DEFAULT NULL COMMENT '색상의 일련번호',
+  `imgid` int NOT NULL AUTO_INCREMENT COMMENT '?Ϸù',
+  `filepath` varchar(255) NOT NULL COMMENT '?̹??? ???? ???',
+  `thumbnail` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '??ǰ ??ǥ ?̹??',
+  `prodid` int NOT NULL COMMENT '??ǰ?? ?Ϸù',
+  `colorid` int DEFAULT NULL COMMENT '?????? ?Ϸù',
   PRIMARY KEY (`imgid`),
   KEY `fk_images_products1_idx` (`prodid`),
   KEY `fk_images_colors1_idx` (`colorid`),
   CONSTRAINT `fk_images_colors1` FOREIGN KEY (`colorid`) REFERENCES `colors` (`colorid`),
   CONSTRAINT `fk_images_products1` FOREIGN KEY (`prodid`) REFERENCES `products` (`prodid`)
-) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8 COMMENT='상품 이미지';
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8 COMMENT='??ǰ ?̹??';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,25 +166,25 @@ DROP TABLE IF EXISTS `members`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `members` (
-  `memberid` int NOT NULL AUTO_INCREMENT COMMENT '일련번호',
-  `email` varchar(45) NOT NULL COMMENT '이메일',
-  `userpw` varchar(255) NOT NULL COMMENT '비밀번호',
-  `username` varchar(45) NOT NULL COMMENT '이름',
-  `gender` enum('M','F') NOT NULL COMMENT '성별 (M/F)',
-  `birthdate` date NOT NULL COMMENT '생년월일',
-  `phone` varchar(20) NOT NULL COMMENT '휴대폰번호',
-  `editdate` datetime NOT NULL COMMENT '변경일시',
-  `postcode` char(5) DEFAULT NULL COMMENT '우편번호',
-  `addr1` varchar(255) DEFAULT NULL COMMENT '검색된 주소',
-  `addr2` varchar(255) DEFAULT NULL COMMENT '상세 주소',
-  `isout` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '탈퇴 여부 (Y/N)',
-  `logindate` datetime DEFAULT NULL COMMENT '마지막 로그인 일시',
-  `regdate` datetime NOT NULL COMMENT '등록일시',
-  `isadmin` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '관리자 여부 (Y/ N)',
+  `memberid` int NOT NULL AUTO_INCREMENT COMMENT 'ȸ???? ?Ϸù',
+  `email` varchar(45) NOT NULL COMMENT '?̸??',
+  `userpw` varchar(255) NOT NULL COMMENT '???й',
+  `username` varchar(45) NOT NULL COMMENT '?̸?',
+  `gender` enum('M','F') NOT NULL COMMENT '???? (M/F)',
+  `birthdate` date NOT NULL COMMENT '?????',
+  `phone` varchar(20) NOT NULL COMMENT '?޴????',
+  `editdate` datetime NOT NULL COMMENT '?????Ͻ',
+  `postcode` char(5) DEFAULT NULL COMMENT '?????',
+  `addr1` varchar(255) DEFAULT NULL COMMENT '?˻??? ?ּ',
+  `addr2` varchar(255) DEFAULT NULL COMMENT '???? ?ּ',
+  `isout` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT 'Ż?? ???? (Y/N)',
+  `logindate` datetime DEFAULT NULL COMMENT '?????? ?α??? ?Ͻ',
+  `regdate` datetime NOT NULL COMMENT '?????Ͻ',
+  `isadmin` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '?????? ???? (Y/ N)',
   `receiveemail` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '광고성 정보 이메일 수신 여부 (Y/N)',
   `receivesms` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '광고성 정보 문자 수신 여부 (Y/N)',
   PRIMARY KEY (`memberid`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='회원정보';
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COMMENT='ȸ??????';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -193,7 +193,7 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
-INSERT INTO `members` VALUES (18,'jinsu4205@gmail.com','Aa123456789@@!','박재한','F','1996-09-05','01033063205','2024-12-06 11:34:55','06779','서울 서초구 강남대로 48-3 (양재동)','102호','N','2024-12-06 16:34:27','2024-12-02 16:49:06','N','Y','Y'),(19,'wlstn4205@gmailw.com','Aa123456789@@','박진수지메일','M','1996-09-05','01033062222','2024-12-05 16:33:50',NULL,NULL,NULL,'N','2024-12-05 17:47:22','2024-12-05 16:33:50','N','Y','Y'),(20,'jinsu4205@gmail.comm','Aa123456789@@','박진수수','F','1996-09-04','01045782656','2024-12-05 17:52:50',NULL,NULL,NULL,'N','2024-12-05 17:53:20','2024-12-05 17:52:50','N','N','N'),(21,'leekh4232@gmail.com','1234qwer!@#$','박진수','M','2027-01-03','01022084232','2024-12-06 17:43:14',NULL,NULL,NULL,'N',NULL,'2024-12-06 17:43:14','N','N','N'),(22,'jinsu4205@gmail.coma','Aa123456789@@','박진수','M','2025-02-06','01011111111','2024-12-06 17:46:16',NULL,NULL,NULL,'N',NULL,'2024-12-06 17:46:16','N','Y','Y'),(23,'leekh4232@kakao.com','Aa123456789@@','박진수','M','2024-12-06','01033064212','2024-12-06 17:48:18',NULL,NULL,NULL,'N','2024-12-06 17:48:31','2024-12-06 17:48:18','N','Y','Y'),(24,'hyeon970315@gmail.com','123sony!!@@##','이승현','M','1997-03-15','01045788956','2024-12-10 21:30:55','','','','N','2024-12-27 10:19:32','2024-12-07 21:02:13','N','N','N');
+INSERT INTO `members` VALUES (18,'jinsu4205@gmail.com','Aa123456789@','박진수','F','1996-09-05','01033063205','2024-12-18 11:48:13','06779','서울 서초구 강남대로 48-3 (양재동)','102호','Y','2024-12-18 11:44:02','2024-12-02 16:49:06','N','Y','Y'),(19,'wlstn4205@gmailw.com','Aa123456789@@','박진수지메일','M','1996-09-05','01033062222','2024-12-05 16:33:50',NULL,NULL,NULL,'N','2024-12-05 17:47:22','2024-12-05 16:33:50','N','Y','Y'),(20,'jinsu4205@gmail.comm','Aa123456789@@','박진수수','F','1996-09-04','01045782656','2024-12-05 17:52:50',NULL,NULL,NULL,'N','2024-12-05 17:53:20','2024-12-05 17:52:50','N','N','N'),(21,'leekh4232@gmail.com','1234qwer!@#$','박진수','M','2027-01-03','01022084232','2024-12-06 17:43:14',NULL,NULL,NULL,'N',NULL,'2024-12-06 17:43:14','N','N','N'),(22,'jinsu4205@gmail.coma','Aa123456789@@','박진수','M','2025-02-06','01011111111','2024-12-06 17:46:16',NULL,NULL,NULL,'N',NULL,'2024-12-06 17:46:16','N','Y','Y'),(23,'leekh4232@kakao.com','Aa123456789@@','박진수','M','2024-12-06','01033064212','2024-12-06 17:48:18',NULL,NULL,NULL,'N','2024-12-06 17:48:31','2024-12-06 17:48:18','N','Y','Y');
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -205,13 +205,13 @@ DROP TABLE IF EXISTS `notices`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `notices` (
-  `noticeid` int NOT NULL AUTO_INCREMENT COMMENT '일련번호',
-  `title` varchar(255) NOT NULL COMMENT '제목',
-  `regdate` date NOT NULL COMMENT '등록일자',
-  `watch` int NOT NULL DEFAULT '0' COMMENT '조회수',
-  `content` text NOT NULL COMMENT '공지사항 내용',
+  `noticeid` int NOT NULL AUTO_INCREMENT COMMENT '?',
+  `title` varchar(255) NOT NULL COMMENT '???',
+  `regdate` date NOT NULL COMMENT '???????',
+  `watch` int NOT NULL DEFAULT '0' COMMENT '??ȸ?',
+  `content` text NOT NULL COMMENT '???????? ???',
   PRIMARY KEY (`noticeid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='공지사항';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='???????';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,18 +231,18 @@ DROP TABLE IF EXISTS `paylist`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `paylist` (
-  `paylistid` int NOT NULL AUTO_INCREMENT COMMENT '일련번호',
+  `paylistid` int NOT NULL AUTO_INCREMENT COMMENT '?????? ??ǰ?? ?Ϸù',
   `payid` int NOT NULL COMMENT '결제내역의 일련번호',
   `prodid` int DEFAULT NULL COMMENT '상품의 일련번호',
   `prodthumbnail` varchar(255) DEFAULT NULL COMMENT '상품의 대표 이미지 경로',
-  `prodtitle` varchar(45) NOT NULL COMMENT '상품의 이름',
+  `prodtitle` varchar(45) NOT NULL COMMENT '??ǰ?? ?̸?',
   `prodcolor` varchar(45) DEFAULT NULL COMMENT '구매한 상품의 색상',
   `count` int NOT NULL COMMENT '상품의 수량',
-  `prodprice` int NOT NULL COMMENT '상품의 가격',
+  `prodprice` int NOT NULL COMMENT '??ǰ?? ???',
   PRIMARY KEY (`paylistid`),
   KEY `fk_paylist_payments_idx` (`payid`),
   CONSTRAINT `fk_paylist_payments` FOREIGN KEY (`payid`) REFERENCES `payments` (`payid`)
-) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8 COMMENT='결제 상품 목록';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='???? ??ǰ ?';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -251,7 +251,7 @@ CREATE TABLE `paylist` (
 
 LOCK TABLES `paylist` WRITE;
 /*!40000 ALTER TABLE `paylist` DISABLE KEYS */;
-INSERT INTO `paylist` VALUES (93,65,2,'/files/products/ZV-E10M2/clr1_0.png','ZV-E10M2','white',1,1340000),(94,65,10,'/files/products/FDR-AX700/clr0_0.png','FDR-AX700','null',1,2499000),(95,66,5,'/files/products/ZV-1F/clr0_0.png','ZV-1F','white',1,759000),(99,69,4,'/files/products/ILCE-7CM2/clr0_0.png','ILCE-7CM2','silver',1,2690000),(102,72,15,'/files/products/SEL55210/Lens3.png','SEL55210','silver',1,429000),(111,77,1,'/files/products/ZV-E10M2K/clr0_0.png','ZV-E10M2K','white',1,1490000),(112,77,3,'/files/products/ILCE-9M3/clr0_0.png','ILCE-9M3','null',1,7980000),(113,78,1,'/files/products/ZV-E10M2K/clr1_0.png','ZV-E10M2K','black',1,1490000),(114,79,1,'/files/products/ZV-E10M2K/clr0_0.png','ZV-E10M2K','white',1,1490000),(115,79,3,'/files/products/ILCE-9M3/clr0_0.png','ILCE-9M3','null',1,7980000),(118,81,4,'/files/products/ILCE-7CM2/clr0_0.png','ILCE-7CM2','silver',1,2690000),(123,84,4,'/files/products/ILCE-7CM2/clr0_0.png','ILCE-7CM2','silver',1,2690000),(124,84,3,'/files/products/ILCE-9M3/clr0_0.png','ILCE-9M3','null',1,7980000),(125,84,2,'/files/products/ZV-E10M2/clr0_0.png','ZV-E10M2','black',1,1340000),(126,84,6,'/files/products/ZV-1/clr1_0.png','ZV-1','black',1,999000),(127,84,8,'/files/products/ILME-FR7/clr0_0.png','ILME-FR7','null',1,14999000),(128,84,15,'/files/products/SEL55210/Lens3.png','SEL55210','silver',1,429000);
+INSERT INTO `paylist` VALUES (1,1,4,'/files/products/ILCE-7CM2/clr1_0.png','ILCE-7CM2','black',1,2690000),(2,2,3,'/files/products/ILCE-9M3/clr0_0.png','ILCE-9M3','null',1,7980000),(9,6,4,'/files/products/ILCE-7CM2/clr0_0.png','ILCE-7CM2','silver',11,2690000),(10,6,4,'/files/products/ILCE-7CM2/clr1_0.png','ILCE-7CM2','black',4,2690000),(12,8,2,'/files/products/ZV-E10M2/clr0_0.png','ZV-E10M2','black',1,1340000),(13,9,2,'/files/products/ZV-E10M2/clr0_0.png','ZV-E10M2','black',1,1340000),(17,13,2,'/files/products/ZV-E10M2/clr1_0.png','ZV-E10M2','white',1,1340000),(18,14,2,'/files/products/ZV-E10M2/clr1_0.png','ZV-E10M2','white',1,1340000),(19,15,1,'/files/products/ZV-E10M2K/clr0_0.png','ZV-E10M2K','white',1,1490000),(21,17,2,'/files/products/ZV-E10M2/clr1_0.png','ZV-E10M2','white',1,1340000),(22,18,2,'/files/products/ZV-E10M2/clr1_0.png','ZV-E10M2','white',1,1340000),(23,19,1,'/files/products/ZV-E10M2K/clr0_0.png','ZV-E10M2K','white',1,1490000),(24,20,2,'/files/products/ZV-E10M2/clr1_0.png','ZV-E10M2','white',1,1340000);
 /*!40000 ALTER TABLE `paylist` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,21 +263,21 @@ DROP TABLE IF EXISTS `payments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `payments` (
-  `payid` int NOT NULL AUTO_INCREMENT COMMENT '일련번호',
+  `payid` int NOT NULL AUTO_INCREMENT COMMENT '?Ϸù',
   `date` datetime DEFAULT NULL COMMENT '결제날짜',
-  `status` varchar(10) NOT NULL COMMENT '처리상태',
+  `status` varchar(10) NOT NULL COMMENT 'ó???',
   `memberid` int DEFAULT NULL COMMENT '회원의 일련번호',
   `ordername` varchar(30) DEFAULT NULL COMMENT '주문자 이름',
   `orderemail` varchar(45) DEFAULT NULL,
   `orderphone` varchar(20) DEFAULT NULL COMMENT '주문자 휴대폰번호',
-  `receivername` varchar(30) DEFAULT NULL COMMENT '수령인 이름',
+  `receivername` varchar(30) DEFAULT NULL COMMENT '?????? ?̸?',
   `receiverphone` varchar(20) DEFAULT NULL COMMENT '수령인 휴대폰번호',
-  `postcode` char(5) DEFAULT NULL COMMENT '우편번호',
-  `addr1` varchar(45) DEFAULT NULL COMMENT '검색된 주소',
-  `addr2` varchar(45) DEFAULT NULL COMMENT '상세 주소',
-  `request` varchar(45) DEFAULT NULL COMMENT '배송 요청 사항',
-  `dlvdate` varchar(45) DEFAULT NULL COMMENT '배송일',
-  `totalcount` int NOT NULL DEFAULT '0' COMMENT '전체 수량',
+  `postcode` char(5) DEFAULT NULL COMMENT '?????',
+  `addr1` varchar(45) DEFAULT NULL COMMENT '?˻??? ?ּ',
+  `addr2` varchar(45) DEFAULT NULL COMMENT '???? ?ּ',
+  `request` varchar(45) DEFAULT NULL COMMENT '???? ??û ???',
+  `dlvdate` varchar(45) DEFAULT NULL COMMENT '?????',
+  `totalcount` int NOT NULL DEFAULT '0' COMMENT '??ü ?',
   `total` int NOT NULL COMMENT '총 결제금액',
   `payoption` varchar(20) NOT NULL COMMENT '결제방법',
   `insertdate` datetime NOT NULL COMMENT '구매 희망 일시',
@@ -285,7 +285,7 @@ CREATE TABLE `payments` (
   PRIMARY KEY (`payid`),
   KEY `fk_payments_members1_idx` (`memberid`),
   CONSTRAINT `fk_payments_members1` FOREIGN KEY (`memberid`) REFERENCES `members` (`memberid`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8 COMMENT='결제';
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='????';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -294,7 +294,7 @@ CREATE TABLE `payments` (
 
 LOCK TABLES `payments` WRITE;
 /*!40000 ALTER TABLE `payments` DISABLE KEYS */;
-INSERT INTO `payments` VALUES (65,'2024-12-16 17:46:38','결제완료',24,'이승현','hyeon970315@gmail.com','01045788956','홍창기','01054645334','05694','서울 송파구 가락로 26 (석촌동)','501호','부재 시 집 문앞에 놔주세요.','2024-12-23',2,3839000,'네이버페이','2024-12-12 17:43:05','Y'),(66,'2024-12-17 12:26:17','결제완료',24,'이승현','hyeon970315@gmail.com','01045788956','신민재','01065678987','12916','경기 하남시 미사강변남로 10 (풍산동)','404호','null','null',1,759000,'신용카드','2024-12-13 12:26:06','Y'),(69,'2024-12-18 17:20:07','결제완료',24,'이승현','hyeon970315@gmail.com','01045788956','홍창기','01054645334','05694','서울 송파구 가락로 26 (석촌동)','501호','null','null',1,2690000,'신용카드','2024-12-14 17:19:58','Y'),(72,'2024-12-19 17:27:19','결제완료',24,'이승현','hyeon970315@gmail.com','01045788956','홍창기','01054645334','05694','서울 송파구 가락로 26 (석촌동)','501호','null','null',3,3409000,'신용카드','2024-12-14 17:27:13','Y'),(77,'2024-12-20 20:41:23','결제완료',24,'이승현','hyeon970315@gmail.com','01045788956','홍창기','01054645334','05694','서울 송파구 가락로 26 (석촌동)','501호','null','null',2,9470000,'신용카드','2024-12-15 20:41:12','Y'),(78,'2024-12-21 20:46:46','결제완료',24,'이승현','hyeon970315@gmail.com','01045788956','홍창기','01054645334','05694','서울 송파구 가락로 26 (석촌동)','501호','null','null',1,1490000,'신용카드','2024-12-15 20:46:36','Y'),(79,'2024-12-22 19:50:47','결제완료',24,'이승현','hyeon970315@gmail.com','01045788956','문보경','01045789956','05573','서울 송파구 도곡로 434 (잠실동)','202호','null','2025-01-02',2,9470000,'신용카드','2024-12-16 19:48:04','Y'),(81,'2024-12-22 15:01:00','결제완료',24,'이승현','hyeon970315@gmail.com','01045788956','차명석','01058827469','05500','서울 송파구 올림픽로 25 (잠실동)','단장실','부재시 임찬규한테 전화하세요.','2024-12-25',1,2690000,'신용카드','2024-12-22 14:57:07','Y'),(84,'2024-12-26 10:20:52','결제완료',24,'이승현','hyeon970315@gmail.com','01045788956','홍창기','01054645334','05694','서울 송파구 가락로 26 (석촌동)','501호','null','2025-01-02',6,28437000,'신용카드','2024-12-27 10:20:29','Y');
+INSERT INTO `payments` VALUES (1,'2024-12-06 10:55:52','결제완료',18,'박진숭','jinsu4205@gmail.com','01033063205','박진수','01033063205','06100','서울 강남구 선릉로 635 (논현동)','123','null','null',1,2690000,'신용카드','2024-12-06 10:55:12','Y'),(2,'2024-12-06 11:30:02','결제완료',18,'박진숭','jinsu4205@gmail.com','01033063205','박재한','01045786589','18148','경기 오산시 부산중앙로 11 (부산동, 오산시티자이 1단지)','101호','부재 시 경비실에 맡겨 주세요.','2024-12-11',1,7980000,'네이버페이','2024-12-06 11:29:19','Y'),(6,'2024-12-06 11:37:03','결제완료',18,'박재한','jinsu4205@gmail.com','01033063205','박재한','01045786589','47874','부산 동래구 종합운동장로 29 (사직동)','101호','null','2024-12-26',15,40350000,'신용카드','2024-12-06 11:36:25','Y'),(8,'2024-12-06 16:13:30','결제완료',18,'박재한','jinsu4205@gmail.com','01033063205','박재한','01045786589','','','101호','null','null',1,1340000,'신용카드','2024-12-06 16:09:51','Y'),(9,'2024-12-06 16:17:00','결제완료',18,'박재한','jinsu4205@gmail.com','01033063205','박재한','01045786589','','','101호','null','null',1,1340000,'신용카드','2024-12-06 16:16:45','Y'),(13,'2024-12-06 16:27:41','결제완료',18,'박재한','jinsu4205@gmail.com','01033063205','박재한','01045786589','','','101호','null','null',1,1340000,'신용카드','2024-12-06 16:27:33','Y'),(14,'2024-12-06 16:28:22','결제완료',18,'박재한','jinsu4205@gmail.com','01033063205','박재한','01045786589','','','101호','null','null',1,1340000,'신용카드','2024-12-06 16:28:14','Y'),(15,'2024-12-06 16:30:23','결제완료',18,'박재한','jinsu4205@gmail.com','01033063205','박재한','01045786589','','','101호','null','null',1,1490000,'신용카드','2024-12-06 16:29:46','Y'),(17,'2024-12-11 15:19:15','결제완료',18,'박재한','jinsu4205@gmail.com','01033063205','박재한','01045786589','18148','경기 오산시 부산중앙로 11 (부산동, 오산시티자이 1단지)','101호','null','null',1,1340000,'신용카드','2024-12-11 15:18:57','Y'),(18,'2024-12-11 15:26:36','결제완료',18,'박재한','jinsu4205@gmail.com','01033063205','박재한','01045786589','47874','부산 동래구 종합운동장로 29 (사직동)','101호','null','null',1,1340000,'신용카드','2024-12-11 15:26:29','Y'),(19,'2024-12-11 15:28:02','결제완료',18,'박재한','jinsu4205@gmail.com','01033063205','박재한','01045786589','18148','경기 오산시 부산중앙로 11 (부산동, 오산시티자이 1단지)','101호','null','null',1,1490000,'신용카드','2024-12-11 15:27:52','Y'),(20,'2024-12-11 17:58:57','결제완료',18,'박재한','jinsu4205@gmail.com','01033063205','박진수','01033063205','06100','서울 강남구 선릉로 635 (논현동)','123','null','null',1,1340000,'신용카드','2024-12-11 17:58:50','Y');
 /*!40000 ALTER TABLE `payments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -306,25 +306,25 @@ DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products` (
-  `prodid` int NOT NULL AUTO_INCREMENT COMMENT '일련번호',
-  `title` varchar(45) NOT NULL COMMENT '상품 이름',
-  `proddesc` varchar(255) DEFAULT NULL COMMENT '상품 설명',
-  `price` int NOT NULL COMMENT '상품 가격',
-  `type1` varchar(45) NOT NULL COMMENT '상품 카테고리1',
-  `type2` varchar(45) DEFAULT NULL COMMENT '상품 카테고리2',
-  `type3` varchar(45) DEFAULT NULL COMMENT '상품 카테고리3',
-  `date` date DEFAULT NULL COMMENT '출시일',
-  `detailimage1` varchar(255) NOT NULL COMMENT '상품 상세의 이미지 경로1',
-  `youtube` varchar(255) DEFAULT NULL COMMENT '상품 상세의 유튜브 경로',
-  `detailgif` varchar(255) DEFAULT NULL COMMENT '상품 상세의 gif 경로',
-  `detailimage2` varchar(255) DEFAULT NULL COMMENT '상품 상세의 이미지 경로2',
-  `detailspec` varchar(255) DEFAULT NULL COMMENT '상품 상세의 스펙',
-  `soldout` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '상품의 품절여부 (Y/N)',
-  `sale` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '상품의 할인 유무 (Y/N)',
-  `event` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '상품의 기획전 유무 (Y/N)',
+  `prodid` int NOT NULL AUTO_INCREMENT COMMENT '?Ϸù',
+  `title` varchar(45) NOT NULL COMMENT '??ǰ?',
+  `proddesc` varchar(255) DEFAULT NULL COMMENT '??ǰ ???',
+  `price` int NOT NULL COMMENT '??ǰ ???',
+  `type1` varchar(45) NOT NULL COMMENT '??ǰ ī?װ??? 1',
+  `type2` varchar(45) DEFAULT NULL COMMENT '??ǰ ī?װ??? 2',
+  `type3` varchar(45) DEFAULT NULL COMMENT '??ǰ ī?װ??? 3',
+  `date` date DEFAULT NULL COMMENT '?????',
+  `detailimage1` varchar(255) NOT NULL COMMENT '??ǰ ?????? ?̹??? ???? 1',
+  `youtube` varchar(255) DEFAULT NULL COMMENT '??ǰ ???? ??Ʃ?? ???',
+  `detailgif` varchar(255) DEFAULT NULL COMMENT '??ǰ ?????? gif ???',
+  `detailimage2` varchar(255) DEFAULT NULL COMMENT '??ǰ ?????? ?̹??? ???? 2',
+  `detailspec` varchar(255) DEFAULT NULL COMMENT '??ǰ ?????? ???',
+  `soldout` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '??ǰ?? ǰ?????',
+  `sale` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '??ǰ?? ???? ????',
+  `event` enum('Y','N') NOT NULL DEFAULT 'N' COMMENT '??ǰ?? ??ȹ?? ????',
   `keyword` varchar(255) DEFAULT NULL COMMENT '검색 결과 키워드',
   PRIMARY KEY (`prodid`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='상품';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='?';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -338,13 +338,13 @@ INSERT INTO `products` VALUES (1,'ZV-E10M2K','기록의 완성',1490000,'camera'
 UNLOCK TABLES;
 
 --
--- Table structure for table `spring_session`
+-- Table structure for table `SPRING_SESSION`
 --
 
-DROP TABLE IF EXISTS `spring_session`;
+DROP TABLE IF EXISTS `SPRING_SESSION`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `spring_session` (
+CREATE TABLE `SPRING_SESSION` (
   `PRIMARY_ID` char(36) NOT NULL,
   `SESSION_ID` char(36) NOT NULL,
   `CREATION_TIME` bigint NOT NULL,
@@ -360,37 +360,37 @@ CREATE TABLE `spring_session` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `spring_session`
+-- Dumping data for table `SPRING_SESSION`
 --
 
-LOCK TABLES `spring_session` WRITE;
-/*!40000 ALTER TABLE `spring_session` DISABLE KEYS */;
-/*!40000 ALTER TABLE `spring_session` ENABLE KEYS */;
+LOCK TABLES `SPRING_SESSION` WRITE;
+/*!40000 ALTER TABLE `SPRING_SESSION` DISABLE KEYS */;
+/*!40000 ALTER TABLE `SPRING_SESSION` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `spring_session_attributes`
+-- Table structure for table `SPRING_SESSION_ATTRIBUTES`
 --
 
-DROP TABLE IF EXISTS `spring_session_attributes`;
+DROP TABLE IF EXISTS `SPRING_SESSION_ATTRIBUTES`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `spring_session_attributes` (
+CREATE TABLE `SPRING_SESSION_ATTRIBUTES` (
   `SESSION_PRIMARY_ID` char(36) NOT NULL,
   `ATTRIBUTE_NAME` varchar(200) NOT NULL,
   `ATTRIBUTE_BYTES` blob NOT NULL,
-  PRIMARY KEY (`SESSION_PRIMARY_ID`,`ATTRIBUTE_NAME`),
-  CONSTRAINT `SPRING_SESSION_ATTRIBUTES_FK` FOREIGN KEY (`SESSION_PRIMARY_ID`) REFERENCES `spring_session` (`PRIMARY_ID`) ON DELETE CASCADE
+  PRIMARY KEY (`SESSION_PRIMARY_ID`),
+  CONSTRAINT `SPRING_SESSION_ATTRIBUTES_FK` FOREIGN KEY (`SESSION_PRIMARY_ID`) REFERENCES `SPRING_SESSION` (`PRIMARY_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `spring_session_attributes`
+-- Dumping data for table `SPRING_SESSION_ATTRIBUTES`
 --
 
-LOCK TABLES `spring_session_attributes` WRITE;
-/*!40000 ALTER TABLE `spring_session_attributes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `spring_session_attributes` ENABLE KEYS */;
+LOCK TABLES `SPRING_SESSION_ATTRIBUTES` WRITE;
+/*!40000 ALTER TABLE `SPRING_SESSION_ATTRIBUTES` DISABLE KEYS */;
+/*!40000 ALTER TABLE `SPRING_SESSION_ATTRIBUTES` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -402,11 +402,11 @@ DROP TABLE IF EXISTS `today_bestproduct`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `today_bestproduct` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `date` datetime DEFAULT NULL COMMENT '구매날짜',
-  `title` varchar(255) DEFAULT NULL COMMENT '제품명',
-  `cnt` int DEFAULT NULL COMMENT '개수',
+  `date` datetime DEFAULT NULL COMMENT '???ų?¥',
+  `title` varchar(255) DEFAULT NULL COMMENT '??ǰ?',
+  `cnt` int DEFAULT NULL COMMENT '???',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8 COMMENT='인기제품순위';
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8mb4 COMMENT='?α???ǰ?';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -452,11 +452,11 @@ DROP TABLE IF EXISTS `today_sales`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `today_sales` (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '일련번호',
-  `date` date NOT NULL COMMENT '날짜',
-  `total` int NOT NULL DEFAULT '0' COMMENT '매출',
+  `id` int NOT NULL AUTO_INCREMENT COMMENT '?Ϸù',
+  `date` date NOT NULL COMMENT '??¥',
+  `total` int NOT NULL DEFAULT '0' COMMENT '???',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=223 DEFAULT CHARSET=utf8 COMMENT='총 매출';
+) ENGINE=InnoDB AUTO_INCREMENT=223 DEFAULT CHARSET=utf8mb4 COMMENT='?? ???';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -478,4 +478,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-02 10:29:52
+-- Dump completed on 2025-01-06 16:13:10

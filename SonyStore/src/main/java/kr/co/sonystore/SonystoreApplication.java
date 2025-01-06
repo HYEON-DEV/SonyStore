@@ -9,6 +9,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @SpringBootApplication
 public class SonystoreApplication extends SpringBootServletInitializer {
+// public class SonystoreApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SonystoreApplication.class, args);

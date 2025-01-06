@@ -1,5 +1,6 @@
 package kr.co.sonystore.controllers.restfulapis;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -7,6 +8,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,6 +58,9 @@ public class OrderRestController {
 
     @Autowired
     private MailHelper mailHelper;
+
+    @Autowired
+    private ResourceLoader resourceLoader;
 
 
     /**
@@ -174,7 +180,15 @@ public class OrderRestController {
          * 결제 완료 메일 발송
          */
 
-        String mailTemplatePath = "src/main/resources/mail_templates/order_result.html";
+        // String mailTemplatePath = "src/main/resources/mail_templates/order_result.html";
+
+        Resource resource = resourceLoader.getResource("classpath:mail_templates/order_result.html");
+        String mailTemplatePath = null;
+        try {
+            mailTemplatePath = resource.getFile().getAbsolutePath();
+        } catch (IOException e) {
+            log.error("메일 템플릿 파일 찾기 실패", e);
+        }
 
         String template = null;
 

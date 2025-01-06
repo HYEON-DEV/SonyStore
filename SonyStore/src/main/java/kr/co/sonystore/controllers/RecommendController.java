@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class RecommendController {
     @GetMapping("/recommend")
     public String recommend() {
-        return "recommend/recommend";
+        return "/recommend/recommend";
     }
     
 }
