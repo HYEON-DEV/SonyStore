@@ -1,3 +1,5 @@
+logback-spring.xml
+
 node_modules/
 .vscode/
 

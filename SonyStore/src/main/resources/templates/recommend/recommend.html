@@ -3,15 +3,16 @@
 <head>
     <th:block th:replace="~{/_fragments/_head :: sony-head('추천상품')}"></th:block>
     <link rel="stylesheet" th:href="@{/assets/css/style_2.css}" />
-</head>
-    <!-- <link
+    <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.css"
-    /> -->
+    />
+</head>    
+    
 
   <!-- </head> -->
   <body>
@@ -89,7 +90,7 @@
                 > -->
                 <div
                     class="reco_banner"
-                    th:style="background-image: url('@{/assets/img/recommend/IMG_T_PC_BG.png}');"
+                    th:style="'background-image: url(' + @{/assets/img/recommend/IMG_T_PC_BG.png} + ');'"
                 >
                   <img
                     th:src="@{/assets/img/recommend/IMG_T_PC_Product.png}"
@@ -211,7 +212,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script th:src="@{/assets/js/recommend.js}"></script>
-    <script src="@{/assets/js/data.js}"></script>
+    <!-- <script th:src="@{/assets/js/data.js}"></script> -->
   </body>
 
   

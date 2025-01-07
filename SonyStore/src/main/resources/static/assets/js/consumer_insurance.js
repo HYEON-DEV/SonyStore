@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
           <div class="layer_content" style="margin-top: 20px;">
             <div class="consumer_logo" style="width: 556px; height: 81px; margin-bottom: 35px; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center;">
-              <img src="/assets/img/consumer_insurance/img_consumerlogo.png" alt="로고" />
+              <img src="${imgSrc}" alt="로고" />
             </div>
             <p style="color: #444; font-size: 16px; line-height: 24px; margin-right: 0; display: flex; align-items: center; justify-content: center;">
               고객님은 안전거래를 위해 현금 결제 시 저희 쇼핑몰이 가입한 구매안전서비스 소비자 피해 보상보험서비스를 이용하실 수 있습니다.

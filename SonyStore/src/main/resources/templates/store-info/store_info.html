@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <th:block th:replace="~{/_fragments/_head :: sony-head('직영점 안내')}"></th:block>
-    <link rel="stylesheet" href="assets/css/style_2.css" />
+    <link rel="stylesheet" th:href="@{assets/css/style_2.css}" />
 
     
   </head>
@@ -12,7 +12,7 @@
     <div class="container_w1920">
       <div class="bg_img">
         <img
-          src="/assets/img/store_info/img_store1.jpg"
+          th:src="@{/assets/img/store_info/img_store1.jpg}"
           alt="소니스토어 압구정점 내부 이미지 1"
         />
         <span class="bg"></span>
@@ -81,7 +81,7 @@
                 rel="noopener noreferrer"
               >
                 <img
-                  src="/assets/img/store_info/ic_search.ccca8201.svg"
+                  th:src="@{/assets/img/store_info/ic_search.ccca8201.svg}"
                   alt="돋보기"
                 />
                 <p class="box_desc">AS 센터 찾기</p></a
@@ -111,7 +111,7 @@
             <ul class="route">
               <li class="route_subway">
                 <img
-                  src="/assets/img/store_info/ic_subway.e9d2c8b8.svg"
+                  th:src="@{/assets/img/store_info/ic_subway.e9d2c8b8.svg}"
                   alt="지하철"
                 />
                 <div>
@@ -125,7 +125,7 @@
               </li>
               <li class="route_bus">
                 <img
-                  src="/assets/img/store_info/ic_bus.4ecfc9c9.svg"
+                  th:src="@{/assets/img/store_info/ic_bus.4ecfc9c9.svg}"
                   alt="버스"
                 />
                 <div>
@@ -138,7 +138,7 @@
               </li>
               <li class="route_car">
                 <img
-                  src="/assets/img/store_info/ic_car.bf3fe8af.svg"
+                  th:src="@{/assets/img/store_info/ic_car.bf3fe8af.svg}"
                   alt="자동차"
                 />
                 <div>
