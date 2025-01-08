@@ -97,7 +97,7 @@
                 > -->
                 <div
                     class="reco_banner"
-                    th:style="'background-image: url(' + @{/assets/img/recommend/IMG_T_PC_BG.png} + ');'"
+                    th:style="'background-image: url(' + @{/assets/img/recommend/IMG_T_PC_BG.png} + '); background-repeat:no-repeat;'"
                 >
                   <img
                     th:src="@{/assets/img/recommend/IMG_T_PC_Product.png}"
@@ -139,8 +139,8 @@
           </div>
           </div>
 
-          <div class="reco_item_container flex_center">
-          <div class="reco_item" style="width: 100%">
+          <div class="reco_item_container">
+          <div class="reco_item" style="width: 65%; height: 80%;">
             <div class="reco_item_inner">
               <a  class="reco_prod">
                 <div class="img_wrap">

@@ -17,7 +17,6 @@ body {
   min-height: 100vh;
   margin: 80px auto 0;
   margin-top: 80px;
-  padding-bottom: 30px;
 }
 
 /* 블랙 버튼 */
@@ -422,6 +421,7 @@ body {
     .reco_item_container {
       display: flex;
       flex-wrap: nowrap;
+      width:100%;
 
     .reco_item {
       .reco_item_inner {

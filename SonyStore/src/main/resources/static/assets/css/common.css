@@ -398,7 +398,7 @@ input::placeholder {
             .secondary_menu {
                 position:absolute;
                 display:flex;
-                width:1000px;;
+                width:800px;;
                 margin: 0 auto;
 
                 .secondary_menu_list {
@@ -436,7 +436,7 @@ input::placeholder {
 
         .gnb_menu {
             display: flex;
-            width:1000px;
+            width:800px;
             height: 100%;
             margin: 0 auto;
             color:white;
