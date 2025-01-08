@@ -17,7 +17,7 @@ public class Today_BestProductScheduler {
     @Autowired
     private Today_BestProductService today_bestProductService;
 
-    @Scheduled(cron = "0 0 1 * * ?")
+    @Scheduled(cron = "0 0 0 * 12 ?")
     // @Scheduled(cron = "0 */1 * * * ?")
     public void scheduleInsert() {
         log.debug("오늘의 베스트 상품 집계 시작");

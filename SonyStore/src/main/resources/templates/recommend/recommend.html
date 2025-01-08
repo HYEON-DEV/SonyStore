@@ -22,7 +22,7 @@
       <div class="recommend">
         <div class="reco_kv">
           <div class="reco_kv_img">
-            <img th:src="@{/assets/img/recommend/KV_Full_PC.jpg}" />
+            <img th:src="@{/assets/img/recommend/KV_Full_PC.jpg}" style="width:100%" />
             <div class="reco_kv_text">
               <h2>Sony Store</h2>
               <h2>Products</h2>
@@ -35,9 +35,10 @@
           </div>
         </div>
         <div class="reco_items">
-          <div class="reco_item">
+          <div class="reco_item_container">
+          <div class="reco_item" style="width: 65%">
             <div class="reco_item_inner">
-              <a  class="reco_prod">
+              <a  class="reco_prod" style="height:80%">
                 <div class="img_wrap cursor_default">
                 <img th:src="@{/assets/img/recommend/Origin_01.jpg}" alt="" />
                 </div>
@@ -46,7 +47,7 @@
               </a>
             </div>
           </div>
-          <div class="reco_item">
+          <div class="reco_item" style="width: 35%">
             <div class="reco_item_inner">
               <a  class="reco_prod">
                 <div class="img_wrap cursor_default">
@@ -57,9 +58,12 @@
               </a>
             </div>
           </div>
-          <div class="reco_item">
+        </div>
+
+        <div class="reco_item_container">
+          <div class="reco_item" style="width: 30%">
             <div class="reco_item_inner">
-              <a  class="reco_prod">
+              <a  class="reco_prod" style="height:70%">
                 <div class="img_wrap cursor_default">
                 <img th:src="@{/assets/img/recommend/Origin_03.jpg}" alt="" />
                 </div>
@@ -68,7 +72,7 @@
               </a>
             </div>
           </div>
-          <div class="reco_item">
+          <div class="reco_item"  style="width: 70%">
             <div class="reco_item_inner">
               <a  class="reco_prod">
                 <div class="img_wrap cursor_default">
@@ -79,7 +83,10 @@
               </a>
             </div>
           </div>
-          <div class="reco_item">
+          </div>
+
+          <div class="reco_item_container">
+          <div class="reco_item" style="width: 100%">
             <div class="reco_item_inner">
               <a  class="reco_prod">
                 <!-- <div
@@ -100,7 +107,10 @@
               </a>
             </div>
           </div>
-          <div class="reco_item">
+          </div>
+
+          <div class="reco_item_container">
+          <div class="reco_item" style="width: 70%">
             <div class="reco_item_inner">
               <a  class="reco_prod">
                 <div class="img_wrap">
@@ -114,18 +124,23 @@
               </a>
             </div>
           </div>
-          <div class="reco_item">
+
+
+          <div class="reco_item" style="width: 30%">
             <div class="reco_item_inner">
-              <a  class="reco_prod">
+              <a  class="reco_prod" style="height:70%">
                 <div class="img_wrap">
-                <img src="/assets/img/recommend/Origin_06.jpg" alt="" />
+                <img src="/assets/img/recommend/Origin_06.jpg" style="width: 100%" alt="" />
                 </div>
                 <h2 class="reco_item_title">SRS-XE300</h2>
                 <p class="reco_item_desc">언제 어디서든 콘서트 사운드</p>
               </a>
             </div>
           </div>
-          <div class="reco_item">
+          </div>
+
+          <div class="reco_item_container flex_center">
+          <div class="reco_item" style="width: 100%">
             <div class="reco_item_inner">
               <a  class="reco_prod">
                 <div class="img_wrap">
@@ -138,6 +153,7 @@
           </div>
         </div>
       </div>
+     
 
       <div class="exhibitions_zone">
         <p class="title">진행중인 기획전</p>
