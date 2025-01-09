@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import kr.co.sonystore.helpers.FileHelper;
@@ -27,6 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
+@Tag(name="Sign API", description="회원 관련 API")
 public class SignRestController {
 
     @Autowired

@@ -1,5 +1,7 @@
 logback-spring.xml
+logback-spring*
 SonystoreApplication.java
+SonystoreApplication*
 
 node_modules/
 .vscode/

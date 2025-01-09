@@ -18,6 +18,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
 import kr.co.sonystore.helpers.FileHelper;
 import kr.co.sonystore.helpers.MailHelper;
@@ -33,6 +40,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
+@Tag(name="Order API", description="주문 관련 API")
 public class OrderRestController {
  
     @Autowired
@@ -67,6 +75,23 @@ public class OrderRestController {
      * 주문·결제 ( 결제 테이블에 데이터 추가 )
      */
     @PostMapping("/api/order")
+    @Operation(summary="주문·결제 시작", description="결제 테이블에 결제할 데이터를 추가한다.")
+    @ApiResponses( value={
+        @ApiResponse(responseCode="200", description="결제 데이터 추가 성공"),
+        @ApiResponse(responseCode="500", description="결제 데이터 추가 실패")
+    })
+    @Parameters({
+        @Parameter(name="totalcount", description = "총 수량"),
+        @Parameter(name="total", description = "총 가격"),
+        @Parameter(name="prodid", description = "상품 일련번호"),
+        @Parameter(name="prodthumbnail", description = "상품 이미지 경로"),
+        @Parameter(name="prodtitle", description = "상품 이름"),
+        @Parameter(name="prodcolor", description = "상품 색상"),
+        @Parameter(name="count", description = "상품 수량"),
+        @Parameter(name="prodprice", description = "상품 가격"),
+        @Parameter(name="cartid", description = "장바구니 일련번호", required = false),
+        @Parameter(name="memberInfo", description = "회원 정보", required = true)
+    })
     public Map<String,Object> buy (
         @RequestParam("totalcount") int totalcount,
         @RequestParam("total") int total,
@@ -127,6 +152,7 @@ public class OrderRestController {
      */
     @SuppressWarnings("null")
     @PutMapping("/api/order/complete") 
+    @Operation(summary="주문·결제 완료", description="결제 테이블에 결제할 데이터를 수정하여 주문을 완료한다.")
     public Map<String,Object> order_complete (
         @RequestParam("ordername") String ordername,
         @RequestParam("orderemail") String orderemail,
@@ -234,6 +260,7 @@ public class OrderRestController {
      * 지정한 기간내의 주문 내역 조회
      */
     @GetMapping("/api/order_list_by_date")
+    @Operation(summary="주문 조회", description="지정 기간동안의 주문 내역을 조회한다.")
     public Map<String,Object> order_list (
         @SessionAttribute("memberInfo") Member memberInfo,
         @RequestParam(value="fromdate", required=false) String fromdate,

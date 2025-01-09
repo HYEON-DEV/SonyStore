@@ -24,9 +24,9 @@ public class CartMapperTest {
     void insertCart() {
         Cart input = new Cart();
         input.setCount(1);
-        input.setMemberid(2);
-        input.setProdid(4);
-        input.setColor("블랙");
+        input.setMemberid(24);
+        input.setProdid(1);
+        input.setColor("black");
         
         int output = cartMapper.insert(input);
         
@@ -40,9 +40,9 @@ public class CartMapperTest {
     void updateCount() {
         Cart input = new Cart();
         input.setCount(1);
-        input.setMemberid(2);
-        input.setProdid(5);
-        // input.setColor("블랙");
+        input.setMemberid(24);
+        input.setProdid(1);
+        input.setColor("white");
         
         int output = cartMapper.updateCount(input);
         log.debug("output: " + output);
@@ -53,7 +53,7 @@ public class CartMapperTest {
     @DisplayName("장바구니 목록 조회 테스트")
     void selectList() {
         Cart input = new Cart();
-        input.setMemberid(2);
+        input.setMemberid(24);
         
         List<Cart> output = cartMapper.selectList(input);
         for ( Cart item : output ) {
@@ -66,7 +66,7 @@ public class CartMapperTest {
     @DisplayName("장바구니 단일행 조회 테스트")
     void selectItem() {
         Cart input = new Cart();
-        input.setCartid(15);
+        input.setCartid(14);
         
         Cart output = cartMapper.selectItem(input);
         log.debug("output: " + output);
@@ -77,9 +77,9 @@ public class CartMapperTest {
     @DisplayName("장바구니 중복 조회 테스트")
     void selectCount() {
         Cart input = new Cart();
-        input.setMemberid(2);
-        input.setProdid(5);
-        // input.setColor("화이트");
+        input.setMemberid(24);
+        input.setProdid(1);
+        input.setColor("white");
         
         int output = cartMapper.selectCount(input);
         log.debug("output: " + output);
@@ -90,8 +90,8 @@ public class CartMapperTest {
     @DisplayName("장바구니 수정 테스트")
     void updateCart() {
         Cart input = new Cart();
-        input.setCartid(2);
-        input.setCount(2);
+        input.setCartid(14);
+        input.setCount(3);
         
         int output = cartMapper.update(input); 
         log.debug("output: " + output);
@@ -102,7 +102,7 @@ public class CartMapperTest {
     @DisplayName("장바구니 삭제 테스트")
     void deleteCart() {
         Cart input = new Cart();
-        input.setCartid(3);
+        input.setCartid(14);
 
         int output = cartMapper.delete(input);
         log.debug("output : " + output);
@@ -113,7 +113,7 @@ public class CartMapperTest {
     @DisplayName("장바구니 다중 삭제 테스트")
     void deleteCartList() {
        
-        List<Integer> inputList = Arrays.asList(11,12);
+        List<Integer> inputList = Arrays.asList(15,16);
 
         int output = cartMapper.deleteList(inputList);
         log.debug("output: " + output); 

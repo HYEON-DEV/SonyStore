@@ -24,9 +24,9 @@ public class CartServiceTest {
     void addOrEditItem() {
         Cart input = new Cart();
         input.setCount(1);
-        input.setMemberid(2);
-        input.setProdid(5);
-        // input.setColor("블랙");
+        input.setMemberid(24);
+        input.setProdid(1);
+        input.setColor("white");
 
         Cart output = null;
 

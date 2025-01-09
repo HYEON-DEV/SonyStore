@@ -8,17 +8,17 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
 @SpringBootApplication
-public class SonystoreApplication extends SpringBootServletInitializer {
-// public class SonystoreApplication {
+// public class SonystoreApplication extends SpringBootServletInitializer {
+public class SonystoreApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SonystoreApplication.class, args);
 	}
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(SonystoreApplication.class);
-    }
+    // @Override
+    // protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+    //     return application.sources(SonystoreApplication.class);
+    // }
 }
 
 
