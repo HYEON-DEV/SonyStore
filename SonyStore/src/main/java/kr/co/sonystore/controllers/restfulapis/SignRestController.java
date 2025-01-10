@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -49,6 +52,12 @@ public class SignRestController {
     @Autowired
     private MailHelper mailHelper;
 
+    @Operation(summary = "로그인", description = "회원 로그인을 처리합니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "로그인 성공"),
+        @ApiResponse(responseCode = "400", description = "잘못된 요청"),
+        @ApiResponse(responseCode = "500", description = "서버 오류")
+    })
     @PostMapping("/api/sign/login")
     public Map<String, Object> login(
             // 세션을 사용해야 하므로 request 객체가 필요하다
@@ -88,6 +97,10 @@ public class SignRestController {
         return restHelper.sendJson();
     }
 
+    @Operation(summary = "로그아웃", description = "회원 로그아웃을 처리합니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "로그아웃 성공")
+    })
     @GetMapping("/api/sign/logout")
     public Map<String, Object> logout(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -96,6 +109,12 @@ public class SignRestController {
         return restHelper.sendJson();
     }
 
+    @Operation(summary = "아이디/비밀번호 찾기", description = "회원의 아이디 또는 비밀번호를 찾습니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "아이디/비밀번호 찾기 성공"),
+        @ApiResponse(responseCode = "400", description = "잘못된 요청"),
+        @ApiResponse(responseCode = "500", description = "서버 오류")
+    })
     @PostMapping("/api/sign/find_id_pw")
     public Map<String, Object> findEmail(
             @RequestParam("username") String username,
@@ -118,6 +137,12 @@ public class SignRestController {
 
     }
 
+    @Operation(summary = "비밀번호 찾기", description = "회원의 비밀번호를 찾습니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "비밀번호 찾기 성공"),
+        @ApiResponse(responseCode = "400", description = "잘못된 요청"),
+        @ApiResponse(responseCode = "500", description = "서버 오류")
+    })
     @PostMapping("/api/sign/find_pw")
     public Map<String, Object> findPw(
             @RequestParam("find_pw_email") String email,
@@ -174,6 +199,12 @@ public class SignRestController {
         return restHelper.sendJson(data);
     }
 
+    @Operation(summary = "회원가입", description = "회원가입을 처리합니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "회원가입 성공"),
+        @ApiResponse(responseCode = "400", description = "잘못된 요청"),
+        @ApiResponse(responseCode = "500", description = "서버 오류")
+    })
     @PostMapping("/api/sign/sign_up_input")
     public Map<String, Object> join(
             @RequestParam("email") String email,
@@ -236,6 +267,12 @@ public class SignRestController {
         return restHelper.sendJson();
     }
 
+    @Operation(summary = "이름 수정", description = "회원의 이름을 수정합니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "이름 수정 성공"),
+        @ApiResponse(responseCode = "400", description = "잘못된 요청"),
+        @ApiResponse(responseCode = "500", description = "서버 오류")
+    })
     @PutMapping("/api/sign/modify_name")
     public Map<String, Object> modifyName(
             HttpServletRequest request,
@@ -276,6 +313,12 @@ public class SignRestController {
         return restHelper.sendJson();
     }
 
+    @Operation(summary = "비밀번호 수정", description = "회원의 비밀번호를 수정합니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "비밀번호 수정 성공"),
+        @ApiResponse(responseCode = "400", description = "잘못된 요청"),
+        @ApiResponse(responseCode = "500", description = "서버 오류")
+    })
     @PutMapping("/api/sign/modify_userpw")
     public Map<String, Object> modifyUserpw(
             HttpServletRequest request,
@@ -320,6 +363,12 @@ public class SignRestController {
         return restHelper.sendJson();
     }
 
+    @Operation(summary = "주소 및 수신 설정 수정", description = "회원의 주소 및 수신 설정을 수정합니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "주소 및 수신 설정 수정 성공"),
+        @ApiResponse(responseCode = "400", description = "잘못된 요청"),
+        @ApiResponse(responseCode = "500", description = "서버 오류")
+    })
     @PutMapping("/api/sign/modify_add_receive")
     public Map<String, Object> ModifyAddReceive(
             HttpServletRequest request, // 세션 갱신용
@@ -359,6 +408,12 @@ public class SignRestController {
         // session에 input에 변경한 것들을 넣어주고 service에 memberInfo를 파라미터로 보내주면 간단하게 수정 가능할 것 같다
     }
 
+    @Operation(summary = "회원 탈퇴", description = "회원 탈퇴를 처리합니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "회원 탈퇴 성공"),
+        @ApiResponse(responseCode = "400", description = "잘못된 요청"),
+        @ApiResponse(responseCode = "500", description = "서버 오류")
+    })
     @DeleteMapping("/api/sign/member_secession")
     public Map<String, Object> out(
             HttpServletRequest request,

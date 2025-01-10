@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import kr.co.sonystore.helpers.FileHelper;
 import kr.co.sonystore.helpers.RestHelper;
 import kr.co.sonystore.models.Product;
@@ -17,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-// @RequestMapping("/api/products")
+@Tag(name="Search API", description="제품 검색 관련 API")
 public class SearchRestController {
     @Autowired
     private SearchService searchService;
@@ -29,7 +33,12 @@ public class SearchRestController {
     private RestHelper restHelper;
 
 
-    //제품 목록 조회
+    @Operation(summary = "제품 목록 조회", description = "키워드를 기반으로 제품 목록을 조회합니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "조회 성공"),
+        @ApiResponse(responseCode = "400", description = "잘못된 요청"),
+        @ApiResponse(responseCode = "500", description = "서버 오류")
+    })
     @GetMapping("/api/search/search_result")
     public Map<String, Object> getProductList(
         @RequestParam(value = "keyword", required = false) String keyword
