@@ -33,7 +33,7 @@ public class SearchRestController {
     private RestHelper restHelper;
 
 
-    @Operation(summary = "제품 목록 조회", description = "키워드를 기반으로 제품 목록을 조회합니다.")
+    @Operation(summary = "제품 검색 결과 목록 조회", description = "키워드를 기반으로 제품 목록을 조회합니다.")
     @ApiResponses({
         @ApiResponse(responseCode = "200", description = "조회 성공"),
         @ApiResponse(responseCode = "400", description = "잘못된 요청"),

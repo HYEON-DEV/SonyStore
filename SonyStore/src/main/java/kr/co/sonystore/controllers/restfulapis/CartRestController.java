@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import kr.co.sonystore.helpers.RestHelper;
 import kr.co.sonystore.models.Cart;
 import kr.co.sonystore.models.Member;
@@ -20,6 +22,7 @@ import kr.co.sonystore.services.CartService;
 
 
 @RestController
+@Tag(name="Cart API", description="장바구니 관련 API")
 public class CartRestController {
     
     @Autowired
@@ -33,6 +36,7 @@ public class CartRestController {
      * 장바구니에 상품 추가 (장바구니 버튼 클릭 시)
      */
     @PostMapping("/api/cart/add")
+    @Operation(summary="장바구니 추가", description="장바구니에 상품을 추가한다.")
     public Map<String,Object> addCart (
         @SessionAttribute("memberInfo") Member memberInfo,
         @RequestParam("prodid") List<Integer> prodid,
@@ -68,6 +72,7 @@ public class CartRestController {
      * 장바구니 수량 변경 
      */
     @PutMapping("/api/cart/edit")
+    @Operation(summary="장바구니 수량 변경", description="장바구니의 수량을 변경한다.")
     public Map<String,Object> editCart ( 
         @RequestParam("cartid") int cartid,
         @RequestParam("count") int count
@@ -95,6 +100,7 @@ public class CartRestController {
      * 장바구니 상품 삭제 (x버튼 클릭 시)
      */
     @DeleteMapping("/api/cart/deleteItem/{cartid}")
+    @Operation(summary="장바구니 상품 단일 삭제", description="장바구니 상품을 단일 삭제한다.")
     public Map<String,Object> deleteItem ( @PathVariable("cartid") int cartid ) {
 
         Cart input = new Cart();
@@ -113,6 +119,7 @@ public class CartRestController {
      * 장바구니 상품 삭제 (선택삭제 클릭 시)
      */
     @DeleteMapping("/api/cart/deleteList")
+    @Operation(summary="장바구니 상품 다중 삭제", description="체크한 상품을 장바구니에서 삭제한다.")
     public Map<String,Object> deleteList (
         @RequestParam("cartidList") List<Integer> cartidList
     ) {
