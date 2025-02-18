@@ -161,8 +161,7 @@ public interface PaymentMapper {
         "SELECT \n" +
             "payid, insertdate, status, paycheck, memberid \n" +
         "FROM payments \n" +
-        "WHERE paycheck = 'N' AND \n" +
-            "insertdate < DATE_ADD( NOW(), interval -1 hour )"
+        "WHERE paycheck = 'N'"
     )
     @ResultMap("paymentMap")
     public List<Payment> selectNoPayments();
