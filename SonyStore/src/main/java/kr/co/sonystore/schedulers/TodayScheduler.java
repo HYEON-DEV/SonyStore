@@ -16,7 +16,7 @@ public class TodayScheduler {
     @Autowired
     private TodayService todayService;
 
-    @Scheduled(cron = "0 0 0 * 12 *")
+    // @Scheduled(cron = "0 0 0 * 12 *")
     public void processInsertNewMemberCount() throws InterruptedException {
         log.debug("신규 회원 집계 시작");
 

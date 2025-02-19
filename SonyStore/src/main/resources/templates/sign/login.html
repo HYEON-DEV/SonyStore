@@ -12,7 +12,6 @@
                 <div class="login_tab">
                     <ul class="login_tab_ul flex_center">
                         <li class="member font_32_700 border_bottom"><a href="#member" class="tab_button tab_button_active">회원 로그인</a></li>
-                        <li class="non_member font_32_700 border_bottom"><a href="#non_member" class="tab_button">비회원 로그인</a></li>
                     </ul>
                 </div>
 
@@ -51,42 +50,6 @@
                     </div>
                 </div>
 
-                <div id="non_member" class="tab_page">
-                    <form action="#">
-                        <label for="orderNum" class="input_label">
-                            <input type="text" class="input_box" />
-                            <div class="input_focus_line">
-                                <span class="placeholder">주문번호</span>
-                            </div>
-                        </label>
-
-                        <label for="userPw" class="input_label">
-                            <div class="pw_box">
-                                <input type="password" class="input_box pw_input" />
-                                <i class="fas fa-eye-slash pw_view pointer"></i>
-                            </div>
-                            <div class="input_focus_line">
-                                <span class="placeholder">비밀번호</span>
-                            </div>
-                        </label>
-                    </form>
-                    <button type="submit" class="black_button pointer">로그인</button>
-
-                    <span class="non_member_comment">
-                        · 비회원께서는 주문 시 주문번호와 비밀번호(주문 시 배송 조회 비밀번호로 입력)를 입력하시면,<br />
-                        &nbsp;&nbsp;해당 주문 상품의 배송 상태를 조회하실 수 있습니다.
-                    </span>
-
-                    <div class="join_box">
-                        <span class="join_comment font_24_700">아직 소니 코리아 회원이 아니세요?</span>
-                        <div class="join_box_contents">
-                            <span class="join_box_desc">회원가입을 통해 소니스토어에서<br />
-                                다양한 서비스를 이용하실 수 있습니다.
-                            </span>
-                            <a th:href="@{/sign/sign_up}" class="sign_up_button pointer">회원가입</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>  
     </div> 
@@ -94,7 +57,7 @@
     <th:block th:replace="~{/_fragments/_footer :: sony-footer}"></th:block>
     <th:block th:replace="~{/_fragments/_scripts :: sony-scripts}"></th:block>
     <script>
-        document.querySelectorAll('.tab_button').forEach((v, i) => {
+        /* document.querySelectorAll('.tab_button').forEach((v, i) => {
             v.addEventListener('click', (e) => {
                 e.preventDefault();
                 const currentIndex = i;
@@ -114,7 +77,7 @@
 
                 document.querySelector(href).classList.add('tab_page_active');
         });
-    });
+    }); */
 
      /* 비밀번호 표시/숨기기 */
      let pwInputs = document.querySelectorAll(".pw_input");

@@ -5,7 +5,7 @@ plugins {
     id 'war'
 }
 
-group = 'kr.parkjaehan'
+group = 'kr.co.sonystore'
 version = '0.0.1-SNAPSHOT'
 
 java {

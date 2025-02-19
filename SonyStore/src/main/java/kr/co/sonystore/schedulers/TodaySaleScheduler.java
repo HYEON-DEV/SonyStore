@@ -17,7 +17,7 @@ public class TodaySaleScheduler {
     @Autowired
     private TodaySaleService todaySaleService;
     
-    @Scheduled(cron = "0 0 1 * * ?")    // 매일 새벽 1시에 실행  
+    // @Scheduled(cron = "0 0 1 * * ?")    // 매일 새벽 1시에 실행  
     // @Scheduled(cron = "0 * * * * ?")
     public void processTodaysales() throws InterruptedException{
         

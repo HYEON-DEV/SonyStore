@@ -6,6 +6,7 @@
 </head>
 <body>
     <th:block th:replace="~{/_fragments/_header :: sony-header}"></th:block>
+
     <div class="container_w1920">
         <div class="container_w1200" style="padding-top: 80px;">
             <h2 class="h2_title font_32_700">아이디 · 비밀번호 찾기</h2>
@@ -37,15 +38,15 @@
                         </label>
                         
                         <div class="input_button_set"  style="margin-top: 25px;">
-                            <label for="phone" class="input_label" style="width: 442px;">
+                            <label for="phone" class="input_label">
                                 <input type="text" class="input_box" name="phone" id="phone" />
                                 <div class="input_focus_line">
                                     <span class="placeholder">휴대폰 번호<span class="placeholder_hide">(-없이 입력하세요.)</span></span>
                                 </div>
                             </label>
-                            <div class="btn_box" style="margin-left:15px;">
+                            <!-- <div class="btn_box" style="margin-left:15px;">
                                 <div id="certification" class="btn_blue flex_center">본인인증</div>
-                            </div>
+                            </div> -->
                         </div>
                         <button type="submit" class="black_button pointer">확인</button>
                         <input type="hidden" name="certification_check" id="certification_check" value="N" />
@@ -74,15 +75,15 @@
                         </label>
                         
                         <div class="input_button_set" style="margin-top: 25px;">
-                            <label for="phone" class="input_label" style="width: 442px;">
+                            <label for="phone" class="input_label">
                                 <input type="text" class="input_box" name="find_pw_phone" id="find_pw_phone" />
                                 <div class="input_focus_line">
                                     <span class="placeholder">휴대폰 번호<span class="placeholder_hide">(-없이 입력하세요.)</span></span>
                                 </div>
                             </label>
-                            <div class="btn_box" style="margin-left:15px;">
+                            <!-- <div class="btn_box" style="margin-left:15px;">
                                 <div id="certification2" class="btn_blue flex_center">본인인증</div>
-                            </div>
+                            </div> -->
                         </div>
                         <button type="submit" class="black_button pointer">확인</button>
                         <input type="hidden" name="certification_check2" id="certification_check2" value="N" />
@@ -119,8 +120,8 @@
                 });
 
                 document.querySelector(href).classList.add('tab_page_active');
+            });
         });
-    });
 
       /* placeholder event */
       const input = document.querySelectorAll('.input_box');
@@ -176,10 +177,10 @@
                 return;
             }
 
-            if(document.getElementById('certification_check').value == 'N') {
-                utilHelper.alertWarning("본인인증을 진행해주세요.");
-                return;
-            }
+            // if(document.getElementById('certification_check').value == 'N') {
+            //     utilHelper.alertWarning("본인인증을 진행해주세요.");
+            //     return;
+            // }
 
             const data = await axiosHelper.post('[[@{/api/sign/find_id_pw}]]', new FormData(e.currentTarget));
 
@@ -212,28 +213,28 @@
                 return;
             }
 
-            if(document.getElementById('certification_check2').value == 'N') {
-                utilHelper.alertWarning("본인인증을 진행해주세요.");
-                return;
-            }
+            // if(document.getElementById('certification_check2').value == 'N') {
+            //     utilHelper.alertWarning("본인인증을 진행해주세요.");
+            //     return;
+            // }
 
-            const data = await axiosHelper.post('[[@{/api/sign/find_pw}]]', new FormData(e.currentTarget));
+            const data = await axiosHelper.post('[[@{/api/sign/find_pw}]]', new FormData(e.currentTarget));    
 
             if(data) {
-                const email = data.member;
+            const email = data.member;
 
-                new Swal({
-                    html: `<span class="alert_content">${email}로<br />메일이 전송되었습니다.</span>`,
-                    confirmButtonColor: '#000',
-                    confirmButtonText: '확인',
-                    width: '312px',
-                    padding: '16px 0 34px 0',
+            new Swal({
+                html: `<span class="alert_content">${email}로<br />메일이 전송되었습니다.</span>`,
+                confirmButtonColor: '#000',
+                confirmButtonText: '확인',
+                width: '312px',
+                padding: '16px 0 34px 0',
                 });                
             }
         });
 
         /* 인증번호 확인 */
-        document.getElementById('certification').addEventListener('click', async () =>{
+        /* document.getElementById('certification').addEventListener('click', async () =>{
             try {
                 regexHelper.value("#phone", "휴대폰 번호를 입력하세요.");
             } catch (err) {
@@ -250,9 +251,9 @@
                 width: '312px',
                 padding: '16px 0 34px 0',
             });
-        });
+        }); */
 
-        document.getElementById('certification2').addEventListener('click', async () =>{
+        /* document.getElementById('certification2').addEventListener('click', async () =>{
             try {
                 regexHelper.value("#find_pw_phone", "휴대폰 번호를 입력하세요.");
             } catch (err) {
@@ -269,7 +270,7 @@
                 width: '312px',
                 padding: '16px 0 34px 0',
             });
-        });
+        }); */
     </script>
 </body>
 </html>

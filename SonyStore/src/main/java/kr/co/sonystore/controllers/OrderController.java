@@ -153,13 +153,23 @@ public class OrderController {
     public String order_complete(
         @RequestParam("orderSheetNo") int payid,
         Model model,
-        HttpServletRequest httpRequest
+        HttpServletRequest httpRequest,
+        HttpServletResponse response
     ) {
         String referer = httpRequest.getHeader("referer");
 
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Expires", "0");
+
         if ( referer==null || !referer.contains("/order/sheet") ) {
             webHelper.badRequest("올바르지 않은 접근입니다");
-            return "/orders/order_complete";
+            try {
+                response.sendRedirect("/");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
 
         Payment input = new Payment();

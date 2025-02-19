@@ -834,10 +834,10 @@ input[type="checkbox"]:checked {
     }
 }
 
-.input_button_set {
+/* .input_button_set {
     display: flex;
     flex-direction: row;
-}
+} */
 
 /* find_id_pw end*/
 

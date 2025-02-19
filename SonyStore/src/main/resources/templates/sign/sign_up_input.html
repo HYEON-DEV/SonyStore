@@ -80,10 +80,10 @@
                                         <span class="placeholder">휴대폰 번호&nbsp;&nbsp;<span class="placeholder_hide">(-없이 입력하세요.)</span></span>
                                     </div>
                                 </label>
-                                <div class="btn_box" style="margin-left:15px;">
+                                <!-- <div class="btn_box" style="margin-left:15px;">
                                     <div id="certification" class="btn_blue flex_center">인증번호</div>
                                     <input type="hidden" name="certification_check" id="certification_check" value="N" />
-                                </div>
+                                </div> -->
                             </div>
 
                             <input type="hidden" name="receiveemail" id="receiveemail"/>
@@ -200,10 +200,10 @@
                 return;
             }
 
-            if(document.getElementById('certification_check').value == 'N') {
+            /* if(document.getElementById('certification_check').value == 'N') {
                 utilHelper.alertWarning("휴대폰인증을 진행해주세요.");
                 return;
-            }
+            } */
 
             const formData = new FormData(e.currentTarget);
 
@@ -227,7 +227,7 @@
         document.getElementById("birthdate").setAttribute("max", today);
 
         /* 인증번호 확인 */
-        document.getElementById('certification').addEventListener('click', async () =>{
+        /* document.getElementById('certification').addEventListener('click', async () =>{
             try {
                 regexHelper.value("#phone", "휴대폰번호를 입력하세요.");
             } catch (err) {
@@ -244,7 +244,7 @@
                 width: '312px',
                 padding: '16px 0 34px 0',
             });
-        });
+        }); */
     </script>
 </body>
 </html>
