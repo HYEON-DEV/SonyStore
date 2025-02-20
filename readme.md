@@ -5,7 +5,7 @@
 
 🔗 **스토어 URL:** [http://sonystore.shop](http://sonystore.shop)  
 📊 **대시보드 URL:** [http://sonystore.shop/dashboard](http://sonystore.shop/dashboard)  
-🗓 **개발 기간:** 2024.10.24 ~ 2024.12.22  
+🗓 **개발 기간:** 2024.10.24 - 2024.12.22 + α <br/>
 📜**결과 보고서:** [SonyStore.pdf](/Docs/FIN_SonyStore.pdf)
 
 ---
@@ -17,14 +17,14 @@ Sony Store는 `Spring Boot`를 기반으로 개발한 온라인 쇼핑몰 프로
 
 **✅ 주요 목표**  
 - 쇼핑몰의 핵심 기능을 전체적으로 개발하며 풀스택 역량 강화  
-- 백엔드 API 및 데이터베이스 설계, 보안 강화  
+- RESTful API 및 데이터베이스 설계, 보안 강화  
 - 대시보드 개발: 관리자가 매출 및 사용자 활동을 시각적으로 확인할 수 있는 대시보드 기능 구현  
 - 실무에 가까운 웹 애플리케이션 개발 능력 향상
 
 ---
 
 ## ✨ 주요 기능
-### 🛒 쇼핑몰 기능
+### 🛒 쇼핑몰
 - **메인 페이지**: 홈 화면, 이미지 표시, 이미지의 해당 페이지로 연결
 - **헤더·푸터**: 메뉴의 각 페이지 연결, 쇼핑몰 정보 표시
 - **회원 관리**: 회원가입·탈퇴, 로그인·로그아웃, 아이디·비밀번호 찾기, 회원정보 수정
@@ -34,16 +34,16 @@ Sony Store는 `Spring Boot`를 기반으로 개발한 온라인 쇼핑몰 프로
 - **기타 페이지**: 이벤트, 멤버쉽, 고객 서비스 화면 구현
 - **에러 페이지**: 잘못된 접근 시 에러 페이지 표시
 
-### 📊 대시보드 (관리자용)
+### 📊 대시보드
 - 매출 데이터와 사용자 활동을 파악하는 대시보드 페이지 
-- 총 매출 그래프 / 신규 회원 추이 / 인기 상품 순위 (주간 /월간)
+- 총 매출 그래프 / 신규 회원 추이 / 인기 상품 순위 (주간·월간)
 
 ---
 
 ## 🛠 기술 스택
-- Frontend : `HTML5` / `JavaScript (ES6)` /  `SCSS` / `React.js` / `Axios` / `SweetAlert` 
-- Backend : `Java 17` / `Spring Boot 3` / `Spring Security` / `MyBatis` / `JUnit` / `Swagger` 
-- Database & Infra : `MySQL` / `MariaDB` / `Linux` / `Cafe24 호스팅` / `GitHub`
+- Frontend : `HTML5` / `CSS3` / `JavaScript(ES6)` / `Thymeleaf` / `React.js` / `Axios`
+- Backend : `Java 17` / `Spring Boot 3` / `MyBatis` / `JUnit` / `Swagger`
+- Database & Infra : `MySQL` / `MariaDB` / 배포(`Cafe24(Linux)`) / `GitHub` / `VS Code`
 
 ---
 
@@ -66,13 +66,15 @@ Sony Store는 `Spring Boot`를 기반으로 개발한 온라인 쇼핑몰 프로
   - 화면 구현, 장바구니 연결, 결제 연결
 - **장바구니 기능** (FE+BE)
   - 상품 추가, 조회, 수량 변경, 선택 삭제  
-- **결제 및 주문 시스템 구축** (FE+BE)
+- **결제 및 주문 기능** (FE+BE)
   - 결제 페이지, 최근 배송지 조회, 완료 이메일 발송
   - 주문 조회
 - **결제 프로세스 설계** (BE)
   - 상품 상세 페이지 → 결제 / 장바구니 → 결제 &nbsp;로직 설계
-- **기타** (FE+BE)
-  - 페이지 캐싱 방지, Referer 검증, 로딩바  
+- **대시보드 페이지** (FE+BE)
+  - 주간·월간 총 매출 그래프
+- **기타** (FE,BE)
+  - 브라우저 캐시 방지, Referer 검증, 로딩 인디케이터
    
 ![결제 프로세스](/Docs/결제프로세스.png)
 
