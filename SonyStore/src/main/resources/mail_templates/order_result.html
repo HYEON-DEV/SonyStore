@@ -3,122 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>결제 완료 알림</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
+ 
+    <title>&#44208;&#51228; &#50756;&#47308; &#50508;&#47548;</title>
+</head>
+<body style="font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f7f7f7;
-        }
-
-        .email-container {
-            max-width: 600px;
+            background-color: #f7f7f7;">
+    <div class="email-container" style="max-width: 600px;
             margin: 0 auto;
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .email-header {
-            background-color: #222;
+            overflow: hidden;">
+        <div class="email-header" style="background-color: #222;
             text-align: center;
-            color: #ffffff;
-        }
-
-        .email-header p {
-            font-size: 32px;
+            color: #ffffff;">
+            <p style="font-size: 32px;
             padding: 40px;
-            margin: 0;
-        }
-
-        .email-body {
-            padding: 20px;
-            color: #333333;
-        }
-
-        .email-body h1 {
-            font-size: 24px;
-            margin-bottom: 25px;
-        }
-
-        .email-body p {
-            font-size: 16px;
-            line-height: 1.5;
-            margin: 0px;
-            margin-bottom: 5px;
-        }
-
-        .email-body .head_txt {
-            font-size: 18px;
-        }
-        
-        .order-details {
-            background-color: #f0f0f0;
+            margin: 0;"> &#44208;&#51228;&#44032; &#50756;&#47308;&#46104;&#50632;&#49845;&#45768;&#45796; </p>
+        </div>
+        <div class="email-body" style="padding: 20px;
+            color: #333333;">
+            <h1 style="font-size: 24px;
+            margin-bottom: 25px;">&#50504;&#45397;&#54616;&#49464;&#50836;, {{userName}}&#45784;!</h1>
+            <p class="head_txt" style="font-size:18px;line-height:1.5;margin:0px;margin-bottom:5px;">&#44256;&#44061;&#45784;&#51032; &#51452;&#47928;&#51060; &#49457;&#44277;&#51201;&#51004;&#47196; &#44208;&#51228;&#46104;&#50632;&#49845;&#45768;&#45796;.</p>
+            <p class="head_txt" style="font-size:18px;line-height:1.5;margin:0px;margin-bottom:5px;">&#50500;&#47000; &#51452;&#47928; &#45236;&#50669;&#51012; &#54869;&#51064;&#54644; &#51452;&#49464;&#50836;.</p>
+            <div class="order-details" style="background-color: #f0f0f0;
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
-            margin-top: 30px;
-        }
-
-        .order-details h2 {
-            font-size: 18px;
+            margin-top: 30px;">
+                <h2 style="font-size: 18px;
             margin-bottom: 15px;
-            margin-top: 5px;
-        }
-
-        .order-details p {
-            font-size: 16px;
-            margin: 5px 0;
-        }
-
-        .email-footer {
-            background-color: #222;
+            margin-top: 5px;">&#51452;&#47928; &#49345;&#49464; &#51221;&#48372;</h2>
+                <p style="font-size:16px;line-height:1.5;margin:5px 0;margin-bottom:5px;"><strong>&#51452;&#47928; &#48264;&#54840; : &nbsp;</strong> {{orderNumber}}</p>
+                <p style="font-size:16px;line-height:1.5;margin:5px 0;margin-bottom:5px;"><strong>&#51452;&#47928; &#49345;&#54408; : &nbsp;</strong> {{productName}}</p>
+                <p style="font-size:16px;line-height:1.5;margin:5px 0;margin-bottom:5px;"><strong>&#44208;&#51228; &#51068;&#51088; : &nbsp;</strong> {{orderDate}}</p>
+                <p style="font-size:16px;line-height:1.5;margin:5px 0;margin-bottom:5px;"><strong>&#44208;&#51228; &#49688;&#45800; : &nbsp;</strong> {{orderOption}}</p>
+                <p style="font-size:16px;line-height:1.5;margin:5px 0;margin-bottom:5px;"><strong>&#52509; &#51452;&#47928; &#49688;&#47049; : &nbsp;</strong> {{qty}}</p>
+                <p style="font-size:16px;line-height:1.5;margin:5px 0;margin-bottom:5px;"><strong>&#52509; &#44208;&#51228; &#44552;&#50529; : &nbsp;</strong> {{orderPrice}}&#50896;</p>
+            </div>
+            <p class="footer_txt" style="font-size:16px;line-height:1.5;margin:0px;margin-bottom:5px;">&#12685;&#48376; &#47700;&#51068;&#51008; &#48156;&#49888;&#51204;&#50857; &#47700;&#51068; &#51060;&#48064;&#47196; &#54924;&#49888;&#51012; &#53685;&#54620; &#47928;&#51032;&#45716; &#52376;&#47532;&#46104;&#51648; &#50506;&#49845;&#45768;&#45796;. </p>
+            <p class="footer_txt" style="font-size:16px;line-height:1.5;margin:0px;margin-bottom:5px;">&#12685;&#51452;&#47928; &#49345;&#54408;&#51008; &#48736;&#47480; &#49884;&#51068; &#45236;&#50640; &#48156;&#49569;&#46112; &#50696;&#51221;&#51077;&#45768;&#45796;. &#48176;&#49569; &#51652;&#54665; &#49345;&#54889;&#51008; &#48324;&#46020;&#51032; &#51060;&#47700;&#51068;&#47196; &#50508;&#47140;&#46300;&#47532;&#44192;&#49845;&#45768;&#45796;.</p>
+            <p class="footer_txt" style="font-size:16px;line-height:1.5;margin:0px;margin-bottom:5px;">&#12685;&#52628;&#44032; &#47928;&#51032; &#49324;&#54637;&#51060; &#51080;&#51004;&#49884;&#47732; &#50616;&#51228;&#46304;&#51648; &#51200;&#55148; &#44256;&#44061;&#49468;&#53552;&#47196; &#50672;&#46973;&#54644; &#51452;&#49464;&#50836;.</p>
+            <p class="footer_txt" style="font-size:16px;line-height:1.5;margin:0px;margin-bottom:5px;">&#44048;&#49324;&#54633;&#45768;&#45796;.</p>
+        </div>
+        <div class="email-footer" style="background-color: #222;
             color: #ffffff;
             padding: 15px;
             text-align: center;
-            font-size: 14px;
-        }
-
-        .email-footer a {
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        .footer_txt {
-            font-size: 14px !important;
-        }
-
-    </style>
-</head>
-<body>
-    <div class="email-container">
-        <div class="email-header">
-            <p> 결제가 완료되었습니다 </p>
-        </div>
-        <div class="email-body">
-            <h1>안녕하세요, {{userName}}님!</h1>
-            <p class="head_txt">고객님의 주문이 성공적으로 결제되었습니다.</p>
-            <p class="head_txt">아래 주문 내역을 확인해 주세요.</p>
-            <div class="order-details">
-                <h2>주문 상세 정보</h2>
-                <p><strong>주문 번호 : &nbsp;</strong> {{orderNumber}}</p>
-                <p><strong>주문 상품 : &nbsp;</strong> {{productName}}</p>
-                <p><strong>결제 일자 : &nbsp;</strong> {{orderDate}}</p>
-                <p><strong>결제 수단 : &nbsp;</strong> {{orderOption}}</p>
-                <p><strong>총 주문 수량 : &nbsp;</strong> {{qty}}</p>
-                <p><strong>총 결제 금액 : &nbsp;</strong> {{orderPrice}}원</p>
-            </div>
-            <p class="footer_txt">ㆍ본 메일은 발신전용 메일 이므로 회신을 통한 문의는 처리되지 않습니다. </p>
-            <p class="footer_txt">ㆍ주문 상품은 빠른 시일 내에 발송될 예정입니다. 배송 진행 상황은 별도의 이메일로 알려드리겠습니다.</p>
-            <p class="footer_txt">ㆍ추가 문의 사항이 있으시면 언제든지 저희 고객센터로 연락해 주세요.</p>
-            <p class="footer_txt">감사합니다.</p>
-        </div>
-        <div class="email-footer">
-            <p>Copyright © Sony Store Corporation. All rights reserved.</p>
-            <p>TEL : 소니코리아 고객센터 1588-0911 &nbsp;&nbsp;&nbsp; E-MAIL : cshelp@sony.co.kr</p>
+            font-size: 14px;">
+            <p>Copyright &copy; Sony Store Corporation. All rights reserved.</p>
+            <p>TEL : &#49548;&#45768;&#53076;&#47532;&#50500; &#44256;&#44061;&#49468;&#53552; 1588-0911 &nbsp;&nbsp;&nbsp; E-MAIL : cshelp@sony.co.kr</p>
         </div>
     </div>
 </body>
