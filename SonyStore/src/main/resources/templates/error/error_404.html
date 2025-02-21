@@ -6,11 +6,22 @@
 </head>
 <body>
     <th:block th:replace="~{/_fragments/_header :: sony-header}"></th:block>
-    <div class="container_w1920">
-        <div class="container_w1200 flex_center" style="flex-direction: column;">
-            <img th:src="@{/assets/img/error/error_404.png}" style="padding-top: 80px;" />
 
-            <div class="button_container flex_center" style="padding-top:0;">
+    <div class="container_w1920">
+        <div class="container_w1200 flex_center error_page" style="flex-direction: column;">
+
+            <div class="icon_container_error pad_200">
+                <img th:src="@{/assets/img/error/ic_404.svg}" />
+            </div>
+
+            <h2 class="title"> 요청하신 페이지를 표시할 수 없습니다. </h2>
+
+            <p class="eng"> The page that you are looking for is unavailable. </p>
+
+            <p class="desc"> 오래된 URL이거나 폐지된 페이지일 수 있으니, <br/>
+                메인(홈)으로 이동하셔서 원하시는 정보를 찾아주십시오. 감사합니다. </p>
+
+            <div class="button_container flex_center" style="padding-top:0; padding-bottom: 0;">
                 <a th:href="@{/index}" class="black_button_w200 flex_center">홈으로</a>
             </div>
         </div>

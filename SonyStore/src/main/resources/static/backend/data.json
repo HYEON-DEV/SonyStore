@@ -17,12 +17,6 @@
             "prodImg": "main_product_img_3.png",
             "category": "#",
             "path": "/products/lens"
-        },
-        { 
-            "prodName": "Audio",
-            "prodImg": "main_product_img_4.png",
-            "category": "#",
-            "path": "/products/audio"
         }
     ]   
 }

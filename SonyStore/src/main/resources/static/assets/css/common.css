@@ -316,6 +316,9 @@ input::placeholder {
 */
 /*====================== input animation HTML =========================*/
 
+body {
+    background-color: var(--color-black);
+}
 
 /*header*/
 .header_pc {
