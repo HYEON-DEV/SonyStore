@@ -3,10 +3,8 @@
 
 # 🛍 Sony Store - 온라인 쇼핑몰 프로젝트
 
-🔗 **스토어 URL:** [http://sonystore.shop](http://sonystore.shop)  
-📊 **대시보드 URL:** [http://sonystore.shop/dashboard](http://sonystore.shop/dashboard)  
 🗓 **개발 기간:** 2024.10.24 - 2024.12.22 + α <br/>
-📜**결과 보고서:** [SonyStore.pdf](/Docs/FIN_SonyStore.pdf)
+📜 **결과 보고서:** [SonyStore.pdf](/Docs/FIN_SonyStore.pdf)
 
 ---
 
